@@ -22,16 +22,13 @@ However, many current event planning tools, such as Eventbrite—the most popula
 commercial entities in mind. While Eventbrite facilitates event planning, its emphasis on client-side interaction, 
 ticket sales, reporting analytics (like sales and customer reach/retention), and marketing campaigns does not address 
 the primary concerns of DIYers. DIY event planners need tools that help them organize their unique ideas and customize 
-the planning process to fit their specific needs, rather than focusing on ticket sales and revenue tracking.<br>
-
-***
+the planning process to fit their specific needs, rather than focusing on ticket sales and revenue tracking.<br><br>
 
 ![Eventbrite event creation / planning page](/images/eventbrite.png)
 *View of Eventbrite's event builder page*<br><br><br>
 ![Eventbrite event creation / planning page](/images/eventbrite_2.png)
 *View of Eventbrite's event builder page*<br>
 
-***
 
 ***<ins>Solution</ins>***<br>
 *DIY Event Visualizer* is a resource designed for the resourceful. It offers a flexible,
@@ -46,6 +43,10 @@ traditional, sales-focused tools.
 ***
 
 ### <ins>Applied Technologies & Techniques</ins>
+
+| IDE |
+|* Intellij |
+|----|
 
 IDE
 * Intellij

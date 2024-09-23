@@ -128,7 +128,7 @@ public class GenericDao<T> {
      *
      *
      */
-    public List<T> findByPropertyEqual(Map<String, Object> propertyMap) {
+    public List<T> findByPropertyMapEqual(Map<String, Object> propertyMap) {
         Session session = getSession();
         HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<T> query = builder.createQuery(type);

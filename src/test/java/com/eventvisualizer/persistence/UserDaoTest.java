@@ -8,7 +8,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -95,5 +97,35 @@ class UserDaoTest {
 
         User deletedUser = (User) userDao.getById(2);
         assertNull(deletedUser);
+    }
+
+    @Test
+    void findByPropertyEqualSuccess() {
+        String searchTerm = "Dawn";
+        List<User> users = userDao.findByPropertyEqual("firstName", searchTerm);
+        assertNotNull(users);
+        assertTrue(searchTerm.equals(users.get(0).getFirstName()));
+        User user = (User) userDao.getById(6);
+        assertNotNull(user);
+        assertTrue(user.equals(users.get(0)));
+    }
+
+    @Test
+    void findByPropertyMapEqualSuccess() {
+        Map<String, Object> map = new HashMap<>();
+        List<User> users = userDao.getAll();
+        assertNotNull(users);
+        assertTrue(users.size() > 0);
+
+        map.put("firstName", users.get(0).getFirstName());
+        map.put("lastName", users.get(0).getLastName());
+        map.put("id", users.get(0).getId());
+
+        List<User> userList = userDao.findByPropertyMapEqual(map);
+
+        assertNotNull(userList);
+        assertTrue(userList.size() > 0);
+        assertTrue("Joe".equals(userList.get(0).getFirstName()));
+
     }
 }

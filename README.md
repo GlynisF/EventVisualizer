@@ -5,11 +5,11 @@
 </hgroup>
 </div>
 
-*** 
+***
 
-### Project Statement
+### *<ins>Project Statement</ins>*
 
-***<ins>Problem</ins>***<br>
+***Problem:***<br>
 On a broader scale, the ethos of DIY culture is rooted in limited or no access to the
 resources and tools needed to achieve a goal. Small-scale event planners (with a focus on music events) embody this
 philosophy, turning challenges like lack of industry experience, location, and commercialism—common barriers to 
@@ -30,7 +30,7 @@ the planning process to fit their specific needs, rather than focusing on ticket
 *View of Eventbrite's event builder page*<br>
 
 
-***<ins>Solution</ins>***<br>
+***Solution:***<br>
 *DIY Event Visualizer* is a resource designed for the resourceful. It offers a flexible,
 customizable blueprint tailored specifically for DIY event planners. Unlike platforms
 like Eventbrite that prioritize sales and analytics, the DIY Event Visualizer focuses on
@@ -42,17 +42,19 @@ traditional, sales-focused tools.
 
 ***
 
-### <ins>Applied Technologies & Techniques</ins>
-
-| IDE |
-|* Intellij |
-|----|
+### *<ins>Applied Technologies & Techniques</ins>*
 
 IDE
 * Intellij
 
-Dependency Management
-* Maven
+Build Configuration
+* Maven (dependency management)
+* POM.xml (project dependencies)
+* WAR file (project packaging build tool)
+
+
+ORM
+* Hibernate *v 6.4.3 final*
 
 Version Control
 * GitHub
@@ -61,19 +63,20 @@ Logging
 * Log4j2
 
 Database
-* MySQL  
-  * Version 8.1.0
+* MySQL *v 8.1.0*
 
 Application Server
 * Servlet/JSP Container
-* Apache Tomcat 8.5
+* Apache Tomcat 8.5 (*WAR file deployment*)
 
-Programming Language
+Programming Languages
 * Java
-  * back-end/server-side technology
+  * Back-end/server-side technology
+* Javascript
+  * Front-end/client-side scripting
 
 Runtime Environment
-* JDK 11.0.20
+* JDK *v 11.0.20*
 
 Web Service
 * RESTful API
@@ -86,8 +89,10 @@ Web Service
 
 Web Application
 * Presentation Layer
-*  JSP
-* JSTL
+  * JSP
+* JSTL tag library
+* Markup languages
+  * HTML/CSS
 
 Client-Side Scripting
 * JavaScript
@@ -96,12 +101,16 @@ Client-Server Communication
 * AJAX
 
 Unit Testing
-* Junit (Jupiter)
-  * Version 4.13.1
-
-Build Configuration
-* POM.xml (Maven)
+* Junit (Jupiter) *v 4.13.1*
 
 CSS
-* Bootstrap
-  * Version 5.3.0
+* Bootstrap *v 5.3.0*
+
+Project Documentation 
+* Markdown
+
+***
+
+### Supplementary Files
+
+[*Project Plan*](ProjectPlan.md) &bull; [*User Stories*](UserStories.md) &bull; [*Screen Design*](ScreenDesign.md) &bull; [*Reflection Journal*](ReflectionJournal.md)

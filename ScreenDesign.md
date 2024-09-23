@@ -1,6 +1,6 @@
 # Screen Design
 
-*Landing Page*<br>
+<mark style="background:pink">*Landing Page*</mark><br>
 ![Event Visualizer landing page with sign in and sign up options](/images/landing_page.png)
 
 *Log In*<br>

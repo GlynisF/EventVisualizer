@@ -11,7 +11,7 @@ const userInit = async (e) => {
         e.preventDefault();
         e.stopPropagation();
     })
-    let btn2 = document.getElementById('delete').addEventListener('click', await deleteUser)
+    let btn2 = document.getElementById('delete').addEventListener('click', await getFetch)
 }
 
 const addUser = async (e) => {

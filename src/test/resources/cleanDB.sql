@@ -16,6 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `notebook`
+--
+
+DROP TABLE IF EXISTS `notebook`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `notebook` (
+                            `id` int NOT NULL AUTO_INCREMENT,
+                            `title` varchar(100) NOT NULL,
+                            `user_id` int DEFAULT NULL,
+                            PRIMARY KEY (`id`),
+                            UNIQUE KEY `notebook_pk_2` (`id`),
+                            KEY `notebook_user_id_fk` (`user_id`),
+                            CONSTRAINT `notebook_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `eventvisualizer`.`user` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `notebook`
+--
+
+LOCK TABLES `notebook` WRITE;
+/*!40000 ALTER TABLE `notebook` DISABLE KEYS */;
+INSERT INTO `notebook` (`id`, `title`, `user_id`) VALUES (1,'October Events',1),(2,'Birthday Party',2),(3,'Gamma Ray Event',3),(4,'Surprise Party',4),(5,'November Shows',5),(6,'New Year\'s Eve',6),(7,'High Noon Show',1),(8,'December Events',2),(9,'Halloween 2024',3),(10,'Mom\'s Birthday',4),(11,'Sylvee Show',5),(12,'Valentine\'s Day Show',6);
+/*!40000 ALTER TABLE `notebook` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user`
 --
 
@@ -53,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-09-17  7:23:12
+-- Dump completed on 2024-10-04  3:45:31

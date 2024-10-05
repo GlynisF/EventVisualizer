@@ -19,6 +19,7 @@
     <button class="btn btn-sm btn-primary" type="submit" name="addUser" id="addUser">Submit</button>
 </form>
 <button class="btn btn-sm btn-primary" type="button" name="delete" id="delete">Submit</button>
+<button class="btn btn-sm btn-primary" type="button" name="getB" id="getB">Submit</button>
 <%@include file="includes/bootstrapScript.js"%>
 </body>
 </html>

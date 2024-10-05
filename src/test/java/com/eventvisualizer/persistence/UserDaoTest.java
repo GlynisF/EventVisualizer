@@ -16,11 +16,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Test class for User entity using GenericDao to access the database
+ *
  * @author glynisfisher
  */
 class UserDaoTest {
+    /**
+     * The User dao.
+     */
     GenericDao userDao;
     private final Logger logger = LogManager.getLogger(this.getClass());
+
     /**
      * Runs before each test to reset database to original state
      */
@@ -31,11 +36,12 @@ class UserDaoTest {
         database.runSQL("cleanDB.sql");
         logger.info(database);
     }
+
     /**
      * Gets user by ID from db success
      */
     @Test
-     void getUserByIdSuccess() {
+    void getUserByIdSuccess() {
         User user = (User) userDao.getById(4);
         assertNotNull(user);
         //assertEquals(4, user.getId());
@@ -52,6 +58,7 @@ class UserDaoTest {
         int listSize = users.size();
         assertTrue(listSize == users.size());
     }
+
     /**
      * Inserts new user into db success
      */
@@ -99,6 +106,9 @@ class UserDaoTest {
         assertNull(deletedUser);
     }
 
+    /**
+     * Find by property equal success.
+     */
     @Test
     void findByPropertyEqualSuccess() {
         String searchTerm = "Dawn";
@@ -110,6 +120,9 @@ class UserDaoTest {
         assertTrue(user.equals(users.get(0)));
     }
 
+    /**
+     * Find by property map equal success.
+     */
     @Test
     void findByPropertyMapEqualSuccess() {
         Map<String, Object> map = new HashMap<>();

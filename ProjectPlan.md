@@ -3,33 +3,46 @@
 ### Week 2
 
 ### Week 3
-- [ ] Create development DB
-- [ ] Create User Bean
+- [x] Create development DB
+- [x] Create User Bean
 
 ### Week 4
 - [ ] Create project plan
-- [ ] Add Hibernate annotation to User class
-- [ ] Create UserDao unit tests
-- [ ] Create test DB for unit tests
-- [ ] Create GenericDao service layer to be used in REST endpoint
-- [ ] Create REST endpoint to handle CRUD operations
-- [ ] Create User test jsp
-- [ ] Create CRUD async fetch calls on client side with Javascript
-- [ ] Test REST endpoint / front-end + back-end communication
-- [ ] Update reflection
+- [x] Add Hibernate annotation to User class
+- [x] Create UserDao unit tests
+- [x] Create test DB for unit tests
+- [x] Create GenericDao service layer to be used in REST endpoint
+- [x] Create REST endpoint to handle CRUD operations
+- [x] Create test / throw away jsp for User
+- [x] Create CRUD async fetch calls on client side with Javascript
+- [x] Test REST endpoint / front-end + back-end communication
+- [x] Update reflection
 
 ### Week 5
-- [ ] Create Notebook and Event tables in db
-- [ ] Create Notebook and Event beans + annotate with Hibernate
-- [ ] Map Hibernate / beans in Hibernate config
-- [ ] Create 'New Event' JSP
-- [ ] Test CRUD operations work for Notebook and Event entities
+- [x] Create Notebook 
+- [x] Create Notebook bean & annotate with Hibernate
+- [x] Map Hibernate / beans in Hibernate config
+- [x] Test CRUD operations work for Notebook 
 - [ ] Determine site theme (site colors & fonts)
-- [ ] Complete screen design
+- [x] Complete screen design
 - [ ] Complete user stories
 - [ ] Update reflection
 
 ### Week 6
+- [ ] Deploy app to AWS
+- [ ] Create NavigationServlet 
+- [ ] Create Event table in db & test db
+- [ ] Create Event bean / add Hibernate annotations
+- [ ] Map Event in Hibernate config
+- [ ] Create EventDaoTest
+- [ ] Test CRUD + front-end / back-end communication 
+- [ ] Implement Event into 'New Event' JSP
+- [ ] Post in slack for peer review
+- [ ] Create issue for checkpoint 1
+- [ ] Update reflection
+
+
+### Week 7
 - [ ] Create Location table in db
 - [ ] Create Location bean/POJO + annotate with Jackson / JSON properties + Hibernate
 - [ ] Implement Google autocomplete search API 
@@ -37,8 +50,6 @@
 - [ ] Test autocomplete API working properly on the front end
 - [ ] Test CRUD operations for Location entity-- front-end/back-end communication using async Fetch
 - [ ] Update reflection
-
-### Week 7
 
 ### Week 8
 

@@ -1,90 +1,126 @@
 package com.eventvisualizer.persistence;
 
-
+import com.eventvisualizer.entity.Notebook;
 import com.eventvisualizer.entity.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import lombok.SneakyThrows;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
  * The type Dao service.
- * Service layer for GenericDao and REST api communication.
- * @Author glynisfisher
+ * Service layer for GenericDao and REST API communication.
+ *
+ * @author glynisfisher
  */
 public class DaoService {
 
-    private ObjectMapper mapper;
+    private final ObjectMapper mapper;
     private final Logger logger = LogManager.getLogger(this.getClass());
+    private final Map<String, Class<?>> entityClassMap = new HashMap<>();
 
+    /**
+     * Instantiates a new Dao service.
+     */
     public DaoService() {
         mapper = new ObjectMapper();
         mapper.registerModule(new JavaTimeModule());
+
+        // Populate entity map with entity names and corresponding classes
+        entityClassMap.put("users", User.class);
+        entityClassMap.put("notebooks", Notebook.class);
+        // Add other entities as needed
     }
 
-    public <T> Object getEntityById(String entityName, Integer id) {
-        GenericDao<T> genericDao = getEntityDaoFromPathParam(entityName);
-        Object entity = genericDao.getById(id);
+    /**
+     * Gets entity from the database by id.
+     *
+     * @param <T>        the type parameter
+     * @param entityName the entity name
+     * @param id         the id
+     * @return the entity by id
+     * @throws EntityNotFoundException problem retrieving entity
+     */
+    public <T> T getEntityById(String entityName, Integer id) {
+        GenericDao<T> genericDao = getEntityDao(entityName);
+        T entity = genericDao.getById(id);
         if (entity == null) {
+            logger.error("Entity {} with ID {} not found", entityName, id);
             throw new EntityNotFoundException(entityName);
         }
         return entity;
     }
 
+    /**
+     * Inserts new entity into the database.
+     *
+     * @param <T>        the type parameter
+     * @param entityName the entity name
+     * @param entityData the entity data
+     * @return the inserted entity
+     */
+// Generic method to insert a new entity from provided data
     public <T> T insertNewEntity(String entityName, Map<String, Object> entityData) {
-        GenericDao<T> genericDao = getEntityDaoFromPathParam(entityName);
-        if (genericDao == null) {
-            throw new EntityNotFoundException(entityName);
-        }
-        Class<T> entityClass = (Class<T>) getEntityClassFromPathParam(entityName);
+        GenericDao<T> genericDao = getEntityDao(entityName);
+        Class<T> entityClass = getEntityClass(entityName);
         T mappedEntity = mapper.convertValue(entityData, entityClass);
-        T newEntity = (T) genericDao.insert(mappedEntity);
+        T newEntity = genericDao.insert(mappedEntity);
+
         if (newEntity == null) {
+            logger.error("Failed to insert entity {}: {}", entityName, entityData);
             throw new EntityNotFoundException(entityName);
         }
-        return mappedEntity;
-    }
-
-    public <T> void deleteEntity(String entityName, Integer id) {
-        boolean isDeleted = false;
-        Class<T> entityClass = (Class<T>) getEntityClassFromPathParam(entityName);
-        GenericDao<T> genericDao = new GenericDao<>(entityClass);
-        Object entity = (T) genericDao.getById(id);
-        logger.info(entity);
-
-        genericDao.delete((T) entity);
-
-
-    }
-
-
-    public <T> GenericDao<T> getEntityDaoFromPathParam(String entityName) {
-        if("users".equalsIgnoreCase(entityName)) {
-            return (GenericDao<T>) new GenericDao<>(User.class);
-        } else {
-            logger.warn("Entity name was not found. {} ", entityName);
-            throw new EntityNotFoundException("Entity name was not found.");
-        }
+        return newEntity;
     }
 
     /**
-     * Gets entity class by name.
+     * Deletes entity from the database.
      *
-     * @param className name of entity
-     * @return instance of entity class.
+     * @param <T>        the type parameter
+     * @param entityName the entity name
+     * @param id         the id
      */
-    @SneakyThrows
-    private Class<?> getEntityClassFromPathParam(String className) {
-        switch (className.toLowerCase()) {
-            case "users":
-                return User.class;
-            default:
-                throw new IllegalAccessException("Error. No match was found for entity" + className);
+    public <T> void deleteEntity(String entityName, Integer id) {
+        GenericDao<T> genericDao = getEntityDao(entityName);
+        T entity = genericDao.getById(id);
+
+        if (entity == null) {
+            logger.error("Entity {} with ID {} not found for deletion", entityName, id);
+            throw new EntityNotFoundException(entityName);
         }
+
+        genericDao.delete(entity);
+        logger.info("Entity {} with ID {} successfully deleted", entityName, id);
     }
 
+    /**
+     * Helper method to retrieve the GenericDao based off the entity name.
+     * @param entityName
+     * @param entityName the entity's name
+     * @return the entity's class name
+     */
+    private <T> GenericDao<T> getEntityDao(String entityName) {
+        Class<T> entityClass = getEntityClass(entityName);
+        return new GenericDao<>(entityClass);
+    }
+
+    /**
+     * Helper method to retrieve the entity class from the entity name
+     *
+     * @param entityName the entity's name
+     * @return the entity's class name
+     */
+    @SuppressWarnings("unchecked")
+    private <T> Class<T> getEntityClass(String entityName) {
+        Class<?> entityClass = entityClassMap.get(entityName.toLowerCase());
+        if (entityClass == null) {
+            logger.error("Entity name not found: {}", entityName);
+            throw new EntityNotFoundException("Entity name not found: " + entityName);
+        }
+        return (Class<T>) entityClass;
+    }
 }

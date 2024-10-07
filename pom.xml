@@ -16,7 +16,7 @@
         <jackson-version>2.18.0</jackson-version>
         <jersey-version>4.0.0-M1</jersey-version>
         <jstl-version>1.2</jstl-version>
-        <mysql-version>8.0.28</mysql-version>
+        <mysql-version>8.0.33</mysql-version>
         <log4j-version>2.22.1</log4j-version>
         <lombok-version>1.18.20.0</lombok-version>
         <maven-compiler-plugin-version>3.8.1</maven-compiler-plugin-version>
@@ -56,6 +56,14 @@
             <artifactId>javaee-web-api</artifactId>
             <version>${javax.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
+            <version>6.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
         <dependency>
             <groupId>mysql</groupId>
@@ -155,13 +163,6 @@
             <artifactId>cxf-rt-bindings-soap</artifactId>
             <version>4.0.5</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-rt-bindings-soap -->
-        <dependency>
-            <groupId>org.apache.cxf</groupId>
-            <artifactId>cxf-rt-bindings-soap</artifactId>
-            <version>4.0.5</version>
-        </dependency>
-
 
 
     </dependencies>

@@ -26,11 +26,11 @@
 - [ ] Determine site theme (site colors & fonts)
 - [x] Complete screen design
 - [ ] Complete user stories
-- [ ] Update reflection
+- [x] Update reflection
 
 ### Week 6
-- [ ] Deploy app to AWS
-- [ ] Create NavigationServlet 
+- [x] Deploy app to AWS
+- [x] Create NavigationServlet 
 - [ ] Create Event table in db & test db
 - [ ] Create Event bean / add Hibernate annotations
 - [ ] Map Event in Hibernate config
@@ -39,8 +39,8 @@
 - [ ] Implement Event into 'New Event' JSP
 - [ ] Post in slack for peer review
 - [ ] Create speaking notes for peer review
-- [ ] Create issue for checkpoint 1
-- [ ] Update reflection
+- [x] Create issue for checkpoint 1
+- [x] Update reflection
 
 
 ### Week 7

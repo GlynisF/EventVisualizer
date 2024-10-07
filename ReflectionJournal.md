@@ -31,3 +31,26 @@ one by one to make sure they were working correctly. I got everything to work fo
 to work on the update method which I will hammer out tomorrow.
 
 *Total time spent: 4 hours*
+
+#### Week 5
+This week's main tasks were working on the DaoService Test class, creating the Notebook table in my database, the Notebook
+bean, mapping the bean with hibernate and testing the Notebook class with my CRUD REST endpoint through fetch calls on
+the client side.
+
+*Total time spent: 7 hours*
+
+#### Week 6
+I ran into some issues with my Notebook class working with my REST endpoint.<br><br>
+I kept recieving this error:<br>
+<mark>"user":{<ns1:XMLFault xmlns:ns1="http://cxf.apache.org/bindings/xformat">
+<ns1:faultstring xmlns:ns1="http://cxf.apache.org/bindings/xformat">javax.json.stream.JsonGenerationException:
+Invalid json</ns1:faultstring></mark><br>
+My endpoint was returning a recursive loop when I was trying to retrieve a single Notebook by id. I got stuck on this for 
+a little bit because I did have my bean classes mapped & annotated properly. I used my old project that I knew had mappings
+that worked properly as a reference to try and fix the issue, but I kept receiving the error. I started fresh with a new 
+directory to see if this would make the error go away, but it did not. I eventually thought to use ObjectMapper to return
+the entity in my REST endpoint and that did the trick! I then went on to test the CRUD operations with fetch calls on the client
+side and everything was working fine. I also reworked my DaoService class a bit to be more straightforward by preloading the entity
+classes into a map in the constructor vs. adding the classes into a map depending on which entity was passed in as a path param.
+
+*Total time spent: 10 hours*

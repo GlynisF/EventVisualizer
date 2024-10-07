@@ -38,6 +38,7 @@
 - [ ] Test CRUD + front-end / back-end communication 
 - [ ] Implement Event into 'New Event' JSP
 - [ ] Post in slack for peer review
+- [ ] Create speaking notes for peer review
 - [ ] Create issue for checkpoint 1
 - [ ] Update reflection
 

@@ -2,6 +2,7 @@ package com.eventvisualizer.persistence;
 
 import com.eventvisualizer.entity.Notebook;
 import com.eventvisualizer.entity.User;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.apache.logging.log4j.LogManager;
@@ -75,6 +76,19 @@ public class DaoService {
             throw new EntityNotFoundException(entityName);
         }
         return newEntity;
+    }
+
+    public <T> T updateEntity(String entityName, Integer id, Map<String, Object> entityData) throws JsonMappingException {
+        GenericDao<T> genericDao = getEntityDao(entityName);
+        Class<T> entityClass = getEntityClass(entityName);
+        T entityToUpdate = genericDao.getById(id);
+        if (entityToUpdate == null) {
+            logger.error("Entity {} with ID {} not found", entityName, id);
+            throw new EntityNotFoundException(entityName);
+        }
+        mapper.updateValue(entityToUpdate, entityData);
+        genericDao.update(entityToUpdate);
+        return mapper.convertValue(entityData, entityClass);
     }
 
     /**

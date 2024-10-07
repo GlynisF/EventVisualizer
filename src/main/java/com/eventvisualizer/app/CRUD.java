@@ -2,13 +2,13 @@ package com.eventvisualizer.app;
 
 import com.eventvisualizer.persistence.DaoService;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import jakarta.persistence.EntityNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.json.Json;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -83,6 +83,36 @@ public class CRUD {
         } catch (EntityNotFoundException e) {
             logger.error("Failed to add entity: {}", e.getMessage());
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+        }
+    }
+
+    /**
+     * Update entity response.
+     *
+     * @param <T>        the type parameter
+     * @param entityType the entity type
+     * @param id         the id
+     * @param entityData the entity data
+     * @return the response
+     * @throws EntityNotFoundException problem finding or retrieving entity
+     * @throws JsonMappingException problem serializing or deserializing entity
+     */
+    //TODO test this method on the front-end through fetch call
+    @PUT
+    @Path("/{entityType}/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public <T> Response updateEntity(@PathParam("entityType") String entityType, @PathParam("id") Integer id, Map<String, Object> entityData) {
+        try {
+            T updatedEntity = daoService.updateEntity(entityType, id, entityData);
+            logger.info("Entity updated: {}", updatedEntity);
+            return Response.status(Response.Status.OK).entity(updatedEntity).build();
+        } catch (EntityNotFoundException e) {
+            logger.error("Failed to update entity: {}", e.getMessage());
+            return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
+        } catch (JsonMappingException e) {
+            logger.error("JsonMappingException: {}", e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 

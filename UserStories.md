@@ -13,7 +13,6 @@
 ***Delete Event*** ★<br>As a signed-in user, I want to have the option to delete events I have stored.
 
 ***About<br>*** As any user, I want to be able to learn more about the site + mission statement or find contact information
-for inquiries.<br>As a registered user,
-I want to be able to give comments, concerns or feedback about the site or my experiences.
+for inquiries.<br>
 
 ★ *Specifies MVP* 

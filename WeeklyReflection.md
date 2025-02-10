@@ -1,10 +1,24 @@
 # Weekly Reflection Journal
 
-<em>Week 1 • January 21st </em>
+### **<em>Week 1 • January 21st</em>**<br>
+COURSE SET UP & CONFIGURATION 
 
-<em>Week 2 • January 27th</em>
+### **<em>Week 2 • January 27th</em>**<br>
+The time spent on class tasks mostly went towards the week's required reading & watching videos. I had an obligation in 
+Minneapolis over the weekend and was unable to complete the assignments & exercises before leaving town. When I got back 
+on Sunday, I intended to catch up but was unsuccessful to due to me forgetting to pass on my GitHub username in order to 
+be added to the student repo.
 
-<em>Week 3 • February 3rd</em>
+**Total Time:** 4 hours
+
+### **<em>Week 3 • February 3rd</em>**
+I spent this week catching up on my week 2 tasks and completing the week 3 tasks. Overall, this week was a review for me
+and I didn't run into any major issues. I had a minor issue which I expressed in my week 3 issue on GitHub. In addition
+to working through the weekly material, I completed my user stories and screen design for my indie project. I also
+determined that I would like to use Mockaroo as the topic for my professional development project and signed up for a
+presentation date.
+
+**Total Time:** 10 hours
 
 <em>Week 4 • February 10th</em>
 

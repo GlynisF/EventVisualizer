@@ -27,3 +27,6 @@
 ### Week 15
 
 ### Week 16
+
+### ***Notes + Things to Look Into / Incorporate*** 
+- emailJS | send email directly from code

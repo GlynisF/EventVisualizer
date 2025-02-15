@@ -76,10 +76,14 @@
 
 ### 〚***Servlets***〛
 
-- **ApplicationStartup** ➡ Puts SessionFactory, Hibernate config in servlet context / app scope<br>
-- **NavigationServlet** ➡ handles forwarding navigation items to jsp<br>
-- **Login** ➡ handles user login or signup<br> 
-- **Auth** ➡ checks login credentials or signup for accessing site features<br>
+- **ApplicationStartup**<br> 
+Puts SessionFactory, Hibernate config in servlet context / app scope<br><br>
+- **NavigationServlet**<br> 
+handles forwarding navigation items to jsp<br><br>
+- **Login**<br> 
+handles user login or signup<br><br> 
+- **Auth**<br> 
+checks login credentials or signup for accessing site features<br>
 
 ### 〚***JSP***〛
 
@@ -94,12 +98,18 @@
 
 ### 〚***JavaScript***〛
 
-- **fetch.js** ➡ get, post, delete, put<br>
-- **notebook.js** ➡ notebook class<br>
-- **performer.js** ➡ performer class<br>
-- **location.js** ➡ location class<br>
-- **details.js** ➡ details class<br>
-- **notes.js** ➡ notes class<br>
+- **fetch.js**<br>
+generic methods for get, post, delete, & put fetch calls<br><br>
+- **notebook.js**<br> 
+notebook class<br><br>
+- **performer.js**<br> 
+performer class<br><br>
+- **location.js**<br> 
+location class<br><br>
+- **details.js**<br> 
+details class<br><br>
+- **notes.js**<br>
+notes class<br><br>
 
 
 ### 〚***Notes + Things to Look Into / Incorporate***〛

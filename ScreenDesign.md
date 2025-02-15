@@ -3,10 +3,10 @@
 ***Landing Page***
 ![Event Visualizer landing page with sign in and sign up options](/images/landing_page.png)<br><br><br><br>
 
-***Log In***<br>
+***Log In*** (AWS)<br>
 ![Log in modal with username and password fields](/images/login.png)<br><br><br><br>
 
-***User Sign Up***<br>
+***User Sign Up*** (AWS)<br>
 ![Sign up modal with personal information fields](/images/user_sign_up.png)<br><br><br><br>
 
 ***Homepage***<br>

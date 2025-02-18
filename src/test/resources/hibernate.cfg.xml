@@ -13,6 +13,7 @@
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <!--<mapping class="edu.matc.entity.User"/>-->
+        <!-- entity mappings -->
+        <mapping class="com.eventvisualizer.entity.User"/>
     </session-factory>
 </hibernate-configuration>

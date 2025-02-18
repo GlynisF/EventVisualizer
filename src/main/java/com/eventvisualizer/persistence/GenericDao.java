@@ -10,16 +10,23 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.criteria.HibernateCriteriaBuilder;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The type Generic dao.
+ *
+ * @param <T> the type parameter
+ */
 public class GenericDao<T> {
 
     private Class<T> type;
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * Instantiates a new Generic dao.
+     */
     public GenericDao() {
     }
 
@@ -54,8 +61,10 @@ public class GenericDao<T> {
 
     /**
      * Gets an entity by id
-     * @param id entity id to search by
-     * @return entity
+     *
+     * @param <T> the type parameter
+     * @param id  entity id to search by
+     * @return entity by id
      */
     public <T> T getById(int id) {
         try (Session session = getSession()) {
@@ -115,7 +124,9 @@ public class GenericDao<T> {
         try (Session session = getSession()) {
             Transaction transaction = session.beginTransaction();
             try {
-                session.merge(entity);
+                entity = (T) session.merge(entity);
+                session.flush();
+                session.refresh(entity);
                 transaction.commit();
             } catch (Exception e) {
                 transaction.rollback();
@@ -127,8 +138,9 @@ public class GenericDao<T> {
     /**
      * Finds entities by one of its properties.
      * sample usage: findByPropertyEqual("lastname", "Curry")
+     *
      * @param propertyName the property name.
-     * @param value the value by which to find.
+     * @param value        the value by which to find.
      * @return the list of all entities found matching the criteria
      */
     public List<T> findByPropertyEqual(String propertyName, Object value) {
@@ -147,11 +159,9 @@ public class GenericDao<T> {
     /**
      * Finds entities by multiple properties.
      * Inspired by https://stackoverflow.com/questions/11138118/really-dynamic-jpa-criteriabuilder
-
+     *
      * @param propertyMap property and value pairs
      * @return entities with properties equal to those passed in the map
-     *
-     *
      */
     public List<T> findByPropertyMapEqual(Map<String, Object> propertyMap) {
         try (Session session = getSession()) {

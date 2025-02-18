@@ -154,11 +154,12 @@ class UserDaoTest {
         assertNotNull(userNotebookOwner);
 
         userNotebookOwner.addNotebook(notebookToAddToUser);
+        notebookToAddToUser.setUser(userNotebookOwner);
         Notebook insertedNotebook = notebookDao.insert(notebookToAddToUser);
         assertNotNull(insertedNotebook);
 
         List<Notebook> notebooks = userNotebookOwner.getNotebooks();
-        assertTrue(notebooks.contains(insertedNotebook));
+        assertTrue(notebooks.contains(notebookToAddToUser));
 
         logger.info(notebooks);
     }

@@ -22,7 +22,7 @@ public class Notebook {
 
     @ManyToOne
     @JoinColumn(name = "user_id",
-            foreignKey = @ForeignKey(name = "notebook_user_id_fk")
+            foreignKey = @ForeignKey(name = "notebook_fk")
     )
     private User user;
 
@@ -41,7 +41,10 @@ public class Notebook {
     public Notebook(String title) {
         this.title = title;
     }
-
+    public Notebook(String title, User user) {
+        this.title = title;
+        this.user = user;
+    }
     /**
      * Gets id.
      *
@@ -113,7 +116,7 @@ public class Notebook {
     @Override
     public String toString() {
         return "Notebook{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", title='" + title + '\'' +
                 ", user=" + user +
                 '}';

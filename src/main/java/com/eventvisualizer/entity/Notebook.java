@@ -113,8 +113,9 @@ public class Notebook {
     @Override
     public String toString() {
         return "Notebook{" +
+                "id=" + id +
                 ", title='" + title + '\'' +
-                ", id=" + id +
+                ", user=" + user +
                 '}';
     }
 }

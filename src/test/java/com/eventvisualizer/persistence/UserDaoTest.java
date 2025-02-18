@@ -1,5 +1,6 @@
 package com.eventvisualizer.persistence;
 
+import com.eventvisualizer.entity.Notebook;
 import com.eventvisualizer.entity.User;
 import com.eventvisualizer.test.util.Database;
 import jakarta.persistence.EntityNotFoundException;
@@ -142,6 +143,50 @@ class UserDaoTest {
         assertTrue(userList.size() > 0);
         assertTrue("Joe".equals(userList.get(0).getFirstName()));
 
+    }
+
+    @Test
+    void addNotebookToUserSuccess() {
+        GenericDao<Notebook> notebookDao = new GenericDao<Notebook>(Notebook.class);
+        Notebook notebookToAddToUser = new Notebook("Adding Notebook to User");
+
+        User userNotebookOwner = userDao.getById(4);
+        assertNotNull(userNotebookOwner);
+
+        userNotebookOwner.addNotebook(notebookToAddToUser);
+        Notebook insertedNotebook = notebookDao.insert(notebookToAddToUser);
+        assertNotNull(insertedNotebook);
+
+        List<Notebook> notebooks = userNotebookOwner.getNotebooks();
+        assertTrue(notebooks.contains(insertedNotebook));
+
+        logger.info(notebooks);
+    }
+
+    /**
+     * Remove notebook from user success.
+     */
+    @Test
+    void removeNotebookFromUserSuccess() {
+        GenericDao<Notebook> notebookDao = new GenericDao<Notebook>(Notebook.class);
+        Notebook notebookToDelete = notebookDao.getById(4);
+        assertNotNull(notebookToDelete);
+        assertTrue(notebookToDelete.getTitle().equals("Surprise Party"));
+        logger.info(notebookToDelete);
+
+        User user = notebookToDelete.getUser();
+        assertNotNull(user);
+
+        user.removeNotebook(notebookToDelete);
+        notebookDao.update(notebookToDelete);
+
+        List<Notebook> notebooks = user.getNotebooks();
+        assertTrue(!notebooks.contains(notebookToDelete));
+
+        assertNull(notebookToDelete.getUser());
+
+        logger.info(notebooks);
+        logger.info(notebookToDelete);
     }
 
     /**

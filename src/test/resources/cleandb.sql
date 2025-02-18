@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `notebook`;
 CREATE TABLE `notebook` (
                             `id` int NOT NULL AUTO_INCREMENT,
                             `title` varchar(100) NOT NULL,
-                            `user_id` int NOT NULL,
+                            `user_id` int NULL,
                             PRIMARY KEY (`id`),
                             UNIQUE KEY `notebook_pk_2` (`id`),
                             KEY `notebook_fk` (`user_id`),
@@ -81,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-18  6:19:55
+-- Dump completed on 2025-02-18  8:50:12

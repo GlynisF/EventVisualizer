@@ -2,6 +2,8 @@ package com.eventvisualizer.entity;
 
 
 import jakarta.persistence.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
@@ -15,8 +17,9 @@ import java.util.Objects;
  */
 @Entity (name = "eventvisualizer")
 @Table(name = "user")
+public class User{
 
-public class User {
+    private static final Logger logger = LogManager.getLogger(User.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")

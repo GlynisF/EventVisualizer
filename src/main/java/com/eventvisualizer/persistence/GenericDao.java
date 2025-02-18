@@ -1,5 +1,6 @@
 package com.eventvisualizer.persistence;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
@@ -9,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.criteria.HibernateCriteriaBuilder;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +29,7 @@ public class GenericDao<T> {
      * @param type the entity type, for example, User.
      */
     public GenericDao(Class<T> type) {
-        this.type = type;
+        this.type = (Class<T>) type;
     }
 
     /**
@@ -36,14 +38,18 @@ public class GenericDao<T> {
      * @return the all entities
      */
     public List<T> getAll() {
-        Session session = getSession();
-        HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> query = builder.createQuery(type);
-        Root<T> root = query.from(type);
-        List<T> list = session.createSelectionQuery(query).getResultList();
-        session.close();
-        return list;
+        List<T> list = new ArrayList<>();
 
+        try (Session session = getSession()) {
+            HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<T> query = builder.createQuery(type);
+            Root<T> root = query.from(type);
+            list = session.createSelectionQuery(query).getResultList();
+            return list;
+        } catch (Exception e) {
+            logger.error("There was an error retrieving all entities : {} ", e.getMessage(), e);
+        }
+        return null;
     }
 
     /**
@@ -52,10 +58,14 @@ public class GenericDao<T> {
      * @return entity
      */
     public <T> T getById(int id) {
-        Session session = getSession();
-        T entity = (T)session.get(type, id);
-        session.close();
-        return entity;
+        try (Session session = getSession()) {
+            return (T) session.get(type, id);
+        } catch (EntityNotFoundException e) {
+            logger.error("Entity with the ID {} was not found: {} ", id, e.getMessage(), e);
+        } catch (Exception e) {
+            logger.error("There was a problem: {} ", e.getMessage(), e);
+        }
+        return null;
     }
 
     /**
@@ -64,13 +74,17 @@ public class GenericDao<T> {
      * @param entity entity to be deleted
      */
     public void delete(T entity) {
-        Session session = getSession();
-        Transaction transaction = session.beginTransaction();
-        session.remove(entity);
-        transaction.commit();
-        session.close();
+        try (Session session = getSession()) {
+            Transaction transaction = session.beginTransaction();
+            try {
+                session.remove(entity);
+                transaction.commit();
+            } catch (Exception e) {
+                transaction.rollback();
+                logger.error("Problem deleting entity: {} ", e.getMessage(), e);
+            }
+        }
     }
-
 
     /**
      * Inserts the entity.
@@ -78,13 +92,18 @@ public class GenericDao<T> {
      * @param entity entity to be inserted
      */
     public <T> T insert(T entity) {
-        int id = 0;
-        Session session = getSession();
-        Transaction transaction = session.beginTransaction();
-        session.persist(entity);
-        transaction.commit();
-        session.close();
-        return entity;
+        try (Session session = getSession()) {
+            Transaction transaction = session.beginTransaction();
+            try {
+                session.persist(entity);
+                transaction.commit();
+                return entity;
+            } catch (Exception e) {
+                transaction.rollback();
+                logger.error("Error inserting entity: {} ", e.getMessage(), e);
+            }
+        }
+        return null;
     }
 
     /**
@@ -93,13 +112,17 @@ public class GenericDao<T> {
      * @param entity entity to be inserted/saved
      */
     public void update(T entity) {
-        Session session = getSession();
-        Transaction transaction = session.beginTransaction();
-        session.merge(entity);
-        transaction.commit();
-        session.close();
+        try (Session session = getSession()) {
+            Transaction transaction = session.beginTransaction();
+            try {
+                session.merge(entity);
+                transaction.commit();
+            } catch (Exception e) {
+                transaction.rollback();
+                logger.error("Error updating entity: {} ", e.getMessage(), e);
+            }
+        }
     }
-
 
     /**
      * Finds entities by one of its properties.
@@ -109,14 +132,16 @@ public class GenericDao<T> {
      * @return the list of all entities found matching the criteria
      */
     public List<T> findByPropertyEqual(String propertyName, Object value) {
-        Session session = getSession();
-        HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> query = builder.createQuery(type);
-        Root<T> root = query.from(type);
-        query.select(root).where(builder.equal(root.get(propertyName),value));
-        List<T> items = session.createSelectionQuery( query ).getResultList();
-        session.close();
-        return items;
+        try (Session session = getSession()) {
+            HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<T> query = builder.createQuery(type);
+            Root<T> root = query.from(type);
+            query.select(root).where(builder.equal(root.get(propertyName), value));
+            return session.createSelectionQuery(query).getResultList();
+        } catch (Exception e) {
+            logger.error("Error finding entities by property: {} ", e.getMessage(), e);
+        }
+        return null;
     }
 
     /**
@@ -129,20 +154,22 @@ public class GenericDao<T> {
      *
      */
     public List<T> findByPropertyMapEqual(Map<String, Object> propertyMap) {
-        Session session = getSession();
-        HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<T> query = builder.createQuery(type);
-        Root<T> root = query.from(type);
-        List<Predicate> predicates = new ArrayList<Predicate>();
-        for (Map.Entry entry: propertyMap.entrySet()) {
-            predicates.add(builder.equal(root.get((String) entry.getKey()), entry.getValue()));
-        }
-        query.select(root).where(builder.and(predicates.toArray(new Predicate[predicates.size()])));
-        List<T> items = session.createSelectionQuery( query ).getResultList();
-        session.close();
-        return items;
-    }
+        try (Session session = getSession()) {
+            HibernateCriteriaBuilder builder = session.getCriteriaBuilder();
+            CriteriaQuery<T> query = builder.createQuery(type);
+            Root<T> root = query.from(type);
+            List<Predicate> predicates = new ArrayList<>();
 
+            for (Map.Entry entry : propertyMap.entrySet()) {
+                predicates.add(builder.equal(root.get((String) entry.getKey()), entry.getValue()));
+            }
+            query.select(root).where(builder.and(predicates.toArray(new Predicate[0])));
+            return session.createSelectionQuery(query).getResultList();
+        } catch (Exception e) {
+            logger.error("Error finding entities by property map: {} ", e.getMessage(), e);
+        }
+        return null;
+    }
 
     /**
      * Returns an open session from the SessionFactory
@@ -150,6 +177,5 @@ public class GenericDao<T> {
      */
     private Session getSession() {
         return SessionFactoryProvider.getSessionFactory().openSession();
-
     }
 }

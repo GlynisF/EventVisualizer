@@ -8,7 +8,6 @@ import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -145,6 +144,11 @@ class UserDaoTest {
 
     }
 
+    /**
+     * Entity not found exception success.
+     *
+     * @throws EntityNotFoundException the entity not found exception
+     */
     @Test
     void entityNotFoundExceptionSuccess() throws EntityNotFoundException {
         User user = userDao.getById(25);
@@ -152,14 +156,17 @@ class UserDaoTest {
         logger.info(user);
     }
 
+    /**
+     * Exception thrown success.
+     *
+     * @throws Exception the exception
+     */
     @Test
-    <T>
     void exceptionThrownSuccess() throws Exception {
         List<User> users = userDao.findByPropertyEqual("Glyniss", "first_name");
         assertNull(users);
         User user = userDao.getById(30);
         assertNull(user);
-
     }
 
 }

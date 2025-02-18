@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -36,6 +38,9 @@ public class User {
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
     private LocalDate dateOfBirth;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<Notebook> notebooks = new ArrayList<>();
 
     /**
      * Instantiates a new User.
@@ -166,6 +171,44 @@ public class User {
      */
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    /**
+     * Gets notebooks.
+     *
+     * @return the notebooks
+     */
+    public List<Notebook> getNotebooks() {
+        return notebooks;
+    }
+
+    /**
+     * Sets notebooks.
+     *
+     * @param notebooks the notebooks
+     */
+    public void setNotebooks(List<Notebook> notebooks) {
+        this.notebooks = notebooks;
+    }
+
+    /**
+     * Add notebook.
+     *
+     * @param notebook the notebook
+     */
+    public void addNotebook(Notebook notebook) {
+        notebooks.add(notebook);
+        notebook.setUser(this);
+    }
+
+    /**
+     * Remove notebook.
+     *
+     * @param notebook the notebook
+     */
+    public void removeNotebook(Notebook notebook) {
+        notebooks.remove(notebook);
+        notebook.setUser(null);
     }
 
 

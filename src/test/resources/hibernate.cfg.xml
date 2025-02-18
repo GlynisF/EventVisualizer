@@ -15,5 +15,6 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <!-- entity mappings -->
         <mapping class="com.eventvisualizer.entity.User"/>
+        <mapping class="com.eventvisualizer.entity.Notebook"/>
     </session-factory>
 </hibernate-configuration>

@@ -69,12 +69,9 @@ class NotebookDaoTest {
         Notebook insertedNotebook = notebookDao.insert(newNotebook);
         assertNotNull(insertedNotebook);
 
-        int id = insertedNotebook.getId();
-
-
         assertNotNull(insertedNotebook);
-        //assertTrue(newNotebook.equals(insertedNotebook));
-        //assertTrue("New Notebook".equals(newNotebook.getTitle()));
+        assertTrue(insertedNotebook.getId() != 0);
+        assertTrue("New Notebook".equals(insertedNotebook.getTitle()));
     }
 
     /**

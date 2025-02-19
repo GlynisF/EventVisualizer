@@ -20,7 +20,24 @@ presentation date.
 
 **Total Time:** 10 hours
 
-<em>Week 4 • February 10th</em>
+### **<em>Week 4 • February 10th</em>**
+Week 4 was a very Java-centric week for me! I exchanged my loaner laptop from MATC in for a new one and had to go through
+the course setup config to get the VMWare up & running. I was having some performance issues with the VM right off the bat
+and decided to look into what configurations I could do to help alleviate issues / enhance performance. I expanded the 
+hard drive to 100G and turned on some settings that were said to help wth processing. Intellij kept crashing after only
+a few minutes of being open, so I uninstalled it from the snap store and installed the Intellij toolbox app and haven't 
+had any issues with IDEA Ultimate since running the app through there. 
+
+I set up the Tomcat configuration for my project to detect changes in my files and auto-reload, so now I can refresh the 
+browser and see results & don't have to restart the server every time I make minor changes.
+
+The rest of my time was mostly spent creating my project plan / work flow & completing the week 4 assignment.
+
+No major issues or setbacks this week & was able to work through the few problems I encountered. Overall, I would say
+I had a very productive week and want to keep the momentum going.
+
+**Total Time:** 25 hours
+
 
 <em>Week 5 • February 17th
 

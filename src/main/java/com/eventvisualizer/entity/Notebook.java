@@ -3,6 +3,8 @@ package com.eventvisualizer.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -26,6 +28,9 @@ public class Notebook {
     )
     private User user;
 
+    @OneToMany(mappedBy="notebook", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private final List<Event> events = new ArrayList<>();
+
     /**
      * Instantiates a new Notebook.
      */
@@ -41,10 +46,18 @@ public class Notebook {
     public Notebook(String title) {
         this.title = title;
     }
+
+    /**
+     * Instantiates a new Notebook.
+     *
+     * @param title the title
+     * @param user  the user
+     */
     public Notebook(String title, User user) {
         this.title = title;
         this.user = user;
     }
+
     /**
      * Gets id.
      *
@@ -99,6 +112,34 @@ public class Notebook {
         this.user = user;
     }
 
+    /**
+     * Gets events.
+     *
+     * @return the events
+     */
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    /**
+     * Add event.
+     *
+     * @param event the event
+     */
+    public void addEvent(Event event) {
+        events.add(event);
+        event.setNotebook(this);
+    }
+
+    /**
+     * Remove event.
+     *
+     * @param event the event
+     */
+    public void removeEvent(Event event) {
+        events.remove(event);
+        event.setNotebook(null);
+    }
 
     @Override
     public boolean equals(Object o) {

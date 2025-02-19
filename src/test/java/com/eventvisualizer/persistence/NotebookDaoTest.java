@@ -51,7 +51,7 @@ class NotebookDaoTest {
     void getNotebookByIdSuccess() {
         Notebook notebook = notebookDao.getById(1);
         assertNotNull(notebook);
-        assertTrue("October Events".equals(notebook.getTitle()));
+        assertTrue("March 2025 Events".equals(notebook.getTitle()));
     }
 
     /**

@@ -42,7 +42,7 @@ public class User{
     @Temporal(TemporalType.DATE)
     private LocalDate dateOfBirth;
 
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL, CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
     private List<Notebook> notebooks = new ArrayList<>();
 
     /**

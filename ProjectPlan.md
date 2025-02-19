@@ -1,20 +1,20 @@
 # *Project Plan*
 
 ### Week 3
-- [ ] Design & create event visualizer database
-- [ ] Screen Design
-- [ ] User stories (specify MVP) 
-- [ ] Project plan rough draft 
+- [x] Design & create event visualizer database
+- [x] Screen Design
+- [x] User stories (specify MVP) 
+- [x] Project plan rough draft 
 
 ### Week 4
-- [ ] Create user table
-- [ ] User bean
-- [ ] Add Hibernate annotations to user bean
-- [ ] Add user mapping to Hibernate config 
-- [ ] Setup project w/ Log4j2 
-- [ ] Setup project w/ SessionFactory for handling database connection
-- [ ] Setup Generic Dao for handling database transactions
-- [ ] Write unit tests for user class w/ @ least 80% coverage 
+- [x] Create user table
+- [x] User bean
+- [x] Add Hibernate annotations to user bean
+- [x] Add user mapping to Hibernate config 
+- [x] Setup project w/ Log4j2 
+- [x] Setup project w/ SessionFactory for handling database connection
+- [x] Setup Generic Dao for handling database transactions
+- [x] Write unit tests for user class w/ @ least 80% coverage (73% achieved)
 
 ### Week 5
 - [ ] Setup project with Bootstrap & JSTL 

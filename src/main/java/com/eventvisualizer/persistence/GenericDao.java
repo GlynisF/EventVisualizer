@@ -151,6 +151,7 @@ public class GenericDao<T> {
             query.select(root).where(builder.equal(root.get(propertyName), value));
             return session.createSelectionQuery(query).getResultList();
         } catch (Exception e) {
+            getSession().getTransaction().rollback();
             logger.error("Error finding entities by property: {} ", e.getMessage(), e);
         }
         return null;

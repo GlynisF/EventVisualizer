@@ -19,11 +19,11 @@
 ### Week 5
 - [ ] Setup project with Bootstrap & JSTL 
 - [ ] Create ***homepage.jsp***
-- [ ] Create notebook, performer & location tables
-- [ ] Notebook, performer & location beans
-- [ ] Add Hibernate annotations to notebook, performer & location beans
-- [ ] Add notebook, performer & location mappings to Hibernate config
-- [ ] Write unit tests for notebook, performer & location classes
+- [ ] Create notebook, event & location tables
+- [ ] Notebook, event & location beans
+- [ ] Add Hibernate annotations to notebook, event & location beans
+- [ ] Add notebook, event & location mappings to Hibernate config
+- [ ] Write unit tests for notebook, event & location classes
 
 ### Week 6
 - [ ] Create details & notes tables
@@ -102,8 +102,8 @@ checks login credentials or signup for accessing site features<br>
 generic methods for get, post, delete, & put fetch calls<br><br>
 - **notebook.js**<br> 
 notebook class<br><br>
-- **performer.js**<br> 
-performer class<br><br>
+- **event.js**<br> 
+event class<br><br>
 - **location.js**<br> 
 location class<br><br>
 - **details.js**<br> 

@@ -22,6 +22,7 @@ class NotebookDaoTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
     private GenericDao<Notebook> notebookDao;
+    private GenericDao<User> userDao;
 
     /**
      * Sets up.
@@ -29,6 +30,7 @@ class NotebookDaoTest {
     @BeforeEach
     void setUp() {
         notebookDao = new GenericDao<>(Notebook.class);
+        userDao = new GenericDao<>(User.class);
         Database database = Database.getInstance();
         database.runSQL("cleandb.sql");
         logger.info(database);
@@ -41,7 +43,7 @@ class NotebookDaoTest {
     void getAllNotebooksSuccess() {
         List<Notebook> notebooks = notebookDao.getAll();
         assertNotNull(notebooks);
-        assertTrue(notebooks.size() > 0);
+        assertTrue(notebooks.size() != 0);
     }
 
     /**
@@ -51,7 +53,7 @@ class NotebookDaoTest {
     void getNotebookByIdSuccess() {
         Notebook notebook = notebookDao.getById(1);
         assertNotNull(notebook);
-        assertTrue("March 2025 Events".equals(notebook.getTitle()));
+        assertEquals("March 2025 Events", notebook.getTitle());
     }
 
     /**
@@ -71,7 +73,7 @@ class NotebookDaoTest {
 
         assertNotNull(insertedNotebook);
         assertTrue(insertedNotebook.getId() != 0);
-        assertTrue("New Notebook".equals(insertedNotebook.getTitle()));
+        assertEquals("New Notebook", insertedNotebook.getTitle());
     }
 
     /**
@@ -84,7 +86,7 @@ class NotebookDaoTest {
         notebookToUpdate.setTitle("Updated Title");
         notebookDao.update(notebookToUpdate);
         Notebook updatedNotebook = notebookDao.getById(1);
-        assertTrue("Updated Title".equals(updatedNotebook.getTitle()));
+        assertEquals("Updated Title", updatedNotebook.getTitle());
     }
 
     /**
@@ -169,8 +171,6 @@ class NotebookDaoTest {
      */
     @Test
     void removeUserFromNotebookSuccess() {
-        GenericDao<User> userDao = new GenericDao<>(User.class);
-
         User userToRemove = userDao.getById(3);
         assertNotNull(userToRemove);
 
@@ -186,6 +186,8 @@ class NotebookDaoTest {
         assertNull(notebookContainingUser.getUser());
 
         assertFalse(userToRemove.getNotebooks().contains(notebookContainingUser));
+
+
 
     }
 

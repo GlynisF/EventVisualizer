@@ -109,36 +109,43 @@ class EventDaoTest {
      * Remove notebook from event success.
      */
     @Test
-    void removeNotebookFromEventSuccess() {
+    void removeEventFromNotebookSuccess() {
         Notebook notebookToRemove = notebookDao.getById(8);
         assertNotNull(notebookToRemove);
 
+        notebookDao.delete(notebookToRemove);
+        Notebook removedNotebook = notebookDao.getById(8);
+        assertNull(removedNotebook);
+        assertFalse(notebookDao.getAll().contains(removedNotebook));
+
         Event event = eventDao.getById(20);
-        assertNotNull(event);
+        assertNull(event);
 
-        assertTrue(notebookToRemove.getEvents().contains(event));
-
-        event.setNotebook(null);
-        eventDao.update(event);
-        logger.info(event);
-
-        Event updatedEvent = eventDao.getById(20);
-        logger.info(updatedEvent);
     }
 
     /**
      * Sets notebook for event success.
      */
     @Test
-    void setNotebookForEventSuccess() {
+    void addEventToNotebookSuccess() {
         Event event = new Event("New Event for Setting Notebook");
         event.setNotebook(notebookDao.getById(5));
         assertNotNull(event.getNotebook());
+
         assertEquals("November Shows", event.getNotebook().getTitle());
         Event insertedEvent = eventDao.insert(event);
 
-        Notebook setNotebookForEvent = notebookDao.getById(5);
-        assertTrue(setNotebookForEvent.getEvents().contains(insertedEvent));
+        Notebook notebookContainingEvent = notebookDao.getById(5);
+        assertTrue(notebookContainingEvent.getEvents().contains(insertedEvent));
+
+        Notebook notebookAddingEvent = notebookDao.getById(3);
+        assertEquals("Gamma Ray Event", notebookAddingEvent.getTitle());
+        event.setNotebook(null);
+        notebookAddingEvent.addEvent(event);
+        notebookDao.update(notebookAddingEvent);
+
+        assertTrue(notebookAddingEvent.getEvents().contains(event));
+
     }
 
 }

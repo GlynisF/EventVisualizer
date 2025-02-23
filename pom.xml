@@ -11,6 +11,7 @@
   <!-- properties -->
 
   <properties>
+    <auth0-jwt-version>4.5.0</auth0-jwt-version>
     <hibernate-version>6.4.3.Final</hibernate-version>
     <javaee.version>7.0</javaee.version>
     <jstl-version>1.2</jstl-version>
@@ -21,8 +22,8 @@
     <log4j-version>2.22.1</log4j-version>
     <maven.compiler-plugin-version>3.8.1</maven.compiler-plugin-version>
     <maven.compiler.release>11</maven.compiler.release>
-    <maven-surefire-plugin-version>2.19</maven-surefire-plugin-version>
-    <mysql-version>8.2.0</mysql-version>
+    <maven-surefire-plugin-version>2.22.1</maven-surefire-plugin-version>
+    <mysql-version>8.4.0</mysql-version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
@@ -108,6 +109,29 @@
       <version>${mysql-version}</version>
     </dependency>
 
+    <!-- for parsing access token -->
+    <!-- TODO add versions to properties element rather than hard-coding -->
+    <dependency>
+      <groupId>com.auth0</groupId>
+      <artifactId>java-jwt</artifactId>
+      <version>${auth0-jwt-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.json</groupId>
+      <artifactId>json</artifactId>
+      <version>20250107</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.18.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.18.0</version>
+    </dependency>
 
   </dependencies>
 
@@ -116,6 +140,31 @@
     <finalName>EventVisualizer</finalName>
     <pluginManagement>
       <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.2.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.3.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.4.0</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-install-plugin</artifactId>
+          <version>3.1.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>3.1.2</version>
+        </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>

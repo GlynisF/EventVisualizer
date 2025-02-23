@@ -20,6 +20,7 @@
                 <div class="w-100 text-white">
                     <h1 class="display-3">Event Visualizer</h1>
                     <a href="results">Display All Users</a>
+                    <a href="logIn">Log In | Sign Up</a>
                 </div>
             </div>
         </div>

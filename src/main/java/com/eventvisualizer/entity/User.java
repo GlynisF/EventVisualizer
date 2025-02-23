@@ -38,6 +38,8 @@ public class User{
     @Column(name = "username")
     private String username;
 
+    private String email;
+
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
     private LocalDate dateOfBirth;
@@ -56,16 +58,18 @@ public class User{
      *
      * @param firstName   the first name
      * @param lastName    the last name
+     * @param email       the email
      * @param password    the password
      * @param username    the username
      * @param dateOfBirth the date of birth
      */
-    public User(String firstName, String lastName, String password, String username, LocalDate dateOfBirth) {
+    public User(String firstName, String lastName, String email, String password, String username, LocalDate dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.username = username;
         this.dateOfBirth = dateOfBirth;
+        this.email = email;
     }
 
     /**
@@ -159,6 +163,24 @@ public class User{
     }
 
     /**
+     * Gets email.
+     *
+     * @return the email
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * Sets email.
+     *
+     * @param email the email
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
      * Gets date of birth.
      *
      * @return the date of birth
@@ -220,12 +242,12 @@ public class User{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(password, user.password) && Objects.equals(username, user.username) && Objects.equals(dateOfBirth, user.dateOfBirth);
+        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(password, user.password) && Objects.equals(username, user.username) && Objects.equals(email, user.email) && Objects.equals(dateOfBirth, user.dateOfBirth);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, password, username, dateOfBirth);
+        return Objects.hash(id, firstName, lastName, password, username, email, dateOfBirth);
     }
 
     @Override
@@ -236,6 +258,7 @@ public class User{
                 ", lastName='" + lastName + '\'' +
                 ", password='" + password + '\'' +
                 ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 '}';
     }

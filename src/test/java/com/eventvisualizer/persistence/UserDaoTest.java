@@ -66,7 +66,7 @@ class UserDaoTest {
      */
     @Test
     void insertUserSuccess() {
-        User newUser = new User("Glynis", "Fisher", "student", "gfisher", LocalDate.parse("1992-08-11"));
+        User newUser = new User("Glynis", "Fisher", "gfisher@email.com", "student", "gfisher", LocalDate.parse("1992-08-11"));
         userDao.insert(newUser);
         assertNotNull(userDao.getById(newUser.getId()));
         int id = newUser.getId();

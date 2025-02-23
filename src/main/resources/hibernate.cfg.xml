@@ -2,18 +2,17 @@
 <hibernate-configuration>
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/eventvisualizer</property>
+        <property name="connection.url">jdbc:mysql://awseb-e-fpmxrfsatg-stack-awsebrdsdatabase-gcmkmcdkvpho.cvqeewqu6ynh.us-east-2.rds.amazonaws.com:3306/eventvisualizer</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">student</property>
+        <property name="connection.password">student!</property>
+        <property name="hibernate.c3p0.min_size">5</property>
         <property name="hibernate.c3p0.max_size">20</property>
         <property name="hibernate.c3p0.timeout">300</property>
         <property name="hibernate.c3p0.max_statements">50</property>
         <property name="hibernate.c3p0.idle_test_period">3000</property>
-        <property name="hibernate.current_session_context_class">thread</property>
-        <property name="hibernate.show_sql">true</property>
-        <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
-        <!--entity mappings-->
+        <property name="hibernate.show_sql">false</property>
+        <!-- entity mappings -->
         <mapping class="com.eventvisualizer.entity.User"/>
         <mapping class="com.eventvisualizer.entity.Notebook"/>
         <mapping class="com.eventvisualizer.entity.Event"/>

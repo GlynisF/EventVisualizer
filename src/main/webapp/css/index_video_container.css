@@ -52,6 +52,7 @@ html {
     z-index: 1;
 }
 
+
 img {
     width: 100%;
     height: auto;
@@ -88,22 +89,14 @@ div.DTE.DTE_Bubble {
 
 @media (pointer: coarse) and (hover: none) {
     .home_header {
-        background: url("/images/index_video_display.mp4") black no-repeat center center scroll;
+        background: url("/images/black_paint.mp4") black no-repeat center center scroll;
     }
 
     .main_header {
-        background: url("/images/index_video_display.mp4") black no-repeat center center scroll;
+        background: url("/images/black_paint.mp4") black no-repeat center center scroll;
     }
 
     .home_header video, .main_header video {
         display: none;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;
-        transition: none !important;
-        scroll-behavior: auto !important;
     }
 }

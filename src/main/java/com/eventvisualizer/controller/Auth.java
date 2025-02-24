@@ -91,7 +91,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
             try {
                 TokenResponse tokenResponse = getToken(authRequest);
                 userName = validate(tokenResponse);
-                req.setAttribute("userName", userName);
+                req.setAttribute("username", userName);
             } catch (IOException e) {
                 logger.error("Error getting or validating the token: " + e.getMessage(), e);
                 //TODO forward to an error page
@@ -224,7 +224,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
      */
     private void loadKey() {
         ObjectMapper mapper = new ObjectMapper();
-
         try {
             URL jwksURL = new URL(String.format("https://cognito-idp.%s.amazonaws.com/%s/.well-known/jwks.json", REGION, POOL_ID));
             File jwksFile = new File("jwks.json");
@@ -245,7 +244,7 @@ public class Auth extends HttpServlet implements PropertiesLoader {
     // TODO This code appears in a couple classes, consider using a startup servlet similar to adv java project
     private void loadProperties() throws IOException {
         try {
-            properties = loadProperties("/cognito.properties");
+            Properties properties = new Properties(loadProperties("/cognito.properties"));
             CLIENT_ID = properties.getProperty("client.id");
             CLIENT_SECRET = properties.getProperty("client.secret");
             OAUTH_URL = properties.getProperty("oauthURL");

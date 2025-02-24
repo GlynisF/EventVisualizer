@@ -1,7 +1,7 @@
 <%@include file="/includes/c-tag-lib.jsp" %>
 <html lang="en">
 <head>
-<%@include file="/includes/head.jsp" %>
+    <%@include file="/includes/head.jsp" %>
     <link rel="stylesheet" href="css/index_video_container.css"/>
 </head>
 <body class="container">
@@ -19,8 +19,15 @@
             <div class="d-flex h-100 text-center align-items-center">
                 <div class="w-100 text-white">
                     <h1 class="display-3">Event Visualizer</h1>
-                    <a href="results">Display All Users</a>
-                    <a href="logIn">Log In | Sign Up</a>
+                    <c:choose>
+                        <c:when test="${empty username}">
+                            <a href="results">Display All Users</a>
+                            <a href="logIn">Log In | Sign Up</a>
+                        </c:when>
+                        <c:otherwise>
+                            <p>Welcome Back, ${username}</p>
+                        </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>

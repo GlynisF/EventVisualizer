@@ -17,38 +17,43 @@
 - [x] Write unit tests for user class w/ @ least 80% coverage (73% achieved)
 
 ### Week 5
-- [ ] Setup project with Bootstrap & JSTL 
-- [ ] Create ***homepage.jsp***
-- [ ] Create notebook, event & location tables
-- [ ] Notebook, event & location beans
-- [ ] Add Hibernate annotations to notebook, event & location beans
-- [ ] Add notebook, event & location mappings to Hibernate config
-- [ ] Write unit tests for notebook, event & location classes
+- [x] Setup project with Bootstrap & JSTL
+- [x] Create notebook & event tables
+- [x] Notebook & event  beans
+- [x] Add Hibernate annotations to notebook & event beans
+- [x] Add notebook & event mappings to Hibernate config
+- [x] Write unit tests for notebook & event classes
 
 ### Week 6
-- [ ] Create details & notes tables
-- [ ] Details & notes beans 
-- [ ] Add Hibernate annotations details & notes beans
-- [ ] Add details & notes mappings to Hibernate config
-- [ ] Write unit tests for details & notes classes
-- [ ] Setup AWS Elastic Beanstalk environment & database
-- [ ] Add AWS configurations to project
-- [ ] Deploy project to AWS
+- [ ] Create ***homepage.jsp***
+- [ ] Create details & notes & performer tables
+- [ ] Details, performer & notes beans 
+- [ ] Add Hibernate annotations details, performer & notes beans
+- [ ] Add details, performer & notes mappings to Hibernate config
+- [ ] Write unit tests for details, performer & notes classes
+- [x] Setup AWS Elastic Beanstalk environment & database
+- [x] Add AWS configurations to project
+- [x] Deploy project to AWS
 
 ### Week 7
-- [ ] Create user pool w/ AWS Cognito for user login & signup
-- [ ] Setup project with directories, configurations & files for Cognito implementation
-- [ ] Setup project to redirect to HTTPS to allow use of Cognito in an Elastic Beanstalk environment
+- [ ] Create Location table & bean
+- [ ] Create POJO for Google Places Autocomplete (Places & SearchPlaces)
+- [ ] Create places dao & searchPlaces dao 
+- [ ] Map autocomplete response (JSON) to GPA objects
+- [x] Create user pool w/ AWS Cognito for user login & signup
+- [x] Setup project with directories, configurations & files for Cognito implementation
+- [x] Setup project to redirect to HTTPS to allow use of Cognito in an Elastic Beanstalk environment
 
 ### Week 8
-- [ ] Implement Google Places Autocomplete logic for location address
+- [ ] Setup project with REST app & add classes for managing resources
 - [ ] Create service layer to perform CRUD operations on beans by calling DAO methods
-
+- [ ] Implement Google Autocomplete places & search places into REST app (front end will retrieve data thru fetch calls)
+- [ ] Test routes with cURL & document successful routes
 
 ### Week 9
-- [ ] Setup project with REST app & add classes for managing resources
-- [ ] Create methods for calling service layer methods
 - [ ] Test routes with cURL & document successful routes
+- [ ] Create JS classes for entities
+- [ ] Create fetch.js with generic/reusable methods for performing CRUD operations
 
 ### Week 10
 - [ ] Work on frontend 

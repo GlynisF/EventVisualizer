@@ -39,7 +39,7 @@
 - [ ] Create Location table & bean
 - [ ] Create POJO for Google Places Autocomplete (Places & SearchPlaces)
 - [ ] Create places dao & searchPlaces dao 
-- [ ] Map autocomplete response (JSON) to GPA objects
+- [ ] Map autocomplete response (JSON) to places and searchPlaces objects
 - [x] Create user pool w/ AWS Cognito for user login & signup
 - [x] Setup project with directories, configurations & files for Cognito implementation
 - [x] Setup project to redirect to HTTPS to allow use of Cognito in an Elastic Beanstalk environment
@@ -121,3 +121,4 @@ notes class<br><br>
 
 - emailJS | send email directly from code
 - Mockaroo | mock data for database
+

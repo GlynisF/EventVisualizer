@@ -62,9 +62,6 @@ build/
 # Mongo Explorer plugin:
 .idea/mongoSettings.xml
 
-## File-based project format:
-*.iws
-
 ## Plugin-specific files:
 
 # IntelliJ
@@ -87,3 +84,9 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+# contains sensitive information
+src/main/.ebextensions/*
+src/main/.platform/*
+src/main/resources/*
+src/test/resources/*

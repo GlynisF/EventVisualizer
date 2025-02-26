@@ -16,5 +16,6 @@
         <mapping class="com.eventvisualizer.entity.User"/>
         <mapping class="com.eventvisualizer.entity.Notebook"/>
         <mapping class="com.eventvisualizer.entity.Event"/>
+        <mapping class="com.eventvisualizer.entity.Detail"/>
     </session-factory>
 </hibernate-configuration>

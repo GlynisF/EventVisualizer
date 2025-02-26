@@ -3,7 +3,9 @@ package com.eventvisualizer.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * The type Event.
@@ -25,6 +27,10 @@ public class Event {
             foreignKey = @ForeignKey(name = "event_notebook_fk")
     )
     private Notebook notebook;
+
+
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Detail> details = new LinkedHashSet<>();
 
 
     /**
@@ -95,6 +101,44 @@ public class Event {
      */
     public void setNotebook(Notebook notebook) {
         this.notebook = notebook;
+    }
+
+    /**
+     * Gets details.
+     *
+     * @return the details
+     */
+    public Set<Detail> getDetails() {
+        return details;
+    }
+
+    /**
+     * Sets details.
+     *
+     * @param details the details
+     */
+    public void setDetails(Set<Detail> details) {
+        this.details = details;
+    }
+
+    /**
+     * Add detail.
+     *
+     * @param detail the detail
+     */
+    public void addDetail(Detail detail) {
+        details.add(detail);
+        detail.setEvent(this);
+    }
+
+    /**
+     * Remove detail.
+     *
+     * @param detail the detail
+     */
+    public void removeDetail(Detail detail) {
+        details.remove(detail);
+        detail.setEvent(null);
     }
 
     @Override

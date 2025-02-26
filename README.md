@@ -40,14 +40,53 @@ traditional, sales-focused tools.
 
 ### Applied Technologies & Techniques
 
-IDE<br>
-◦ IntellJIDEA *| 2024.3.3* 
+**IDE<br>**
+◦ IntellJIDEA *2024.3.3* 
 
-Dependency Management<br>
+**Dependency Management<br>**
 ◦ Maven
 
-Version Control<br>
-◦ GitHub [ 2.34.1 ]
+**Build Configuration<br>**
+◦ POM.xml *(project dependencies)*<br>
+◦ WAR file *(project packaging build)*
 
-ORM<br>
+**Runtime Environment<br>**
+JDK *v 11*
+
+**Version Control<br>**
+◦ GitHub 2.34.1
+
+**ORM<br>**
 ◦ Hibernate *v 6.4.3 final*
+
+**Logging<br>**
+◦ Log4j2
+
+**Database<br>**
+◦ MySQL *v 8.4.0*
+
+**Application Server<br>**
+◦ Apache Tomcat *v 9.0.99* <br>
+◦ Servlet/JSP Container
+
+**Amazon Web Services<br>**
+◦ ElasticBeanstalk *(container environment)*<br>
+◦ Elastic Compute Cloud (EC2)<br>
+◦ RDS<br>
+◦ Cognito
+
+**Unit Testing<br>**
+◦ Junit | Jupiter *v 4.13.1*
+
+**Client-Side Scripting<br>**
+◦ JavaScript
+
+**CSS<br>**
+◦ Bootstrap *v 5.3.3*
+
+**Project Documentation<br>**
+◦ Markdown
+
+**Virtual Machine**<br>
+◦ VMware Workstation 17 Pro<br>
+◦ Unbuntu *v 22.

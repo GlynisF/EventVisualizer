@@ -18,11 +18,15 @@ ticket sales, reporting analytics (like sales and customer reach/retention), and
 the primary concerns of DIYers. DIY event planners need tools that help them organize their unique ideas and customize
 the planning process to fit their specific needs, rather than focusing on ticket sales and revenue tracking.<br><br>
 
+<details>
+
+<summary>Eventbrite Examples</summary>
+
 ![Eventbrite event creation / planning page](/images/eventbrite.png)
 *View of Eventbrite's event builder page*<br><br><br>
 ![Eventbrite event creation / planning page](/images/eventbrite_2.png)
 *View of Eventbrite's event builder page*<br>
-
+</details>
 
 ***Solution:*** *DIY Event Visualizer* is a resource designed for the resourceful. It offers a flexible,
 customizable blueprint tailored specifically for DIY event planners. Unlike platforms
@@ -36,3 +40,14 @@ traditional, sales-focused tools.
 
 ### Applied Technologies & Techniques
 
+IDE<br>
+◦ IntellJIDEA *| 2024.3.3* 
+
+Dependency Management<br>
+◦ Maven
+
+Version Control<br>
+◦ GitHub [ 2.34.1 ]
+
+ORM<br>
+◦ Hibernate *v 6.4.3 final*

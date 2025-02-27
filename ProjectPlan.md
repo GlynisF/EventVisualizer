@@ -20,7 +20,7 @@
 ### Week 5
 - [x] Setup project with Bootstrap & JSTL
 - [x] Create notebook & event tables
-- [x] Notebook & event  beans
+- [x] Notebook & event beans
 - [x] Add Hibernate annotations to notebook & event beans
 - [x] Add notebook & event mappings to Hibernate config
 - [x] Write unit tests for notebook & event classes
@@ -37,89 +37,54 @@
 - [x] Deploy project to AWS
 
 ### Week 7
-- [ ] Create Location table & bean
-- [ ] Create POJO for Google Places Autocomplete (Places & SearchPlaces)
-- [ ] Create places dao & searchPlaces dao 
-- [ ] Map autocomplete response (JSON) to places and searchPlaces objects
 - [x] Create user pool w/ AWS Cognito for user login & signup
 - [x] Setup project with directories, configurations & files for Cognito implementation
 - [x] Setup project to redirect to HTTPS to allow use of Cognito in an Elastic Beanstalk environment
+- [ ] Create Location, goal, reflection, & custom tables & beans
+- [ ] Annotate Location, goal, reflection, & custom beans with Hibernate + mappings
 
 ### Week 8
 - [ ] Setup project with REST app & add classes for managing resources
+- [ ] Create POJO for Google Places Autocomplete (Places & SearchPlaces)
+- [ ] Create places dao & searchPlaces dao
+- [ ] Map autocomplete response (JSON) to places and searchPlaces objects
 - [ ] Create service layer to perform CRUD operations on beans by calling DAO methods
 - [ ] Implement Google Autocomplete places & search places into REST app (front end will retrieve data thru fetch calls)
 - [ ] Test routes with cURL & document successful routes
 
 ### Week 9
+- [ ] Create ApplcationStartup servlet
+- [ ] Place SessionFactory into app startup
 - [ ] Test routes with cURL & document successful routes
 - [ ] Create JS classes for entities
 - [ ] Create fetch.js with generic/reusable methods for performing CRUD operations
 
 ### Week 10
-- [ ] Work on frontend 
+- [ ] Create JSPs
 
 ### Week 11
-- [ ] Work on frontend
+- [ ] Create necessary JS files & logic for event listeners + modifying DOM
 
 ### Week 12
-- [ ] Work on frontend
+- [ ] Work on styling pages 
+- [ ] Work on putting JS files into necessary JSPs
 
 ### Week 13
 - [ ] Work on frontend
+- [ ] Double check files for redundancy, spelling, jdoc
 
 ### Week 14
 - [ ] Work on frontend
+- [ ] Double check files for redundancy, spelling, jdoc
 
 ### Week 15
 - [ ] Work on frontend
+-[ ] Double check files for redundancy, spelling, jdoc
 
 ### Week 16
-- [ ] Work on frontend / complete project<br><br>
-
---- 
-# *Project Files*
-
-### 〚***Servlets***〛
-
-- **ApplicationStartup**<br> 
-Puts SessionFactory, Hibernate config in servlet context / app scope<br><br>
-- **NavigationServlet**<br> 
-handles forwarding navigation items to jsp<br><br>
-- **Login**<br> 
-handles user login or signup<br><br> 
-- **Auth**<br> 
-checks login credentials or signup for accessing site features<br>
-
-### 〚***JSP***〛
-
-- index.jsp<br>
-- login.jsp<br>
-- homepage.jsp<br>
-- add-event.jsp<br>
-- edit-event.jsp<br>
-- delete-event.jsp<br>
-- about-us.jsp<br>
-- error-page.jsp
-
-### 〚***JavaScript***〛
-
-- **fetch.js**<br>
-generic methods for get, post, delete, & put fetch calls<br><br>
-- **notebook.js**<br> 
-notebook class<br><br>
-- **event.js**<br> 
-event class<br><br>
-- **location.js**<br> 
-location class<br><br>
-- **details.js**<br> 
-details class<br><br>
-- **notes.js**<br>
-notes class<br><br>
+- [ ] Double check files for redundancy, spelling, jdoc
+- [ ] Make sure current version of WAR deployed to AWS
+- [ ] complete project<br><br>
 
 
-### 〚***Notes + Things to Look Into / Incorporate***〛
-
-- emailJS | send email directly from code
-- Mockaroo | mock data for database
 

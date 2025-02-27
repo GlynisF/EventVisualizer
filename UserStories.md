@@ -1,3 +1,5 @@
+### [Home](/README.md)  •  [Project Plan](/ProjectPlan.md)  •  [Design Files](/DesignFiles.md)  •  [User Stories](/UserStories.md)
+
 # User Stories
 
 ***Sign Up*** ★<br> As a new user, I want to sign up for an account to plan events.

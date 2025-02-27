@@ -1,3 +1,5 @@
+### [Home](/README.md)  •  [Project Plan](/ProjectPlan.md)  •  [Design Files](/DesignFiles.md)  •  [User Stories](/UserStories.md)
+
 # *Project Plan*
 
 ### Week 3

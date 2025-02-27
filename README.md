@@ -1,6 +1,8 @@
 *Glynis Fisher | Individual Project | Enterprise Java*
 
-# Event Visualizer
+# Event Visualizer<br>
+
+### [Home](/README.md)  •  [Project Plan](/ProjectPlan.md)  •  [Design Files](/DesignFiles.md)  •  [User Stories](/UserStories.md)
 
 ## *Project Statement*
 
@@ -103,4 +105,3 @@ JDK *v 11*<br><br>
 ◦ VMware Workstation 17 Pro<br>
 ◦ Unbuntu *v 22.0.4.5 LTS*<br><br>
 
-### [Project Plan](/ProjectPlan.md)  |  [Design Files](/DesignFiles.md)  |  [User Stories](/UserStories.md)

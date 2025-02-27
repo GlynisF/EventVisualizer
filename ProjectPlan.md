@@ -6,6 +6,7 @@
 - [x] User stories (specify MVP) 
 - [x] Project plan rough draft 
 
+
 ### Week 4
 - [x] Create user table
 - [x] User bean

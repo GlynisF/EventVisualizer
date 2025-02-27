@@ -1,12 +1,12 @@
-*Glynis Fisher | Individual Project | Enterprise Java*
-
-# Event Visualizer<br>
+*Glynis Fisher | Individual Project | Enterprise Java*<br>
 
 ### [Home](/README.md)  •  [Project Plan](/ProjectPlan.md)  •  [Design Files](/DesignFiles.md)  •  [User Stories](/UserStories.md)
 
+# Event Visualizer<br>
+
 ## *Project Statement*
 
-***Problem:***<br> On a broader scale, the ethos of DIY culture is rooted in limited or no access to the
+***Problem:***<br>On a broader scale, the ethos of DIY culture is rooted in limited or no access to the
 resources and tools needed to achieve a goal. Small-scale event planners (with a focus on music events) embody this
 philosophy, turning challenges like lack of industry experience, location, and commercialism—common barriers to
 entry—into opportunities for innovation. Rather than seeing these limitations as setbacks, DIYers view them as a

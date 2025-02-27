@@ -86,7 +86,7 @@ crashlytics-build.properties
 fabric.properties
 
 # contains sensitive information
-/src/main/.ebextensions/
-/src/main/.platform/
-/src/main/resources/
-/src/test/resources/
+src/main/.ebextensions/*
+src/main/.platform/*
+src/main/resources/*
+src/test/resources/*

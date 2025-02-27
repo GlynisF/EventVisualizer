@@ -16,10 +16,10 @@
 <summary>Screen Design</summary>
 
 ***Landing Page***
-![Event Visualizer landing page with sign in and sign up options](images/screens/landing_page.png)<br><br><br><br>
+![Event Visualizer landing page with sign in and sign up options](/images/screens/landing_page.png)<br><br><br><br>
 
 ***Homepage***<br>
-![Event Visualizer homepage with a video display](images/screens/homepage.png)<br><br><br><br>
+![Event Visualizer homepage with a video display](/images/screens/homepage.png)<br><br><br><br>
 
 ***View All Events***<br>
 ![View all events screen](/images/screens/view_my_events.png)<br><br><br><br>

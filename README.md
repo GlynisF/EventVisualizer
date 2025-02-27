@@ -2,7 +2,7 @@
 
 # Event Visualizer
 
-## Project Statement
+## *Project Statement*
 
 ***Problem:***<br> On a broader scale, the ethos of DIY culture is rooted in limited or no access to the
 resources and tools needed to achieve a goal. Small-scale event planners (with a focus on music events) embody this
@@ -40,60 +40,67 @@ traditional, sales-focused tools.<br><br><br>
 
 
 
-### Applied Technologies & Techniques
+## *Applied Technologies & Techniques*
 
-**Application Server**<br><br>
+**API**<br>
+◦ Google Places Autocomplete<br>
+◦ JavaScript Calendar<br><Br>
+
+**Application Server**<br>
 ◦ Apache Tomcat *v 9.0.99* <br>
-◦ Servlet/JSP Container
+◦ Servlet/JSP Container<br><br>
 
-**Amazon Web Services**<br><br>
+**Amazon Web Services**<br>
 ◦ ElasticBeanstalk *(container environment)*<br>
 ◦ Elastic Compute Cloud (EC2)<br>
 ◦ RDS<br>
-◦ Cognito
+◦ Cognito<br><br>
 
-**Build Configuration**<br><br>
+**Build Configuration**<br>
 ◦ POM.xml *(project dependencies)*<br>
-◦ WAR file *(project packaging build)*
+◦ WAR file *(project packaging build)*<br><br>
 
-**CSS**<br><br>
-◦ Bootstrap *v 5.3.3*
+**CSS**<br>
+◦ Bootstrap *v 5.3.3*<br><br>
 
-**Client-Side Scripting**<br><br>
-◦ JavaScript
+**Client-Side Scripting**<br>
+◦ JavaScript<br><br>
 
-**Database**<br><br>
-◦ MySQL *v 8.4.0*
+**Database**<br>
+◦ MySQL *v 8.4.0*<br><br>
 
-**Dependency Management**<br><br>
-◦ Maven
+**Dependency Management**<br>
+◦ Maven<br><br>
 
-**IDE**<br><br>
-◦ IntellJIDEA *2024.3.3* 
+**IDE**<br>
+◦ IntellJIDEA *2024.3.3*<br><br>
 
-**Logging**<br><br>
-◦ Log4j2
+**Logging**<br>
+◦ Log4j2<br><br>
 
-**ORM**<br><br>
-◦ Hibernate *v 6.4.3 final*
+**ORM**<br>
+◦ Hibernate *v 6.4.3 final*<br><br>
 
-**Design Tools**<br><br>
+**Design Tools**<br>
 ◦ Figma<br>
 ◦ Wireframes<br>
-◦ EER Diagram
+◦ EER Diagram<br>
+◦ Mockaroo<br><br>
 
-**Project Documentation**<br><br>
-◦ Markdown
+**Project Documentation**<br>
+◦ Markdown<br><br>
 
-**Runtime Environment**<br><br>
-JDK *v 11*
+**Runtime Environment**<br>
+JDK *v 11*<br><br>
 
-**Unit Testing**<br><br>
-◦ Junit | Jupiter *v 4.13.1*
+**Unit Testing**<br>
+◦ Junit | Jupiter *v 4.13.1*<br><br>
 
-**Version Control**<br><br>
-◦ GitHub *v 2.34.1*
+**Version Control**<br>
+◦ GitHub *v 2.34.1*<br><br>
 
 **Virtual Machine**<br>
 ◦ VMware Workstation 17 Pro<br>
-◦ Unbuntu *v 22.0.4.5 LTS*
+◦ Unbuntu *v 22.0.4.5 LTS*<br><br>
+
+### [Project Plan](/ProjectPlan.md)  |  [Design Files](/DesignFiles.md)  |  [User Stories](/UserStories.md)

@@ -45,7 +45,7 @@ public class Detail {
             foreignKey = @ForeignKey(name = "notebook_fk"))
     private Event event;
 
-    @OneToMany(mappedBy="performer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy="detail", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private final Set<Performer> performers  = new LinkedHashSet<>();
 
 

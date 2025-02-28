@@ -7,8 +7,9 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity (name = "Performer")
-@Table(name = "performer", schema = "ev_test")
+@Table (name = "performer")
 public class Performer {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -26,8 +27,9 @@ public class Performer {
     @Column(name = "performance_fee", precision = 10, scale = 2)
     private BigDecimal performanceFee;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "detail_id", nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "detail_id",
+            foreignKey = @ForeignKey(name = "performer_detail_fk"))
     private Detail detail;
 
     public Performer() {

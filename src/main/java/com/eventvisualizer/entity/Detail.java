@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * The type Detail.
@@ -43,11 +45,15 @@ public class Detail {
             foreignKey = @ForeignKey(name = "notebook_fk"))
     private Event event;
 
+    @OneToMany(mappedBy="performer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private final Set<Performer> performers  = new LinkedHashSet<>();
+
 
     /**
      * Instantiates a new Detail.
      */
     public Detail() {
+
     }
 
     /**
@@ -174,6 +180,19 @@ public class Detail {
         this.event = event;
     }
 
+    public Set<Performer> getPerformers() {
+        return performers;
+    }
+
+    public void addPerformer(Performer performer) {
+        performers.add(performer);
+        performer.setDetail(this);
+    }
+
+    public void removePerformer(Performer performer) {
+        performers.remove(performer);
+        performer.setDetail(null);
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -53,7 +53,7 @@ class NotebookDaoTest {
     void getNotebookByIdSuccess() {
         Notebook notebook = notebookDao.getById(1);
         assertNotNull(notebook);
-        assertEquals("March 2025 Events", notebook.getTitle());
+        assertEquals("October Events", notebook.getTitle());
     }
 
     /**

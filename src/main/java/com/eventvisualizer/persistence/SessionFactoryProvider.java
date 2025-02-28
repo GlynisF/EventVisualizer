@@ -23,7 +23,7 @@ public class SessionFactoryProvider {
     public static void createSessionFactory() {
 
         // Create registry
-        registry = new StandardServiceRegistryBuilder().configure("hibernate.cfg.xml").build();
+        registry = new StandardServiceRegistryBuilder().configure("/hibernate.cfg.xml").build();
 
         // Create MetadataSources
         MetadataSources sources = new MetadataSources(registry);
@@ -46,5 +46,11 @@ public class SessionFactoryProvider {
         }
         return sessionFactory;
 
+    }
+
+    public static void shutdown() {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
     }
 }

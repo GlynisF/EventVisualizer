@@ -174,4 +174,22 @@ class EventDaoTest {
         logger.info(insertedGoal);
     }
 
+    @Test
+    void removeGoalFromEventSuccess() {
+        Event event = eventDao.getById(14);
+        assertNotNull(event);
+        assertTrue(event.getEventName().equals("Bass Cathedral"));
+
+        GenericDao<Goal> goalDao = new GenericDao<>(Goal.class);
+        Goal goalToRemove = goalDao.getById(13);
+        assertNotNull(goalToRemove);
+        assertTrue(goalToRemove.getEvent().equals(event));
+        assertTrue(event.getGoal().equals(goalToRemove));
+
+        goalDao.delete(goalToRemove);
+        assertFalse(goalDao.getAll().contains(goalToRemove));
+
+
+    }
+
 }

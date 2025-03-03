@@ -40,9 +40,9 @@ public class Detail {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "event_id",
-            foreignKey = @ForeignKey(name = "notebook_fk"))
+            foreignKey = @ForeignKey(name = "details_event_fk"))
     private Event event;
 
     @OneToMany(mappedBy="detail", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -214,6 +214,7 @@ public class Detail {
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
                 ", description='" + description + '\'' +
+                ", event=" + event +
                 '}';
     }
 }

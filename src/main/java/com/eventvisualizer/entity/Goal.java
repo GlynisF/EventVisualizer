@@ -3,8 +3,7 @@ package com.eventvisualizer.entity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.Objects;
 
 @Entity (name = "Goal")
 @Table(name = "goal")
@@ -18,13 +17,17 @@ public class Goal {
     @Column(name = "goal_description")
     private String goalDescription;
 
-    @ManyToOne
-    @JoinColumn(name = "event_id",
-    foreignKey = @ForeignKey(name = "goal_event_f"))
-    private Goal event;
+    @OneToOne
+    @JoinColumn(name = "event_id", referencedColumnName = "id")
+    private Event event;
 
-    @OneToMany(mappedBy = "event")
-    private Set<Goal> goals = new LinkedHashSet<>();
+    public Goal() {
+    }
+
+    public Goal(String goalDescription) {
+        this.goalDescription = goalDescription;
+
+    }
 
     public Integer getId() {
         return id;
@@ -42,20 +45,32 @@ public class Goal {
         this.goalDescription = goalDescription;
     }
 
-    public Goal getEvent() {
+    public Event getEvent() {
         return event;
     }
 
-    public void setEvent(Goal event) {
+    public void setEvent(Event event) {
         this.event = event;
     }
 
-    public Set<Goal> getGoals() {
-        return goals;
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Goal goal = (Goal) o;
+        return Objects.equals(id, goal.id) && Objects.equals(goalDescription, goal.goalDescription);
     }
 
-    public void setGoals(Set<Goal> goals) {
-        this.goals = goals;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, goalDescription);
     }
 
+    @Override
+    public String toString() {
+        return "Goal{" +
+                "id=" + id +
+                ", goalDescription='" + goalDescription + '\'' +
+                ", eventId=" + (event != null ? event.getId() : "null") +
+                '}';
+    }
 }

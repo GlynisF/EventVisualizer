@@ -1,4 +1,4 @@
-### [Home](/README.md)  •  [Project Plan](/ProjectPlan.md)  •  [Design Files](/DesignFiles.md)  •  [User Stories](/UserStories.md)
+~~### [Home](/README.md)  •  [Project Plan](/ProjectPlan.md)  •  [Design Files](/DesignFiles.md)  •  [User Stories](/UserStories.md)
 
 # *Design Files*
 
@@ -96,3 +96,5 @@
 - Mockaroo | mock data for database
 
 </details>
+
+

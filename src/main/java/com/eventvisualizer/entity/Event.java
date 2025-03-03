@@ -1,7 +1,6 @@
 package com.eventvisualizer.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.util.LinkedHashSet;
 import java.util.Objects;
@@ -16,13 +15,12 @@ public class Event {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
     private int id;
 
     @Column(name = "event_name")
     private String eventName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "notebook_id",
             foreignKey = @ForeignKey(name = "event_notebook_fk")
     )
@@ -30,13 +28,18 @@ public class Event {
 
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private Set<Detail> details = new LinkedHashSet<>();
+    private Set<Detail> details  = new LinkedHashSet<>();
+
+    @OneToOne(mappedBy = "event", cascade = CascadeType.ALL)
+    private Goal goal;
+
 
 
     /**
      * Instantiates a new Event.
      */
     public Event() {
+
 
     }
 
@@ -121,6 +124,14 @@ public class Event {
         this.details = details;
     }
 
+    public Goal getGoal() {
+        return goal;
+    }
+
+    public void setGoal(Goal goal) {
+        this.goal = goal;
+    }
+
     /**
      * Add detail.
      *
@@ -160,6 +171,7 @@ public class Event {
                 "id=" + id +
                 ", eventName='" + eventName + '\'' +
                 ", notebook=" + notebook +
+                ", goal=" + goal +
                 '}';
     }
 }

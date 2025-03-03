@@ -1,6 +1,7 @@
 package com.eventvisualizer.persistence;
 
 import com.eventvisualizer.entity.Event;
+import com.eventvisualizer.entity.Goal;
 import com.eventvisualizer.entity.Notebook;
 import com.eventvisualizer.test.util.Database;
 import org.apache.logging.log4j.LogManager;
@@ -79,10 +80,10 @@ class EventDaoTest {
      */
     @Test
     void deleteEventSuccess() {
-        Event event = eventDao.getById(3);
+        Event event = eventDao.getById(4);
         assertNotNull(event);
         eventDao.delete(event);
-        Event deletedEvent = eventDao.getById(3);
+        Event deletedEvent = eventDao.getById(4);
         assertNull(deletedEvent);
     }
 
@@ -146,6 +147,30 @@ class EventDaoTest {
 
         assertTrue(notebookAddingEvent.getEvents().contains(event));
 
+    }
+
+    @Test
+    void addGoalToEventSuccess() {
+        Event event = new Event("New Event for Setting Goal");
+        Event insertedEvent = eventDao.insert(event);
+        assertNotNull(event);
+
+
+        Goal goal = new Goal("This is a description for a new goal");
+        insertedEvent.setGoal(goal);
+        goal.setEvent(event);
+
+        GenericDao<Goal> goalDao = new GenericDao<>(Goal.class);
+        Goal insertedGoal = goalDao.insert(goal);
+
+        assertNotNull(insertedGoal);
+
+        assertTrue(insertedEvent.getGoal().equals(insertedGoal));
+        assertTrue(insertedGoal.getEvent().equals(insertedEvent));
+        assertTrue(insertedGoal.getEvent().getId() == 37);
+
+        logger.info(insertedEvent);
+        logger.info(insertedGoal);
     }
 
 }

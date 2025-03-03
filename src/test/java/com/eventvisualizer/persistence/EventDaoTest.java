@@ -80,10 +80,10 @@ class EventDaoTest {
      */
     @Test
     void deleteEventSuccess() {
-        Event event = eventDao.getById(4);
+        Event event = eventDao.getById(3);
         assertNotNull(event);
         eventDao.delete(event);
-        Event deletedEvent = eventDao.getById(4);
+        Event deletedEvent = eventDao.getById(3);
         assertNull(deletedEvent);
     }
 
@@ -148,6 +148,7 @@ class EventDaoTest {
         assertTrue(notebookAddingEvent.getEvents().contains(event));
 
     }
+
 
     @Test
     void addGoalToEventSuccess() {

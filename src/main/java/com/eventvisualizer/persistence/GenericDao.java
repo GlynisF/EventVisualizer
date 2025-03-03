@@ -96,6 +96,8 @@ public class GenericDao<T> {
         Session session = getSession();
         Transaction transaction = session.beginTransaction();
         session.persist(entity);
+        session.flush();
+        session.refresh(entity);
         transaction.commit();
         session.close();
         return entity;
@@ -111,6 +113,8 @@ public class GenericDao<T> {
             Session session = getSession();
             Transaction transaction = session.beginTransaction();
             session.merge(entity);
+            session.flush();
+            session.refresh(entity);
             transaction.commit();
             session.close();
         }

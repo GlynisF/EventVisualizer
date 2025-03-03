@@ -40,15 +40,16 @@ class DetailDaoTest {
         database.runSQL("cleandb.sql");
         logger.info(database);
     }
+
     @Test
-    void getAllDetailsSuccess() {
+    void getAll() {
         List<Detail> details = detailDao.getAll();
         assertFalse(details.isEmpty());
         logger.info(details);
     }
 
     @Test
-    void deleteDetailSuccess() {
+    void delete() {
         Detail detailToDelete = detailDao.getById(33);
         assertNotNull(detailToDelete);
 
@@ -60,10 +61,9 @@ class DetailDaoTest {
     }
 
     @Test
-    void insertDetailSuccess() {
+    void insert() {
         String description = "Sounds from the underground";
-        Detail newDetail = new Detail(LocalDate.parse("2025-01-01"), LocalTime.parse("21:00"), LocalTime.parse("02:00"),
-                description);
+        Detail newDetail = new Detail(LocalDate.parse("2025-01-01"), LocalTime.parse("21:00"), LocalTime.parse("02:00"), description);
         Event event = eventDao.getById(15);
         event.addDetail(newDetail);
 
@@ -76,7 +76,7 @@ class DetailDaoTest {
     }
 
     @Test
-    void updateDetailSuccess() {
+    void update() {
         Detail detailToUpdate = detailDao.getById(7);
         assertNotNull(detailDao);
         assertTrue(detailToUpdate.getDescription().equals("A glowing spectacle of sound and light in an immersive rave atmosphere."));
@@ -84,7 +84,7 @@ class DetailDaoTest {
         String updatedDescription = ("This is an updated description.");
         detailToUpdate.setDescription(updatedDescription);
         detailDao.update(detailToUpdate);
-        
+
         Detail updatedDetail = detailDao.getById(7);
         assertNotNull(updatedDetail);
         assertEquals("This is an updated description.", updatedDetail.getDescription());
@@ -93,31 +93,16 @@ class DetailDaoTest {
     }
 
     @Test
-    void addEventSuccess() {
+    void addEventWithDetailSuccess() {
         String description = ("Description for adding an event to a detail");
 
         Event eventWithDetail = new Event("New Event with Detail");
-        Event insertedEvent = eventDao.insert(eventWithDetail);
 
+        Detail newDetail = new Detail(LocalDate.parse("2025-06-11"), LocalTime.parse("22:30"),
+                LocalTime.parse("03:00"), description);
 
-        Detail newDetail = new Detail();
-        newDetail.setDateOfEvent(LocalDate.parse("2025-06-11"));
-        newDetail.setStartTime(LocalTime.parse("22:30"));
-        newDetail.setEndTime(LocalTime.parse("03:00"));
-        newDetail.setDescription(description);
-        newDetail.setEvent(insertedEvent);
-
-        insertedEvent.addDetail(newDetail);
-        detailDao.insert(newDetail);
-
-
-
-
-
-
-
-        //assertNotNull(insertedEvent);
-
+        eventWithDetail.addDetail(newDetail);
+        eventDao.insert(eventWithDetail);
 
 
         List<Detail> detailList = detailDao.findByPropertyEqual("description", description);
@@ -126,19 +111,26 @@ class DetailDaoTest {
         logger.info(detailList);
 
         Detail insertedDetail = detailDao.getById(id);
-        //detailDao.update(insertedDetail);
 
-        Set<Detail> details = insertedEvent.getDetails();
+        Set<Detail> details = eventWithDetail.getDetails();
         logger.info(details);
-        assertTrue(details.contains(newDetail));
 
-        //assertTrue(insertedDetail.getDescription().equals(insertedEvent));
+        assertTrue(eventWithDetail.getDetails().contains(insertedDetail));
 
+    }
 
+    @Test
+    void removeEventWithDetailSuccess() {
+        Event eventToDelete = eventDao.getById(10);
+        assertNotNull(eventToDelete);
+        assertTrue(eventToDelete.getEventName().equals("Afterdark Sessions"));
 
+        Detail detailOfEvent = detailDao.getById(10);
+        assertNotNull(detailOfEvent);
+        assertTrue(eventToDelete.getDetails().contains(detailOfEvent));
 
-
-
-
+        eventDao.delete(eventToDelete);
+        assertNull(eventDao.getById(10));
+        assertNull(detailDao.getById(10));
     }
 }

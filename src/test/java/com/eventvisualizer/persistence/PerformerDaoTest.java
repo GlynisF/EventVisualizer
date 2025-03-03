@@ -1,6 +1,7 @@
 package com.eventvisualizer.persistence;
 
 import com.eventvisualizer.entity.Detail;
+import com.eventvisualizer.entity.Event;
 import com.eventvisualizer.entity.Performer;
 import com.eventvisualizer.test.util.Database;
 import org.apache.logging.log4j.LogManager;
@@ -16,12 +17,24 @@ import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * The type Performer dao test.
+ */
 class PerformerDaoTest {
     private final Logger logger = LogManager.getLogger(this.getClass());
 
+    /**
+     * The Performer dao.
+     */
     GenericDao<Performer> performerDao;
+    /**
+     * The Detail dao.
+     */
     GenericDao<Detail> detailDao;
 
+    /**
+     * Sets up.
+     */
     @BeforeEach
     void setUp() {
         performerDao= new GenericDao<>(Performer.class);
@@ -32,6 +45,9 @@ class PerformerDaoTest {
 
     }
 
+    /**
+     * Gets all s performers success.
+     */
     @Test
     void getAllSPerformersSuccess() {
         List<Performer> performers = performerDao.getAll();
@@ -40,6 +56,9 @@ class PerformerDaoTest {
 
     }
 
+    /**
+     * Insert performer success.
+     */
     @Test
     void insertPerformerSuccess() {
         Performer performer = new Performer("Glynis Fisher", "Dj Glynis", "djglynis@email.com", BigDecimal.valueOf(200.50));
@@ -52,6 +71,9 @@ class PerformerDaoTest {
         assertTrue(performer.equals(insertedPerformer));
     }
 
+    /**
+     * Update performer success.
+     */
     @Test
     void updatePerformerSuccess() {
         Performer performerToUpdate = performerDao.getById(1);
@@ -67,6 +89,9 @@ class PerformerDaoTest {
         assertTrue(performerToUpdate.equals(updatedPerformer));
     }
 
+    /**
+     * Delete performer success.
+     */
     @Test
     void deletePerformerSuccess() {
         Performer performerToDelete = performerDao.getById(15);
@@ -80,6 +105,65 @@ class PerformerDaoTest {
         assertTrue(!performers.contains(performerToDelete));
     }
 
+    /**
+     * Sets event success.
+     */
+    @Test
+    void setEventSuccess() {
+        GenericDao<Event> eventDao = new GenericDao<>(Event.class);
+
+        Detail detail = detailDao.getById(15);
+        assertNotNull(detail);
+
+        Event eventContainingDetail = eventDao.getById(15);
+        assertNotNull(eventContainingDetail);
+
+        assertTrue(eventContainingDetail.getDetails().contains(detail));
+
+        Event eventToSetForDetail = eventDao.getById(11);
+
+        detail.setEvent(eventToSetForDetail);
+        eventDao.update(eventToSetForDetail);
+        detailDao.update(detail);
+
+        Detail updatedDetail = detailDao.getById(15);
+        assertNotNull(updatedDetail);
+
+        assertTrue(updatedDetail.equals(detail));
+
+        assertTrue(!updatedDetail.getEvent().equals(eventContainingDetail));
+        assertTrue(updatedDetail.getEvent().getId() == 11);
+
+
+    }
+
+    /**
+     * Remove event success.
+     */
+    @Test
+    void removeEventSuccess() {
+        Detail detail = detailDao.getById(26);
+        assertNotNull(detail);
+
+        GenericDao<Event> eventDao = new GenericDao<>(Event.class);
+        Event eventToDelete = eventDao.getById(26);
+        assertNotNull(eventToDelete);
+
+        assertTrue(detail.getEvent().getId() == 26);
+
+        detail.setEvent(null);
+        eventDao.delete(eventToDelete);
+        assertNull(eventDao.getById(26));
+
+        detailDao.update(detail);
+        assertNull(detail.getEvent());
+
+        logger.info(detail);
+    }
+
+    /**
+     * Add detail to performer success.
+     */
     @Test
     void addDetailToPerformerSuccess() {
         Detail detailToAdd = detailDao.getById(1);
@@ -88,22 +172,22 @@ class PerformerDaoTest {
         Performer performerToAdd = new Performer("Joe Jackson", "DJ JK", "DJJJ@email.com", BigDecimal.valueOf(500.00));
         performerDao.insert(performerToAdd);
 
-        assertTrue(performerToAdd.getId() > 0);
-
         detailToAdd.addPerformer(performerToAdd);
         detailDao.update(detailToAdd);
+
+        assertTrue(performerToAdd.getId() > 0);
 
         Performer insertedPerformer = performerDao.getById(performerToAdd.getId());
         assertNotNull(insertedPerformer);
 
-        Set<Performer> performers = detailToAdd.getPerformers();
-        assertNotNull(performers);
+        assertTrue(detailToAdd.getPerformers().contains(insertedPerformer));
 
-        assertTrue(performers.contains(insertedPerformer));
-        logger.info(performers);
-
+        assertTrue(performerDao.getAll().contains(performerToAdd));
     }
 
+    /**
+     * Delete detail from performer success.
+     */
     @Test
     void deleteDetailFromPerformerSuccess() {
         Detail detailToDelete = detailDao.getById(2);

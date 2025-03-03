@@ -2,12 +2,14 @@ package com.eventvisualizer.persistence;
 
 import com.eventvisualizer.entity.Detail;
 import com.eventvisualizer.entity.Event;
+import com.eventvisualizer.entity.Performer;
 import com.eventvisualizer.test.util.Database;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
@@ -15,6 +17,9 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Detail dao test.
+ */
 class DetailDaoTest {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
@@ -41,15 +46,21 @@ class DetailDaoTest {
         logger.info(database);
     }
 
+    /**
+     * Gets all details success.
+     */
     @Test
-    void getAll() {
+    void getAllDetailsSuccess() {
         List<Detail> details = detailDao.getAll();
         assertFalse(details.isEmpty());
         logger.info(details);
     }
 
+    /**
+     * Delete detail success.
+     */
     @Test
-    void delete() {
+    void deleteDetailSuccess() {
         Detail detailToDelete = detailDao.getById(33);
         assertNotNull(detailToDelete);
 
@@ -60,8 +71,11 @@ class DetailDaoTest {
         assertNull(detailDao.getById(33));
     }
 
+    /**
+     * Insert detail success.
+     */
     @Test
-    void insert() {
+    void insertDetailSuccess() {
         String description = "Sounds from the underground";
         Detail newDetail = new Detail(LocalDate.parse("2025-01-01"), LocalTime.parse("21:00"), LocalTime.parse("02:00"), description);
         Event event = eventDao.getById(15);
@@ -75,8 +89,11 @@ class DetailDaoTest {
 
     }
 
+    /**
+     * Update detail success.
+     */
     @Test
-    void update() {
+    void updateDetailSuccess() {
         Detail detailToUpdate = detailDao.getById(7);
         assertNotNull(detailDao);
         assertTrue(detailToUpdate.getDescription().equals("A glowing spectacle of sound and light in an immersive rave atmosphere."));
@@ -92,6 +109,9 @@ class DetailDaoTest {
 
     }
 
+    /**
+     * Add event with detail success.
+     */
     @Test
     void addEventWithDetailSuccess() {
         String description = ("Description for adding an event to a detail");
@@ -104,21 +124,25 @@ class DetailDaoTest {
         eventWithDetail.addDetail(newDetail);
         eventDao.insert(eventWithDetail);
 
-
         List<Detail> detailList = detailDao.findByPropertyEqual("description", description);
         assertFalse(detailList.isEmpty());
         int id = detailList.get(0).getId();
         logger.info(detailList);
 
         Detail insertedDetail = detailDao.getById(id);
+        assertNotNull(insertedDetail);
 
         Set<Detail> details = eventWithDetail.getDetails();
+        assertNotNull(details);
         logger.info(details);
 
         assertTrue(eventWithDetail.getDetails().contains(insertedDetail));
 
     }
 
+    /**
+     * Remove event with detail success.
+     */
     @Test
     void removeEventWithDetailSuccess() {
         Event eventToDelete = eventDao.getById(10);
@@ -132,5 +156,57 @@ class DetailDaoTest {
         eventDao.delete(eventToDelete);
         assertNull(eventDao.getById(10));
         assertNull(detailDao.getById(10));
+    }
+
+    /**
+     * Add performer to detail success.
+     */
+    @Test
+    void addPerformerToDetailSuccess() {
+        GenericDao<Performer> performerDao = new GenericDao<>(Performer.class);
+        Detail detailToAdd = detailDao.getById(1);
+        assertNotNull(detailToAdd);
+
+        Performer performerToAdd = new Performer("Joe Jackson", "DJ JK", "DJJJ@email.com", BigDecimal.valueOf(500.00));
+        performerDao.insert(performerToAdd);
+
+        assertTrue(performerToAdd.getId() > 0);
+
+        detailToAdd.addPerformer(performerToAdd);
+        detailDao.update(detailToAdd);
+
+        Performer insertedPerformer = performerDao.getById(performerToAdd.getId());
+        assertNotNull(insertedPerformer);
+
+        Set<Performer> performers = detailToAdd.getPerformers();
+        assertNotNull(performers);
+
+        assertTrue(performers.contains(insertedPerformer));
+        assertTrue(performerDao.getAll().contains(insertedPerformer));
+
+    }
+
+    /**
+     * Remove performer from detail success.
+     */
+    @Test
+    void removePerformerFromDetailSuccess() {
+    GenericDao<Performer> performerDao = new GenericDao<>(Performer.class);
+
+    Detail detailContainingPerformer = detailDao.getById(7);
+    assertNotNull(detailContainingPerformer);
+
+    Performer performerToRemove = performerDao.getById(14);
+    assertNotNull(performerToRemove);
+
+    assertTrue(detailContainingPerformer.getPerformers().contains(performerToRemove));
+
+    detailContainingPerformer.removePerformer(performerToRemove);
+
+    detailDao.update(detailContainingPerformer);
+
+    assertFalse(detailContainingPerformer.getPerformers().contains(performerToRemove));
+
+
     }
 }

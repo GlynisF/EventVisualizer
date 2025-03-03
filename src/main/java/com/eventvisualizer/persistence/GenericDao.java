@@ -114,7 +114,6 @@ public class GenericDao<T> {
             Transaction transaction = session.beginTransaction();
             session.merge(entity);
             session.flush();
-            session.refresh(entity);
             transaction.commit();
             session.close();
         }

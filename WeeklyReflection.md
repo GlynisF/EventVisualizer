@@ -39,9 +39,31 @@ I had a very productive week and want to keep the momentum going.
 **Total Time:** 25 hours
 
 
-<em>Week 5 • February 17th
+### **<em>Week 5 • February 17th</em>**
 
-<em>Week 6 • February 24th</em>
+This week I implemented 2 one-to-many relationships into my project. I created Notebook and Event beans as well as test methods
+for both entities. I also jumped ahead and started working on week 6 & week 7 assignments-- I wanted to make sure I didn't 
+run into issues with deploying cognito in a beanstalk environment and/or wanted to be prepared if I did. Thankfully, I did not
+and was able to successfully deploy cognito in my environment. I would say this week went smoothly and didn't run into any issues.
+
+**Total Time:** 20 hours
+
+### **<em>Week 6 • February 24th</em>**
+
+I spent this week adding more beans and test classes to my project. I created beans for Performer, Detail, and Goal.
+I created tests methods for the Performer and Detail beans and need to make one for Goal still. <br>
+
+I also worked on my project plan a bit and made some changes + added some tasks. I reworked my screen design to make sure
+I was meeting all requirements for the peer review. The only issues I ran into was when I was reworking the screens.
+Figma was being very difficult / lagging, and I probably should have just held off on trying to rework them until after the review
+because I ended up taking longer than expected and didn't have my review video to my review partner in time. I also was struggling
+with recording a video and didn't think to use Teams or any programs from my main computer vs attempting to record directly 
+through the VM. In the end, it all worked out and I think the reviews went really well. <br>
+
+I got all my required assignments done and
+am staying on track, so I am feeling good about things!
+
+**Total Time:** 25 hours
 
 <em>Week 7 • March 3rd</em>
 

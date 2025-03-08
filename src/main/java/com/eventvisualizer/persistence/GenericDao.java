@@ -110,13 +110,13 @@ public class GenericDao<T> {
      * @param entity entity to be inserted/saved
      */
     public void update(T entity) {
-            Session session = getSession();
-            Transaction transaction = session.beginTransaction();
-            session.merge(entity);
-            session.flush();
-            transaction.commit();
-            session.close();
-        }
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+        session.merge(entity);
+        session.flush();
+        transaction.commit();
+        session.close();
+    }
 
     /**
      * Finds entities by one of its properties.

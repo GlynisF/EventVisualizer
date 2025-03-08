@@ -20,7 +20,7 @@ public class Event {
     @Column(name = "event_name")
     private String eventName;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "notebook_id",
             foreignKey = @ForeignKey(name = "event_notebook_fk")
     )

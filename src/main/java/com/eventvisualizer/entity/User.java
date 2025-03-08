@@ -4,7 +4,6 @@ package com.eventvisualizer.entity;
 import jakarta.persistence.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -22,8 +21,8 @@ public class User{
     private static final Logger logger = LogManager.getLogger(User.class);
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
     @Column(name = "first_name")
@@ -56,14 +55,14 @@ public class User{
     /**
      * Instantiates a new User.
      *
+     * @param dateOfBirth the date of birth
+     * @param email       the email
      * @param firstName   the first name
      * @param lastName    the last name
-     * @param email       the email
-     * @param password    the password
      * @param username    the username
-     * @param dateOfBirth the date of birth
+     * @param password    the password
      */
-    public User(String firstName, String lastName, String email, String password, String username, LocalDate dateOfBirth) {
+    public User(LocalDate dateOfBirth, String email, String firstName, String lastName, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;

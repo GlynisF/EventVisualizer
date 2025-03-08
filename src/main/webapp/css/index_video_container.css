@@ -11,7 +11,7 @@ html {
 }
 
 
-.main_header, .home_header {
+.main_header {
     position: relative;
     height: 75vh;
     min-height: 25rem;
@@ -19,7 +19,8 @@ html {
     overflow: hidden;
 }
 
-.main_header video, .home_header video {
+
+.main_header video {
     position: absolute;
     object-fit: contain;
     object-position: center;
@@ -36,12 +37,13 @@ html {
     transform: translateX(-50%) translateY(-50%);
 }
 
-.main_header .container, .home_header .container {
+.main_header .container{
     position: relative;
     z-index: 2;
 }
 
-.main_header .overlay, .home_header .overlay {
+
+.main_header .overlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -52,51 +54,20 @@ html {
     z-index: 1;
 }
 
-
 img {
     width: 100%;
     height: auto;
     vertical-align: middle;
 }
 
-div .index_bg {
-    background-color: #4c6e4d;
-}
-
-#autocompleteForm input .form-control {
-    background-color: gainsboro;
-    border: 1px solid #101010;
-    border-radius: 3px;
-}
-
-.notebook-container li button:hover {
-    background-color: black;
-    text: white;
-}
-
-
-div.DTE.DTE_Bubble {
-    position: absolute !important;
-    margin: 0 auto;
-    top: 0% !important;
-    left: 50% !important;
-    transform: translate(-50%, -50%) !important;
-}
-
-
-
 /* This will use a fallback image instead of a video for devices that commonly do not support the HTML5 video element */
 
 @media (pointer: coarse) and (hover: none) {
-    .home_header {
-        background: url("/images/black_paint.mp4") black no-repeat center center scroll;
-    }
-
     .main_header {
         background: url("/images/black_paint.mp4") black no-repeat center center scroll;
     }
 
-    .home_header video, .main_header video {
+    .main_header video {
         display: none;
     }
 }

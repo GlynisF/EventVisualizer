@@ -40,7 +40,7 @@ public class Detail {
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "event_id",
             foreignKey = @ForeignKey(name = "details_event_fk"))
     private Event event;

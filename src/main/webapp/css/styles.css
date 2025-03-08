@@ -1,0 +1,73 @@
+:root,
+[data-bs-theme=dark] {
+    color-scheme: dark;
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #ff6352;
+    --orange: #ffa74f;
+    --yellow: #ffc107;
+    --green: #b9fd3a;;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --bs-primary: #e235e1;
+    --bs-secondary: #b9fd3a;
+    --bs-secondary-rgb: rgba(185, 253, 58, 1);
+    --bs-success: #A1FA4BED;
+    --bs-success-rgb: rgba(161, 250, 75, 0.93);
+    --bs-success-border-subtle: rgba(161, 250, 75, 0.75);
+    --bs-btn-color: var(--bs-secondary-rgb);
+    --info: #c9daea;
+    --warning: #ffc107;
+    --danger: #ff6352;
+    --light: #f8f9fa;
+    --bs-dark: #101820;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: "Noto Sans Mono Regular",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Righteous, Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+.righteous-regular {
+    font-family: "Righteous", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: #2B2C30;
+    color: #F3F4F5;
+    font-family: "Noto Sans Mono", monospace;
+}
+
+.bg-light, .bg-dark {
+    background-color: #101820; !important;
+}
+
+h1 {
+    color: var(--bs-primary);
+}
+
+.nav-link {
+    --bs-nav-link-hover-color: var(--bs-primary);
+    --bs-nav-link-active-color: var(--bs-success);
+}
+
+.btn-outline-success {
+    color: var(--bs-success);
+    border-color: var(--bs-success);
+    --bs-btn-hover-bg: var(--bs-success);
+    --bs-btn-hover-color: var(--bs-primary);
+    --bs-btn-active-bg: var(--bs-light);
+    --bs-btn-active-color: var(--bs-primary);
+
+}
+
+
+

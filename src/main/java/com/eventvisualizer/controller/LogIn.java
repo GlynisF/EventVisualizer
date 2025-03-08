@@ -4,6 +4,7 @@ import com.eventvisualizer.util.PropertiesLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,11 +25,18 @@ public class LogIn extends HttpServlet implements PropertiesLoader {
     public static String CLIENT_ID;
     public static String LOGIN_URL;
     public static String REDIRECT_URL;
+    private Properties properties;
 
     @Override
     public void init() throws ServletException {
         super.init();
-        loadProperties();
+        try {
+            loadProperties();
+        } catch (Exception e) {
+            logger.error("There was an error {}", e.getMessage(), e);
+            throw new RuntimeException(e);
+        }
+
     }
 
     /**
@@ -37,9 +45,10 @@ public class LogIn extends HttpServlet implements PropertiesLoader {
      */
     // TODO This code appears in a couple classes, consider using a startup servlet similar to adv java project
     // 4 to do this work a single time and put the properties in the application scope
-    private void loadProperties() {
+    private void loadProperties() throws IOException {
         try {
-            Properties properties = new Properties(loadProperties("/cognito.properties"));
+            ServletContext servletContext = getServletContext();
+            properties = (Properties) servletContext.getAttribute("cognito.properties");
             CLIENT_ID = properties.getProperty("client.id");
             LOGIN_URL = properties.getProperty("loginURL");
             REDIRECT_URL = properties.getProperty("redirectURL");

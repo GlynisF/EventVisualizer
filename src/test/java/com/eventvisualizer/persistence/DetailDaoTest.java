@@ -162,7 +162,7 @@ class DetailDaoTest {
      * Add performer to detail success.
      */
     @Test
-    void addPerformerToDetailSuccess() {
+    void addPerformerSuccess() {
         GenericDao<Performer> performerDao = new GenericDao<>(Performer.class);
         Detail detailToAdd = detailDao.getById(1);
         assertNotNull(detailToAdd);
@@ -190,7 +190,7 @@ class DetailDaoTest {
      * Remove performer from detail success.
      */
     @Test
-    void removePerformerFromDetailSuccess() {
+    void removePerformerSuccess() {
     GenericDao<Performer> performerDao = new GenericDao<>(Performer.class);
 
     Detail detailContainingPerformer = detailDao.getById(7);
@@ -209,4 +209,5 @@ class DetailDaoTest {
 
 
     }
+
 }

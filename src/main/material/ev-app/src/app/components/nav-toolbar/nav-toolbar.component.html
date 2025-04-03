@@ -1,0 +1,17 @@
+<div class="ng-container">
+<mat-toolbar class="mdc-top-app-bar">
+  <div class="row toolbar-row mdc-top-ap-bar__row">
+    <span class="navbar-brand">EV</span>
+  </div>
+  <nav mat-tab-nav-bar class="mat-mdc-tab-nav-bar-stretch-tabs" fitInkBarToContent [tabPanel]="tabPanel">
+    <span class="example-spacer"></span>
+    @for (link of links; track link) {
+      <a mat-tab-link
+         (click)="activeLink = link"
+         [routerLink]="link.route"
+         [active]="activeTab === link.label"> {{link.label}} </a>
+    }
+  </nav>
+  <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+</mat-toolbar>
+</div>

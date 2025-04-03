@@ -1,0 +1,7 @@
+<mat-expansion-panel class="form-panel" (opened)="onPanelOpen()">
+<mat-expansion-panel-header>{{ title }}</mat-expansion-panel-header>
+  <ng-template matExpansionPanelContent><
+  <ng-container *ngComponentOutlet="panelComponent"></ng-container>
+    </ng-template>
+
+</mat-expansion-panel>

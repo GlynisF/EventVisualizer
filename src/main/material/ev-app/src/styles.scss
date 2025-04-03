@@ -1,0 +1,475 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use 'sass:color';
+@use 'sass:list';
+@use 'sass:meta';
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use 'theme-colors' as m3-theme;
+@include mat.core();
+
+@import url('https://fonts.googleapis.com/css2?family=Anton+SC&family=Archivo+Black&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Barcode+39+Extended+Text&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans+Symbols:wght@100..900&family=Press+Start+2P&family=Righteous&family=Roboto:ital,wght@0,100..900;1,100..900&family=Silkscreen:wght@400;700&family=Sixtyfour&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&family=Staatliches&display=swap');
+
+$theme-colors: (
+  light: (
+  color-scheme: light,
+  primary: rgb(168 25 152),
+  surface-tint: rgb(168 25 152),
+  on-primary: rgb(255 255 255),
+  primary-container: rgb(255 109 230),
+  on-primary-container: rgb(112 0 102),
+  secondary: rgb(0 48 100),
+  on-secondary: rgb(255 255 255),
+  secondary-container: rgb(0 70 141),
+  on-secondary-container: rgb(141 182 255),
+  tertiary: rgb(85 101 0),
+  on-tertiary: rgb(255 255 255),
+  tertiary-container: rgb(200 236 0),
+  on-tertiary-container: rgb(87 104 0),
+  error: rgb(163 54 46),
+  on-error: rgb(255 255 255),
+  error-container: rgb(196 78 68),
+  on-error-container: rgb(255 251 255),
+  background: rgb(255 247 249),
+  on-background: rgb(35 24 32),
+  surface: rgb(253 248 248),
+  on-surface: rgb(28 27 27),
+  surface-variant: rgb(235 223 228),
+  on-surface-variant: rgb(76 69 73),
+  outline: rgb(125 117 121),
+  outline-variant: rgb(206 196 200),
+  shadow: rgb(0 0 0),
+  scrim: rgb(0 0 0),
+  inverse-surface: rgb(49 48 48),
+  inverse-on-surface: rgb(244 240 239),
+  inverse-primary: rgb(255 172 234),
+  primary-fixed: rgb(255 215 241),
+  on-primary-fixed: rgb(57 0 51),
+  primary-fixed-dim: rgb(255 172 234),
+  on-primary-fixed-variant: rgb(132 0 120),
+  secondary-fixed: rgb(214 227 255),
+  on-secondary-fixed: rgb(0 27 62),
+  secondary-fixed-dim: rgb(169 199 255),
+  on-secondary-fixed-variant: rgb(0 70 140),
+  tertiary-fixed: rgb(205 242 17),
+  on-tertiary-fixed: rgb(24 30 0),
+  tertiary-fixed-dim: rgb(179 212 0),
+  on-tertiary-fixed-variant: rgb(63 76 0),
+  surface-dim: rgb(221 217 216),
+  surface-bright: rgb(253 248 248),
+  surface-container-lowest: rgb(255 255 255),
+  surface-container-low: rgb(247 243 242),
+  surface-container: rgb(241 237 236),
+  surface-container-high: rgb(235 231 231),
+  surface-container-highest: rgb(230 225 225)
+  ),
+  dark: (
+    color-scheme: dark,
+    primary: rgb(255 172 234),
+    surface-tint: rgb(255 172 234),
+    on-primary: rgb(93 0 84),
+    primary-container: rgb(255 109 230),
+    on-primary-container: rgb(112 0 102),
+    secondary: rgb(169 199 255),
+    on-secondary: rgb(0 48 100),
+    secondary-container: rgb(0 70 141),
+    on-secondary-container: rgb(141 182 255),
+    tertiary: rgb(246 255 199),
+    on-tertiary: rgb(43 52 0),
+    tertiary-container: rgb(200 236 0),
+    on-tertiary-container: rgb(87 104 0),
+    error: rgb(255 180 171),
+    on-error: rgb(102 7 8),
+    error-container: rgb(232 105 93),
+    on-error-container: rgb(92 0 4),
+    background: rgb(26 16 23),
+    on-background: rgb(241 221 232),
+    surface: rgb(20 19 19),
+    on-surface: rgb(230 225 225),
+    surface-variant: rgb(76 69 73),
+    on-surface-variant: rgb(206 196 200),
+    outline: rgb(152 142 147),
+    outline-variant: rgb(76 69 73),
+    shadow: rgb(0 0 0),
+    scrim: rgb(0 0 0),
+    inverse-surface: rgb(230 225 225),
+    inverse-on-surface: rgb(49 48 48),
+    inverse-primary: rgb(168 25 152),
+    primary-fixed: rgb(255 215 241),
+    on-primary-fixed: rgb(57 0 51),
+    primary-fixed-dim: rgb(255 172 234),
+    on-primary-fixed-variant: rgb(132 0 120),
+    secondary-fixed: rgb(214 227 255),
+    on-secondary-fixed: rgb(0 27 62),
+    secondary-fixed-dim: rgb(169 199 255),
+    on-secondary-fixed-variant: rgb(0 70 140),
+    tertiary-fixed: rgb(205 242 17),
+    on-tertiary-fixed: rgb(24 30 0),
+    tertiary-fixed-dim: rgb(179 212 0),
+    on-tertiary-fixed-variant: rgb(63 76 0),
+    surface-dim: rgb(20 19 19),
+    surface-bright: rgb(58 57 57),
+    surface-container-lowest: rgb(15 14 14),
+    surface-container-low: rgb(28 27 27),
+    surface-container: rgb(32 31 31),
+    surface-container-high: rgb(43 42 42),
+    surface-container-highest: rgb(54 52 52),
+  ),
+);
+
+
+:root {
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      primary: m3-theme.$primary-palette,
+      tertiary: m3-theme.$tertiary-palette,
+      use-system-variables: true,
+      theme-type: light
+    ),
+    typography: (
+      plain-family: 'Inter, sans-serif',
+      brand-family: 'Roboto Mono, monospace',
+    ),
+    density: 0,
+  ));
+}
+
+.dark-mode, .dark{
+    --primary: rgb(255 172 234);
+    --surface-tint: rgb(255 172 234);
+    --on-primary: rgb(93 0 84);
+    --primary-container: rgb(255 109 230);
+    --on-primary-container: rgb(112 0 102);
+    --secondary: rgb(169 199 255);
+    --on-secondary: rgb(0 48 100);
+    --secondary-container: rgb(0 70 141);
+    --on-secondary-container: rgb(141 182 255);
+    --tertiary: rgb(246 255 199);
+    --on-tertiary: rgb(43 52 0);
+    --tertiary-container: rgb(200 236 0);
+    --on-tertiary-container: rgb(87 104 0);
+    --error: rgb(255 180 171);
+    --on-error: rgb(102 7 8);
+    --error-container: rgb(232 105 93);
+    --on-error-container: rgb(92 0 4);
+    --background: rgb(26 16 23);
+    --on-background: rgb(241 221 232);
+    --surface: rgb(20 19 19);
+    --on-surface: rgb(230 225 225);
+    --surface-variant: rgb(76 69 73);
+    --on-surface-variant: rgb(206 196 200);
+    --outline: rgb(152 142 147);
+    --outline-variant: rgb(76 69 73);
+    --shadow: rgb(0 0 0);
+    --scrim: rgb(0 0 0);
+    --inverse-surface: rgb(230 225 225);
+    --inverse-on-surface: rgb(49 48 48);
+    --inverse-primary: rgb(168 25 152);
+    --primary-fixed: rgb(255 215 241);
+    --on-primary-fixed: rgb(57 0 51);
+    --primary-fixed-dim: rgb(255 172 234);
+    --on-primary-fixed-variant: rgb(132 0 120);
+    --secondary-fixed: rgb(214 227 255);
+    --on-secondary-fixed: rgb(0 27 62);
+    --secondary-fixed-dim: rgb(169 199 255);
+    --on-secondary-fixed-variant: rgb(0 70 140);
+    --tertiary-fixed: rgb(205 242 17);
+    --on-tertiary-fixed: rgb(24 30 0);
+    --tertiary-fixed-dim: rgb(179 212 0);
+    --on-tertiary-fixed-variant: rgb(63 76 0);
+    --surface-dim: rgb(20 19 19);
+    --surface-bright: rgb(58 57 57);
+    --surface-container-lowest: rgb(15 14 14);
+    --surface-container-low: rgb(28 27 27);
+    --surface-container: rgb(32 31 31);
+    --surface-container-high: rgb(43 42 42);
+    --surface-container-highest: rgb(54 52 52);
+  }
+
+
+html {
+  color-scheme: light;
+  @include mat.theme((
+    color: (
+      primary: mat.$violet-palette,
+      tertiary: mat.$orange-palette,
+      theme-type: light,
+    ),
+    typography: (
+    plain-family: 'Inter, sans-serif',
+      brand-family: 'Roboto Mono, monospace',
+    ),
+    density: 0,
+  ));
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-panel-title span.title{font:var(--mat-sys-title-large);}
+
+mat-expansion-panel {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  justify-content: space-between;
+}
+
+.full-width {
+  width: 100%;
+}
+
+
+
+.display {
+  border-radius: 1rem;
+  border-style: solid;
+  border-color: var(--schemes-on-surface, #1c1b1b);
+  border-width: 0.0625rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 46.6875rem;
+  position: relative;
+}
+.display-large {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-display-large-font-family,
+      "Roboto Mono-Regular",
+      sans-serif
+  ), sans-serif;
+  font-size: var(--brand-style-display-large-font-size, 3.5625rem);
+  line-height: var(--brand-style-display-large-line-height, 4rem);
+  letter-spacing: var(--brand-style-display-large-letter-spacing, -0.015625rem);
+  font-weight: var(--brand-style-display-large-font-weight, 400);
+  position: relative;
+}
+.display-medium {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-display-medium-font-family,
+      "Roboto Mono-Regular",
+      sans-serif
+  ), sans-serif;
+  font-size: var(--brand-style-display-medium-font-size, 2.8125rem);
+  line-height: var(--brand-style-display-medium-line-height, 3.25rem);
+  font-weight: var(--brand-style-display-medium-font-weight, 400);
+  position: relative;
+}
+.display-small {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-display-small-font-family,
+      "Roboto Mono-Regular",
+      sans-serif
+  ), sans-serif;
+  font-size: var(--brand-style-display-small-font-size, 2.25rem);
+  line-height: var(--brand-style-display-small-line-height, 2.75rem);
+  font-weight: var(--brand-style-display-small-font-weight, 400);
+  position: relative;
+}
+.headline {
+  border-radius: 1rem;
+  border-style: solid;
+  border-color: var(--schemes-on-surface, #1c1b1b);
+  border-width: 0.0625rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 46.6875rem;
+  position: relative;
+}
+.headline-large {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-headline-large-font-family,
+      "Roboto Mono-Regular",
+      sans-serif
+  ), sans-serif;
+  font-size: var(--brand-style-headline-large-font-size, 2rem);
+  line-height: var(--brand-style-headline-large-line-height, 2.5rem);
+  font-weight: var(--brand-style-headline-large-font-weight, 400);
+  position: relative;
+}
+.headline-medium {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-headline-medium-font-family,
+      "Roboto Mono-Regular",
+      sans-serif
+  ), sans-serif;
+  font-size: var(--brand-style-headline-medium-font-size, 1.75rem);
+  line-height: var(--brand-style-headline-medium-line-height, 2.25rem);
+  font-weight: var(--brand-style-headline-medium-font-weight, 400);
+  position: relative;
+}
+.headline-small {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-headline-small-font-family,
+      "Roboto Mono-Regular",
+      sans-serif
+  ), sans-serif;
+  font-size: var(--brand-style-headline-small-font-size, 1.5rem);
+  line-height: var(--brand-style-headline-small-line-height, 2rem);
+  font-weight: var(--brand-style-headline-small-font-weight, 400);
+  position: relative;
+}
+.android-web {
+  border-radius: 1rem;
+  border-style: solid;
+  border-color: var(--schemes-on-surface, #1c1b1b);
+  border-width: 0.0625rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-shrink: 0;
+  width: 46.6875rem;
+  position: relative;
+}
+.title-large {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-title-large-font-family,
+      "Roboto Mono",
+      sans-serif
+  ), sans-serif;
+  font-size: var(--brand-style-title-large-font-size, 1.375rem);
+  line-height: var(--brand-style-title-large-line-height, 1.75rem);
+  font-weight: var(--brand-style-title-large-font-weight, 400);
+  position: relative;
+}
+.title-medium {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-title-medium-font-family,
+      "Roboto Mono",
+      monospace
+  ), monospace;
+  font-size: var(--brand-style-title-medium-font-size, 1rem);
+  line-height: var(--brand-style-title-medium-line-height, 1.5rem);
+  letter-spacing: var(--brand-style-title-medium-letter-spacing, 0.009375rem);
+  font-weight: var(--brand-style-title-medium-font-weight, 500);
+  position: relative;
+}
+.title-small {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-title-small-font-family,
+      "Roboto Mono",
+      sans-serif
+  ), sans-serif;
+  font-size: var(--brand-style-title-small-font-size, 0.875rem);
+  line-height: var(--brand-style-title-small-line-height, 1.25rem);
+  letter-spacing: var(--brand-style-title-small-letter-spacing, 0.00625rem);
+  font-weight: var(--brand-style-title-small-font-weight, 500);
+  position: relative;
+}
+.label-large {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-label-large-font-family,
+      "Roboto Mono",
+      sans-serif
+  ), sans-serif;
+  font-size: var(--brand-style-label-large-font-size, 0.875rem);
+  line-height: var(--brand-style-label-large-line-height, 1.25rem);
+  letter-spacing: var(--brand-style-label-large-letter-spacing, 0.00625rem);
+  font-weight: var(--brand-style-label-large-font-weight, 500);
+  position: relative;
+}
+.label-medium {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-label-medium-font-family,
+      "Roboto Mono",
+      monospace
+  ), monospace;
+  font-size: var(--brand-style-label-medium-font-size, 0.75rem);
+  line-height: var(--brand-style-label-medium-line-height, 1rem);
+  letter-spacing: var(--brand-style-label-medium-letter-spacing, 0.03125rem);
+  font-weight: var(--brand-style-label-medium-font-weight, 500);
+  position: relative;
+}
+.label-small {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-label-small-font-family,
+      "Roboto Mono",
+      monospace
+  ), monospace;
+  font-size: var(--brand-style-label-small-font-size, 0.6875rem);
+  line-height: var(--brand-style-label-small-line-height, 1rem);
+  letter-spacing: var(--brand-style-label-small-letter-spacing, 0.03125rem);
+  font-weight: var(--brand-style-label-small-font-weight, 500);
+  position: relative;
+}
+.body-large {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-label-large-font-family,
+      "Roboto",
+      sans-serif
+  ), sans-serif;
+  font-size: var(--brand-style-label-large-font-size, 0.875rem);
+  line-height: var(--brand-style-label-large-line-height, 1.25rem);
+  letter-spacing: var(--brand-style-label-large-letter-spacing, 0.00625rem);
+  font-weight: var(--brand-style-label-large-font-weight, 500);
+  position: relative;
+}
+.body-medium {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-body-medium-font-family,
+      "Roboto",
+      sans-serif
+  ), sans-serif;
+  font-size: var(--brand-style-body-medium-font-size, 0.875rem);
+  line-height: var(--brand-style-body-medium-line-height, 1.25rem);
+  letter-spacing: var(--brand-style-body-medium-letter-spacing, 0.015625rem);
+  font-weight: var(--brand-style-body-medium-font-weight, 400);
+  position: relative;
+}
+.body-small {
+  color: var(--material-theme-black, #000000);
+  text-align: left;
+  font-family: var(
+      --brand-style-body-small-font-family,
+      "Roboto-Regular",
+      sans-serif
+  ), sans-serif;
+  font-size: var(--brand-style-body-small-font-size, 0.75rem);
+  line-height: var(--brand-style-body-small-line-height, 1rem);
+  letter-spacing: var(--brand-style-body-small-letter-spacing, 0.025rem);
+  font-weight: var(--brand-style-body-small-font-weight, 400);
+  position: relative;
+}

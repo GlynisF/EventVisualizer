@@ -1,0 +1,5866 @@
+/* Figma Styles of your File */
+:root {
+  /* Colors */
+  --md-white: #ffffff;
+  --md-black: #000000;
+  --md-sys-colors-primary: #e235e1;
+  --md-sys-colors-secondary: #c6ff00;
+  --md-sys-colors-tertiary: #3b3f8c;
+  --md-sys-colors-neutral: #f8eef2;
+  --md-sys-colors-error: #ff5449;
+  --md-source-seed: #e235e1;
+  --md-sys-light-surface: #fdf8f8;
+  --md-sys-light-on-surface-variant: #544150;
+  --md-sys-light-surface-container: #f1edec;
+  --md-sys-light-secondary-container: #d3ff62;
+  --md-sys-light-on-primary: #ffffff;
+  --md-sys-light-surface-container-highest: #e6e1e1;
+  --md-sys-light-primary: #900091;
+  --md-sys-light-outline-variant: #d9bfd2;
+  --md-sys-light-on-surface: #1c1b1b;
+  --md-sys-light-on-secondary-container: #415600;
+  --md-sys-light-surface-container-high: #ece7e7;
+  --md-sys-light-primary-container: #cb14cc;
+  --md-sys-light-outline: #877082;
+  --md-sys-light-surface-container-low: #f7f2f2;
+  --md-sys-light-tertiary-container: #4b4f9c;
+  --md-sys-light-on-tertiary-container: #fefbff;
+  --md-sys-light-error: #b81f1e;
+  --md-sys-light-on-error: #ffffff;
+  --md-sys-light-surface-tint: #a800aa;
+  --md-sys-light-on-primary-container: #ffffff;
+  --md-sys-light-secondary: #4e6700;
+  --md-sys-light-on-secondary: #ffffff;
+  --md-sys-light-tertiary: #272a78;
+  --md-sys-light-on-tertiary: #ffffff;
+  --md-sys-light-error-container: #ff6e61;
+  --md-sys-light-on-error-container: #270001;
+  --md-sys-light-background: #fff7f9;
+  --md-sys-light-on-background: #231821;
+  --md-sys-light-surface-variant: #f6dbee;
+  --md-sys-light-shadow: #000000;
+  --md-sys-light-scrim: #000000;
+  --md-sys-light-inverse-surface: #313030;
+  --md-sys-light-inverse-on-surface: #f4f0ef;
+  --md-sys-light-inverse-primary: #ffaaf4;
+  --md-sys-light-primary-fixed: #ffd7f6;
+  --md-sys-light-on-primary-fixed: #380038;
+  --md-sys-light-primary-fixed-dim: #ffaaf4;
+  --md-sys-light-on-primary-fixed-variant: #810082;
+  --md-sys-light-secondary-fixed: #bef500;
+  --md-sys-light-on-secondary-fixed: #151f00;
+  --md-sys-light-secondary-fixed-dim: #a6d700;
+  --md-sys-light-on-secondary-fixed-variant: #3a4d00;
+  --md-sys-light-tertiary-fixed: #e1e0ff;
+  --md-sys-light-on-tertiary-fixed: #0a0b5f;
+  --md-sys-light-tertiary-fixed-dim: #bfc1ff;
+  --md-sys-light-on-tertiary-fixed-variant: #3a3e8b;
+  --md-sys-light-surface-dim: #ddd9d9;
+  --md-sys-light-surface-bright: #fdf8f8;
+  --md-sys-light-surface-container-lowest: #ffffff;
+  --md-sys-light-text-color-primary: #1b1c17;
+  --md-sys-dark-on-surface-variant: #d9bfd2;
+  --md-sys-dark-primary: #ffaaf4;
+  --md-sys-dark-surface-tint: #ffaaf4;
+  --md-sys-dark-on-primary: #5b005c;
+  --md-sys-dark-primary-container: #cb14cc;
+  --md-sys-dark-on-primary-container: #ffffff;
+  --md-sys-dark-secondary: #ffffff;
+  --md-sys-dark-on-secondary: #273500;
+  --md-sys-dark-secondary-container: #b2e600;
+  --md-sys-dark-on-secondary-container: #344500;
+  --md-sys-dark-tertiary: #bfc1ff;
+  --md-sys-dark-on-tertiary: #232673;
+  --md-sys-dark-tertiary-container: #323582;
+  --md-sys-dark-on-tertiary-container: #cecfff;
+  --md-sys-dark-error: #ffb4ab;
+  --md-sys-dark-on-error: #690005;
+  --md-sys-dark-error-container: #d83831;
+  --md-sys-dark-on-error-container: #ffffff;
+  --md-sys-dark-background: #1b1019;
+  --md-sys-dark-on-background: #f2ddea;
+  --md-sys-dark-surface: #141313;
+  --md-sys-dark-on-surface: #e6e1e1;
+  --md-sys-dark-surface-variant: #544150;
+  --md-sys-dark-outline: #a18a9c;
+  --md-sys-dark-outline-variant: #544150;
+  --md-sys-dark-shadow: #000000;
+  --md-sys-dark-scrim: #000000;
+  --md-sys-dark-inverse-surface: #e6e1e1;
+  --md-sys-dark-inverse-on-surface: #313030;
+  --md-sys-dark-inverse-primary: #a800aa;
+  --md-sys-dark-primary-fixed: #ffd7f6;
+  --md-sys-dark-on-primary-fixed: #380038;
+  --md-sys-dark-primary-fixed-dim: #ffaaf4;
+  --md-sys-dark-on-primary-fixed-variant: #810082;
+  --md-sys-dark-secondary-fixed: #bef500;
+  --md-sys-dark-on-secondary-fixed: #151f00;
+  --md-sys-dark-secondary-fixed-dim: #a6d700;
+  --md-sys-dark-on-secondary-fixed-variant: #3a4d00;
+  --md-sys-dark-tertiary-fixed: #e1e0ff;
+  --md-sys-dark-on-tertiary-fixed: #0a0b5f;
+  --md-sys-dark-tertiary-fixed-dim: #bfc1ff;
+  --md-sys-dark-on-tertiary-fixed-variant: #3a3e8b;
+  --md-sys-dark-surface-dim: #141313;
+  --md-sys-dark-surface-bright: #3a3939;
+  --md-sys-dark-surface-container-lowest: #0f0e0e;
+  --md-sys-dark-surface-container-low: #1c1b1b;
+  --md-sys-dark-surface-container: #201f1f;
+  --md-sys-dark-surface-container-high: #2b2a2a;
+  --md-sys-dark-surface-container-highest: #363434;
+  --md-sys-dark-color-surface: #30312b;
+  --md-sys-dark-color-accent-primary-variant: #a8b163;
+  --md-sys-dark-text-color-primary: #f2f1e8;
+  --md-sys-dark-color-accent-primary: #e0e994;
+  --md-sys-light-high-contrast-primary: #430044;
+  --md-sys-light-high-contrast-surface-tint: #a800aa;
+  --md-sys-light-high-contrast-on-primary: #ffffff;
+  --md-sys-light-high-contrast-primary-container: #7a007b;
+  --md-sys-light-high-contrast-on-primary-container: #ffffff;
+  --md-sys-light-high-contrast-secondary: #1b2600;
+  --md-sys-light-high-contrast-on-secondary: #ffffff;
+  --md-sys-light-high-contrast-secondary-container: #374900;
+  --md-sys-light-high-contrast-on-secondary-container: #ffffff;
+  --md-sys-light-high-contrast-tertiary: #131565;
+  --md-sys-light-high-contrast-on-tertiary: #ffffff;
+  --md-sys-light-high-contrast-tertiary-container: #363a87;
+  --md-sys-light-high-contrast-on-tertiary-container: #ffffff;
+  --md-sys-light-high-contrast-error: #4e0003;
+  --md-sys-light-high-contrast-on-error: #ffffff;
+  --md-sys-light-high-contrast-error-container: #8c0009;
+  --md-sys-light-high-contrast-on-error-container: #ffffff;
+  --md-sys-light-high-contrast-background: #fff7f9;
+  --md-sys-light-high-contrast-on-background: #231821;
+  --md-sys-light-high-contrast-surface: #fdf8f8;
+  --md-sys-light-high-contrast-on-surface: #000000;
+  --md-sys-light-high-contrast-surface-variant: #f6dbee;
+  --md-sys-light-high-contrast-on-surface-variant: #2f1f2d;
+  --md-sys-light-high-contrast-outline: #503d4c;
+  --md-sys-light-high-contrast-outline-variant: #503d4c;
+  --md-sys-light-high-contrast-shadow: #000000;
+  --md-sys-light-high-contrast-scrim: #000000;
+  --md-sys-light-high-contrast-inverse-surface: #313030;
+  --md-sys-light-high-contrast-inverse-on-surface: #ffffff;
+  --md-sys-light-high-contrast-inverse-primary: #ffe5f7;
+  --md-sys-light-high-contrast-primary-fixed: #7a007b;
+  --md-sys-light-high-contrast-on-primary-fixed: #ffffff;
+  --md-sys-light-high-contrast-primary-fixed-dim: #550055;
+  --md-sys-light-high-contrast-on-primary-fixed-variant: #ffffff;
+  --md-sys-light-high-contrast-secondary-fixed: #374900;
+  --md-sys-light-high-contrast-on-secondary-fixed: #ffffff;
+  --md-sys-light-high-contrast-secondary-fixed-dim: #243100;
+  --md-sys-light-high-contrast-on-secondary-fixed-variant: #ffffff;
+  --md-sys-light-high-contrast-tertiary-fixed: #363a87;
+  --md-sys-light-high-contrast-on-tertiary-fixed: #ffffff;
+  --md-sys-light-high-contrast-tertiary-fixed-dim: #1f2270;
+  --md-sys-light-high-contrast-on-tertiary-fixed-variant: #ffffff;
+  --md-sys-light-high-contrast-surface-dim: #ddd9d9;
+  --md-sys-light-high-contrast-surface-bright: #fdf8f8;
+  --md-sys-light-high-contrast-surface-container-lowest: #ffffff;
+  --md-sys-light-high-contrast-surface-container-low: #f7f2f2;
+  --md-sys-light-high-contrast-surface-container: #f1edec;
+  --md-sys-light-high-contrast-surface-container-high: #ece7e7;
+  --md-sys-light-high-contrast-surface-container-highest: #e6e1e1;
+  --md-sys-dark-high-contrast-primary: #fff9fa;
+  --md-sys-dark-high-contrast-surface-tint: #ffaaf4;
+  --md-sys-dark-high-contrast-on-primary: #000000;
+  --md-sys-dark-high-contrast-primary-container: #ffb1f4;
+  --md-sys-dark-high-contrast-on-primary-container: #000000;
+  --md-sys-dark-high-contrast-secondary: #ffffff;
+  --md-sys-dark-high-contrast-on-secondary: #000000;
+  --md-sys-dark-high-contrast-secondary-container: #b2e600;
+  --md-sys-dark-high-contrast-on-secondary-container: #000000;
+  --md-sys-dark-high-contrast-tertiary: #fdf9ff;
+  --md-sys-dark-high-contrast-on-tertiary: #000000;
+  --md-sys-dark-high-contrast-tertiary-container: #c4c6ff;
+  --md-sys-dark-high-contrast-on-tertiary-container: #000000;
+  --md-sys-dark-high-contrast-error: #fff9f9;
+  --md-sys-dark-high-contrast-on-error: #000000;
+  --md-sys-dark-high-contrast-error-container: #ffbab1;
+  --md-sys-dark-high-contrast-on-error-container: #000000;
+  --md-sys-dark-high-contrast-background: #1b1019;
+  --md-sys-dark-high-contrast-on-background: #f2ddea;
+  --md-sys-dark-high-contrast-surface: #141313;
+  --md-sys-dark-high-contrast-on-surface: #ffffff;
+  --md-sys-dark-high-contrast-surface-variant: #544150;
+  --md-sys-dark-high-contrast-on-surface-variant: #fff9fa;
+  --md-sys-dark-high-contrast-outline: #dec3d6;
+  --md-sys-dark-high-contrast-outline-variant: #dec3d6;
+  --md-sys-dark-high-contrast-shadow: #000000;
+  --md-sys-dark-high-contrast-scrim: #000000;
+  --md-sys-dark-high-contrast-inverse-surface: #e6e1e1;
+  --md-sys-dark-high-contrast-inverse-on-surface: #000000;
+  --md-sys-dark-high-contrast-inverse-primary: #500051;
+  --md-sys-dark-high-contrast-primary-fixed: #ffddf6;
+  --md-sys-dark-high-contrast-on-primary-fixed: #000000;
+  --md-sys-dark-high-contrast-primary-fixed-dim: #ffb1f4;
+  --md-sys-dark-high-contrast-on-primary-fixed-variant: #2f002f;
+  --md-sys-dark-high-contrast-secondary-fixed: #c2fa00;
+  --md-sys-dark-high-contrast-on-secondary-fixed: #000000;
+  --md-sys-dark-high-contrast-secondary-fixed-dim: #aadb00;
+  --md-sys-dark-high-contrast-on-secondary-fixed-variant: #111900;
+  --md-sys-dark-high-contrast-tertiary-fixed: #e6e4ff;
+  --md-sys-dark-high-contrast-on-tertiary-fixed: #000000;
+  --md-sys-dark-high-contrast-tertiary-fixed-dim: #c4c6ff;
+  --md-sys-dark-high-contrast-on-tertiary-fixed-variant: #03025b;
+  --md-sys-dark-high-contrast-surface-dim: #141313;
+  --md-sys-dark-high-contrast-surface-bright: #3a3939;
+  --md-sys-dark-high-contrast-surface-container-lowest: #0f0e0e;
+  --md-sys-dark-high-contrast-surface-container-low: #1c1b1b;
+  --md-sys-dark-high-contrast-surface-container: #201f1f;
+  --md-sys-dark-high-contrast-surface-container-high: #2b2a2a;
+  --md-sys-dark-high-contrast-surface-container-highest: #363434;
+  --md-sys-light-medium-contrast-primary: #7a007b;
+  --md-sys-light-medium-contrast-surface-tint: #a800aa;
+  --md-sys-light-medium-contrast-on-primary: #ffffff;
+  --md-sys-light-medium-contrast-primary-container: #cb14cc;
+  --md-sys-light-medium-contrast-on-primary-container: #ffffff;
+  --md-sys-light-medium-contrast-secondary: #374900;
+  --md-sys-light-medium-contrast-on-secondary: #ffffff;
+  --md-sys-light-medium-contrast-secondary-container: #617f00;
+  --md-sys-light-medium-contrast-on-secondary-container: #ffffff;
+  --md-sys-light-medium-contrast-tertiary: #272a78;
+  --md-sys-light-medium-contrast-on-tertiary: #ffffff;
+  --md-sys-light-medium-contrast-tertiary-container: #4b4f9c;
+  --md-sys-light-medium-contrast-on-tertiary-container: #ffffff;
+  --md-sys-light-medium-contrast-error: #8c0009;
+  --md-sys-light-medium-contrast-on-error: #ffffff;
+  --md-sys-light-medium-contrast-error-container: #d83831;
+  --md-sys-light-medium-contrast-on-error-container: #ffffff;
+  --md-sys-light-medium-contrast-background: #fff7f9;
+  --md-sys-light-medium-contrast-on-background: #231821;
+  --md-sys-light-medium-contrast-surface: #fdf8f8;
+  --md-sys-light-medium-contrast-on-surface: #1c1b1b;
+  --md-sys-light-medium-contrast-surface-variant: #f6dbee;
+  --md-sys-light-medium-contrast-on-surface-variant: #503d4c;
+  --md-sys-light-medium-contrast-outline: #6e5969;
+  --md-sys-light-medium-contrast-outline-variant: #8a7485;
+  --md-sys-light-medium-contrast-shadow: #000000;
+  --md-sys-light-medium-contrast-scrim: #000000;
+  --md-sys-light-medium-contrast-inverse-surface: #313030;
+  --md-sys-light-medium-contrast-inverse-on-surface: #f4f0ef;
+  --md-sys-light-medium-contrast-inverse-primary: #ffaaf4;
+  --md-sys-light-medium-contrast-primary-fixed: #cb14cc;
+  --md-sys-light-medium-contrast-on-primary-fixed: #ffffff;
+  --md-sys-light-medium-contrast-primary-fixed-dim: #a400a6;
+  --md-sys-light-medium-contrast-on-primary-fixed-variant: #ffffff;
+  --md-sys-light-medium-contrast-secondary-fixed: #617f00;
+  --md-sys-light-medium-contrast-on-secondary-fixed: #ffffff;
+  --md-sys-light-medium-contrast-secondary-fixed-dim: #4c6400;
+  --md-sys-light-medium-contrast-on-secondary-fixed-variant: #ffffff;
+  --md-sys-light-medium-contrast-tertiary-fixed: #696dbd;
+  --md-sys-light-medium-contrast-on-tertiary-fixed: #ffffff;
+  --md-sys-light-medium-contrast-tertiary-fixed-dim: #5054a2;
+  --md-sys-light-medium-contrast-on-tertiary-fixed-variant: #ffffff;
+  --md-sys-light-medium-contrast-surface-dim: #ddd9d9;
+  --md-sys-light-medium-contrast-surface-bright: #fdf8f8;
+  --md-sys-light-medium-contrast-surface-container-lowest: #ffffff;
+  --md-sys-light-medium-contrast-surface-container-low: #f7f2f2;
+  --md-sys-light-medium-contrast-surface-container: #f1edec;
+  --md-sys-light-medium-contrast-surface-container-high: #ece7e7;
+  --md-sys-light-medium-contrast-surface-container-highest: #e6e1e1;
+  --md-sys-dark-medium-contrast-primary: #ffb1f4;
+  --md-sys-dark-medium-contrast-surface-tint: #ffaaf4;
+  --md-sys-dark-medium-contrast-on-primary: #2f002f;
+  --md-sys-dark-medium-contrast-primary-container: #ee42ec;
+  --md-sys-dark-medium-contrast-on-primary-container: #000000;
+  --md-sys-dark-medium-contrast-secondary: #ffffff;
+  --md-sys-dark-medium-contrast-on-secondary: #273500;
+  --md-sys-dark-medium-contrast-secondary-container: #b2e600;
+  --md-sys-dark-medium-contrast-on-secondary-container: #192300;
+  --md-sys-dark-medium-contrast-tertiary: #c4c6ff;
+  --md-sys-dark-medium-contrast-on-tertiary: #03025b;
+  --md-sys-dark-medium-contrast-tertiary-container: #8589db;
+  --md-sys-dark-medium-contrast-on-tertiary-container: #000000;
+  --md-sys-dark-medium-contrast-error: #ffbab1;
+  --md-sys-dark-medium-contrast-on-error: #370001;
+  --md-sys-dark-medium-contrast-error-container: #ff5449;
+  --md-sys-dark-medium-contrast-on-error-container: #000000;
+  --md-sys-dark-medium-contrast-background: #1b1019;
+  --md-sys-dark-medium-contrast-on-background: #f2ddea;
+  --md-sys-dark-medium-contrast-surface: #141313;
+  --md-sys-dark-medium-contrast-on-surface: #fefaf9;
+  --md-sys-dark-medium-contrast-surface-variant: #544150;
+  --md-sys-dark-medium-contrast-on-surface-variant: #dec3d6;
+  --md-sys-dark-medium-contrast-outline: #b49cae;
+  --md-sys-dark-medium-contrast-outline-variant: #937c8e;
+  --md-sys-dark-medium-contrast-shadow: #000000;
+  --md-sys-dark-medium-contrast-scrim: #000000;
+  --md-sys-dark-medium-contrast-inverse-surface: #e6e1e1;
+  --md-sys-dark-medium-contrast-inverse-on-surface: #2b2a2a;
+  --md-sys-dark-medium-contrast-inverse-primary: #830084;
+  --md-sys-dark-medium-contrast-primary-fixed: #ffd7f6;
+  --md-sys-dark-medium-contrast-on-primary-fixed: #260027;
+  --md-sys-dark-medium-contrast-primary-fixed-dim: #ffaaf4;
+  --md-sys-dark-medium-contrast-on-primary-fixed-variant: #650066;
+  --md-sys-dark-medium-contrast-secondary-fixed: #bef500;
+  --md-sys-dark-medium-contrast-on-secondary-fixed: #0c1300;
+  --md-sys-dark-medium-contrast-secondary-fixed-dim: #a6d700;
+  --md-sys-dark-medium-contrast-on-secondary-fixed-variant: #2c3b00;
+  --md-sys-dark-medium-contrast-tertiary-fixed: #e1e0ff;
+  --md-sys-dark-medium-contrast-on-tertiary-fixed: #01004e;
+  --md-sys-dark-medium-contrast-tertiary-fixed-dim: #bfc1ff;
+  --md-sys-dark-medium-contrast-on-tertiary-fixed-variant: #292c79;
+  --md-sys-dark-medium-contrast-surface-dim: #141313;
+  --md-sys-dark-medium-contrast-surface-bright: #3a3939;
+  --md-sys-dark-medium-contrast-surface-container-lowest: #0f0e0e;
+  --md-sys-dark-medium-contrast-surface-container-low: #1c1b1b;
+  --md-sys-dark-medium-contrast-surface-container: #201f1f;
+  --md-sys-dark-medium-contrast-surface-container-high: #2b2a2a;
+  --md-sys-dark-medium-contrast-surface-container-highest: #363434;
+  --md-state-layers-sys-light-on-surface-opacity-012: rgba(
+      29,
+      27,
+      32,
+      0.12
+  );
+  --md-state-layers-sys-light-on-surface-opacity-008: rgba(
+      29,
+      27,
+      32,
+      0.08
+  );
+  --md-state-layers-sys-light-on-surface-opacity-016: rgba(
+      29,
+      27,
+      32,
+      0.16
+  );
+  --md-state-layers-sys-light-on-secondary-container-opacity-016: rgba(
+      29,
+      25,
+      43,
+      0.16
+  );
+  --md-state-layers-sys-light-on-tertiary-container-opacity-012: rgba(
+      49,
+      17,
+      29,
+      0.12
+  );
+  --md-state-layers-sys-light-error-opacity-012: rgba(
+      179,
+      38,
+      30,
+      0.12
+  );
+  --md-state-layers-sys-light-error-opacity-008: rgba(
+      179,
+      38,
+      30,
+      0.08
+  );
+  --md-state-layers-light-primary-opacity-008: rgba(144, 0, 145, 0.08);
+  --md-state-layers-light-primary-opacity-012: rgba(144, 0, 145, 0.12);
+  --md-state-layers-light-primary-opacity-016: rgba(144, 0, 145, 0.16);
+  --md-state-layers-light-surfacetint-opacity-008: rgba(
+      168,
+      0,
+      170,
+      0.08
+  );
+  --md-state-layers-light-surfacetint-opacity-012: rgba(
+      168,
+      0,
+      170,
+      0.12
+  );
+  --md-state-layers-light-surfacetint-opacity-016: rgba(
+      168,
+      0,
+      170,
+      0.16
+  );
+  --md-state-layers-light-onprimary-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-onprimary-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-onprimary-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-primarycontainer-opacity-008: rgba(
+      203,
+      20,
+      204,
+      0.08
+  );
+  --md-state-layers-light-primarycontainer-opacity-012: rgba(
+      203,
+      20,
+      204,
+      0.12
+  );
+  --md-state-layers-light-primarycontainer-opacity-016: rgba(
+      203,
+      20,
+      204,
+      0.16
+  );
+  --md-state-layers-light-onprimarycontainer-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-onprimarycontainer-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-onprimarycontainer-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-secondary-opacity-008: rgba(
+      78,
+      103,
+      0,
+      0.08
+  );
+  --md-state-layers-light-secondary-opacity-012: rgba(
+      78,
+      103,
+      0,
+      0.12
+  );
+  --md-state-layers-light-secondary-opacity-016: rgba(
+      78,
+      103,
+      0,
+      0.16
+  );
+  --md-state-layers-light-onsecondary-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-onsecondary-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-onsecondary-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-secondarycontainer-opacity-008: rgba(
+      211,
+      255,
+      98,
+      0.08
+  );
+  --md-state-layers-light-secondarycontainer-opacity-012: rgba(
+      211,
+      255,
+      98,
+      0.12
+  );
+  --md-state-layers-light-secondarycontainer-opacity-016: rgba(
+      211,
+      255,
+      98,
+      0.16
+  );
+  --md-state-layers-light-onsecondarycontainer-opacity-008: rgba(
+      65,
+      86,
+      0,
+      0.08
+  );
+  --md-state-layers-light-onsecondarycontainer-opacity-012: rgba(
+      65,
+      86,
+      0,
+      0.12
+  );
+  --md-state-layers-light-onsecondarycontainer-opacity-016: rgba(
+      65,
+      86,
+      0,
+      0.16
+  );
+  --md-state-layers-light-tertiary-opacity-008: rgba(
+      39,
+      42,
+      120,
+      0.08
+  );
+  --md-state-layers-light-tertiary-opacity-012: rgba(
+      39,
+      42,
+      120,
+      0.12
+  );
+  --md-state-layers-light-tertiary-opacity-016: rgba(
+      39,
+      42,
+      120,
+      0.16
+  );
+  --md-state-layers-light-ontertiary-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-ontertiary-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-ontertiary-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-tertiarycontainer-opacity-008: rgba(
+      75,
+      79,
+      156,
+      0.08
+  );
+  --md-state-layers-light-tertiarycontainer-opacity-012: rgba(
+      75,
+      79,
+      156,
+      0.12
+  );
+  --md-state-layers-light-tertiarycontainer-opacity-016: rgba(
+      75,
+      79,
+      156,
+      0.16
+  );
+  --md-state-layers-light-ontertiarycontainer-opacity-008: rgba(
+      254,
+      251,
+      255,
+      0.08
+  );
+  --md-state-layers-light-ontertiarycontainer-opacity-012: rgba(
+      254,
+      251,
+      255,
+      0.12
+  );
+  --md-state-layers-light-ontertiarycontainer-opacity-016: rgba(
+      254,
+      251,
+      255,
+      0.16
+  );
+  --md-state-layers-light-error-opacity-008: rgba(184, 31, 30, 0.08);
+  --md-state-layers-light-error-opacity-012: rgba(184, 31, 30, 0.12);
+  --md-state-layers-light-error-opacity-016: rgba(184, 31, 30, 0.16);
+  --md-state-layers-light-onerror-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-onerror-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-onerror-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-errorcontainer-opacity-008: rgba(
+      255,
+      110,
+      97,
+      0.08
+  );
+  --md-state-layers-light-errorcontainer-opacity-012: rgba(
+      255,
+      110,
+      97,
+      0.12
+  );
+  --md-state-layers-light-errorcontainer-opacity-016: rgba(
+      255,
+      110,
+      97,
+      0.16
+  );
+  --md-state-layers-light-onerrorcontainer-opacity-008: rgba(
+      39,
+      0,
+      1,
+      0.08
+  );
+  --md-state-layers-light-onerrorcontainer-opacity-012: rgba(
+      39,
+      0,
+      1,
+      0.12
+  );
+  --md-state-layers-light-onerrorcontainer-opacity-016: rgba(
+      39,
+      0,
+      1,
+      0.16
+  );
+  --md-state-layers-light-background-opacity-008: rgba(
+      255,
+      247,
+      249,
+      0.08
+  );
+  --md-state-layers-light-background-opacity-012: rgba(
+      255,
+      247,
+      249,
+      0.12
+  );
+  --md-state-layers-light-background-opacity-016: rgba(
+      255,
+      247,
+      249,
+      0.16
+  );
+  --md-state-layers-light-onbackground-opacity-008: rgba(
+      35,
+      24,
+      33,
+      0.08
+  );
+  --md-state-layers-light-onbackground-opacity-012: rgba(
+      35,
+      24,
+      33,
+      0.12
+  );
+  --md-state-layers-light-onbackground-opacity-016: rgba(
+      35,
+      24,
+      33,
+      0.16
+  );
+  --md-state-layers-light-surface-opacity-008: rgba(
+      253,
+      248,
+      248,
+      0.08
+  );
+  --md-state-layers-light-surface-opacity-012: rgba(
+      253,
+      248,
+      248,
+      0.12
+  );
+  --md-state-layers-light-surface-opacity-016: rgba(
+      253,
+      248,
+      248,
+      0.16
+  );
+  --md-state-layers-light-onsurface-opacity-008: rgba(
+      28,
+      27,
+      27,
+      0.08
+  );
+  --md-state-layers-light-onsurface-opacity-012: rgba(
+      28,
+      27,
+      27,
+      0.12
+  );
+  --md-state-layers-light-onsurface-opacity-016: rgba(
+      28,
+      27,
+      27,
+      0.16
+  );
+  --md-state-layers-light-surfacevariant-opacity-008: rgba(
+      246,
+      219,
+      238,
+      0.08
+  );
+  --md-state-layers-light-surfacevariant-opacity-012: rgba(
+      246,
+      219,
+      238,
+      0.12
+  );
+  --md-state-layers-light-surfacevariant-opacity-016: rgba(
+      246,
+      219,
+      238,
+      0.16
+  );
+  --md-state-layers-light-onsurfacevariant-opacity-008: rgba(
+      84,
+      65,
+      80,
+      0.08
+  );
+  --md-state-layers-light-onsurfacevariant-opacity-012: rgba(
+      84,
+      65,
+      80,
+      0.12
+  );
+  --md-state-layers-light-onsurfacevariant-opacity-016: rgba(
+      84,
+      65,
+      80,
+      0.16
+  );
+  --md-state-layers-light-outline-opacity-008: rgba(
+      135,
+      112,
+      130,
+      0.08
+  );
+  --md-state-layers-light-outline-opacity-012: rgba(
+      135,
+      112,
+      130,
+      0.12
+  );
+  --md-state-layers-light-outline-opacity-016: rgba(
+      135,
+      112,
+      130,
+      0.16
+  );
+  --md-state-layers-light-outlinevariant-opacity-008: rgba(
+      217,
+      191,
+      210,
+      0.08
+  );
+  --md-state-layers-light-outlinevariant-opacity-012: rgba(
+      217,
+      191,
+      210,
+      0.12
+  );
+  --md-state-layers-light-outlinevariant-opacity-016: rgba(
+      217,
+      191,
+      210,
+      0.16
+  );
+  --md-state-layers-light-shadow-opacity-008: rgba(0, 0, 0, 0.08);
+  --md-state-layers-light-shadow-opacity-012: rgba(0, 0, 0, 0.12);
+  --md-state-layers-light-shadow-opacity-016: rgba(0, 0, 0, 0.16);
+  --md-state-layers-light-scrim-opacity-008: rgba(0, 0, 0, 0.08);
+  --md-state-layers-light-scrim-opacity-012: rgba(0, 0, 0, 0.12);
+  --md-state-layers-light-scrim-opacity-016: rgba(0, 0, 0, 0.16);
+  --md-state-layers-light-inversesurface-opacity-008: rgba(
+      49,
+      48,
+      48,
+      0.08
+  );
+  --md-state-layers-light-inversesurface-opacity-012: rgba(
+      49,
+      48,
+      48,
+      0.12
+  );
+  --md-state-layers-light-inversesurface-opacity-016: rgba(
+      49,
+      48,
+      48,
+      0.16
+  );
+  --md-state-layers-light-inverseonsurface-opacity-008: rgba(
+      244,
+      240,
+      239,
+      0.08
+  );
+  --md-state-layers-light-inverseonsurface-opacity-012: rgba(
+      244,
+      240,
+      239,
+      0.12
+  );
+  --md-state-layers-light-inverseonsurface-opacity-016: rgba(
+      244,
+      240,
+      239,
+      0.16
+  );
+  --md-state-layers-light-inverseprimary-opacity-008: rgba(
+      255,
+      170,
+      244,
+      0.08
+  );
+  --md-state-layers-light-inverseprimary-opacity-012: rgba(
+      255,
+      170,
+      244,
+      0.12
+  );
+  --md-state-layers-light-inverseprimary-opacity-016: rgba(
+      255,
+      170,
+      244,
+      0.16
+  );
+  --md-state-layers-light-primaryfixed-opacity-008: rgba(
+      255,
+      215,
+      246,
+      0.08
+  );
+  --md-state-layers-light-primaryfixed-opacity-012: rgba(
+      255,
+      215,
+      246,
+      0.12
+  );
+  --md-state-layers-light-primaryfixed-opacity-016: rgba(
+      255,
+      215,
+      246,
+      0.16
+  );
+  --md-state-layers-light-onprimaryfixed-opacity-008: rgba(
+      56,
+      0,
+      56,
+      0.08
+  );
+  --md-state-layers-light-onprimaryfixed-opacity-012: rgba(
+      56,
+      0,
+      56,
+      0.12
+  );
+  --md-state-layers-light-onprimaryfixed-opacity-016: rgba(
+      56,
+      0,
+      56,
+      0.16
+  );
+  --md-state-layers-light-primaryfixeddim-opacity-008: rgba(
+      255,
+      170,
+      244,
+      0.08
+  );
+  --md-state-layers-light-primaryfixeddim-opacity-012: rgba(
+      255,
+      170,
+      244,
+      0.12
+  );
+  --md-state-layers-light-primaryfixeddim-opacity-016: rgba(
+      255,
+      170,
+      244,
+      0.16
+  );
+  --md-state-layers-light-onprimaryfixedvariant-opacity-008: rgba(
+      129,
+      0,
+      130,
+      0.08
+  );
+  --md-state-layers-light-onprimaryfixedvariant-opacity-012: rgba(
+      129,
+      0,
+      130,
+      0.12
+  );
+  --md-state-layers-light-onprimaryfixedvariant-opacity-016: rgba(
+      129,
+      0,
+      130,
+      0.16
+  );
+  --md-state-layers-light-secondaryfixed-opacity-008: rgba(
+      190,
+      245,
+      0,
+      0.08
+  );
+  --md-state-layers-light-secondaryfixed-opacity-012: rgba(
+      190,
+      245,
+      0,
+      0.12
+  );
+  --md-state-layers-light-secondaryfixed-opacity-016: rgba(
+      190,
+      245,
+      0,
+      0.16
+  );
+  --md-state-layers-light-onsecondaryfixed-opacity-008: rgba(
+      21,
+      31,
+      0,
+      0.08
+  );
+  --md-state-layers-light-onsecondaryfixed-opacity-012: rgba(
+      21,
+      31,
+      0,
+      0.12
+  );
+  --md-state-layers-light-onsecondaryfixed-opacity-016: rgba(
+      21,
+      31,
+      0,
+      0.16
+  );
+  --md-state-layers-light-secondaryfixeddim-opacity-008: rgba(
+      166,
+      215,
+      0,
+      0.08
+  );
+  --md-state-layers-light-secondaryfixeddim-opacity-012: rgba(
+      166,
+      215,
+      0,
+      0.12
+  );
+  --md-state-layers-light-secondaryfixeddim-opacity-016: rgba(
+      166,
+      215,
+      0,
+      0.16
+  );
+  --md-state-layers-light-onsecondaryfixedvariant-opacity-008: rgba(
+      58,
+      77,
+      0,
+      0.08
+  );
+  --md-state-layers-light-onsecondaryfixedvariant-opacity-012: rgba(
+      58,
+      77,
+      0,
+      0.12
+  );
+  --md-state-layers-light-onsecondaryfixedvariant-opacity-016: rgba(
+      58,
+      77,
+      0,
+      0.16
+  );
+  --md-state-layers-light-tertiaryfixed-opacity-008: rgba(
+      225,
+      224,
+      255,
+      0.08
+  );
+  --md-state-layers-light-tertiaryfixed-opacity-012: rgba(
+      225,
+      224,
+      255,
+      0.12
+  );
+  --md-state-layers-light-tertiaryfixed-opacity-016: rgba(
+      225,
+      224,
+      255,
+      0.16
+  );
+  --md-state-layers-light-ontertiaryfixed-opacity-008: rgba(
+      10,
+      11,
+      95,
+      0.08
+  );
+  --md-state-layers-light-ontertiaryfixed-opacity-012: rgba(
+      10,
+      11,
+      95,
+      0.12
+  );
+  --md-state-layers-light-ontertiaryfixed-opacity-016: rgba(
+      10,
+      11,
+      95,
+      0.16
+  );
+  --md-state-layers-light-tertiaryfixeddim-opacity-008: rgba(
+      191,
+      193,
+      255,
+      0.08
+  );
+  --md-state-layers-light-tertiaryfixeddim-opacity-012: rgba(
+      191,
+      193,
+      255,
+      0.12
+  );
+  --md-state-layers-light-tertiaryfixeddim-opacity-016: rgba(
+      191,
+      193,
+      255,
+      0.16
+  );
+  --md-state-layers-light-ontertiaryfixedvariant-opacity-008: rgba(
+      58,
+      62,
+      139,
+      0.08
+  );
+  --md-state-layers-light-ontertiaryfixedvariant-opacity-012: rgba(
+      58,
+      62,
+      139,
+      0.12
+  );
+  --md-state-layers-light-ontertiaryfixedvariant-opacity-016: rgba(
+      58,
+      62,
+      139,
+      0.16
+  );
+  --md-state-layers-light-surfacedim-opacity-008: rgba(
+      221,
+      217,
+      217,
+      0.08
+  );
+  --md-state-layers-light-surfacedim-opacity-012: rgba(
+      221,
+      217,
+      217,
+      0.12
+  );
+  --md-state-layers-light-surfacedim-opacity-016: rgba(
+      221,
+      217,
+      217,
+      0.16
+  );
+  --md-state-layers-light-surfacebright-opacity-008: rgba(
+      253,
+      248,
+      248,
+      0.08
+  );
+  --md-state-layers-light-surfacebright-opacity-012: rgba(
+      253,
+      248,
+      248,
+      0.12
+  );
+  --md-state-layers-light-surfacebright-opacity-016: rgba(
+      253,
+      248,
+      248,
+      0.16
+  );
+  --md-state-layers-light-surfacecontainerlowest-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-surfacecontainerlowest-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-surfacecontainerlowest-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-surfacecontainerlow-opacity-008: rgba(
+      247,
+      242,
+      242,
+      0.08
+  );
+  --md-state-layers-light-surfacecontainerlow-opacity-012: rgba(
+      247,
+      242,
+      242,
+      0.12
+  );
+  --md-state-layers-light-surfacecontainerlow-opacity-016: rgba(
+      247,
+      242,
+      242,
+      0.16
+  );
+  --md-state-layers-light-surfacecontainer-opacity-008: rgba(
+      241,
+      237,
+      236,
+      0.08
+  );
+  --md-state-layers-light-surfacecontainer-opacity-012: rgba(
+      241,
+      237,
+      236,
+      0.12
+  );
+  --md-state-layers-light-surfacecontainer-opacity-016: rgba(
+      241,
+      237,
+      236,
+      0.16
+  );
+  --md-state-layers-light-surfacecontainerhigh-opacity-008: rgba(
+      236,
+      231,
+      231,
+      0.08
+  );
+  --md-state-layers-light-surfacecontainerhigh-opacity-012: rgba(
+      236,
+      231,
+      231,
+      0.12
+  );
+  --md-state-layers-light-surfacecontainerhigh-opacity-016: rgba(
+      236,
+      231,
+      231,
+      0.16
+  );
+  --md-state-layers-light-surfacecontainerhighest-opacity-008: rgba(
+      230,
+      225,
+      225,
+      0.08
+  );
+  --md-state-layers-light-surfacecontainerhighest-opacity-012: rgba(
+      230,
+      225,
+      225,
+      0.12
+  );
+  --md-state-layers-light-surfacecontainerhighest-opacity-016: rgba(
+      230,
+      225,
+      225,
+      0.16
+  );
+  --md-state-layers-dark-primary-opacity-008: rgba(
+      255,
+      170,
+      244,
+      0.08
+  );
+  --md-state-layers-dark-primary-opacity-012: rgba(
+      255,
+      170,
+      244,
+      0.12
+  );
+  --md-state-layers-dark-primary-opacity-016: rgba(
+      255,
+      170,
+      244,
+      0.16
+  );
+  --md-state-layers-dark-surfacetint-opacity-008: rgba(
+      255,
+      170,
+      244,
+      0.08
+  );
+  --md-state-layers-dark-surfacetint-opacity-012: rgba(
+      255,
+      170,
+      244,
+      0.12
+  );
+  --md-state-layers-dark-surfacetint-opacity-016: rgba(
+      255,
+      170,
+      244,
+      0.16
+  );
+  --md-state-layers-dark-onprimary-opacity-008: rgba(91, 0, 92, 0.08);
+  --md-state-layers-dark-onprimary-opacity-012: rgba(91, 0, 92, 0.12);
+  --md-state-layers-dark-onprimary-opacity-016: rgba(91, 0, 92, 0.16);
+  --md-state-layers-dark-primarycontainer-opacity-008: rgba(
+      203,
+      20,
+      204,
+      0.08
+  );
+  --md-state-layers-dark-primarycontainer-opacity-012: rgba(
+      203,
+      20,
+      204,
+      0.12
+  );
+  --md-state-layers-dark-primarycontainer-opacity-016: rgba(
+      203,
+      20,
+      204,
+      0.16
+  );
+  --md-state-layers-dark-onprimarycontainer-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-onprimarycontainer-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-onprimarycontainer-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-secondary-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-secondary-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-secondary-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-onsecondary-opacity-008: rgba(
+      39,
+      53,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-onsecondary-opacity-012: rgba(
+      39,
+      53,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-onsecondary-opacity-016: rgba(
+      39,
+      53,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-secondarycontainer-opacity-008: rgba(
+      178,
+      230,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-secondarycontainer-opacity-012: rgba(
+      178,
+      230,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-secondarycontainer-opacity-016: rgba(
+      178,
+      230,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-onsecondarycontainer-opacity-008: rgba(
+      52,
+      69,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-onsecondarycontainer-opacity-012: rgba(
+      52,
+      69,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-onsecondarycontainer-opacity-016: rgba(
+      52,
+      69,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-tertiary-opacity-008: rgba(
+      191,
+      193,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-tertiary-opacity-012: rgba(
+      191,
+      193,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-tertiary-opacity-016: rgba(
+      191,
+      193,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-ontertiary-opacity-008: rgba(
+      35,
+      38,
+      115,
+      0.08
+  );
+  --md-state-layers-dark-ontertiary-opacity-012: rgba(
+      35,
+      38,
+      115,
+      0.12
+  );
+  --md-state-layers-dark-ontertiary-opacity-016: rgba(
+      35,
+      38,
+      115,
+      0.16
+  );
+  --md-state-layers-dark-tertiarycontainer-opacity-008: rgba(
+      50,
+      53,
+      130,
+      0.08
+  );
+  --md-state-layers-dark-tertiarycontainer-opacity-012: rgba(
+      50,
+      53,
+      130,
+      0.12
+  );
+  --md-state-layers-dark-tertiarycontainer-opacity-016: rgba(
+      50,
+      53,
+      130,
+      0.16
+  );
+  --md-state-layers-dark-ontertiarycontainer-opacity-008: rgba(
+      206,
+      207,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-ontertiarycontainer-opacity-012: rgba(
+      206,
+      207,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-ontertiarycontainer-opacity-016: rgba(
+      206,
+      207,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-error-opacity-008: rgba(255, 180, 171, 0.08);
+  --md-state-layers-dark-error-opacity-012: rgba(255, 180, 171, 0.12);
+  --md-state-layers-dark-error-opacity-016: rgba(255, 180, 171, 0.16);
+  --md-state-layers-dark-onerror-opacity-008: rgba(105, 0, 5, 0.08);
+  --md-state-layers-dark-onerror-opacity-012: rgba(105, 0, 5, 0.12);
+  --md-state-layers-dark-onerror-opacity-016: rgba(105, 0, 5, 0.16);
+  --md-state-layers-dark-errorcontainer-opacity-008: rgba(
+      216,
+      56,
+      49,
+      0.08
+  );
+  --md-state-layers-dark-errorcontainer-opacity-012: rgba(
+      216,
+      56,
+      49,
+      0.12
+  );
+  --md-state-layers-dark-errorcontainer-opacity-016: rgba(
+      216,
+      56,
+      49,
+      0.16
+  );
+  --md-state-layers-dark-onerrorcontainer-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-onerrorcontainer-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-onerrorcontainer-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-background-opacity-008: rgba(
+      27,
+      16,
+      25,
+      0.08
+  );
+  --md-state-layers-dark-background-opacity-012: rgba(
+      27,
+      16,
+      25,
+      0.12
+  );
+  --md-state-layers-dark-background-opacity-016: rgba(
+      27,
+      16,
+      25,
+      0.16
+  );
+  --md-state-layers-dark-onbackground-opacity-008: rgba(
+      242,
+      221,
+      234,
+      0.08
+  );
+  --md-state-layers-dark-onbackground-opacity-012: rgba(
+      242,
+      221,
+      234,
+      0.12
+  );
+  --md-state-layers-dark-onbackground-opacity-016: rgba(
+      242,
+      221,
+      234,
+      0.16
+  );
+  --md-state-layers-dark-surface-opacity-008: rgba(20, 19, 19, 0.08);
+  --md-state-layers-dark-surface-opacity-012: rgba(20, 19, 19, 0.12);
+  --md-state-layers-dark-surface-opacity-016: rgba(20, 19, 19, 0.16);
+  --md-state-layers-dark-onsurface-opacity-008: rgba(
+      230,
+      225,
+      225,
+      0.08
+  );
+  --md-state-layers-dark-onsurface-opacity-012: rgba(
+      230,
+      225,
+      225,
+      0.12
+  );
+  --md-state-layers-dark-onsurface-opacity-016: rgba(
+      230,
+      225,
+      225,
+      0.16
+  );
+  --md-state-layers-dark-surfacevariant-opacity-008: rgba(
+      84,
+      65,
+      80,
+      0.08
+  );
+  --md-state-layers-dark-surfacevariant-opacity-012: rgba(
+      84,
+      65,
+      80,
+      0.12
+  );
+  --md-state-layers-dark-surfacevariant-opacity-016: rgba(
+      84,
+      65,
+      80,
+      0.16
+  );
+  --md-state-layers-dark-onsurfacevariant-opacity-008: rgba(
+      217,
+      191,
+      210,
+      0.08
+  );
+  --md-state-layers-dark-onsurfacevariant-opacity-012: rgba(
+      217,
+      191,
+      210,
+      0.12
+  );
+  --md-state-layers-dark-onsurfacevariant-opacity-016: rgba(
+      217,
+      191,
+      210,
+      0.16
+  );
+  --md-state-layers-dark-outline-opacity-008: rgba(
+      161,
+      138,
+      156,
+      0.08
+  );
+  --md-state-layers-dark-outline-opacity-012: rgba(
+      161,
+      138,
+      156,
+      0.12
+  );
+  --md-state-layers-dark-outline-opacity-016: rgba(
+      161,
+      138,
+      156,
+      0.16
+  );
+  --md-state-layers-dark-outlinevariant-opacity-008: rgba(
+      84,
+      65,
+      80,
+      0.08
+  );
+  --md-state-layers-dark-outlinevariant-opacity-012: rgba(
+      84,
+      65,
+      80,
+      0.12
+  );
+  --md-state-layers-dark-outlinevariant-opacity-016: rgba(
+      84,
+      65,
+      80,
+      0.16
+  );
+  --md-state-layers-dark-shadow-opacity-008: rgba(0, 0, 0, 0.08);
+  --md-state-layers-dark-shadow-opacity-012: rgba(0, 0, 0, 0.12);
+  --md-state-layers-dark-shadow-opacity-016: rgba(0, 0, 0, 0.16);
+  --md-state-layers-dark-scrim-opacity-008: rgba(0, 0, 0, 0.08);
+  --md-state-layers-dark-scrim-opacity-012: rgba(0, 0, 0, 0.12);
+  --md-state-layers-dark-scrim-opacity-016: rgba(0, 0, 0, 0.16);
+  --md-state-layers-dark-inversesurface-opacity-008: rgba(
+      230,
+      225,
+      225,
+      0.08
+  );
+  --md-state-layers-dark-inversesurface-opacity-012: rgba(
+      230,
+      225,
+      225,
+      0.12
+  );
+  --md-state-layers-dark-inversesurface-opacity-016: rgba(
+      230,
+      225,
+      225,
+      0.16
+  );
+  --md-state-layers-dark-inverseonsurface-opacity-008: rgba(
+      49,
+      48,
+      48,
+      0.08
+  );
+  --md-state-layers-dark-inverseonsurface-opacity-012: rgba(
+      49,
+      48,
+      48,
+      0.12
+  );
+  --md-state-layers-dark-inverseonsurface-opacity-016: rgba(
+      49,
+      48,
+      48,
+      0.16
+  );
+  --md-state-layers-dark-inverseprimary-opacity-008: rgba(
+      168,
+      0,
+      170,
+      0.08
+  );
+  --md-state-layers-dark-inverseprimary-opacity-012: rgba(
+      168,
+      0,
+      170,
+      0.12
+  );
+  --md-state-layers-dark-inverseprimary-opacity-016: rgba(
+      168,
+      0,
+      170,
+      0.16
+  );
+  --md-state-layers-dark-primaryfixed-opacity-008: rgba(
+      255,
+      215,
+      246,
+      0.08
+  );
+  --md-state-layers-dark-primaryfixed-opacity-012: rgba(
+      255,
+      215,
+      246,
+      0.12
+  );
+  --md-state-layers-dark-primaryfixed-opacity-016: rgba(
+      255,
+      215,
+      246,
+      0.16
+  );
+  --md-state-layers-dark-onprimaryfixed-opacity-008: rgba(
+      56,
+      0,
+      56,
+      0.08
+  );
+  --md-state-layers-dark-onprimaryfixed-opacity-012: rgba(
+      56,
+      0,
+      56,
+      0.12
+  );
+  --md-state-layers-dark-onprimaryfixed-opacity-016: rgba(
+      56,
+      0,
+      56,
+      0.16
+  );
+  --md-state-layers-dark-primaryfixeddim-opacity-008: rgba(
+      255,
+      170,
+      244,
+      0.08
+  );
+  --md-state-layers-dark-primaryfixeddim-opacity-012: rgba(
+      255,
+      170,
+      244,
+      0.12
+  );
+  --md-state-layers-dark-primaryfixeddim-opacity-016: rgba(
+      255,
+      170,
+      244,
+      0.16
+  );
+  --md-state-layers-dark-onprimaryfixedvariant-opacity-008: rgba(
+      129,
+      0,
+      130,
+      0.08
+  );
+  --md-state-layers-dark-onprimaryfixedvariant-opacity-012: rgba(
+      129,
+      0,
+      130,
+      0.12
+  );
+  --md-state-layers-dark-onprimaryfixedvariant-opacity-016: rgba(
+      129,
+      0,
+      130,
+      0.16
+  );
+  --md-state-layers-dark-secondaryfixed-opacity-008: rgba(
+      190,
+      245,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-secondaryfixed-opacity-012: rgba(
+      190,
+      245,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-secondaryfixed-opacity-016: rgba(
+      190,
+      245,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-onsecondaryfixed-opacity-008: rgba(
+      21,
+      31,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-onsecondaryfixed-opacity-012: rgba(
+      21,
+      31,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-onsecondaryfixed-opacity-016: rgba(
+      21,
+      31,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-secondaryfixeddim-opacity-008: rgba(
+      166,
+      215,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-secondaryfixeddim-opacity-012: rgba(
+      166,
+      215,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-secondaryfixeddim-opacity-016: rgba(
+      166,
+      215,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-onsecondaryfixedvariant-opacity-008: rgba(
+      58,
+      77,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-onsecondaryfixedvariant-opacity-012: rgba(
+      58,
+      77,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-onsecondaryfixedvariant-opacity-016: rgba(
+      58,
+      77,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-tertiaryfixed-opacity-008: rgba(
+      225,
+      224,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-tertiaryfixed-opacity-012: rgba(
+      225,
+      224,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-tertiaryfixed-opacity-016: rgba(
+      225,
+      224,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-ontertiaryfixed-opacity-008: rgba(
+      10,
+      11,
+      95,
+      0.08
+  );
+  --md-state-layers-dark-ontertiaryfixed-opacity-012: rgba(
+      10,
+      11,
+      95,
+      0.12
+  );
+  --md-state-layers-dark-ontertiaryfixed-opacity-016: rgba(
+      10,
+      11,
+      95,
+      0.16
+  );
+  --md-state-layers-dark-tertiaryfixeddim-opacity-008: rgba(
+      191,
+      193,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-tertiaryfixeddim-opacity-012: rgba(
+      191,
+      193,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-tertiaryfixeddim-opacity-016: rgba(
+      191,
+      193,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-ontertiaryfixedvariant-opacity-008: rgba(
+      58,
+      62,
+      139,
+      0.08
+  );
+  --md-state-layers-dark-ontertiaryfixedvariant-opacity-012: rgba(
+      58,
+      62,
+      139,
+      0.12
+  );
+  --md-state-layers-dark-ontertiaryfixedvariant-opacity-016: rgba(
+      58,
+      62,
+      139,
+      0.16
+  );
+  --md-state-layers-dark-surfacedim-opacity-008: rgba(
+      20,
+      19,
+      19,
+      0.08
+  );
+  --md-state-layers-dark-surfacedim-opacity-012: rgba(
+      20,
+      19,
+      19,
+      0.12
+  );
+  --md-state-layers-dark-surfacedim-opacity-016: rgba(
+      20,
+      19,
+      19,
+      0.16
+  );
+  --md-state-layers-dark-surfacebright-opacity-008: rgba(
+      58,
+      57,
+      57,
+      0.08
+  );
+  --md-state-layers-dark-surfacebright-opacity-012: rgba(
+      58,
+      57,
+      57,
+      0.12
+  );
+  --md-state-layers-dark-surfacebright-opacity-016: rgba(
+      58,
+      57,
+      57,
+      0.16
+  );
+  --md-state-layers-dark-surfacecontainerlowest-opacity-008: rgba(
+      15,
+      14,
+      14,
+      0.08
+  );
+  --md-state-layers-dark-surfacecontainerlowest-opacity-012: rgba(
+      15,
+      14,
+      14,
+      0.12
+  );
+  --md-state-layers-dark-surfacecontainerlowest-opacity-016: rgba(
+      15,
+      14,
+      14,
+      0.16
+  );
+  --md-state-layers-dark-surfacecontainerlow-opacity-008: rgba(
+      28,
+      27,
+      27,
+      0.08
+  );
+  --md-state-layers-dark-surfacecontainerlow-opacity-012: rgba(
+      28,
+      27,
+      27,
+      0.12
+  );
+  --md-state-layers-dark-surfacecontainerlow-opacity-016: rgba(
+      28,
+      27,
+      27,
+      0.16
+  );
+  --md-state-layers-dark-surfacecontainer-opacity-008: rgba(
+      32,
+      31,
+      31,
+      0.08
+  );
+  --md-state-layers-dark-surfacecontainer-opacity-012: rgba(
+      32,
+      31,
+      31,
+      0.12
+  );
+  --md-state-layers-dark-surfacecontainer-opacity-016: rgba(
+      32,
+      31,
+      31,
+      0.16
+  );
+  --md-state-layers-dark-surfacecontainerhigh-opacity-008: rgba(
+      43,
+      42,
+      42,
+      0.08
+  );
+  --md-state-layers-dark-surfacecontainerhigh-opacity-012: rgba(
+      43,
+      42,
+      42,
+      0.12
+  );
+  --md-state-layers-dark-surfacecontainerhigh-opacity-016: rgba(
+      43,
+      42,
+      42,
+      0.16
+  );
+  --md-state-layers-dark-surfacecontainerhighest-opacity-008: rgba(
+      54,
+      52,
+      52,
+      0.08
+  );
+  --md-state-layers-dark-surfacecontainerhighest-opacity-012: rgba(
+      54,
+      52,
+      52,
+      0.12
+  );
+  --md-state-layers-dark-surfacecontainerhighest-opacity-016: rgba(
+      54,
+      52,
+      52,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-primary-opacity-008: rgba(
+      67,
+      0,
+      68,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-primary-opacity-012: rgba(
+      67,
+      0,
+      68,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-primary-opacity-016: rgba(
+      67,
+      0,
+      68,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-surfacetint-opacity-008: rgba(
+      168,
+      0,
+      170,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-surfacetint-opacity-012: rgba(
+      168,
+      0,
+      170,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-surfacetint-opacity-016: rgba(
+      168,
+      0,
+      170,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onprimary-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onprimary-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onprimary-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-primarycontainer-opacity-008: rgba(
+      122,
+      0,
+      123,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-primarycontainer-opacity-012: rgba(
+      122,
+      0,
+      123,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-primarycontainer-opacity-016: rgba(
+      122,
+      0,
+      123,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onprimarycontainer-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onprimarycontainer-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onprimarycontainer-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-secondary-opacity-008: rgba(
+      27,
+      38,
+      0,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-secondary-opacity-012: rgba(
+      27,
+      38,
+      0,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-secondary-opacity-016: rgba(
+      27,
+      38,
+      0,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onsecondary-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onsecondary-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onsecondary-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-secondarycontainer-opacity-008: rgba(
+      55,
+      73,
+      0,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-secondarycontainer-opacity-012: rgba(
+      55,
+      73,
+      0,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-secondarycontainer-opacity-016: rgba(
+      55,
+      73,
+      0,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onsecondarycontainer-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onsecondarycontainer-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onsecondarycontainer-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-tertiary-opacity-008: rgba(
+      19,
+      21,
+      101,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-tertiary-opacity-012: rgba(
+      19,
+      21,
+      101,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-tertiary-opacity-016: rgba(
+      19,
+      21,
+      101,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-ontertiary-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-ontertiary-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-ontertiary-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-tertiarycontainer-opacity-008: rgba(
+      54,
+      58,
+      135,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-tertiarycontainer-opacity-012: rgba(
+      54,
+      58,
+      135,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-tertiarycontainer-opacity-016: rgba(
+      54,
+      58,
+      135,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-ontertiarycontainer-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-ontertiarycontainer-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-ontertiarycontainer-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-error-opacity-008: rgba(
+      78,
+      0,
+      3,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-error-opacity-012: rgba(
+      78,
+      0,
+      3,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-error-opacity-016: rgba(
+      78,
+      0,
+      3,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onerror-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onerror-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onerror-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-errorcontainer-opacity-008: rgba(
+      140,
+      0,
+      9,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-errorcontainer-opacity-012: rgba(
+      140,
+      0,
+      9,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-errorcontainer-opacity-016: rgba(
+      140,
+      0,
+      9,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onerrorcontainer-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onerrorcontainer-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onerrorcontainer-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-background-opacity-008: rgba(
+      255,
+      247,
+      249,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-background-opacity-012: rgba(
+      255,
+      247,
+      249,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-background-opacity-016: rgba(
+      255,
+      247,
+      249,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onbackground-opacity-008: rgba(
+      35,
+      24,
+      33,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onbackground-opacity-012: rgba(
+      35,
+      24,
+      33,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onbackground-opacity-016: rgba(
+      35,
+      24,
+      33,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-surface-opacity-008: rgba(
+      253,
+      248,
+      248,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-surface-opacity-012: rgba(
+      253,
+      248,
+      248,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-surface-opacity-016: rgba(
+      253,
+      248,
+      248,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onsurface-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onsurface-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onsurface-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-surfacevariant-opacity-008: rgba(
+      246,
+      219,
+      238,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-surfacevariant-opacity-012: rgba(
+      246,
+      219,
+      238,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-surfacevariant-opacity-016: rgba(
+      246,
+      219,
+      238,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onsurfacevariant-opacity-008: rgba(
+      47,
+      31,
+      45,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onsurfacevariant-opacity-012: rgba(
+      47,
+      31,
+      45,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onsurfacevariant-opacity-016: rgba(
+      47,
+      31,
+      45,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-outline-opacity-008: rgba(
+      80,
+      61,
+      76,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-outline-opacity-012: rgba(
+      80,
+      61,
+      76,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-outline-opacity-016: rgba(
+      80,
+      61,
+      76,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-outlinevariant-opacity-008: rgba(
+      80,
+      61,
+      76,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-outlinevariant-opacity-012: rgba(
+      80,
+      61,
+      76,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-outlinevariant-opacity-016: rgba(
+      80,
+      61,
+      76,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-shadow-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-shadow-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-shadow-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-scrim-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-scrim-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-scrim-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-inversesurface-opacity-008: rgba(
+      49,
+      48,
+      48,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-inversesurface-opacity-012: rgba(
+      49,
+      48,
+      48,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-inversesurface-opacity-016: rgba(
+      49,
+      48,
+      48,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-inverseonsurface-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-inverseonsurface-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-inverseonsurface-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-inverseprimary-opacity-008: rgba(
+      255,
+      229,
+      247,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-inverseprimary-opacity-012: rgba(
+      255,
+      229,
+      247,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-inverseprimary-opacity-016: rgba(
+      255,
+      229,
+      247,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-primaryfixed-opacity-008: rgba(
+      122,
+      0,
+      123,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-primaryfixed-opacity-012: rgba(
+      122,
+      0,
+      123,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-primaryfixed-opacity-016: rgba(
+      122,
+      0,
+      123,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onprimaryfixed-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onprimaryfixed-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onprimaryfixed-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-primaryfixeddim-opacity-008: rgba(
+      85,
+      0,
+      85,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-primaryfixeddim-opacity-012: rgba(
+      85,
+      0,
+      85,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-primaryfixeddim-opacity-016: rgba(
+      85,
+      0,
+      85,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onprimaryfixedvariant-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onprimaryfixedvariant-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onprimaryfixedvariant-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-secondaryfixed-opacity-008: rgba(
+      55,
+      73,
+      0,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-secondaryfixed-opacity-012: rgba(
+      55,
+      73,
+      0,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-secondaryfixed-opacity-016: rgba(
+      55,
+      73,
+      0,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onsecondaryfixed-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onsecondaryfixed-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onsecondaryfixed-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-secondaryfixeddim-opacity-008: rgba(
+      36,
+      49,
+      0,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-secondaryfixeddim-opacity-012: rgba(
+      36,
+      49,
+      0,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-secondaryfixeddim-opacity-016: rgba(
+      36,
+      49,
+      0,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-onsecondaryfixedvariant-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-onsecondaryfixedvariant-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-onsecondaryfixedvariant-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-tertiaryfixed-opacity-008: rgba(
+      54,
+      58,
+      135,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-tertiaryfixed-opacity-012: rgba(
+      54,
+      58,
+      135,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-tertiaryfixed-opacity-016: rgba(
+      54,
+      58,
+      135,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-ontertiaryfixed-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-ontertiaryfixed-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-ontertiaryfixed-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-tertiaryfixeddim-opacity-008: rgba(
+      31,
+      34,
+      112,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-tertiaryfixeddim-opacity-012: rgba(
+      31,
+      34,
+      112,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-tertiaryfixeddim-opacity-016: rgba(
+      31,
+      34,
+      112,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-ontertiaryfixedvariant-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-ontertiaryfixedvariant-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-ontertiaryfixedvariant-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-surfacedim-opacity-008: rgba(
+      221,
+      217,
+      217,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-surfacedim-opacity-012: rgba(
+      221,
+      217,
+      217,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-surfacedim-opacity-016: rgba(
+      221,
+      217,
+      217,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-surfacebright-opacity-008: rgba(
+      253,
+      248,
+      248,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-surfacebright-opacity-012: rgba(
+      253,
+      248,
+      248,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-surfacebright-opacity-016: rgba(
+      253,
+      248,
+      248,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-surfacecontainerlowest-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-surfacecontainerlowest-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-surfacecontainerlowest-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-surfacecontainerlow-opacity-008: rgba(
+      247,
+      242,
+      242,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-surfacecontainerlow-opacity-012: rgba(
+      247,
+      242,
+      242,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-surfacecontainerlow-opacity-016: rgba(
+      247,
+      242,
+      242,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-surfacecontainer-opacity-008: rgba(
+      241,
+      237,
+      236,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-surfacecontainer-opacity-012: rgba(
+      241,
+      237,
+      236,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-surfacecontainer-opacity-016: rgba(
+      241,
+      237,
+      236,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-surfacecontainerhigh-opacity-008: rgba(
+      236,
+      231,
+      231,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-surfacecontainerhigh-opacity-012: rgba(
+      236,
+      231,
+      231,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-surfacecontainerhigh-opacity-016: rgba(
+      236,
+      231,
+      231,
+      0.16
+  );
+  --md-state-layers-light-high-contrast-surfacecontainerhighest-opacity-008: rgba(
+      230,
+      225,
+      225,
+      0.08
+  );
+  --md-state-layers-light-high-contrast-surfacecontainerhighest-opacity-012: rgba(
+      230,
+      225,
+      225,
+      0.12
+  );
+  --md-state-layers-light-high-contrast-surfacecontainerhighest-opacity-016: rgba(
+      230,
+      225,
+      225,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-primary-opacity-008: rgba(
+      255,
+      249,
+      250,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-primary-opacity-012: rgba(
+      255,
+      249,
+      250,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-primary-opacity-016: rgba(
+      255,
+      249,
+      250,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-surfacetint-opacity-008: rgba(
+      255,
+      170,
+      244,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-surfacetint-opacity-012: rgba(
+      255,
+      170,
+      244,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-surfacetint-opacity-016: rgba(
+      255,
+      170,
+      244,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onprimary-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onprimary-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onprimary-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-primarycontainer-opacity-008: rgba(
+      255,
+      177,
+      244,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-primarycontainer-opacity-012: rgba(
+      255,
+      177,
+      244,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-primarycontainer-opacity-016: rgba(
+      255,
+      177,
+      244,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onprimarycontainer-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onprimarycontainer-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onprimarycontainer-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-secondary-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-secondary-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-secondary-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onsecondary-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onsecondary-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onsecondary-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-secondarycontainer-opacity-008: rgba(
+      178,
+      230,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-secondarycontainer-opacity-012: rgba(
+      178,
+      230,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-secondarycontainer-opacity-016: rgba(
+      178,
+      230,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onsecondarycontainer-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onsecondarycontainer-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onsecondarycontainer-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-tertiary-opacity-008: rgba(
+      253,
+      249,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-tertiary-opacity-012: rgba(
+      253,
+      249,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-tertiary-opacity-016: rgba(
+      253,
+      249,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-ontertiary-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-ontertiary-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-ontertiary-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-tertiarycontainer-opacity-008: rgba(
+      196,
+      198,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-tertiarycontainer-opacity-012: rgba(
+      196,
+      198,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-tertiarycontainer-opacity-016: rgba(
+      196,
+      198,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-ontertiarycontainer-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-ontertiarycontainer-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-ontertiarycontainer-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-error-opacity-008: rgba(
+      255,
+      249,
+      249,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-error-opacity-012: rgba(
+      255,
+      249,
+      249,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-error-opacity-016: rgba(
+      255,
+      249,
+      249,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onerror-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onerror-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onerror-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-errorcontainer-opacity-008: rgba(
+      255,
+      186,
+      177,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-errorcontainer-opacity-012: rgba(
+      255,
+      186,
+      177,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-errorcontainer-opacity-016: rgba(
+      255,
+      186,
+      177,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onerrorcontainer-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onerrorcontainer-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onerrorcontainer-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-background-opacity-008: rgba(
+      27,
+      16,
+      25,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-background-opacity-012: rgba(
+      27,
+      16,
+      25,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-background-opacity-016: rgba(
+      27,
+      16,
+      25,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onbackground-opacity-008: rgba(
+      242,
+      221,
+      234,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onbackground-opacity-012: rgba(
+      242,
+      221,
+      234,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onbackground-opacity-016: rgba(
+      242,
+      221,
+      234,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-surface-opacity-008: rgba(
+      20,
+      19,
+      19,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-surface-opacity-012: rgba(
+      20,
+      19,
+      19,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-surface-opacity-016: rgba(
+      20,
+      19,
+      19,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onsurface-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onsurface-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onsurface-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-surfacevariant-opacity-008: rgba(
+      84,
+      65,
+      80,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-surfacevariant-opacity-012: rgba(
+      84,
+      65,
+      80,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-surfacevariant-opacity-016: rgba(
+      84,
+      65,
+      80,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onsurfacevariant-opacity-008: rgba(
+      255,
+      249,
+      250,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onsurfacevariant-opacity-012: rgba(
+      255,
+      249,
+      250,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onsurfacevariant-opacity-016: rgba(
+      255,
+      249,
+      250,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-outline-opacity-008: rgba(
+      222,
+      195,
+      214,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-outline-opacity-012: rgba(
+      222,
+      195,
+      214,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-outline-opacity-016: rgba(
+      222,
+      195,
+      214,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-outlinevariant-opacity-008: rgba(
+      222,
+      195,
+      214,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-outlinevariant-opacity-012: rgba(
+      222,
+      195,
+      214,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-outlinevariant-opacity-016: rgba(
+      222,
+      195,
+      214,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-shadow-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-shadow-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-shadow-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-scrim-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-scrim-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-scrim-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-inversesurface-opacity-008: rgba(
+      230,
+      225,
+      225,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-inversesurface-opacity-012: rgba(
+      230,
+      225,
+      225,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-inversesurface-opacity-016: rgba(
+      230,
+      225,
+      225,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-inverseonsurface-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-inverseonsurface-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-inverseonsurface-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-inverseprimary-opacity-008: rgba(
+      80,
+      0,
+      81,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-inverseprimary-opacity-012: rgba(
+      80,
+      0,
+      81,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-inverseprimary-opacity-016: rgba(
+      80,
+      0,
+      81,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-primaryfixed-opacity-008: rgba(
+      255,
+      221,
+      246,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-primaryfixed-opacity-012: rgba(
+      255,
+      221,
+      246,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-primaryfixed-opacity-016: rgba(
+      255,
+      221,
+      246,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onprimaryfixed-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onprimaryfixed-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onprimaryfixed-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-primaryfixeddim-opacity-008: rgba(
+      255,
+      177,
+      244,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-primaryfixeddim-opacity-012: rgba(
+      255,
+      177,
+      244,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-primaryfixeddim-opacity-016: rgba(
+      255,
+      177,
+      244,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onprimaryfixedvariant-opacity-008: rgba(
+      47,
+      0,
+      47,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onprimaryfixedvariant-opacity-012: rgba(
+      47,
+      0,
+      47,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onprimaryfixedvariant-opacity-016: rgba(
+      47,
+      0,
+      47,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-secondaryfixed-opacity-008: rgba(
+      194,
+      250,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-secondaryfixed-opacity-012: rgba(
+      194,
+      250,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-secondaryfixed-opacity-016: rgba(
+      194,
+      250,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onsecondaryfixed-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onsecondaryfixed-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onsecondaryfixed-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-secondaryfixeddim-opacity-008: rgba(
+      170,
+      219,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-secondaryfixeddim-opacity-012: rgba(
+      170,
+      219,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-secondaryfixeddim-opacity-016: rgba(
+      170,
+      219,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-onsecondaryfixedvariant-opacity-008: rgba(
+      17,
+      25,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-onsecondaryfixedvariant-opacity-012: rgba(
+      17,
+      25,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-onsecondaryfixedvariant-opacity-016: rgba(
+      17,
+      25,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-tertiaryfixed-opacity-008: rgba(
+      230,
+      228,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-tertiaryfixed-opacity-012: rgba(
+      230,
+      228,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-tertiaryfixed-opacity-016: rgba(
+      230,
+      228,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-ontertiaryfixed-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-ontertiaryfixed-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-ontertiaryfixed-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-tertiaryfixeddim-opacity-008: rgba(
+      196,
+      198,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-tertiaryfixeddim-opacity-012: rgba(
+      196,
+      198,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-tertiaryfixeddim-opacity-016: rgba(
+      196,
+      198,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-ontertiaryfixedvariant-opacity-008: rgba(
+      3,
+      2,
+      91,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-ontertiaryfixedvariant-opacity-012: rgba(
+      3,
+      2,
+      91,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-ontertiaryfixedvariant-opacity-016: rgba(
+      3,
+      2,
+      91,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-surfacedim-opacity-008: rgba(
+      20,
+      19,
+      19,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-surfacedim-opacity-012: rgba(
+      20,
+      19,
+      19,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-surfacedim-opacity-016: rgba(
+      20,
+      19,
+      19,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-surfacebright-opacity-008: rgba(
+      58,
+      57,
+      57,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-surfacebright-opacity-012: rgba(
+      58,
+      57,
+      57,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-surfacebright-opacity-016: rgba(
+      58,
+      57,
+      57,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainerlowest-opacity-008: rgba(
+      15,
+      14,
+      14,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainerlowest-opacity-012: rgba(
+      15,
+      14,
+      14,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainerlowest-opacity-016: rgba(
+      15,
+      14,
+      14,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainerlow-opacity-008: rgba(
+      28,
+      27,
+      27,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainerlow-opacity-012: rgba(
+      28,
+      27,
+      27,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainerlow-opacity-016: rgba(
+      28,
+      27,
+      27,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainer-opacity-008: rgba(
+      32,
+      31,
+      31,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainer-opacity-012: rgba(
+      32,
+      31,
+      31,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainer-opacity-016: rgba(
+      32,
+      31,
+      31,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainerhigh-opacity-008: rgba(
+      43,
+      42,
+      42,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainerhigh-opacity-012: rgba(
+      43,
+      42,
+      42,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainerhigh-opacity-016: rgba(
+      43,
+      42,
+      42,
+      0.16
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainerhighest-opacity-008: rgba(
+      54,
+      52,
+      52,
+      0.08
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainerhighest-opacity-012: rgba(
+      54,
+      52,
+      52,
+      0.12
+  );
+  --md-state-layers-dark-high-contrast-surfacecontainerhighest-opacity-016: rgba(
+      54,
+      52,
+      52,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-primary-opacity-008: rgba(
+      122,
+      0,
+      123,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-primary-opacity-012: rgba(
+      122,
+      0,
+      123,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-primary-opacity-016: rgba(
+      122,
+      0,
+      123,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-surfacetint-opacity-008: rgba(
+      168,
+      0,
+      170,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-surfacetint-opacity-012: rgba(
+      168,
+      0,
+      170,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-surfacetint-opacity-016: rgba(
+      168,
+      0,
+      170,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onprimary-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onprimary-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onprimary-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-primarycontainer-opacity-008: rgba(
+      203,
+      20,
+      204,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-primarycontainer-opacity-012: rgba(
+      203,
+      20,
+      204,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-primarycontainer-opacity-016: rgba(
+      203,
+      20,
+      204,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onprimarycontainer-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onprimarycontainer-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onprimarycontainer-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-secondary-opacity-008: rgba(
+      55,
+      73,
+      0,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-secondary-opacity-012: rgba(
+      55,
+      73,
+      0,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-secondary-opacity-016: rgba(
+      55,
+      73,
+      0,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onsecondary-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onsecondary-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onsecondary-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-secondarycontainer-opacity-008: rgba(
+      97,
+      127,
+      0,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-secondarycontainer-opacity-012: rgba(
+      97,
+      127,
+      0,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-secondarycontainer-opacity-016: rgba(
+      97,
+      127,
+      0,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onsecondarycontainer-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onsecondarycontainer-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onsecondarycontainer-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-tertiary-opacity-008: rgba(
+      39,
+      42,
+      120,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-tertiary-opacity-012: rgba(
+      39,
+      42,
+      120,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-tertiary-opacity-016: rgba(
+      39,
+      42,
+      120,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-ontertiary-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-ontertiary-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-ontertiary-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-tertiarycontainer-opacity-008: rgba(
+      75,
+      79,
+      156,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-tertiarycontainer-opacity-012: rgba(
+      75,
+      79,
+      156,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-tertiarycontainer-opacity-016: rgba(
+      75,
+      79,
+      156,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-ontertiarycontainer-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-ontertiarycontainer-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-ontertiarycontainer-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-error-opacity-008: rgba(
+      140,
+      0,
+      9,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-error-opacity-012: rgba(
+      140,
+      0,
+      9,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-error-opacity-016: rgba(
+      140,
+      0,
+      9,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onerror-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onerror-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onerror-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-errorcontainer-opacity-008: rgba(
+      216,
+      56,
+      49,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-errorcontainer-opacity-012: rgba(
+      216,
+      56,
+      49,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-errorcontainer-opacity-016: rgba(
+      216,
+      56,
+      49,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onerrorcontainer-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onerrorcontainer-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onerrorcontainer-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-background-opacity-008: rgba(
+      255,
+      247,
+      249,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-background-opacity-012: rgba(
+      255,
+      247,
+      249,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-background-opacity-016: rgba(
+      255,
+      247,
+      249,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onbackground-opacity-008: rgba(
+      35,
+      24,
+      33,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onbackground-opacity-012: rgba(
+      35,
+      24,
+      33,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onbackground-opacity-016: rgba(
+      35,
+      24,
+      33,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-surface-opacity-008: rgba(
+      253,
+      248,
+      248,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-surface-opacity-012: rgba(
+      253,
+      248,
+      248,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-surface-opacity-016: rgba(
+      253,
+      248,
+      248,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onsurface-opacity-008: rgba(
+      28,
+      27,
+      27,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onsurface-opacity-012: rgba(
+      28,
+      27,
+      27,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onsurface-opacity-016: rgba(
+      28,
+      27,
+      27,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-surfacevariant-opacity-008: rgba(
+      246,
+      219,
+      238,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-surfacevariant-opacity-012: rgba(
+      246,
+      219,
+      238,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-surfacevariant-opacity-016: rgba(
+      246,
+      219,
+      238,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onsurfacevariant-opacity-008: rgba(
+      80,
+      61,
+      76,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onsurfacevariant-opacity-012: rgba(
+      80,
+      61,
+      76,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onsurfacevariant-opacity-016: rgba(
+      80,
+      61,
+      76,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-outline-opacity-008: rgba(
+      110,
+      89,
+      105,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-outline-opacity-012: rgba(
+      110,
+      89,
+      105,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-outline-opacity-016: rgba(
+      110,
+      89,
+      105,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-outlinevariant-opacity-008: rgba(
+      138,
+      116,
+      133,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-outlinevariant-opacity-012: rgba(
+      138,
+      116,
+      133,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-outlinevariant-opacity-016: rgba(
+      138,
+      116,
+      133,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-shadow-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-shadow-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-shadow-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-scrim-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-scrim-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-scrim-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-inversesurface-opacity-008: rgba(
+      49,
+      48,
+      48,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-inversesurface-opacity-012: rgba(
+      49,
+      48,
+      48,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-inversesurface-opacity-016: rgba(
+      49,
+      48,
+      48,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-inverseonsurface-opacity-008: rgba(
+      244,
+      240,
+      239,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-inverseonsurface-opacity-012: rgba(
+      244,
+      240,
+      239,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-inverseonsurface-opacity-016: rgba(
+      244,
+      240,
+      239,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-inverseprimary-opacity-008: rgba(
+      255,
+      170,
+      244,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-inverseprimary-opacity-012: rgba(
+      255,
+      170,
+      244,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-inverseprimary-opacity-016: rgba(
+      255,
+      170,
+      244,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-primaryfixed-opacity-008: rgba(
+      203,
+      20,
+      204,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-primaryfixed-opacity-012: rgba(
+      203,
+      20,
+      204,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-primaryfixed-opacity-016: rgba(
+      203,
+      20,
+      204,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onprimaryfixed-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onprimaryfixed-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onprimaryfixed-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-primaryfixeddim-opacity-008: rgba(
+      164,
+      0,
+      166,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-primaryfixeddim-opacity-012: rgba(
+      164,
+      0,
+      166,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-primaryfixeddim-opacity-016: rgba(
+      164,
+      0,
+      166,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onprimaryfixedvariant-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onprimaryfixedvariant-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onprimaryfixedvariant-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-secondaryfixed-opacity-008: rgba(
+      97,
+      127,
+      0,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-secondaryfixed-opacity-012: rgba(
+      97,
+      127,
+      0,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-secondaryfixed-opacity-016: rgba(
+      97,
+      127,
+      0,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onsecondaryfixed-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onsecondaryfixed-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onsecondaryfixed-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-secondaryfixeddim-opacity-008: rgba(
+      76,
+      100,
+      0,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-secondaryfixeddim-opacity-012: rgba(
+      76,
+      100,
+      0,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-secondaryfixeddim-opacity-016: rgba(
+      76,
+      100,
+      0,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-onsecondaryfixedvariant-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-onsecondaryfixedvariant-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-onsecondaryfixedvariant-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-tertiaryfixed-opacity-008: rgba(
+      105,
+      109,
+      189,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-tertiaryfixed-opacity-012: rgba(
+      105,
+      109,
+      189,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-tertiaryfixed-opacity-016: rgba(
+      105,
+      109,
+      189,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-ontertiaryfixed-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-ontertiaryfixed-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-ontertiaryfixed-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-tertiaryfixeddim-opacity-008: rgba(
+      80,
+      84,
+      162,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-tertiaryfixeddim-opacity-012: rgba(
+      80,
+      84,
+      162,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-tertiaryfixeddim-opacity-016: rgba(
+      80,
+      84,
+      162,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-ontertiaryfixedvariant-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-ontertiaryfixedvariant-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-ontertiaryfixedvariant-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-surfacedim-opacity-008: rgba(
+      221,
+      217,
+      217,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-surfacedim-opacity-012: rgba(
+      221,
+      217,
+      217,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-surfacedim-opacity-016: rgba(
+      221,
+      217,
+      217,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-surfacebright-opacity-008: rgba(
+      253,
+      248,
+      248,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-surfacebright-opacity-012: rgba(
+      253,
+      248,
+      248,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-surfacebright-opacity-016: rgba(
+      253,
+      248,
+      248,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainerlowest-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainerlowest-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainerlowest-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainerlow-opacity-008: rgba(
+      247,
+      242,
+      242,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainerlow-opacity-012: rgba(
+      247,
+      242,
+      242,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainerlow-opacity-016: rgba(
+      247,
+      242,
+      242,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainer-opacity-008: rgba(
+      241,
+      237,
+      236,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainer-opacity-012: rgba(
+      241,
+      237,
+      236,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainer-opacity-016: rgba(
+      241,
+      237,
+      236,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainerhigh-opacity-008: rgba(
+      236,
+      231,
+      231,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainerhigh-opacity-012: rgba(
+      236,
+      231,
+      231,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainerhigh-opacity-016: rgba(
+      236,
+      231,
+      231,
+      0.16
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainerhighest-opacity-008: rgba(
+      230,
+      225,
+      225,
+      0.08
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainerhighest-opacity-012: rgba(
+      230,
+      225,
+      225,
+      0.12
+  );
+  --md-state-layers-light-medium-contrast-surfacecontainerhighest-opacity-016: rgba(
+      230,
+      225,
+      225,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-primary-opacity-008: rgba(
+      255,
+      177,
+      244,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-primary-opacity-012: rgba(
+      255,
+      177,
+      244,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-primary-opacity-016: rgba(
+      255,
+      177,
+      244,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-surfacetint-opacity-008: rgba(
+      255,
+      170,
+      244,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-surfacetint-opacity-012: rgba(
+      255,
+      170,
+      244,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-surfacetint-opacity-016: rgba(
+      255,
+      170,
+      244,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onprimary-opacity-008: rgba(
+      47,
+      0,
+      47,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onprimary-opacity-012: rgba(
+      47,
+      0,
+      47,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onprimary-opacity-016: rgba(
+      47,
+      0,
+      47,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-primarycontainer-opacity-008: rgba(
+      238,
+      66,
+      236,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-primarycontainer-opacity-012: rgba(
+      238,
+      66,
+      236,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-primarycontainer-opacity-016: rgba(
+      238,
+      66,
+      236,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onprimarycontainer-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onprimarycontainer-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onprimarycontainer-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-secondary-opacity-008: rgba(
+      255,
+      255,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-secondary-opacity-012: rgba(
+      255,
+      255,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-secondary-opacity-016: rgba(
+      255,
+      255,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onsecondary-opacity-008: rgba(
+      39,
+      53,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onsecondary-opacity-012: rgba(
+      39,
+      53,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onsecondary-opacity-016: rgba(
+      39,
+      53,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-secondarycontainer-opacity-008: rgba(
+      178,
+      230,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-secondarycontainer-opacity-012: rgba(
+      178,
+      230,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-secondarycontainer-opacity-016: rgba(
+      178,
+      230,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onsecondarycontainer-opacity-008: rgba(
+      25,
+      35,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onsecondarycontainer-opacity-012: rgba(
+      25,
+      35,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onsecondarycontainer-opacity-016: rgba(
+      25,
+      35,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-tertiary-opacity-008: rgba(
+      196,
+      198,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-tertiary-opacity-012: rgba(
+      196,
+      198,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-tertiary-opacity-016: rgba(
+      196,
+      198,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-ontertiary-opacity-008: rgba(
+      3,
+      2,
+      91,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-ontertiary-opacity-012: rgba(
+      3,
+      2,
+      91,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-ontertiary-opacity-016: rgba(
+      3,
+      2,
+      91,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-tertiarycontainer-opacity-008: rgba(
+      133,
+      137,
+      219,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-tertiarycontainer-opacity-012: rgba(
+      133,
+      137,
+      219,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-tertiarycontainer-opacity-016: rgba(
+      133,
+      137,
+      219,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-ontertiarycontainer-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-ontertiarycontainer-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-ontertiarycontainer-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-error-opacity-008: rgba(
+      255,
+      186,
+      177,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-error-opacity-012: rgba(
+      255,
+      186,
+      177,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-error-opacity-016: rgba(
+      255,
+      186,
+      177,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onerror-opacity-008: rgba(
+      55,
+      0,
+      1,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onerror-opacity-012: rgba(
+      55,
+      0,
+      1,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onerror-opacity-016: rgba(
+      55,
+      0,
+      1,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-errorcontainer-opacity-008: rgba(
+      255,
+      84,
+      73,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-errorcontainer-opacity-012: rgba(
+      255,
+      84,
+      73,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-errorcontainer-opacity-016: rgba(
+      255,
+      84,
+      73,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onerrorcontainer-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onerrorcontainer-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onerrorcontainer-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-background-opacity-008: rgba(
+      27,
+      16,
+      25,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-background-opacity-012: rgba(
+      27,
+      16,
+      25,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-background-opacity-016: rgba(
+      27,
+      16,
+      25,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onbackground-opacity-008: rgba(
+      242,
+      221,
+      234,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onbackground-opacity-012: rgba(
+      242,
+      221,
+      234,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onbackground-opacity-016: rgba(
+      242,
+      221,
+      234,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-surface-opacity-008: rgba(
+      20,
+      19,
+      19,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-surface-opacity-012: rgba(
+      20,
+      19,
+      19,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-surface-opacity-016: rgba(
+      20,
+      19,
+      19,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onsurface-opacity-008: rgba(
+      254,
+      250,
+      249,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onsurface-opacity-012: rgba(
+      254,
+      250,
+      249,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onsurface-opacity-016: rgba(
+      254,
+      250,
+      249,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-surfacevariant-opacity-008: rgba(
+      84,
+      65,
+      80,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-surfacevariant-opacity-012: rgba(
+      84,
+      65,
+      80,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-surfacevariant-opacity-016: rgba(
+      84,
+      65,
+      80,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onsurfacevariant-opacity-008: rgba(
+      222,
+      195,
+      214,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onsurfacevariant-opacity-012: rgba(
+      222,
+      195,
+      214,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onsurfacevariant-opacity-016: rgba(
+      222,
+      195,
+      214,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-outline-opacity-008: rgba(
+      180,
+      156,
+      174,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-outline-opacity-012: rgba(
+      180,
+      156,
+      174,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-outline-opacity-016: rgba(
+      180,
+      156,
+      174,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-outlinevariant-opacity-008: rgba(
+      147,
+      124,
+      142,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-outlinevariant-opacity-012: rgba(
+      147,
+      124,
+      142,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-outlinevariant-opacity-016: rgba(
+      147,
+      124,
+      142,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-shadow-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-shadow-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-shadow-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-scrim-opacity-008: rgba(
+      0,
+      0,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-scrim-opacity-012: rgba(
+      0,
+      0,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-scrim-opacity-016: rgba(
+      0,
+      0,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-inversesurface-opacity-008: rgba(
+      230,
+      225,
+      225,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-inversesurface-opacity-012: rgba(
+      230,
+      225,
+      225,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-inversesurface-opacity-016: rgba(
+      230,
+      225,
+      225,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-inverseonsurface-opacity-008: rgba(
+      43,
+      42,
+      42,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-inverseonsurface-opacity-012: rgba(
+      43,
+      42,
+      42,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-inverseonsurface-opacity-016: rgba(
+      43,
+      42,
+      42,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-inverseprimary-opacity-008: rgba(
+      131,
+      0,
+      132,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-inverseprimary-opacity-012: rgba(
+      131,
+      0,
+      132,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-inverseprimary-opacity-016: rgba(
+      131,
+      0,
+      132,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-primaryfixed-opacity-008: rgba(
+      255,
+      215,
+      246,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-primaryfixed-opacity-012: rgba(
+      255,
+      215,
+      246,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-primaryfixed-opacity-016: rgba(
+      255,
+      215,
+      246,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onprimaryfixed-opacity-008: rgba(
+      38,
+      0,
+      39,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onprimaryfixed-opacity-012: rgba(
+      38,
+      0,
+      39,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onprimaryfixed-opacity-016: rgba(
+      38,
+      0,
+      39,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-primaryfixeddim-opacity-008: rgba(
+      255,
+      170,
+      244,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-primaryfixeddim-opacity-012: rgba(
+      255,
+      170,
+      244,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-primaryfixeddim-opacity-016: rgba(
+      255,
+      170,
+      244,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onprimaryfixedvariant-opacity-008: rgba(
+      101,
+      0,
+      102,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onprimaryfixedvariant-opacity-012: rgba(
+      101,
+      0,
+      102,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onprimaryfixedvariant-opacity-016: rgba(
+      101,
+      0,
+      102,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-secondaryfixed-opacity-008: rgba(
+      190,
+      245,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-secondaryfixed-opacity-012: rgba(
+      190,
+      245,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-secondaryfixed-opacity-016: rgba(
+      190,
+      245,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onsecondaryfixed-opacity-008: rgba(
+      12,
+      19,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onsecondaryfixed-opacity-012: rgba(
+      12,
+      19,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onsecondaryfixed-opacity-016: rgba(
+      12,
+      19,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-secondaryfixeddim-opacity-008: rgba(
+      166,
+      215,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-secondaryfixeddim-opacity-012: rgba(
+      166,
+      215,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-secondaryfixeddim-opacity-016: rgba(
+      166,
+      215,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-onsecondaryfixedvariant-opacity-008: rgba(
+      44,
+      59,
+      0,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-onsecondaryfixedvariant-opacity-012: rgba(
+      44,
+      59,
+      0,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-onsecondaryfixedvariant-opacity-016: rgba(
+      44,
+      59,
+      0,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-tertiaryfixed-opacity-008: rgba(
+      225,
+      224,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-tertiaryfixed-opacity-012: rgba(
+      225,
+      224,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-tertiaryfixed-opacity-016: rgba(
+      225,
+      224,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-ontertiaryfixed-opacity-008: rgba(
+      1,
+      0,
+      78,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-ontertiaryfixed-opacity-012: rgba(
+      1,
+      0,
+      78,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-ontertiaryfixed-opacity-016: rgba(
+      1,
+      0,
+      78,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-tertiaryfixeddim-opacity-008: rgba(
+      191,
+      193,
+      255,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-tertiaryfixeddim-opacity-012: rgba(
+      191,
+      193,
+      255,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-tertiaryfixeddim-opacity-016: rgba(
+      191,
+      193,
+      255,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-ontertiaryfixedvariant-opacity-008: rgba(
+      41,
+      44,
+      121,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-ontertiaryfixedvariant-opacity-012: rgba(
+      41,
+      44,
+      121,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-ontertiaryfixedvariant-opacity-016: rgba(
+      41,
+      44,
+      121,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-surfacedim-opacity-008: rgba(
+      20,
+      19,
+      19,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-surfacedim-opacity-012: rgba(
+      20,
+      19,
+      19,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-surfacedim-opacity-016: rgba(
+      20,
+      19,
+      19,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-surfacebright-opacity-008: rgba(
+      58,
+      57,
+      57,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-surfacebright-opacity-012: rgba(
+      58,
+      57,
+      57,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-surfacebright-opacity-016: rgba(
+      58,
+      57,
+      57,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainerlowest-opacity-008: rgba(
+      15,
+      14,
+      14,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainerlowest-opacity-012: rgba(
+      15,
+      14,
+      14,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainerlowest-opacity-016: rgba(
+      15,
+      14,
+      14,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainerlow-opacity-008: rgba(
+      28,
+      27,
+      27,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainerlow-opacity-012: rgba(
+      28,
+      27,
+      27,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainerlow-opacity-016: rgba(
+      28,
+      27,
+      27,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainer-opacity-008: rgba(
+      32,
+      31,
+      31,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainer-opacity-012: rgba(
+      32,
+      31,
+      31,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainer-opacity-016: rgba(
+      32,
+      31,
+      31,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainerhigh-opacity-008: rgba(
+      43,
+      42,
+      42,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainerhigh-opacity-012: rgba(
+      43,
+      42,
+      42,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainerhigh-opacity-016: rgba(
+      43,
+      42,
+      42,
+      0.16
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainerhighest-opacity-008: rgba(
+      54,
+      52,
+      52,
+      0.08
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainerhighest-opacity-012: rgba(
+      54,
+      52,
+      52,
+      0.12
+  );
+  --md-state-layers-dark-medium-contrast-surfacecontainerhighest-opacity-016: rgba(
+      54,
+      52,
+      52,
+      0.16
+  );
+  --md-ref-primary-primary100: #ffffff;
+  --md-ref-primary-primary99: #fffbff;
+  --md-ref-primary-primary98: #fff7f9;
+  --md-ref-primary-primary95: #ffebf8;
+  --md-ref-primary-primary90: #ffd7f6;
+  --md-ref-primary-primary80: #ffaaf4;
+  --md-ref-primary-primary70: #ff75f8;
+  --md-ref-primary-primary60: #ee42ec;
+  --md-ref-primary-primary50: #ce1acf;
+  --md-ref-primary-primary40: #a800aa;
+  --md-ref-primary-primary35: #940095;
+  --md-ref-primary-primary30: #810082;
+  --md-ref-primary-primary25: #6d006e;
+  --md-ref-primary-primary20: #5b005c;
+  --md-ref-primary-primary15: #49004a;
+  --md-ref-primary-primary10: #380038;
+  --md-ref-primary-primary5: #260026;
+  --md-ref-primary-primary0: #000000;
+  --md-ref-secondary-secondary100: #ffffff;
+  --md-ref-secondary-secondary99: #faffe3;
+  --md-ref-secondary-secondary98: #f3ffcd;
+  --md-ref-secondary-secondary95: #e2fba0;
+  --md-ref-secondary-secondary90: #d4ec94;
+  --md-ref-secondary-secondary80: #a6d700;
+  --md-ref-secondary-secondary70: #8fb900;
+  --md-ref-secondary-secondary60: #799d00;
+  --md-ref-secondary-secondary50: #638100;
+  --md-ref-secondary-secondary40: #4e6700;
+  --md-ref-secondary-secondary35: #445a00;
+  --md-ref-secondary-secondary30: #3a4d00;
+  --md-ref-secondary-secondary25: #304100;
+  --md-ref-secondary-secondary20: #273500;
+  --md-ref-secondary-secondary15: #1e2a00;
+  --md-ref-secondary-secondary10: #151f00;
+  --md-ref-secondary-secondary5: #0c1300;
+  --md-ref-secondary-secondary0: #000000;
+  --md-ref-tertiary-tertiary100: #ffffff;
+  --md-ref-tertiary-tertiary99: #fffbff;
+  --md-ref-tertiary-tertiary98: #fbf8ff;
+  --md-ref-tertiary-tertiary95: #f1efff;
+  --md-ref-tertiary-tertiary90: #e1e0ff;
+  --md-ref-tertiary-tertiary80: #bfc1ff;
+  --md-ref-tertiary-tertiary70: #a0a4f8;
+  --md-ref-tertiary-tertiary60: #8589db;
+  --md-ref-tertiary-tertiary50: #6b70c0;
+  --md-ref-tertiary-tertiary40: #5257a5;
+  --md-ref-tertiary-tertiary35: #464a98;
+  --md-ref-tertiary-tertiary30: #3a3e8b;
+  --md-ref-tertiary-tertiary25: #2e327f;
+  --md-ref-tertiary-tertiary20: #232673;
+  --md-ref-tertiary-tertiary15: #171969;
+  --md-ref-tertiary-tertiary10: #0a0b5f;
+  --md-ref-tertiary-tertiary5: #01004e;
+  --md-ref-tertiary-tertiary0: #000000;
+  --md-ref-error-error100: #ffffff;
+  --md-ref-error-error99: #fffbff;
+  --md-ref-error-error98: #fff8f7;
+  --md-ref-error-error95: #ffedea;
+  --md-ref-error-error90: #ffdad6;
+  --md-ref-error-error80: #ffb4ab;
+  --md-ref-error-error70: #ff897d;
+  --md-ref-error-error60: #ff5449;
+  --md-ref-error-error50: #db3a33;
+  --md-ref-error-error40: #b81f1e;
+  --md-ref-error-error35: #a60f13;
+  --md-ref-error-error30: #93000a;
+  --md-ref-error-error25: #7e0007;
+  --md-ref-error-error20: #690005;
+  --md-ref-error-error15: #540003;
+  --md-ref-error-error10: #410002;
+  --md-ref-error-error5: #2d0001;
+  --md-ref-error-error0: #000000;
+  --md-ref-neutral-neutral100: #ffffff;
+  --md-ref-neutral-neutral99: #fffbff;
+  --md-ref-neutral-neutral98: #fdf8f8;
+  --md-ref-neutral-neutral95: #f4f0ef;
+  --md-ref-neutral-neutral90: #e6e1e1;
+  --md-ref-neutral-neutral80: #c9c6c5;
+  --md-ref-neutral-neutral70: #aeaaaa;
+  --md-ref-neutral-neutral60: #939090;
+  --md-ref-neutral-neutral50: #797676;
+  --md-ref-neutral-neutral40: #605e5e;
+  --md-ref-neutral-neutral35: #545252;
+  --md-ref-neutral-neutral30: #484646;
+  --md-ref-neutral-neutral25: #3c3b3b;
+  --md-ref-neutral-neutral20: #313030;
+  --md-ref-neutral-neutral15: #272525;
+  --md-ref-neutral-neutral10: #1c1b1b;
+  --md-ref-neutral-neutral5: #111111;
+  --md-ref-neutral-neutral0: #000000;
+  --md-ref-neutral-variant-neutral-variant100: #ffffff;
+  --md-ref-neutral-variant-neutral-variant99: #fffbff;
+  --md-ref-neutral-variant-neutral-variant98: #fff7f9;
+  --md-ref-neutral-variant-neutral-variant95: #fcecf6;
+  --md-ref-neutral-variant-neutral-variant90: #eedee7;
+  --md-ref-neutral-variant-neutral-variant80: #d1c2cb;
+  --md-ref-neutral-variant-neutral-variant70: #b5a7b0;
+  --md-ref-neutral-variant-neutral-variant60: #9a8d95;
+  --md-ref-neutral-variant-neutral-variant50: #80747c;
+  --md-ref-neutral-variant-neutral-variant40: #665b63;
+  --md-ref-neutral-variant-neutral-variant35: #5a4f57;
+  --md-ref-neutral-variant-neutral-variant30: #4e444b;
+  --md-ref-neutral-variant-neutral-variant25: #423940;
+  --md-ref-neutral-variant-neutral-variant20: #372e34;
+  --md-ref-neutral-variant-neutral-variant15: #2c232a;
+  --md-ref-neutral-variant-neutral-variant10: #21191f;
+  --md-ref-neutral-variant-neutral-variant5: #160f15;
+  --md-ref-neutral-variant-neutral-variant0: #000000;
+  --md-static-700: #5f6368;
+  --md-static-800-base: #f27405;
+  --md-static-500: #ff9f0c;
+  --md-static-200: #ffd083;
+  --md-surfaces-light-surface1: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.05),
+      rgba(168, 0, 170, 0.05)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-light-surface2: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.08),
+      rgba(168, 0, 170, 0.08)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-light-surface3: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.11),
+      rgba(168, 0, 170, 0.11)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-light-surface4: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.12),
+      rgba(168, 0, 170, 0.12)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-light-surface5: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.14),
+      rgba(168, 0, 170, 0.14)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-dark-surface1: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.05),
+      rgba(255, 170, 244, 0.05)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-dark-surface2: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.08),
+      rgba(255, 170, 244, 0.08)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-dark-surface3: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.11),
+      rgba(255, 170, 244, 0.11)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-dark-surface4: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.12),
+      rgba(255, 170, 244, 0.12)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-dark-surface5: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.14),
+      rgba(255, 170, 244, 0.14)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-light-high-contrast-surface1: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.05),
+      rgba(168, 0, 170, 0.05)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-light-high-contrast-surface2: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.08),
+      rgba(168, 0, 170, 0.08)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-light-high-contrast-surface3: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.11),
+      rgba(168, 0, 170, 0.11)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-light-high-contrast-surface4: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.12),
+      rgba(168, 0, 170, 0.12)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-light-high-contrast-surface5: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.14),
+      rgba(168, 0, 170, 0.14)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-dark-high-contrast-surface1: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.05),
+      rgba(255, 170, 244, 0.05)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-dark-high-contrast-surface2: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.08),
+      rgba(255, 170, 244, 0.08)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-dark-high-contrast-surface3: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.11),
+      rgba(255, 170, 244, 0.11)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-dark-high-contrast-surface4: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.12),
+      rgba(255, 170, 244, 0.12)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-dark-high-contrast-surface5: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.14),
+      rgba(255, 170, 244, 0.14)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-light-medium-contrast-surface1: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.05),
+      rgba(168, 0, 170, 0.05)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-light-medium-contrast-surface2: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.08),
+      rgba(168, 0, 170, 0.08)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-light-medium-contrast-surface3: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.11),
+      rgba(168, 0, 170, 0.11)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-light-medium-contrast-surface4: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.12),
+      rgba(168, 0, 170, 0.12)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-light-medium-contrast-surface5: linear-gradient(
+      to left,
+      rgba(168, 0, 170, 0.14),
+      rgba(168, 0, 170, 0.14)
+  ),
+  linear-gradient(to left, #fdf8f8, #fdf8f8);
+  --md-surfaces-dark-medium-contrast-surface1: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.05),
+      rgba(255, 170, 244, 0.05)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-dark-medium-contrast-surface2: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.08),
+      rgba(255, 170, 244, 0.08)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-dark-medium-contrast-surface3: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.11),
+      rgba(255, 170, 244, 0.11)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-dark-medium-contrast-surface4: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.12),
+      rgba(255, 170, 244, 0.12)
+  ),
+  linear-gradient(to left, #141313, #141313);
+  --md-surfaces-dark-medium-contrast-surface5: linear-gradient(
+      to left,
+      rgba(255, 170, 244, 0.14),
+      rgba(255, 170, 244, 0.14)
+  ),
+  linear-gradient(to left, #141313, #141313);
+
+  /* Fonts */
+  --md-display-large-font-family: RobotoMono-Regular, sans-serif;
+  --md-display-large-font-size: 3.5625rem;
+  --md-display-large-line-height: 4rem;
+  --md-display-large-font-weight: 400;
+  --md-display-large-font-style: normal;
+  --md-display-medium-font-family: RobotoMono-Regular, sans-serif;
+  --md-display-medium-font-size: 2.8125rem;
+  --md-display-medium-line-height: 3.25rem;
+  --md-display-medium-font-weight: 400;
+  --md-display-medium-font-style: normal;
+  --md-display-small-font-family: RobotoMono-Regular, sans-serif;
+  --md-display-small-font-size: 2.25rem;
+  --md-display-small-line-height: 2.75rem;
+  --md-display-small-font-weight: 400;
+  --md-display-small-font-style: normal;
+  --md-headline-large-font-family: RobotoMono-Regular, sans-serif;
+  --md-headline-large-font-size: 2rem;
+  --md-headline-large-line-height: 2.5rem;
+  --md-headline-large-font-weight: 400;
+  --md-headline-large-font-style: normal;
+  --md-headline-medium-font-family: RobotoMono-Regular, sans-serif;
+  --md-headline-medium-font-size: 1.75rem;
+  --md-headline-medium-line-height: 2.25rem;
+  --md-headline-medium-font-weight: 400;
+  --md-headline-medium-font-style: normal;
+  --md-headline-small-font-family: RobotoMono-Regular, sans-serif;
+  --md-headline-small-font-size: 1.5rem;
+  --md-headline-small-line-height: 2rem;
+  --md-headline-small-font-weight: 400;
+  --md-headline-small-font-style: normal;
+  --md-body-large-font-family: Roboto-Regular, sans-serif;
+  --md-body-large-font-size: 1rem;
+  --md-body-large-line-height: 1.5rem;
+  --md-body-large-font-weight: 400;
+  --md-body-large-font-style: normal;
+  --md-body-medium-font-family: Roboto-Regular, sans-serif;
+  --md-body-medium-font-size: 0.875rem;
+  --md-body-medium-line-height: 1.25rem;
+  --md-body-medium-font-weight: 400;
+  --md-body-medium-font-style: normal;
+  --md-body-small-font-family: Roboto-Regular, sans-serif;
+  --md-body-small-font-size: 0.75rem;
+  --md-body-small-line-height: 1rem;
+  --md-body-small-font-weight: 400;
+  --md-body-small-font-style: normal;
+  --md-label-large-font-family: Roboto-Medium, sans-serif;
+  --md-label-large-font-size: 0.875rem;
+  --md-label-large-line-height: 1.25rem;
+  --md-label-large-font-weight: 500;
+  --md-label-large-font-style: normal;
+  --md-label-medium-font-family: Roboto-Medium, sans-serif;
+  --md-label-medium-font-size: 0.75rem;
+  --md-label-medium-line-height: 1rem;
+  --md-label-medium-font-weight: 500;
+  --md-label-medium-font-style: normal;
+  --md-label-small-font-family: Roboto-Medium, sans-serif;
+  --md-label-small-font-size: 0.6875rem;
+  --md-label-small-line-height: 1rem;
+  --md-label-small-font-weight: 500;
+  --md-label-small-font-style: normal;
+  --md-title-large-font-family: Roboto-Regular, sans-serif;
+  --md-title-large-font-size: 1.375rem;
+  --md-title-large-line-height: 1.75rem;
+  --md-title-large-font-weight: 400;
+  --md-title-large-font-style: normal;
+  --md-title-medium-font-family: Roboto-Medium, sans-serif;
+  --md-title-medium-font-size: 1rem;
+  --md-title-medium-line-height: 1.5rem;
+  --md-title-medium-font-weight: 500;
+  --md-title-medium-font-style: normal;
+  --md-title-small-font-family: Roboto-Medium, sans-serif;
+  --md-title-small-font-size: 0.875rem;
+  --md-title-small-line-height: 1.25rem;
+  --md-title-small-font-weight: 500;
+  --md-title-small-font-style: normal;
+
+  /* Effects */
+}

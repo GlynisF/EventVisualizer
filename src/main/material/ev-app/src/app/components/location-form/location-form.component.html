@@ -1,0 +1,76 @@
+ <mat-expansion-panel>
+      <mat-expansion-panel-header>
+      <mat-panel-title><span class="title">Location Information</span></mat-panel-title>
+      </mat-expansion-panel-header>
+        <form id="location-form" [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Enter a place" formControlName="locationName">
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="Address" formControlName="address">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              @if (hasUnitNumber) {
+                <mat-form-field class="full-width">
+                  <textarea matInput placeholder="Apt.#,unit #,suite,bldg." formControlName="address2"></textarea>
+                </mat-form-field>
+              } @else {
+                <button mat-button type="button" (click)="hasUnitNumber = !hasUnitNumber">
+                  + Add C/O Apt Unit
+                </button>
+              }
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput placeholder="City" formControlName="city">
+              </mat-form-field>
+            </div>
+            <div class="col">
+              <mat-form-field class="full-width">
+                <mat-select placeholder="State" formControlName="state">
+                  @for (state of states; track state) {
+                    <mat-option [value]="state.abbreviation">{{ state.name }}</mat-option>
+                  }
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input matInput #zip maxlength="5" placeholder="Postal Code" type="number" formControlName="zip">
+                <mat-hint align="end">{{zip.value.length}} / 5</mat-hint>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input type="tel" matInput placeholder="Phone #" formControlName="phoneNumber">
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <mat-form-field class="full-width">
+                <input type="text" matInput placeholder="Website" formControlName="website">
+              </mat-form-field>
+              <mat-slide-toggle formControlName="accessible">Accessible?</mat-slide-toggle>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <button mat-flat-button color="tertiary" type="submit">Clear</button>
+            </div>
+          </div>
+        </form>
+    </mat-expansion-panel>

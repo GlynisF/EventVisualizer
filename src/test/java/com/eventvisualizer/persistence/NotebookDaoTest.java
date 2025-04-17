@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -177,7 +178,7 @@ class NotebookDaoTest {
         Notebook notebookContainingUser = notebookDao.getById(3);
         assertNotNull(notebookContainingUser);
 
-        List<Notebook> notebooks = userToRemove.getNotebooks();
+        Set<Notebook> notebooks = userToRemove.getNotebooks();
         assertTrue(notebooks.contains(notebookContainingUser));
 
         userToRemove.removeNotebook(notebookContainingUser);

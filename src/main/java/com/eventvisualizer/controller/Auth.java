@@ -229,7 +229,6 @@ public class Auth extends HttpServlet implements PropertiesLoader {
 
     }
 
-
     /** Create the auth url and use it to build the request.
      *
      * @param authCode auth code received from Cognito as part of the login process
@@ -301,4 +300,3 @@ public class Auth extends HttpServlet implements PropertiesLoader {
         }
     }
 }
-

@@ -1,7 +1,7 @@
 package com.eventvisualizer.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -12,8 +12,7 @@ public class Performer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
-    private Integer id;
+    private int id;
 
     @Column(name = "full_name", length = 100)
     private String fullName;
@@ -28,6 +27,7 @@ public class Performer {
     private BigDecimal performanceFee;
 
     @ManyToOne
+    @JsonBackReference(value = "detail-performer")
     @JoinColumn(name = "detail_id",
             foreignKey = @ForeignKey(name = "performer_detail_fk"))
     private Detail detail;
@@ -42,11 +42,16 @@ public class Performer {
         this.performanceFee = performanceFee;
     }
 
-    public Integer getId() {
+    public Performer newPerformerHelper(Performer performer) {
+        return new Performer(performer.getFullName(), performer.getMoniker(), performer.getEmail(),
+                ((BigDecimal) performer.getPerformanceFee()));
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -110,7 +115,7 @@ public class Performer {
                 ", moniker='" + moniker + '\'' +
                 ", email='" + email + '\'' +
                 ", performanceFee=" + performanceFee +
-                ", detail=" + detail +
+                ", detail=" + (detail != null ? detail.getId() : "null") +
                 '}';
     }
 }

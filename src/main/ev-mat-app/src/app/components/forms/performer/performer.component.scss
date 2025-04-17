@@ -1,0 +1,49 @@
+.full-width {
+  max-width: 100%;
+}
+
+div.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.fee-input {
+  text-align: right;
+}
+
+
+div.col {
+  flex: 1;
+}
+
+.email-fee {
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.email {
+  flex: 2;
+  padding-right: 16px;
+}
+
+.fee {
+  flex: 1;
+}
+
+.fee-field:focus-within .fee-suffix {
+  display: none;
+}
+
+/* For Chrome, Safari, Edge, and Opera */
+input.fee-input::-webkit-outer-spin-button,
+input.fee-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+/* For Firefox */
+input.fee-input {
+  -moz-appearance: textfield;
+}

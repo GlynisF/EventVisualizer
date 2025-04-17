@@ -1,0 +1,56 @@
+
+.city-state-zip {
+  display: flex;
+  gap: 16px;
+}
+
+.city {
+  flex: 2;
+}
+
+.state {
+  flex: 2;
+}
+
+.zip {
+  flex: 1;
+}
+
+.phone-website-accessible {
+  display: flex;
+  gap: 16px;
+}
+
+.phone {
+  flex: 1;
+}
+
+.website {
+  flex: 2;
+}
+
+.accessible {
+  align-items: center;
+  gap: 1rem;
+}
+
+.toggle-label {
+  font-weight: 500;
+}
+
+.location-reset {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

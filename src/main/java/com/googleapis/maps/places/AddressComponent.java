@@ -1,4 +1,4 @@
-package com.googleapis.maps.com.googleapis.maps.places;
+package com.googleapis.maps.places;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

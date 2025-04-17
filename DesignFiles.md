@@ -4,7 +4,7 @@
 
 <details>
 
-<summary>Event Visualizer EER Diagram</summary>
+<summary>Event Visualizer ERD Diagram</summary>
 
 *Event Visualizer Schema*
 ![Database diagram](/images/event_visualizer_EERD.png)
@@ -96,5 +96,3 @@
 - Mockaroo | mock data for database
 
 </details>
-
-

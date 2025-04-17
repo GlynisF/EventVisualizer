@@ -1,4 +1,4 @@
-package com.googleapis.maps.com.googleapis.maps.places;
+package com.googleapis.maps.places;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -15,8 +15,6 @@ public class AutocompletePrediction {
 
 	@JsonProperty("place_id")
 	private String placeId;
-
-	// Other fields as needed...
 
 	public String getReference() {
 		return reference;

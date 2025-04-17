@@ -1,6 +1,6 @@
 package com.eventvisualizer.persistence;
 
-import com.DIYEventPlanner.util.PropertiesLoader;
+import com.eventvisualizer.util.PropertiesLoader;
 import com.google.maps.PlaceAutocompleteRequest;
 import com.googleapis.maps.places.AddressComponent;
 import com.googleapis.maps.places.AddressComponentsItem;

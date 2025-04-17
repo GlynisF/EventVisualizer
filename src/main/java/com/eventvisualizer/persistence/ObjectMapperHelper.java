@@ -1,4 +1,4 @@
-package com.DIYEventPlanner.persistence;
+package com.eventvisualizer.persistence;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -9,6 +9,7 @@ import org.apache.logging.log4j.core.Logger;
 
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import java.io.IOException;
 
 public class ObjectMapperHelper {
 
@@ -20,6 +21,7 @@ public class ObjectMapperHelper {
         // To handle unrecognized property exception
         mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
     }
+
 
     public <T> T getApiResponse(WebTarget target, Class<T> responseType) {
         return target.request(MediaType.APPLICATION_JSON).get().readEntity(responseType);
@@ -36,6 +38,8 @@ public class ObjectMapperHelper {
         } catch (JsonProcessingException e) {
             logger.error("There was a problem parsing or generating JSON.");
             logger.debug(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         return result;

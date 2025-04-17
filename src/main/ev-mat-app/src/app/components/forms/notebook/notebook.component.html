@@ -1,0 +1,33 @@
+<div [formGroup]="formGroup">
+  <ng-container *ngIf="!newNotebook; else createNewNotebook">
+    <mat-form-field class="full-width">
+      <mat-label>Select or create a notebook</mat-label>
+      <mat-select formControlName="id" (selectionChange)="checkSelectedValue($event.value)" required>
+        <mat-option class="create-option" [value]="'create'">Create new notebook</mat-option>
+        <mat-divider></mat-divider>
+        <mat-option *ngFor="let notebook of notebooks" [value]="notebook.id">
+          {{ notebook.title }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="formGroup.get('id')?.hasError('required') && formGroup.get('id')?.touched && !newNotebook">
+        Notebook selection is required
+      </mat-error>
+
+    </mat-form-field>
+  </ng-container>
+
+  <ng-template #createNewNotebook>
+    <mat-form-field class="full-width">
+      <mat-label>Notebook Title</mat-label>
+      <input
+        matInput
+        formControlName="title"
+        placeholder="Enter notebook title"
+        (blur)="checkForUserInput()"
+      />
+      <mat-error *ngIf="formGroup.get('title')?.hasError('required')">
+        Title is required
+      </mat-error>
+    </mat-form-field>
+  </ng-template>
+</div>

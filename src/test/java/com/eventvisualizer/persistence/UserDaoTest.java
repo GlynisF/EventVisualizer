@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -158,7 +159,7 @@ class UserDaoTest {
         Notebook insertedNotebook = notebookDao.insert(notebookToAddToUser);
         assertNotNull(insertedNotebook);
 
-        List<Notebook> notebooks = userNotebookOwner.getNotebooks();
+        Set<Notebook> notebooks = userNotebookOwner.getNotebooks();
         assertTrue(notebooks.contains(notebookToAddToUser));
 
         logger.info(notebooks);
@@ -181,7 +182,7 @@ class UserDaoTest {
         user.removeNotebook(notebookToDelete);
         notebookDao.update(notebookToDelete);
 
-        List<Notebook> notebooks = user.getNotebooks();
+        Set<Notebook> notebooks = user.getNotebooks();
         assertTrue(!notebooks.contains(notebookToDelete));
 
         assertNull(notebookToDelete.getUser());

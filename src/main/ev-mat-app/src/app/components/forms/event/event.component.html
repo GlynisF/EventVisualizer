@@ -1,0 +1,13 @@
+<div [formGroup]="formGroup">
+<div class="row">
+  <div class="col">
+      <mat-form-field class="full-width">
+        <mat-label>Event Name</mat-label>
+        <input matInput formControlName="eventName" placeholder="Enter name for Event">
+        <mat-error *ngIf="formGroup.get('eventName')?.hasError('required')">
+          Event name is required
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </div>
+</div>

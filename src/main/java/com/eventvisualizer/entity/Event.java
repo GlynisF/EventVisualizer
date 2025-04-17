@@ -1,5 +1,8 @@
 package com.eventvisualizer.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.LinkedHashSet;
@@ -18,9 +21,11 @@ public class Event {
     private int id;
 
     @Column(name = "event_name")
+    @JsonProperty("eventName")
     private String eventName;
 
     @ManyToOne
+    @JsonBackReference(value = "notebook-event")
     @JoinColumn(name = "notebook_id",
             foreignKey = @ForeignKey(name = "event_notebook_fk")
     )
@@ -28,10 +33,25 @@ public class Event {
 
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference(value = "event-detail")
     private Set<Detail> details  = new LinkedHashSet<>();
 
     @OneToOne(mappedBy = "event", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Note note;
+
+    @OneToOne(mappedBy = "event", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Goal goal;
+
+    @OneToOne(mappedBy = "event", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private Reflection reflection;
+
+
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonManagedReference(value = "event-custom")
+    private Set<Custom> customs = new LinkedHashSet<>();
 
 
 
@@ -50,6 +70,10 @@ public class Event {
      */
     public Event(String eventName) {
         this.eventName = eventName;
+    }
+
+    public Event newEventHelper(Event event) {
+        return new Event(event.getEventName());
     }
 
     /**
@@ -132,6 +156,30 @@ public class Event {
         this.goal = goal;
     }
 
+    public Reflection getReflection() {
+        return reflection;
+    }
+
+    public void setReflection(Reflection reflection) {
+        this.reflection = reflection;
+    }
+
+    public Note getNote() {
+        return note;
+    }
+
+    public void setNote(Note note) {
+        this.note = note;
+    }
+
+    public Set<Custom> getCustoms() {
+        return customs;
+    }
+
+    public void setCustoms(Set<Custom> customs) {
+        this.customs = customs;
+    }
+
     /**
      * Add detail.
      *
@@ -152,6 +200,16 @@ public class Event {
         detail.setEvent(null);
     }
 
+    public void addCustom(Custom custom) {
+        customs.add(custom);
+        custom.setEvent(this);
+    }
+
+    public void removeCustom(Custom custom) {
+        customs.remove(custom);
+        custom.setEvent(null);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -170,8 +228,7 @@ public class Event {
         return "Event{" +
                 "id=" + id +
                 ", eventName='" + eventName + '\'' +
-                ", notebook=" + notebook +
-                ", goal=" + goal +
+                ", notebook=" + (notebook != null ? notebook.getId() : "null") +
                 '}';
     }
 }

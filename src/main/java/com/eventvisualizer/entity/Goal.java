@@ -1,25 +1,30 @@
 package com.eventvisualizer.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Objects;
 
 @Entity (name = "Goal")
 @Table(name = "goal")
 public class Goal {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
-    @GenericGenerator(name = "native", strategy = "native")
-    private Integer id;
+    @Column(name = "event_id")
+    private Integer eventId;
 
     @Lob
     @Column(name = "goal_description")
+    @JsonProperty("goalDescription")
     private String goalDescription;
 
     @OneToOne
-    @JoinColumn(name = "event_id", referencedColumnName = "id")
+    @MapsId
+    @PrimaryKeyJoinColumn
+    @JsonBackReference
     private Event event;
+
 
     public Goal() {
     }
@@ -29,12 +34,16 @@ public class Goal {
 
     }
 
-    public Integer getId() {
-        return id;
+    public Goal newGoalHelper(Goal goal) {
+        return new Goal(goal.getGoalDescription());
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(Integer eventId) {
+        this.eventId = eventId;
     }
 
     public String getGoalDescription() {
@@ -57,20 +66,19 @@ public class Goal {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Goal goal = (Goal) o;
-        return Objects.equals(id, goal.id) && Objects.equals(goalDescription, goal.goalDescription);
+        return Objects.equals(eventId, goal.eventId) && Objects.equals(goalDescription, goal.goalDescription);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, goalDescription);
+        return Objects.hash(eventId, goalDescription);
     }
 
     @Override
     public String toString() {
         return "Goal{" +
-                "id=" + id +
+                "eventId=" + eventId +
                 ", goalDescription='" + goalDescription + '\'' +
-                ", eventId=" + (event != null ? event.getId() : "null") +
                 '}';
     }
 }

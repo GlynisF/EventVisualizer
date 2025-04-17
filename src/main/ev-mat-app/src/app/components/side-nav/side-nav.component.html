@@ -1,0 +1,39 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- SIDENAV -->
+  <mat-sidenav #sidenav mode="side" opened class="sidenav">
+    <mat-nav-list>
+
+      <ng-container *ngFor="let notebook of notebookData; let i = index;">
+        <!-- Notebook title -->
+        <button mat-button type="button" (click)="toggleNotebook(i)">
+          {{ notebook.title }}
+          <mat-icon class="dropdown-icon">
+            {{ activeNotebookIndex === i ? 'expand_less' : 'expand_more' }}
+          </mat-icon>
+        </button>
+
+        <!-- Show events if notebook is active -->
+        <div *ngIf="activeNotebookIndex === i" class="event-dropdown">
+          <button mat-button type="button"
+            *ngFor="let event of notebook.events"
+            (click)="selectEvent(event)">
+            {{ event.eventName }}
+          </button>
+        </div>
+      </ng-container>
+
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- CONTENT -->
+  <mat-sidenav-content>
+    <div *ngIf="selectedEventDisplay" class="event-grid-container" @fadeIn>
+      <mat-grid-list cols="3" rowHeight="fit" gutterSize="16px">
+        <mat-grid-tile>
+
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>

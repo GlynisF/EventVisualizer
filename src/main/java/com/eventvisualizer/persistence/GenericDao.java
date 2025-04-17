@@ -58,6 +58,13 @@ public class GenericDao<T> {
         return null;
     }
 
+    public void persistWithoutCommit(T entity, Session session) {
+        session.persist(entity);
+        session.flush();
+        session.refresh(entity);
+    }
+
+
     /**
      * Gets an entity by id
      *

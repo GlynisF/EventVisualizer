@@ -1,0 +1,51 @@
+@use '../../../styles';
+
+div.container {
+  max-width: 800px;
+  margin: 0 auto 3rem;
+}
+
+div.container-fluid {
+  justify-content: space-evenly;
+}
+
+.panel-wrapper {
+  margin-bottom: 2rem;
+}
+
+.panel-wrapper:first-child {
+  margin-top: 1rem;
+}
+
+form {
+  margin: 0 auto;
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0;
+  margin-top: 3rem;
+  gap: .5rem;
+}
+
+.performer-entry-container {
+  position: relative;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  background-color: #f9f9f9;
+}
+
+.close-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 2;
+}
+
+body {
+  background-color: var(--mat-sys-background) !important;
+}

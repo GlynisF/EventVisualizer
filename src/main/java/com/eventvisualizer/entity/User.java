@@ -1,14 +1,16 @@
 package com.eventvisualizer.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 /**
@@ -41,10 +43,12 @@ public class User{
 
     @Column(name = "date_of_birth")
     @Temporal(TemporalType.DATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
 
-    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL, CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.EAGER)
-    private List<Notebook> notebooks = new ArrayList<>();
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, fetch = FetchType.EAGER)
+    @JsonManagedReference(value = "user-notebook")
+    private Set<Notebook> notebooks = new LinkedHashSet<>();
 
     /**
      * Instantiates a new User.
@@ -202,7 +206,7 @@ public class User{
      *
      * @return the notebooks
      */
-    public List<Notebook> getNotebooks() {
+    public Set<Notebook> getNotebooks() {
         return notebooks;
     }
 
@@ -211,7 +215,7 @@ public class User{
      *
      * @param notebooks the notebooks
      */
-    public void setNotebooks(List<Notebook> notebooks) {
+    public void setNotebooks(Set<Notebook> notebooks) {
         this.notebooks = notebooks;
     }
 

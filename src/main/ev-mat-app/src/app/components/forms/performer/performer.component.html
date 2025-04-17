@@ -1,0 +1,39 @@
+<div class="container-fluid performer-container" [formGroup]="formGroup">
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <mat-label>Artist's name</mat-label>
+        <input matInput formControlName="fullName" type="text">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <mat-form-field class="full-width">
+        <mat-label>Moniker</mat-label>
+        <input matInput formControlName="moniker" type="text">
+      </mat-form-field>
+    </div>
+  </div>
+  <div class="row email-fee">
+    <div class="email">
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email">
+      </mat-form-field>
+    </div>
+    <div class="fee">
+      <mat-form-field class="full-width fee-field" floatLabel="always">
+        <mat-label>Performance fee</mat-label>
+        <span matTextPrefix>$&nbsp;</span>
+        <input matInput
+               formControlName="performanceFee"
+               inputmode="numeric"
+               placeholder="0"
+               min="0"
+               class="fee-input">
+        <span matTextSuffix class="fee-suffix"  *ngIf="showSuffix">.00</span>
+      </mat-form-field>
+    </div>
+  </div>
+  </div>

@@ -1,11 +1,13 @@
 package com.eventvisualizer.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * The type Notebook.
@@ -23,13 +25,15 @@ public class Notebook {
     private String title;
 
     @ManyToOne
+    @JsonBackReference(value = "user-notebook")
     @JoinColumn(name = "user_id",
             foreignKey = @ForeignKey(name = "notebook_fk")
     )
     private User user;
 
     @OneToMany(mappedBy="notebook", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private final List<Event> events = new ArrayList<>();
+    @JsonManagedReference(value = "notebook-event")
+    private final Set<Event> events = new LinkedHashSet<>();
 
     /**
      * Instantiates a new Notebook.
@@ -45,6 +49,10 @@ public class Notebook {
      */
     public Notebook(String title) {
         this.title = title;
+    }
+
+    public Notebook newNotebookHelper(Notebook notebook) {
+        return new Notebook(notebook.getTitle());
     }
 
     /**
@@ -117,7 +125,7 @@ public class Notebook {
      *
      * @return the events
      */
-    public List<Event> getEvents() {
+    public Set<Event> getEvents() {
         return events;
     }
 
@@ -159,7 +167,7 @@ public class Notebook {
         return "Notebook{" +
                 "id=" + getId() +
                 ", title='" + title + '\'' +
-                ", user=" + user +
+                ", user=" + (user != null ? user.getId() : "null")  +
                 '}';
     }
 }

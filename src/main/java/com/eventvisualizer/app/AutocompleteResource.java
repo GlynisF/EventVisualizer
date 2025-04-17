@@ -1,7 +1,7 @@
-package com.DIYEventPlanner.app;
+package com.eventvisualizer.app;
 
-import com.DIYEventPlanner.persistence.PlacesDao;
-import com.DIYEventPlanner.persistence.PlacesSearchDao;
+import com.eventvisualizer.persistence.PlacesDao;
+import com.eventvisualizer.persistence.PlacesSearchDao;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.maps.model.AutocompletePrediction;
 import com.googleapis.maps.places.Places;
@@ -24,6 +24,9 @@ public class AutocompleteResource {
     private final ExecutorService executorService = Executors.newFixedThreadPool(15);
     private PlacesSearchDao searchDao;
 
+    public AutocompleteResource() {
+
+    }
     @Inject
     public AutocompleteResource(@Context PlacesSearchDao searchDao) {
         this.searchDao = new PlacesSearchDao("");

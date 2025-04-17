@@ -1,0 +1,14 @@
+@use '@angular/material';
+@use '../../../styles';
+
+.mat-expansion-panel {
+  transition: box-shadow 200ms ease, border 200ms ease;
+  box-shadow: var(--md-sys);
+  border-radius: 12px;
+
+}
+
+.mat-expansion-panel:focus-within {
+  box-shadow: var(--mat-elevation-z4);
+  border: 1px solid var(--md-sys-color-primary);
+}

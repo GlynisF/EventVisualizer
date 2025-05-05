@@ -33,9 +33,6 @@ public class Note {
         this.noteDescription = noteDescription;
     }
 
-    public Note newNoteHelper(Note note) {
-        return new Note(note.getNoteDescription());
-    }
 
     public int getEventId() {
         return eventId;

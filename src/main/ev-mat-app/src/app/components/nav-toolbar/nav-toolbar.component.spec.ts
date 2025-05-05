@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { NavToolbarComponent } from './nav-toolbar.component';
+import {NavToolbarComponent} from './nav-toolbar.component';
 
 describe('NavToolbarComponent', () => {
   let component: NavToolbarComponent;

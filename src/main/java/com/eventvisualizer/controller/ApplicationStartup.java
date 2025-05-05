@@ -1,7 +1,6 @@
 package com.eventvisualizer.controller;
 
 
-import com.eventvisualizer.util.AppContext;
 import com.eventvisualizer.util.PropertiesLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -29,7 +28,6 @@ public class ApplicationStartup extends HttpServlet implements PropertiesLoader 
             Properties properties = new Properties(loadProperties("/cognito.properties"));
             context.setAttribute("cognito.properties", properties);
             logger.info("Properties loaded: {}", properties);
-            AppContext.initialize();
         } catch (Exception e) {
             logger.error("Error loading properties: {}", e.getMessage(), e);
             throw new ServletException("Failed to load properties", e);

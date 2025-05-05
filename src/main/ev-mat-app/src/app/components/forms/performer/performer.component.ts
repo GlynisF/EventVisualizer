@@ -29,7 +29,7 @@ export function buildPerformerForm(fb: FormBuilder): FormGroup {
 })
 export class PerformerComponent implements OnChanges, OnInit {
   @Input() formGroup!: FormGroup;
-  @ViewChild('feeSuffix') performanceFeeInput!: ElementRef;
+  @ViewChild('fee-suffix') performanceFeeInput!: ElementRef;
   fb = inject(FormBuilder);
 
   showSuffix = true;

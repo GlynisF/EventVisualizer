@@ -1,0 +1,46 @@
+<ng-container *ngIf="displayMode === 'display'">
+  <div class="details-container">
+    <div class="event-description">Description:<br> {{detailData?.description}}</div>
+    <div class="icon-container"><mat-icon>calendar_today</mat-icon> {{ detailData?.dateOfEvent | date: 'EEE MMM d, y' }}</div>
+    <div class="icon-container"><mat-icon>schedule</mat-icon>
+      {{ convertTimeStringToDate(detailData?.startTime) | date: 'h:mm a' }} to
+      {{ convertTimeStringToDate(detailData?.endTime) | date: 'h:mm a' }}
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="displayMode === 'edit'">
+  <div class="detail-box" [formGroup]="formGroup">
+    <div class="description-box">
+      <mat-form-field class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" rows="4"></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="date-box">
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dateOfEvent">
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="time-box">
+      <mat-form-field appearance="fill">
+        <mat-label>Start Time</mat-label>
+        <input matInput formControlName="startTime" [matTimepicker]="startPicker">
+        <mat-timepicker-toggle matIconSuffix [for]="startPicker"></mat-timepicker-toggle>
+        <mat-timepicker #startPicker></mat-timepicker>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>End Time</mat-label>
+        <input matInput formControlName="endTime" [matTimepicker]="endPicker">
+        <mat-timepicker-toggle matIconSuffix [for]="endPicker"></mat-timepicker-toggle>
+        <mat-timepicker #endPicker></mat-timepicker>
+      </mat-form-field>
+    </div>
+  </div>
+</ng-container>

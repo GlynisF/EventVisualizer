@@ -1,39 +1,127 @@
 <mat-sidenav-container class="sidenav-container">
-  <!-- SIDENAV -->
-  <mat-sidenav #sidenav mode="side" opened class="sidenav">
-    <mat-nav-list>
-
-      <ng-container *ngFor="let notebook of notebookData; let i = index;">
-        <!-- Notebook title -->
-        <button mat-button type="button" (click)="toggleNotebook(i)">
-          {{ notebook.title }}
-          <mat-icon class="dropdown-icon">
-            {{ activeNotebookIndex === i ? 'expand_less' : 'expand_more' }}
-          </mat-icon>
-        </button>
-
-        <!-- Show events if notebook is active -->
-        <div *ngIf="activeNotebookIndex === i" class="event-dropdown">
-          <button mat-button type="button"
-            *ngFor="let event of notebook.events"
-            (click)="selectEvent(event)">
-            {{ event.eventName }}
+  <mat-sidenav mode="side" opened class="sidenav">
+    <cdk-accordion>
+      <cdk-accordion-item
+        *ngFor="let notebook of notebookData; let i = index; trackBy: trackByNotebookId"
+        #accordionItem="cdkAccordionItem"
+        class="accordion-item">
+        <div class="notebook-button-container">
+          <button
+            mat-button
+            (click)="accordionItem.toggle(); toggleNotebook(notebook.id)"
+            tabindex="0"
+            [attr.id]="'accordion-header-' + i"
+            [attr.aria-expanded]="accordionItem.expanded"
+            [attr.aria-controls]="'accordion-body-' + i"
+            class="notebook-button">
+            <span class="button-text">{{ notebook.title }}</span>
+            <mat-icon class="dropdown-icon">
+              {{ accordionItem.expanded ? 'arrow_drop_up' : 'arrow_drop_down' }}
+            </mat-icon>
           </button>
+          <div>
+          </div>
         </div>
+        <mat-list
+          *ngIf="accordionItem.expanded"
+          class="example-accordion-item-body"
+          role="group"
+          [attr.id]="'accordion-body-' + i"
+          [attr.aria-labelledby]="'accordion-header-' + i" @fadeIn>
+          <ng-container *ngIf="!notebook.events?.length">
+            <mat-list-item class="no-events">No events</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+              <button mat-button>Add event
+                <mat-icon matListItemIcon>music_note_add</mat-icon>
+              </button>
+            </mat-list-item>
+          </ng-container>
+          <mat-list-item *ngFor="let event of notebook.events; trackBy: trackByEventId">
+            <button mat-button (click)="selectedEvent($event, event)">
+              <mat-icon matListItemIcon>music_note_add</mat-icon>
+              {{ event.eventName }}
+            </button>
+          </mat-list-item>
+          <mat-list-item>
+            <button mat-button>Add event
+              <mat-icon matListItemIcon>add_circle</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-list>
+      </cdk-accordion-item>
+      <div class="add-notebook-container">
+        <button mat-button class="add-notebook-btn" (click)="addNotebook()">
+          <span class="add-notebook-text">Add Notebook</span>
+          <mat-icon class="add-icon">add_box</mat-icon></button>
+      </div>
+    </cdk-accordion>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <ng-container *ngIf="eventSelected">
+
+        <button mat-button (click)="editor = !editor; toggleEditorMode(eventSelected)">Edit event</button>
+
+
+      <!--  <div class="event-header">
+          <div class="icon-container"><mat-icon>local_activity</mat-icon> <div class="display-large">{{ eventSelected.eventName }}</div></div>
+        </div><ng-container *ngFor="let item of getEventContent(); trackBy: trackById">-->
+       <!--  <ng-container *ngIf="item.type === 'detail'">
+           <div *ngIf="!editor; else editDetails" class="details-container">
+             <div class="event-description">Description:<br> {{item.data.description}}</div>
+             <div class="icon-container"><mat-icon>calendar_today</mat-icon> {{ item.data.dateOfEvent | date: 'EEE MMM d, y' }}</div>
+             <div class="icon-container"><mat-icon>schedule</mat-icon>
+               {{ convertTimeStringToDate(item.data.startTime) | date: 'h:mm a' }} to
+               {{ convertTimeStringToDate(item.data.endTime) | date: 'h:mm a' }}
+             </div>
+           </div>
+        </ng-container>
+
+        <ng-template #editDetails>
+          <app-detail-card [editor]="editor" [formGroup]="getDetailGroup()" [displayMode]="'edit'" [item]="item" [convertTimeStringToDate]="convertTimeStringToDate.bind(this)"></app-detail-card>
+        </ng-template>-->
+      <ng-container *ngIf="!editor; else editEvent">
+        <app-display-events *ngIf="eventSelected" [eventSelected]="eventSelected" [convertTimeStringToDate]="convertTimeStringToDate.bind(this)"></app-display-events>
       </ng-container>
 
-    </mat-nav-list>
-  </mat-sidenav>
+      <ng-template #editEvent>
+        <form [formGroup]="eventFormGroup">
+          <app-edit-event
+            [formGroup]="eventFormGroup"
+            [eventSelected]="eventSelected"
+            [displayMode]="'edit'"
+            [convertTimeStringToDate]="convertTimeStringToDate">
+          </app-edit-event>
+        </form>
+      </ng-template>
 
-  <!-- CONTENT -->
-  <mat-sidenav-content>
-    <div *ngIf="selectedEventDisplay" class="event-grid-container" @fadeIn>
-      <mat-grid-list cols="3" rowHeight="fit" gutterSize="16px">
-        <mat-grid-tile>
 
-        </mat-grid-tile>
-      </mat-grid-list>
-    </div>
 
+
+      <!-- ✅ SAVE CHANGES BUTTON -->
+      <button type="submit" mat-raised-button>Save changes</button>
+
+
+      <!-- ✅ FORM ends here -->
+
+      <!-- GOAL / NOTE / REFLECTION -->
+      <div class="goal-note-reflection">
+        <ng-container *ngIf="eventSelected.goal">
+          <app-goal-card [item]="eventSelected"></app-goal-card>
+        </ng-container>
+
+        <ng-container *ngIf="eventSelected.note">
+          <app-note-card [item]="eventSelected"></app-note-card>
+        </ng-container>
+
+        <ng-container *ngIf="eventSelected.reflection">
+          <app-reflection-card [item]="eventSelected"></app-reflection-card>
+        </ng-container>
+      </div>
+
+
+    </ng-container>
   </mat-sidenav-content>
+
+
 </mat-sidenav-container>

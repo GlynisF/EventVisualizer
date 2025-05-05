@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PanelWrapperComponent } from './panel-wrapper.component';
+import {PanelWrapperComponent} from './panel-wrapper.component';
 
 describe('PanelWrapperComponent', () => {
   let component: PanelWrapperComponent;

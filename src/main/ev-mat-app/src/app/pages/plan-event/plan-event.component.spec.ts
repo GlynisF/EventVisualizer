@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PlanEventComponent } from './plan-event.component';
+import {PlanEventComponent} from './plan-event.component';
 
 describe('PlanEventComponent', () => {
   let component: PlanEventComponent;

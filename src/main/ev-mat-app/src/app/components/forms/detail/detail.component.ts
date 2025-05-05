@@ -1,12 +1,12 @@
-import {Component, inject, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, EventEmitter, inject, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTimepickerModule} from '@angular/material/timepicker';
-import {Detail} from '../../../models/entity.model';
-import {buildFormGroup} from '../../../util/form-util';
+import {buildDetailForm} from '../../../util/form-util';
+import {debounceTime} from 'rxjs/operators';
 
 @Component({
   selector: 'app-detail',
@@ -22,26 +22,31 @@ import {buildFormGroup} from '../../../util/form-util';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
-export class DetailComponent implements OnChanges {
+export class DetailComponent implements OnInit, OnChanges {
   @Input() formGroup!: FormGroup;
+  @Input() detailField?: string;
+
+  @Output() detailChanged = new EventEmitter<any>();
+
   fb = inject(FormBuilder);
+
+  ngOnInit() {
+    this.formGroup = buildDetailForm(this.fb);
+
+    this.formGroup.valueChanges
+      .pipe(debounceTime(300))
+      .subscribe(values => {
+        this.detailChanged.emit(values);
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['formGroup'] && this.formGroup) {
-      const detail: Detail = {
-        dateOfEvent: null,
-        startTime: null,
-        endTime: null,
-        description: ''
-      };
-
-      const group = buildFormGroup(this.fb, detail);
-
-      Object.keys(group.controls).forEach(key => {
-        if (!this.formGroup.get(key)) {
-          this.formGroup.addControl(key, group.get(key)!);
-        }
-      });
+      this.formGroup = buildDetailForm(this.fb);
     }
   }
+
+
+
+
 }

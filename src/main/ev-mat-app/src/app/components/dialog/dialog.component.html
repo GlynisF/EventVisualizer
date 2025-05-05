@@ -1,0 +1,28 @@
+<ng-container *ngIf="data.addNotebook; else updateEvent">
+<div class="dialog-container">
+<div class="display-small" mat-dialog-title>Add Notebook</div>
+  <form [formGroup]="formGroup" (ngSubmit)="submitNotebook()">
+<mat-dialog-content color="white">
+      <mat-form-field class="full-width">
+        <input matInput type="text" placeholder="enter a name for your notebook." formControlName="title">
+      </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button type="submit" mat-raised-button>Submit</button>
+  <button type="button" class="cancel-btn" mat-raised-button mat-dialog-close="false">Cancel</button>
+</mat-dialog-actions>
+  </form>
+</div>
+</ng-container>
+
+<ng-template #updateEvent>
+  <ng-container [formGroup]="formGroup">
+  <h2 mat-dialog-title>Save changes made?</h2>
+  <mat-dialog-content>Changes cannot be undone after updating.</mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button color="warn" [mat-dialog-close]="false">Cancel</button>
+    <button type="submit" mat-button color="primary" [mat-dialog-close]="true">Update event</button>
+  </mat-dialog-actions>
+  </ng-container>
+</ng-template>
+

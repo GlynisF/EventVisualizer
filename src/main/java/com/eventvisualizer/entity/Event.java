@@ -72,9 +72,6 @@ public class Event {
         this.eventName = eventName;
     }
 
-    public Event newEventHelper(Event event) {
-        return new Event(event.getEventName());
-    }
 
     /**
      * Gets id.

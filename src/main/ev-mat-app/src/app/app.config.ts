@@ -19,13 +19,13 @@ export const appConfig: ApplicationConfig = {
     provideNativeDateAdapter(),
     provideMomentDateAdapter({
       parse: {
-        dateInput: 'MM/DD/YYYY',
-        timeInput: 'hh:mm:ss a z'
+        dateInput: ['YYYY-MM-DD', 'DD-MM-YYYY', 'MM/DD/YYYY', 'YYYY/MM/DD'],
+        timeInput: ['HH:mm:ss A', 'h:mm A', 'h:mm a','HH:mm'],
       },
       display: {
         dateInput: 'ddd MMM D, YYYY',
-        timeOptionLabel: 'HH:mm A',
-        timeInput: 'HH:mm A',
+        timeOptionLabel: 'h:mm a',
+        timeInput: 'h:mm a',
         monthYearLabel: 'MMM YYYY',
         dateA11yLabel: 'LL',
         monthYearA11yLabel: 'MMMM YYYY',

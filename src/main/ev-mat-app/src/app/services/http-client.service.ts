@@ -13,6 +13,10 @@ export class HttpClientService  {
 
   constructor() {}
 
+  updateEvent(eventId: number, eventData: any) {
+    return this.http.put(`${this.baseUrl}/service/update/${eventId}`, eventData);
+  }
+
   postData(endpoint: string, payload: any): Observable<any> {
     const url = `${this.baseUrl}/${endpoint}`;
     return this.http.post<any>(url, payload, {

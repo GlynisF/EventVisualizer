@@ -4,11 +4,11 @@ import {AppComponent} from './app/app.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {importProvidersFrom} from '@angular/core';
 
+
 bootstrapApplication(AppComponent, {
   ...appConfig,
   providers: [
     ...appConfig.providers,
-    importProvidersFrom(BrowserAnimationsModule)
-  ]
-})
-  .catch((err) => console.error(err));
+    importProvidersFrom(BrowserAnimationsModule),
+  ],
+}).catch((err) => console.error(err));

@@ -7,6 +7,10 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 
+import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
+
 public class ObjectMapperUtil {
     private static final ObjectMapper OBJECT_MAPPER;
 
@@ -42,4 +46,25 @@ public class ObjectMapperUtil {
         }
         return getMapper().treeToValue(node, entityClass);
     }
+
+    public static <T> List<T> extractEntityList(String json, String key, Class<T> clazz) throws IOException {
+        ObjectMapper mapper = getMapper();
+        JsonNode rootNode = mapper.readTree(json);
+        JsonNode node = rootNode.get(key);
+
+        if (node == null) {
+            throw new IllegalArgumentException("Missing entity: " + key);
+        }
+
+        if (node.isArray()) {
+            return mapper.readerForListOf(clazz).readValue(node);
+        } else if (node.isObject()) {
+            T singleEntity = mapper.treeToValue(node, clazz);
+            return Collections.singletonList(singleEntity);
+        } else {
+            throw new IllegalArgumentException("Invalid format for entity list: " + key);
+        }
+    }
+
+
 }

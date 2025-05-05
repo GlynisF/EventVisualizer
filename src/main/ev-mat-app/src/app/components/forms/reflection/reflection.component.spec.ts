@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ReflectionComponent } from './reflection.component';
+import {ReflectionComponent} from './reflection.component';
 
 describe('ReflectionComponent', () => {
   let component: ReflectionComponent;

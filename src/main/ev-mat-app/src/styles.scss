@@ -227,7 +227,7 @@ mat-panel-title span.title{font:var(--mat-sys-title-large);}
   font-family: var(
       --brand-style-display-large-font-family,
       "Roboto Mono-Regular",
-      sans-serif
+      monospace
   ), sans-serif;
   font-size: var(--brand-style-display-large-font-size, 3.5625rem);
   line-height: var(--brand-style-display-large-line-height, 4rem);
@@ -241,7 +241,7 @@ mat-panel-title span.title{font:var(--mat-sys-title-large);}
   font-family: var(
       --brand-style-display-medium-font-family,
       "Roboto Mono-Regular",
-      sans-serif
+      monospace
   ), sans-serif;
   font-size: var(--brand-style-display-medium-font-size, 2.8125rem);
   line-height: var(--brand-style-display-medium-line-height, 3.25rem);
@@ -363,8 +363,8 @@ mat-panel-title span.title{font:var(--mat-sys-title-large);}
   font-family: var(
       --brand-style-title-small-font-family,
       "Roboto Mono",
-      sans-serif
-  ), sans-serif;
+      monospace
+  ), serif;
   font-size: var(--brand-style-title-small-font-size, 0.875rem);
   line-height: var(--brand-style-title-small-line-height, 1.25rem);
   letter-spacing: var(--brand-style-title-small-letter-spacing, 0.00625rem);
@@ -377,8 +377,8 @@ mat-panel-title span.title{font:var(--mat-sys-title-large);}
   font-family: var(
       --brand-style-label-large-font-family,
       "Roboto Mono",
-      sans-serif
-  ), sans-serif;
+      Monospace
+  ), serif;
   font-size: var(--brand-style-label-large-font-size, 0.875rem);
   line-height: var(--brand-style-label-large-line-height, 1.25rem);
   letter-spacing: var(--brand-style-label-large-letter-spacing, 0.00625rem);

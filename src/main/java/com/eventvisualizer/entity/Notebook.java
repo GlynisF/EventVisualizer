@@ -51,9 +51,6 @@ public class Notebook {
         this.title = title;
     }
 
-    public Notebook newNotebookHelper(Notebook notebook) {
-        return new Notebook(notebook.getTitle());
-    }
 
     /**
      * Instantiates a new Notebook.

@@ -1,0 +1,12 @@
+<ng-container *ngIf="withIcon; else noIcon">
+  <button type="{{type}}" class="{{className}} {{matButtonType}}">
+    <span>{{buttonText}}</span>
+    <mat-icon class="{{iconClass}}">{{iconValue}}</mat-icon>
+  </button>
+</ng-container>
+
+<ng-template #noIcon>
+  <button type="{{type}}" class="{{className}} {{matButtonType}}">
+    <span>{{buttonText}}</span>
+  </button>
+</ng-template>

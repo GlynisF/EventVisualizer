@@ -3,18 +3,21 @@ package com.eventvisualizer.app;
 import com.eventvisualizer.entity.Notebook;
 import com.eventvisualizer.entity.User;
 import com.eventvisualizer.service.CrudService;
-import com.eventvisualizer.service.NotebookService;
-import com.eventvisualizer.util.ServiceRegistry;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Set;
 
 @Path("/service")
 public class CrudResource {
+
+    private final Logger logger = (Logger) LogManager.getLogger(this.getClass());
 
     //private final ExecutorService executorService = Executors.newFixedThreadPool(5);
     private final CrudService service;
@@ -31,31 +34,11 @@ public class CrudResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("/add")
-    public Response addNewEvent(@QueryParam("operation") String operation,
-                                @QueryParam("userId") int userId, String json) {
-        NotebookService notebookService = ServiceRegistry.get(NotebookService.class);
-        System.out.println(json);
-        if (json == null || json.isEmpty()) {
-            return Response.status(Response.Status.BAD_REQUEST).entity(Map.of("error", "data is null.")).build();
-        }
-        try {
-            Notebook notebook = notebookService.notebookMapper(json);
-            CrudService crud = new CrudService();
-
-            System.out.println(notebook);
-            return Response.ok().entity(Map.of("success", "Notebook successfully added.")).build();
-        } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(Map.of("error", e.getMessage())).build();
-        }
-    }
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
     @Path("/new/{entityType}/{id}")
     public Response newUserNotebookAndEvent(@PathParam("id") int id,
                                             @PathParam("entityType") String type,
                                             String json) {
+        System.out.println(json);
         if (json == null) {
             return Response.status(Response.Status.BAD_REQUEST)
                     .entity(Map.of("Message", "data is null."))
@@ -79,6 +62,26 @@ public class CrudResource {
         }
     }
 
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/add-notebook/{userId}")
+    public Response addNotebook(@PathParam("userId") int userId, String json) {
+        logger.info(json);
+        if (json == null) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(Map.of("message", "Notebook returned null."))
+                    .build();
+        }
+        try {
+            service.addNotebook(userId, json);
+            return Response.status(Response.Status.CREATED).entity(Map.of("message", "Notebook added")).build();
+        } catch (JsonProcessingException e) {
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(Map.of("message", "Error processing notebook.")).build();
+        }
+
+    }
+
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
@@ -91,7 +94,22 @@ public class CrudResource {
         return Response.ok().entity(notebooks).build();
     }
 
-    private void handleNewNotebookForUser(int userId, String json) throws JsonProcessingException {
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/update/{eventId}")
+    public Response updateEvent(@PathParam("eventId") int eventId, String json) {
+        System.out.println(json);
+        if (json == null || json.isEmpty()) {
+            return Response.status(Response.Status.BAD_REQUEST)
+                    .entity(Map.of("message", "Invalid input data: JSON payload is missing or empty."))
+                    .build();
+        }
+            service.updateEvent(json, eventId);
+        return Response.ok().entity(Map.of("message", "Event with the I.D." + " was updated.")).build();
+
+    }
+
+    private void handleNewNotebookForUser(int userId, String json) throws IOException {
         User user = service.getUserDao().getById(userId);
         if (user != null) {
             Notebook notebook = service.addNewEventAndNotebook(json, user);
@@ -99,7 +117,7 @@ public class CrudResource {
         }
     }
 
-    private void handleEventForNotebook(int notebookId, String json) throws JsonProcessingException {
+    private void handleEventForNotebook(int notebookId, String json) throws IOException {
         Notebook notebook = service.addEventToExistingNotebook(json, notebookId);
         service.getNotebookDao().update(notebook);
     }

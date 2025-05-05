@@ -62,11 +62,6 @@ public class Location {
         this.accessible = accessible;
     }
 
-    public Location newLocationHelper(Location location) {
-        return new Location(location.getLocationName(), location.getPhoneNumber(), location.getAddress(),
-                location.getAddress2(), location.getCity(), location.getState(), location.getZip(),
-                location.getWebsite(), location.getAccessible());
-    }
 
     public int getId() {
         return id;

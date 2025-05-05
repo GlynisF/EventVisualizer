@@ -1,7 +1,5 @@
 package com.eventvisualizer.util;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +9,7 @@ public class EntityHelper {
     private final Map<String, Object> entities;
 
     public EntityHelper(Map<String, Object> entities) {
-        this.entities = Map.copyOf(entities); // unmodifiable
+        this.entities = Map.copyOf(entities);
     }
 
     @SuppressWarnings("unchecked")
@@ -27,12 +25,15 @@ public class EntityHelper {
     }
 
     @SuppressWarnings("unchecked")
-    public <T> List<T> getList(String key, Class<T> clazz) throws JsonProcessingException {
+    public <T> List<T> getList(String key, Class<T> clazz) {
         Object raw = entities.get(key);
-        if (raw == null) return Collections.emptyList();
-        return ObjectMapperUtil.getMapper().convertValue(raw,
-                ObjectMapperUtil.getMapper().getTypeFactory().constructCollectionType(List.class,
-                clazz));
+        if (raw == null) {
+            return Collections.emptyList();
+        }
+        if (!(raw instanceof List<?>)) {
+            throw new IllegalStateException("Entity for key '" + key + "' is not a list");
+        }
+        return (List<T>) raw;
     }
 
 

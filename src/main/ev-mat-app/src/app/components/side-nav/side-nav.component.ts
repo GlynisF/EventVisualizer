@@ -1,100 +1,204 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatListModule} from '@angular/material/list';
-import {MatIconModule} from '@angular/material/icon';
-import {expandCollapse, fadeIn, rotateToggle} from '../../util/animations';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit, ViewChild} from '@angular/core';
+import {NgFor, NgIf} from '@angular/common';
+import {expandCollapse, fadeIn, fadeInOut, rotateToggle} from '../../util/animations';
 import {HttpClientService} from '../../services/http-client.service';
-import {CommonModule, NgForOf, NgIf} from '@angular/common';
-import {Detail, Event, Goal, Location, Note, Notebook, Performer, Reflection} from '../../models/entity.model';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
+import {Event, Notebook} from '../../models/entity.model';
+import {CdkAccordion, CdkAccordionItem} from '@angular/cdk/accordion';
+import {GoalCardComponent} from '../cards/goal-card/goal-card.component';
+import {NoteCardComponent} from '../cards/note-card/note-card.component';
+import {ReflectionCardComponent} from '../cards/reflection-card/reflection-card.component';
+import {MaterialCompsModule} from '../../materialcomps/materialcomps.module';
+import {MatDialog} from '@angular/material/dialog';
+import {DialogComponent} from '../dialog/dialog.component';
+import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {DetailComponent} from '../forms/detail/detail.component';
+import {
+  buildDetailArray,
+  buildGoalForm,
+  buildLocationForm,
+  buildNoteForm,
+  buildPerformerArray,
+  buildReflectionForm
+} from '../../util/form-util';
+import {DisplayEventsComponent} from '../display-events/display-events.component';
+import {EditEventComponent} from '../edit-event/edit-event.component';
 
 @Component({
-  animations: [rotateToggle, expandCollapse, fadeIn],
+  animations: [rotateToggle, expandCollapse, fadeIn, fadeInOut],
   selector: 'app-side-nav',
-  imports: [MatSidenavModule, MatListModule, MatIconModule, MatIconModule, NgForOf, MatGridListModule, MatCardModule, NgIf, CommonModule, MatButtonModule],
+  imports: [
+    MaterialCompsModule,
+    CdkAccordion,
+    CdkAccordionItem,
+    NgFor,
+    NgIf,
+    GoalCardComponent,
+    NoteCardComponent,
+    ReflectionCardComponent,
+    ReactiveFormsModule,
+    DisplayEventsComponent,
+    EditEventComponent
+  ],
   templateUrl: './side-nav.component.html',
-  styleUrl: './side-nav.component.scss'
+  styleUrl: './side-nav.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SideNavComponent implements OnInit {
-  menuOpen = false;
-  private _notebooks: Notebook[] = [];
-  http = inject(HttpClientService);
-  notebookData: Notebook[] = [];
-  selectedNotebook?: Notebook;
-  events: Event[] = [];
+  @ViewChild(DetailComponent) detailComponent!: DetailComponent;
+  private http = inject(HttpClientService);
+  private fb = inject(FormBuilder);
+  private cdr = inject(ChangeDetectorRef);
 
-  selectNotebook(notebook: Notebook) {
-    this.selectedNotebook = notebook;
-  }
+  public dialog = inject(MatDialog);
+
+  notebookData: Notebook[] = [];
+  eventSelected?: Event;
+  selectedNotebookId?: number;
+  isOpen = false;
+  createNotebook = false;
+  editor = false;
+
+  eventFormGroup!: FormGroup;
+  storageForm: any = localStorage.getItem('originalEvent');
 
   ngOnInit() {
     this.http.getNotebooks().subscribe({
       next: (response) => {
-        this._notebooks.push(...response);
         this.notebookData = [...response];
-        console.log(response);
-        console.log(this._notebooks);
+        this.cdr.markForCheck();
       },
       error: (err) => {
         console.error('Error fetching notebooks:', err);
-      },
-      complete: () => {
-        return this._notebooks;
       }
     });
-
   }
 
-  @Input()
-  set notebooks(value: Notebook[]) {
-    this._notebooks = value;
-  }
-  get notebooks(): Notebook[] {
-    return this._notebooks;
-  }
-
-  selectedEventDisplay?: {
-    event: Event;
-    detail?: Detail;
-    performer?: Performer;
-    location?: Location;
-    goal?: Goal;
-    note?: Note;
-    reflection?: Reflection;
-  };
-
-  selectEvent(event: any): void {
-    const detail = event.details?.[0];
-    const performer = detail?.performers?.[0];
-    const location = detail?.locations?.[0];
-
-    this.selectedEventDisplay = {
-      event,
-      detail: {
-        ...detail,
-        dateOfEvent: detail.dateOfEvent ? new Date(detail.dateOfEvent) : undefined,
-        startTime: detail.startTime ? new Date(`1970-01-01T${detail.startTime}`) : undefined,
-        endTime: detail.endTime ? new Date(`1970-01-01T${detail.endTime}`) : undefined,
-      },
-      performer,
-      location,
-      goal: event.goal,
-      note: event.note,
-      reflection: event.reflection
-    };
+  updateEvent() {
+    if (this.eventFormGroup.valid) {
+      const formData = this.eventFormGroup.value;
+      const eventId = formData.event.id;
+      this.http.updateEvent(eventId, formData).subscribe({
+        next: () => {
+          console.log('Event updated successfully!');
+        },
+        error: (err) => {
+          console.error('Error updating event:', err);
+        }
+      });
+    }
   }
 
-  formatDate(date: string): string {
-    return new Date(date).toLocaleDateString();
+  addNotebook(): void {
+    this.createNotebook = !this.createNotebook;
+    this.dialog.open(DialogComponent, {
+      data: { addNotebook: true }
+    });
   }
 
-  activeNotebookIndex: number | null = null;
+  updateDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: { addNotebook: false, formGroup: this.eventFormGroup }
+    });
 
-  toggleNotebook(index: number): void {
-    this.activeNotebookIndex = this.activeNotebookIndex === index ? null : index;
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.updateEvent();
+      }
+    });
   }
 
+  toggle(): void {
+    this.isOpen = !this.isOpen;
+  }
 
+  toggleEditorMode(event: Event): void {
+    if (!this.eventFormGroup) {
+      this.eventFormGroup = this.fb.group({
+        event: this.fb.group({
+          id: [event.id],
+          eventName: [event.eventName]
+        }),
+        performers: buildPerformerArray(this.fb, event.details?.[0]?.performers || []),
+        location: buildLocationForm(this.fb),
+        note: buildNoteForm(this.fb),
+        goal: buildGoalForm(this.fb),
+        reflection: buildReflectionForm(this.fb),
+        details: buildDetailArray(this.fb, event.details || [])
+      });
+
+    }
+  }
+
+  toggleNotebook(id: number | undefined): void {
+    this.selectedNotebookId = this.selectedNotebookId === id ? undefined : id;
+  }
+
+  selectedEvent(event: MouseEvent, notebookEvent: Event) {
+    if (!this.editor) {
+      this.eventSelected = notebookEvent;
+      console.log(this.eventSelected);
+    }
+    if (this.editor) {
+      event.stopPropagation();
+      this.updateDialog();
+    }
+  }
+
+  getDetailGroup(): FormGroup {
+    return this.eventFormGroup.get('details') as FormGroup;
+  }
+
+  getEventContent(): any[] {
+    const output: any[] = [];
+
+    if (!this.eventSelected) return output;
+
+    this.eventSelected.details?.forEach((detail) => {
+      output.push({
+        type: 'detail',
+        data: detail,
+        locations: detail.locations || []
+      });
+
+      detail.performers?.forEach((performer) => {
+        output.push({
+          type: 'performer',
+          data: performer
+        });
+      });
+    });
+
+    if (this.eventSelected.note) {
+      output.push({ type: 'note', data: this.eventSelected.note });
+    }
+
+    if (this.eventSelected.goal) {
+      output.push({ type: 'goal', data: this.eventSelected.goal });
+    }
+
+    if (this.eventSelected.reflection) {
+      output.push({ type: 'reflection', data: this.eventSelected.reflection });
+    }
+
+    return output;
+  }
+
+  convertTimeStringToDate(timeString: string): Date {
+    const [hours, minutes, seconds] = timeString.split(':').map(Number);
+    const date = new Date();
+    date.setHours(hours, minutes, seconds || 0);
+    return date;
+  }
+
+  trackById(index: number, item: any): number {
+    return item.id;
+  }
+
+  trackByNotebookId(index: number, notebook: Notebook): number {
+    return notebook.id!;
+  }
+
+  trackByEventId(index: number, event: Event): number {
+    return event.id!;
+  }
 }

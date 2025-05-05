@@ -113,7 +113,7 @@ export class LocationComponent implements OnChanges {
         zip: [''],
         phoneNumber: [''],
         website: [''],
-        accessible: [false]
+        accessible: [false],
       });
 
       Object.keys(locationControls.controls).forEach(key => {

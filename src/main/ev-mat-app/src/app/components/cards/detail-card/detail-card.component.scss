@@ -1,0 +1,39 @@
+.event-description {
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 2.5rem;
+  text-align: justify;
+}
+
+.details-container {
+  justify-content: space-evenly;
+  margin-bottom: 3rem;
+  align-content: center;
+}
+
+.display-large {
+  margin-bottom: 16px;
+
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.time-container {
+  display: inline-flex;
+  justify-content: center;
+}
+
+mat-hint {
+  margin-bottom: 3rem;
+}
+
+.start-container {
+  margin-right: 3rem;
+}
+
+
+

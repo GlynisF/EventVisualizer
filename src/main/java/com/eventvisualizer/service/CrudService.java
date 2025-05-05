@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,16 +19,19 @@ public class CrudService {
     private final Logger logger = LogManager.getLogger(this.getClass());
     private final GenericDao<Notebook> notebookDao;
     private final GenericDao<User> userDao;
+    private final GenericDao<Event> eventDao;
 
 
     public CrudService() {
         userDao = new GenericDao<>(User.class);
         notebookDao = new GenericDao<>(Notebook.class);
+        eventDao = new GenericDao<>(Event.class);
     }
 
-    public CrudService(GenericDao<Notebook> notebookDao, GenericDao<User> userDao) {
+    public CrudService(GenericDao<Notebook> notebookDao, GenericDao<User> userDao, GenericDao<Event> eventDao) {
         this.notebookDao = notebookDao;
         this.userDao = userDao;
+        this.eventDao = eventDao;
     }
 
     public GenericDao<Notebook> getNotebookDao() {
@@ -37,6 +41,8 @@ public class CrudService {
     public GenericDao<User> getUserDao() {
         return userDao;
     }
+
+    public GenericDao<Event> getEventDao() {return eventDao;}
 
     public void insertNewEvent(String json, int userId) {
         GenericDao<User> userDao = new GenericDao<>(User.class);
@@ -53,8 +59,10 @@ public class CrudService {
             event.addDetail(detail);
             Location location = ObjectMapperUtil.extractEntity(json, "location", Location.class);
             detail.addLocation(location);
-            Performer performer = ObjectMapperUtil.extractEntity(json, "performer", Performer.class);
-            detail.addPerformer(performer);
+            List<Performer> performers = ObjectMapperUtil.extractEntityList(json, "performers", Performer.class);
+            for (Performer performer : performers) {
+                detail.addPerformer(performer);
+            }
             Note note = ObjectMapperUtil.extractEntity(json, "note",Note.class);
             event.setNote(note);
             note.setEvent(event);
@@ -76,7 +84,7 @@ public class CrudService {
     }
 
 
-    public Notebook addNewEventAndNotebook(String json, User user) throws JsonProcessingException {
+    public Notebook addNewEventAndNotebook(String json, User user) throws IOException {
         Notebook notebook = ObjectMapperUtil.extractEntity(json, "notebook", Notebook.class);
         Event event = setEntityRelationships(json);
         notebook.addEvent(event);
@@ -84,7 +92,7 @@ public class CrudService {
         return notebook;
     }
 
-    public Notebook addEventToExistingNotebook(String json, int notebookId) throws JsonProcessingException {
+    public Notebook addEventToExistingNotebook(String json, int notebookId) throws IOException {
         Notebook notebook = getNotebookDao().getById(notebookId);
         Event event = setEntityRelationships(json);
         notebook.addEvent(event);
@@ -92,7 +100,27 @@ public class CrudService {
         return notebook;
     }
 
-    public Event setEntityRelationships(String json) throws JsonProcessingException {
+    public void addNotebook(int userId, String json) throws JsonProcessingException {
+        User user = userDao.getById(userId);
+        Notebook notebook = ObjectMapperUtil.extractEntity(json, "notebook", Notebook.class);
+        user.addNotebook(notebook);
+        userDao.update(user);
+    }
+
+    public void updateEvent(String json, int eventId) {
+        try  {
+            Event eventToUpdate = ObjectMapperUtil.extractEntity(json, "event", Event.class);
+            eventDao.update(eventToUpdate);
+
+
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+
+    }
+
+    public Event setEntityRelationships(String json) throws IOException {
         Map<String, Object> map = extractEntitiesFromJson(json);
         EntityHelper entityHelper = new EntityHelper(map);
         Event event = entityHelper.get("event", Event.class);
@@ -131,24 +159,29 @@ public class CrudService {
         return userDao.getById(userId);
     }
 
-    public Map<String, Object> extractEntitiesFromJson(String json) throws JsonProcessingException {
+    public Map<String, Object> extractEntitiesFromJson(String json) throws IOException {
         Map<String, Class<?>> classMap = Map.of(
                 "notebook", Notebook.class,
                 "event", Event.class,
                 "goal", Goal.class,
                 "detail", Detail.class,
                 "location", Location.class,
-                "performer", Performer.class,
+                "performers", Performer.class,
                 "note", Note.class,
                 "reflection", Reflection.class
         );
 
         Map<String, Object> entities = new HashMap<>();
         for (Map.Entry<String, Class<?>> entry : classMap.entrySet()) {
-            entities.put(entry.getKey(), ObjectMapperUtil.extractEntity(json, entry.getKey(), entry.getValue()));
+            if (entry.getKey().equals("performers")) {
+                entities.put(entry.getKey(), ObjectMapperUtil.extractEntityList(json, entry.getKey(), entry.getValue()));
+            } else {
+                entities.put(entry.getKey(), ObjectMapperUtil.extractEntity(json, entry.getKey(), entry.getValue()));
+            }
         }
         return entities;
     }
+
 
 
 }

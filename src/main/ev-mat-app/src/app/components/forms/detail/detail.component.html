@@ -1,6 +1,8 @@
+
 <div [formGroup]="formGroup">
 <div class="row date-time">
   <div class="col">
+    <ng-template *ngIf="detailField === 'date'">
     <mat-form-field class="full-width">
       <mat-label>Date</mat-label>
       <input matInput [matDatepicker]="datepicker" formControlName="dateOfEvent" placeholder="Select date of event" />
@@ -8,33 +10,41 @@
       <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
       <mat-datepicker #datepicker></mat-datepicker>
     </mat-form-field>
+    </ng-template>
   </div>
 
   <div class="col">
+    <ng-template *ngIf="detailField === 'startTime'">
     <mat-form-field class="full-width">
       <mat-label>Pick a start time</mat-label>
       <input matInput id="startTime" formControlName="startTime" [matTimepicker]="pickerStart" placeholder="Select start time" />
       <mat-timepicker-toggle matIconSuffix [for]="pickerStart"></mat-timepicker-toggle>
       <mat-timepicker #pickerStart></mat-timepicker>
     </mat-form-field>
+    </ng-template>
   </div>
 
   <div class="col">
+    <ng-template *ngIf="detailField === 'endTime'">
     <mat-form-field class="date-time">
       <mat-label>Pick an end time</mat-label>
       <input matInput id="endTime" formControlName="endTime" [matTimepicker]="pickerEnd" placeholder="Select end time" />
       <mat-timepicker-toggle matIconSuffix [for]="pickerEnd"></mat-timepicker-toggle>
       <mat-timepicker #pickerEnd></mat-timepicker>
     </mat-form-field>
+    </ng-template>
   </div>
 </div>
 
 <div class="row">
   <div class="col">
+    <ng-template *ngIf="detailField === 'description'">
     <mat-form-field class="full-width">
       <mat-label>Description</mat-label>
       <textarea matInput formControlName="description" id="description" rows="5" placeholder="Describe the vibe of your event"></textarea>
     </mat-form-field>
+    </ng-template>
   </div>
 </div>
 </div>
+

@@ -1,7 +1,7 @@
-import {Component, inject, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, inject, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {Event} from '../../../models/entity.model';
-import {buildFormGroup} from '../../../util/form-util';
+import {buildEventForm, buildFormGroup} from '../../../util/form-util';
 import {MatInput, MatLabel} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {NgIf} from '@angular/common';
@@ -18,9 +18,14 @@ import {NgIf} from '@angular/common';
   templateUrl: './event.component.html',
   styleUrl: './event.component.scss'
 })
-export class EventComponent implements OnChanges{
+export class EventComponent implements OnInit, OnChanges{
   @Input() formGroup!: FormGroup;
   fb = inject(FormBuilder);
+
+  ngOnInit() {
+    this.formGroup = buildEventForm(this.fb) as FormGroup;
+
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['formGroup'] && this.formGroup) {

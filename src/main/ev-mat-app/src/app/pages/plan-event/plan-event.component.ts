@@ -136,6 +136,16 @@ export class PlanEventComponent {
 
       formValues.detail = this.formatDetailFields(formValues.detail);
 
+      if (!Array.isArray(formValues.performers)) {
+        formValues.performers = [formValues.performers];
+      }
+
+      formValues.performers = formValues.performers.map((p: any) => ({
+        ...p,
+        performanceFee: Number(p.performanceFee)
+      }));
+
+  console.log(formValues);
       this.url = this.buildPostUrl(4);
 
       this.http.postData(this.url, formValues).subscribe({

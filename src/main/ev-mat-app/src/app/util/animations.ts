@@ -15,13 +15,15 @@ export const slideInOut = trigger('slideInOut', [
  */
 export const fadeInOut = trigger('fadeInOut', [
   transition(':enter', [
-    style({ opacity: 0 }),
-    animate('300ms ease-out', style({ opacity: 1 }))
+    style({ opacity: 0, transform: 'translateY(-4px)' }),
+    animate('200ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
   ]),
   transition(':leave', [
-    animate('200ms ease-in', style({ opacity: 0 }))
+    animate('150ms ease-in', style({ opacity: 0, transform: 'translateY(-4px)' }))
   ])
 ]);
+
+
 
 /**
  * Fade In
@@ -91,3 +93,4 @@ export const staggeredSlideIn = trigger('staggeredSlideIn', [
     ], { optional: true })
   ])
 ]);
+

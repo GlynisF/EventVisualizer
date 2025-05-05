@@ -33,14 +33,9 @@ public class Reflection {
         this.reflectionDescription = reflectionDescription;
     }
 
-    public Reflection newReflectionHelper(Reflection reflection) {
-        return new Reflection(reflection.getReflectionDescription());
-    }
-
     public int getEventId() {
         return eventId;
     }
-
 
     public String getReflectionDescription() {
         return reflectionDescription;

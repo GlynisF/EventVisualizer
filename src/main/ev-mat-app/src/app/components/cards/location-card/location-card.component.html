@@ -1,0 +1,50 @@
+<ng-container *ngIf="displayMode === 'display'">
+<ng-container *ngFor="let location of locationList; trackBy: trackById">
+<div class="location-container">
+  <div>Where: {{ location.locationName }}</div>
+  <div>Address: {{ location.address }}, {{ location.city }}, {{ location.state }}</div>
+  <div>Phone #: {{location.phoneNumber}} </div>
+  <mat-slide-toggle [checked]="location.accessible" disabled>Accessible</mat-slide-toggle>
+</div>
+</ng-container>
+</ng-container>
+
+
+<ng-container *ngIf="displayMode === 'edit'">
+  <div [formGroup]="formGroup" class="location-container">
+    <div class="location-name-box">
+    <mat-form-field>
+      <label>Where:</label>
+      <input matInput (input)="fetchAutocompleteSuggestions($event)" formControlName="locationName">
+    </mat-form-field>
+      <mat-list *ngIf="suggestions.length" class="autocomplete-list">
+        <mat-list-item
+          *ngFor="let suggestion of suggestions"
+          (click)="selectSuggestion(suggestion)">
+          {{ suggestion.description }}
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div class="address-box">
+      <mat-form-field>
+        <label>Address:</label>
+        <input matInput formControlName="fullAddress">
+      </mat-form-field>
+    </div>
+    <div class="phone-box">
+    <mat-form-field>
+      <label>Phone #:</label>
+      <input matInput formControlName="phoneNumber" type="tel">
+    </mat-form-field>
+    </div>
+    <div class="website-box">
+      <mat-form-field>
+        <label>Website:</label>
+        <input matInput formControlName="website">
+      </mat-form-field>
+    </div>
+    <div class="accessible-box">
+      <mat-slide-toggle formControlName="accessible"><mat-icon aria-hidden="true">accessible</mat-icon></mat-slide-toggle>
+    </div>
+  </div>
+</ng-container>

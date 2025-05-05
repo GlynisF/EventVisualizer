@@ -42,11 +42,6 @@ public class Performer {
         this.performanceFee = performanceFee;
     }
 
-    public Performer newPerformerHelper(Performer performer) {
-        return new Performer(performer.getFullName(), performer.getMoniker(), performer.getEmail(),
-                ((BigDecimal) performer.getPerformanceFee()));
-    }
-
     public int getId() {
         return id;
     }

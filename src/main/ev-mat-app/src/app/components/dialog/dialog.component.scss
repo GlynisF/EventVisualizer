@@ -1,0 +1,33 @@
+mat-dialog-content {
+  width: 400px;
+  margin-top: 16px;
+}
+mat-form-field{
+  margin: 0 auto;
+}
+
+.display-small {
+  text-align: center;
+  padding: 8px;
+  margin-top: 1.5rem;
+}
+
+.dialog-container {
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+mat-dialog-actions {
+  width: 100%;
+  margin-top: 0;
+  align-items: center;
+}
+
+button, button text {
+  background-color: var(--md-sys-color-on-surface) !important;
+  font-family: "Roboto", sans-serif !important;
+}
+
+.cancel-btn {
+  color: rgba(168, 25, 152, 90%);
+}

@@ -34,10 +34,6 @@ public class Goal {
 
     }
 
-    public Goal newGoalHelper(Goal goal) {
-        return new Goal(goal.getGoalDescription());
-    }
-
     public Integer getEventId() {
         return eventId;
     }

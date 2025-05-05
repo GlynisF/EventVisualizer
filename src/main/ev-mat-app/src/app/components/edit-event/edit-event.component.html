@@ -1,0 +1,48 @@
+<!-- EVENT NAME HEADER -->
+<div *ngIf="eventSelected" class="event-header" [formGroup]="eventGroup()">
+  <div class="icon-container">
+    <mat-icon>local_activity</mat-icon>
+    <div class="event-field">
+      <span>Event name: </span>
+      <mat-form-field>
+        <input matInput formControlName="eventName">
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN FORM WRAPPER -->
+<div class="edit-event-wrapper" [formGroup]="formGroup">
+
+  <!-- DETAILS -->
+  <div formArrayName="details">
+    <ng-container *ngFor="let detailControl of detailsFormArray; let i = index">
+      <app-detail-card
+        [formGroup]="detailControl"
+        [displayMode]="displayMode"
+        [detailData]="eventSelected?.details?.[i]">
+      </app-detail-card>
+    </ng-container>
+  </div>
+
+  <!-- LOCATION -->
+  <app-location-card
+    [eventSelected]="eventSelected"
+    [formGroup]="locationForm"
+    [displayMode]="displayMode">
+  </app-location-card>
+
+  <mat-divider></mat-divider>
+
+  <!-- PERFORMERS -->
+  <div formArrayName="performers">
+    <ng-container *ngFor="let performerControl of performersFormArray; let i = index">
+      <app-performer-card
+        [formGroup]="performerControl"
+        [displayMode]="displayMode"
+        [performerData]="performerControl.value">
+      </app-performer-card>
+    </ng-container>
+  </div>
+
+</div>

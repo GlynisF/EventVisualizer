@@ -10,7 +10,7 @@
 </ng-container>
 
 <ng-container *ngIf="displayMode === 'edit'">
-  <div class="detail-box" [formGroup]="formGroup">
+  <div [formGroup]="formGroup" class="detail-box">
     <div class="description-box">
       <mat-form-field class="full-width">
         <mat-label>Description</mat-label>
@@ -19,28 +19,29 @@
     </div>
 
     <div class="date-box">
-      <mat-form-field appearance="fill">
-        <mat-label>Date</mat-label>
+      <mat-form-field>
+        <mat-label>Date of event</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="dateOfEvent">
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </div>
-
+  <div>
     <div class="time-box">
-      <mat-form-field appearance="fill">
+      <mat-form-field>
         <mat-label>Start Time</mat-label>
         <input matInput formControlName="startTime" [matTimepicker]="startPicker">
         <mat-timepicker-toggle matIconSuffix [for]="startPicker"></mat-timepicker-toggle>
         <mat-timepicker #startPicker></mat-timepicker>
       </mat-form-field>
-
-      <mat-form-field appearance="fill">
+  <div>to</div>
+      <mat-form-field>
         <mat-label>End Time</mat-label>
         <input matInput formControlName="endTime" [matTimepicker]="endPicker">
         <mat-timepicker-toggle matIconSuffix [for]="endPicker"></mat-timepicker-toggle>
         <mat-timepicker #endPicker></mat-timepicker>
       </mat-form-field>
     </div>
+  </div>
   </div>
 </ng-container>

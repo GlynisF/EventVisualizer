@@ -1,17 +1,39 @@
+.card-box {
+  width: 300px;
+  height: 100%;
+  margin-top: 3rem;
+}
+
+div.performer-box {
+  width: 100%;
+  margin-right: 20px;
+  margin-left: 50px;
+}
+
+.edit-performer-box {
+  display: grid;
+}
+
 .performer-card {
-  justify-content: space-evenly;
+  justify-content: space-around;
   margin-bottom: 3rem;
-  width: 250px;
+  width: 100%;
+  height: 100%;
 }
 
 .performer-card mat-card-content {
   display: flex;
+  width: 100%;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
   gap: 2rem;
   margin-right: auto;
 }
 
+mat-card {
+  margin-top: 3rem;
+  justify-content: space-evenly;
+}
 
 .performer-details {
   display: flex;
@@ -20,18 +42,18 @@
   flex: 1;
   padding-bottom: 1rem;
   padding-top: 10px;
+  width: 100%;
 
 }
 
-.performer-svg-container {
+.performer-svg-box{
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
+  width: fit-content;
   padding-top: 8px;
   margin-right: 0.5rem;
 }
 
-.performer-svg-container svg {
+.performer-svg-box svg {
   max-width: 120px;
   height: auto;
   margin-left: auto;

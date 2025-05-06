@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { DisplayEventsComponent } from './display-events.component';
+import {DisplayEventsComponent} from './display-events.component';
 
 describe('DisplayEventsComponent', () => {
   let component: DisplayEventsComponent;

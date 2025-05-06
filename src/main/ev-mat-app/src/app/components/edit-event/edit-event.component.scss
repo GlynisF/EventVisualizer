@@ -1,0 +1,7 @@
+@use '@angular/material' as mat;
+@use '../../../styles';
+
+@include mat.form-field-overrides((
+  outlined-focus-outline-color: var(--mat-sys-on-tertiary-container) !important,
+));
+

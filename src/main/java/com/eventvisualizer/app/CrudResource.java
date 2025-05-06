@@ -104,8 +104,9 @@ public class CrudResource {
                     .entity(Map.of("message", "Invalid input data: JSON payload is missing or empty."))
                     .build();
         }
-            service.updateEvent(json, eventId);
-        return Response.ok().entity(Map.of("message", "Event with the I.D." + " was updated.")).build();
+        return Response.ok().entity(json).build();
+            //service.updateEvent(json, eventId);
+        //return Response.ok().entity(Map.of("message",  "Event with the I.D." + " was updated.")).build();
 
     }
 

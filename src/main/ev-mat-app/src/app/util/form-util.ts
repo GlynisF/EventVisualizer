@@ -57,17 +57,17 @@ export function buildPerformerForm(fb: FormBuilder): FormGroup {
 }
 
 export function buildGoalForm(fb: FormBuilder): FormGroup {
-  const goal: Goal = { id: undefined, goalDescription: '' };
+  const goal: Goal = { eventId: undefined, goalDescription: '' };
   return buildFormGroup(fb, goal);
 }
 
 export function buildNoteForm(fb: FormBuilder): FormGroup {
-  const note: Note = { id: undefined, noteDescription: '' };
+  const note: Note = { eventId: undefined, noteDescription: '' };
   return buildFormGroup(fb, note);
 }
 
 export function buildReflectionForm(fb: FormBuilder): FormGroup {
-  const reflection: Reflection = { id: undefined, reflectionDescription: '' };
+  const reflection: Reflection = { eventId: undefined, reflectionDescription: '' };
   return buildFormGroup(fb, reflection);
 }
 
@@ -77,7 +77,8 @@ export function buildDetailForm(fb: FormBuilder): FormGroup {
     dateOfEvent: null,
     startTime: null,
     endTime: null,
-    description: ''
+    description: '',
+    eventId: null
   };
   return buildFormGroup(fb, detail);
 }

@@ -4,7 +4,6 @@ import {expandCollapse, fadeIn, fadeInOut, rotateToggle} from '../../util/animat
 import {HttpClientService} from '../../services/http-client.service';
 import {Event, Notebook} from '../../models/entity.model';
 import {CdkAccordion, CdkAccordionItem} from '@angular/cdk/accordion';
-import {GoalCardComponent} from '../cards/goal-card/goal-card.component';
 import {NoteCardComponent} from '../cards/note-card/note-card.component';
 import {ReflectionCardComponent} from '../cards/reflection-card/reflection-card.component';
 import {MaterialCompsModule} from '../../materialcomps/materialcomps.module';
@@ -32,7 +31,6 @@ import {EditEventComponent} from '../edit-event/edit-event.component';
     CdkAccordionItem,
     NgFor,
     NgIf,
-    GoalCardComponent,
     NoteCardComponent,
     ReflectionCardComponent,
     ReactiveFormsModule,
@@ -123,7 +121,7 @@ export class SideNavComponent implements OnInit {
         note: buildNoteForm(this.fb),
         goal: buildGoalForm(this.fb),
         reflection: buildReflectionForm(this.fb),
-        details: buildDetailArray(this.fb, event.details || [])
+        details: buildDetailArray(this.fb, event.details || []),
       });
 
     }
@@ -140,6 +138,12 @@ export class SideNavComponent implements OnInit {
     }
     if (this.editor) {
       event.stopPropagation();
+      if (this.eventFormGroup.valid) {
+        const formData = this.eventFormGroup.value;
+        console.log('parent formGroup:', this.eventFormGroup.get('goal')?.value);
+
+        console.log(formData);
+      }
       this.updateDialog();
     }
   }

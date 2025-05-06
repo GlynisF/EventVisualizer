@@ -4,10 +4,13 @@ import {CommonModule} from '@angular/common';
 import {PerformerCardComponent} from '../cards/performer-card/performer-card.component';
 import {DetailCardComponent} from '../cards/detail-card/detail-card.component';
 import {LocationCardComponent} from '../cards/location-card/location-card.component';
+import {GoalCardComponent} from '../cards/goal-card/goal-card.component';
+import {NoteCardComponent} from '../cards/note-card/note-card.component';
+import {ReflectionCardComponent} from '../cards/reflection-card/reflection-card.component';
 
 @Component({
   selector: 'app-display-events',
-  imports: [CommonModule, MaterialComponents, PerformerCardComponent, DetailCardComponent, LocationCardComponent,],
+  imports: [CommonModule, MaterialComponents, PerformerCardComponent, DetailCardComponent, LocationCardComponent, GoalCardComponent, NoteCardComponent, ReflectionCardComponent,],
   templateUrl: './display-events.component.html',
   styleUrl: './display-events.component.scss'
 })

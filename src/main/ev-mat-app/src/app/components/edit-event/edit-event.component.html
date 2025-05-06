@@ -20,7 +20,8 @@
       <app-detail-card
         [formGroup]="detailControl"
         [displayMode]="displayMode"
-        [detailData]="eventSelected?.details?.[i]">
+        [detailData]="eventSelected.details?.[i]"
+        [convertTimeStringToDate]="convertTimeStringToDate">
       </app-detail-card>
     </ng-container>
   </div>
@@ -44,5 +45,11 @@
       </app-performer-card>
     </ng-container>
   </div>
+
+  <ng-container *ngIf="eventSelected">
+    <app-goal-card [formGroup]="goalGroup" [eventSelected]="eventSelected" [displayMode]="displayMode"></app-goal-card>
+    <app-note-card [formGroup]="noteGroup" [eventSelected]="eventSelected" [displayMode]="displayMode"></app-note-card>
+    <app-reflection-card [formGroup]="reflectionGroup" [eventSelected]="eventSelected" [displayMode]="displayMode"></app-reflection-card>
+  </ng-container>
 
 </div>

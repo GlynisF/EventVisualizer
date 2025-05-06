@@ -1,4 +1,4 @@
- <div *ngIf="eventSelected" class="event-header">
+<div *ngIf="eventSelected" class="event-header">
     <div class="icon-container"><mat-icon>local_activity</mat-icon> <div class="display-large">{{ eventSelected.eventName }}</div></div>
   </div>
 
@@ -6,26 +6,26 @@
    <ng-container *ngFor="let detail of eventSelected.details">
 
      <!-- DETAIL -->
-     <app-detail-card
-       [displayMode]="'display'"
-       [detailData]="detail"
+
+     <app-detail-card [displayMode]="'display'" [detailData]="detail"
        [convertTimeStringToDate]="convertTimeStringToDate">
      </app-detail-card>
 
      <!-- LOCATION -->
-     <app-location-card
-       [displayMode]="'display'">
-     </app-location-card>
-<mat-divider></mat-divider>
-     <!-- PERFORMERS -->
-     <ng-container *ngIf="detail.performers?.length">
-         <app-performer-card
-           *ngFor="let performer of detail.performers"
-           [displayMode]="'display'"
-           [performerData]="performer">
-         </app-performer-card>
-     </ng-container>
+     <app-location-card [displayMode]="'display'" [eventSelected]="eventSelected"></app-location-card>
 
+     <mat-divider></mat-divider>
+     <!-- PERFORMERS -->
+     <div>
+     <ng-container *ngIf="detail.performers?.length">
+         <app-performer-card *ngFor="let performer of detail.performers" [displayMode]="'display'" [performerData]="performer"></app-performer-card>
+     </ng-container>
+     </div>
+     <div>
+       <app-goal-card [displayMode]="'display'" [eventSelected]="eventSelected"></app-goal-card>
+       <app-note-card [eventSelected]="eventSelected" [displayMode]="'display'"></app-note-card>
+       <app-reflection-card  [eventSelected]="eventSelected" [displayMode]="'display'"></app-reflection-card>
+     </div>
    </ng-container>
  </ng-container>
 

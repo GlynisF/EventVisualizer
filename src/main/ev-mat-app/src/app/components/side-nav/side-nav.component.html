@@ -90,7 +90,7 @@
             [formGroup]="eventFormGroup"
             [eventSelected]="eventSelected"
             [displayMode]="'edit'"
-            [convertTimeStringToDate]="convertTimeStringToDate">
+            [convertTimeStringToDate]="convertTimeStringToDate.bind(this)">
           </app-edit-event>
         </form>
       </ng-template>
@@ -100,24 +100,6 @@
 
       <!-- ✅ SAVE CHANGES BUTTON -->
       <button type="submit" mat-raised-button>Save changes</button>
-
-
-      <!-- ✅ FORM ends here -->
-
-      <!-- GOAL / NOTE / REFLECTION -->
-      <div class="goal-note-reflection">
-        <ng-container *ngIf="eventSelected.goal">
-          <app-goal-card [item]="eventSelected"></app-goal-card>
-        </ng-container>
-
-        <ng-container *ngIf="eventSelected.note">
-          <app-note-card [item]="eventSelected"></app-note-card>
-        </ng-container>
-
-        <ng-container *ngIf="eventSelected.reflection">
-          <app-reflection-card [item]="eventSelected"></app-reflection-card>
-        </ng-container>
-      </div>
 
 
     </ng-container>

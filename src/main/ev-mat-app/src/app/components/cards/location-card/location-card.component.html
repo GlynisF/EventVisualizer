@@ -4,6 +4,8 @@
   <div>Where: {{ location.locationName }}</div>
   <div>Address: {{ location.address }}, {{ location.city }}, {{ location.state }}</div>
   <div>Phone #: {{location.phoneNumber}} </div>
+  <div *ngIf="location.website != null; else noWebsite">Website: {{location.website}}</div>
+  <ng-template #noWebsite><div class="website-field">Website: <span>No site added</span></div></ng-template>
   <mat-slide-toggle [checked]="location.accessible" disabled>Accessible</mat-slide-toggle>
 </div>
 </ng-container>
@@ -14,7 +16,7 @@
   <div [formGroup]="formGroup" class="location-container">
     <div class="location-name-box">
     <mat-form-field>
-      <label>Where:</label>
+      <mat-label>Where</mat-label>
       <input matInput (input)="fetchAutocompleteSuggestions($event)" formControlName="locationName">
     </mat-form-field>
       <mat-list *ngIf="suggestions.length" class="autocomplete-list">
@@ -27,19 +29,19 @@
     </div>
     <div class="address-box">
       <mat-form-field>
-        <label>Address:</label>
+        <mat-label>Address</mat-label>
         <input matInput formControlName="fullAddress">
       </mat-form-field>
     </div>
     <div class="phone-box">
     <mat-form-field>
-      <label>Phone #:</label>
+      <mat-label>Phone #</mat-label>
       <input matInput formControlName="phoneNumber" type="tel">
     </mat-form-field>
     </div>
     <div class="website-box">
       <mat-form-field>
-        <label>Website:</label>
+        <mat-label>Website</mat-label>
         <input matInput formControlName="website">
       </mat-form-field>
     </div>

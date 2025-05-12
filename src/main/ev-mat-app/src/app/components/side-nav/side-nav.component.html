@@ -7,6 +7,7 @@
         class="accordion-item">
         <div class="notebook-button-container">
           <button
+
             mat-button
             (click)="accordionItem.toggle(); toggleNotebook(notebook.id)"
             tabindex="0"
@@ -16,7 +17,7 @@
             class="notebook-button">
             <span class="button-text">{{ notebook.title }}</span>
             <mat-icon class="dropdown-icon">
-              {{ accordionItem.expanded ? 'arrow_drop_up' : 'arrow_drop_down' }}
+              {{ accordionItem.expanded ? "arrow_drop_up" : "arrow_drop_down" }}
             </mat-icon>
           </button>
           <div>
@@ -38,7 +39,7 @@
             </mat-list-item>
           </ng-container>
           <mat-list-item *ngFor="let event of notebook.events; trackBy: trackByEventId">
-            <button mat-button (click)="selectedEvent($event, event)">
+            <button mat-button (click)="selectedEvent($event, event, notebook.id)">
               <mat-icon matListItemIcon>music_note_add</mat-icon>
               {{ event.eventName }}
             </button>
@@ -59,47 +60,40 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <ng-container *ngIf="eventSelected">
+<div class="display-btn-box">
+      <button mat-fab extended *ngIf="displayMode === 'display'" (click)="toggleEditDisplay(eventSelected)">
+        <mat-icon>preview</mat-icon>
+      </button>
+</div>
 
-        <button mat-button (click)="editor = !editor; toggleEditorMode(eventSelected)">Edit event</button>
 
-
-      <!--  <div class="event-header">
-          <div class="icon-container"><mat-icon>local_activity</mat-icon> <div class="display-large">{{ eventSelected.eventName }}</div></div>
-        </div><ng-container *ngFor="let item of getEventContent(); trackBy: trackById">-->
-       <!--  <ng-container *ngIf="item.type === 'detail'">
-           <div *ngIf="!editor; else editDetails" class="details-container">
-             <div class="event-description">Description:<br> {{item.data.description}}</div>
-             <div class="icon-container"><mat-icon>calendar_today</mat-icon> {{ item.data.dateOfEvent | date: 'EEE MMM d, y' }}</div>
-             <div class="icon-container"><mat-icon>schedule</mat-icon>
-               {{ convertTimeStringToDate(item.data.startTime) | date: 'h:mm a' }} to
-               {{ convertTimeStringToDate(item.data.endTime) | date: 'h:mm a' }}
-             </div>
-           </div>
-        </ng-container>
-
-        <ng-template #editDetails>
-          <app-detail-card [editor]="editor" [formGroup]="getDetailGroup()" [displayMode]="'edit'" [item]="item" [convertTimeStringToDate]="convertTimeStringToDate.bind(this)"></app-detail-card>
-        </ng-template>-->
       <ng-container *ngIf="!editor; else editEvent">
-        <app-display-events *ngIf="eventSelected" [eventSelected]="eventSelected" [convertTimeStringToDate]="convertTimeStringToDate.bind(this)"></app-display-events>
+
+        <app-display-events *ngIf="eventSelected" [displayMode]="'display'" [eventSelected]="eventSelected"></app-display-events>
       </ng-container>
 
       <ng-template #editEvent>
+        <div class="edit-save-btn-box">
+        <button mat-fab extended type="button" (click)="exitEditMode()">
+          <mat-icon>preview</mat-icon>Back to display
+        </button>
+        <button type="submit" mat-raised-button [disabled]="!hasFormChanged()">
+          Save changes
+        </button>
+        </div>
+
+
+        <ng-container *ngIf="eventSelected && editor">
         <form [formGroup]="eventFormGroup">
           <app-edit-event
             [formGroup]="eventFormGroup"
             [eventSelected]="eventSelected"
-            [displayMode]="'edit'"
-            [convertTimeStringToDate]="convertTimeStringToDate.bind(this)">
-          </app-edit-event>
+            [displayMode]="'edit'"/>
         </form>
+        </ng-container>
       </ng-template>
 
-
-
-
-      <!-- ✅ SAVE CHANGES BUTTON -->
-      <button type="submit" mat-raised-button>Save changes</button>
+<button type="submit" mat-raised-button>Save changes</button>
 
 
     </ng-container>

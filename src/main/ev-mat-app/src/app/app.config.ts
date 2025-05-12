@@ -20,7 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideMomentDateAdapter({
       parse: {
         dateInput: ['YYYY-MM-DD', 'DD-MM-YYYY', 'MM/DD/YYYY', 'YYYY/MM/DD'],
-        timeInput: ['HH:mm:ss A', 'h:mm A', 'h:mm a','HH:mm'],
+        timeInput: ['HH:mm:ss A', 'h:mm A', 'h:mm a','HH:mm','HH:mm:ss'],
       },
       display: {
         dateInput: 'ddd MMM D, YYYY',

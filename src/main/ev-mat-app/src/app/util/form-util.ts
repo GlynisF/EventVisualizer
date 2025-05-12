@@ -1,5 +1,5 @@
 import {FormArray, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
-import {Detail, Event, Goal, Location, Note, Notebook, Performer, Reflection} from '../models/entity.model';
+import type {Detail, Event, Goal, Location, Note, Notebook, Performer, Reflection} from '../models/entity.model';
 
 export function buildFormGroup<T extends object>(
   fb: FormBuilder,
@@ -22,91 +22,82 @@ export function buildNotebookForm(fb: FormBuilder): FormGroup {
 }
 
 export function buildEventForm(fb: FormBuilder): FormGroup {
-  const event: Event = { id: undefined, eventName: '' };
+  const event: Event = { id: undefined, eventName: ''};
   const validators = { eventName: [Validators.required] };
   return buildFormGroup(fb, event, validators);
 }
 
 export function buildLocationForm(fb: FormBuilder): FormGroup {
-  return fb.group({
-    id: [null],
-    locationName: [''],
-    address: [''],
-    address2: [''],
-    city: [''],
-    state: [''],
-    zip: [''],
-    phoneNumber: [''],
-    website: [''],
-    accessible: [false],
-    fullAddress: ['']
-  });
+  const locations: Location = {
+    id: undefined,
+    locationName: '',
+    address: '',
+    address2: '',
+    city: '',
+    state: '',
+    zip: '',
+    phoneNumber: '',
+    website: '',
+    accessible: false,
+  };
 
-  //return buildFormGroup(fb, location);
+  return buildFormGroup(fb, locations);
 }
 
-export function buildPerformerForm(fb: FormBuilder): FormGroup {
+export function buildPerformerForm(fb: FormBuilder, data?: Performer): FormGroup {
   const performer: Performer = {
-    id: undefined,
-    fullName: '',
-    moniker: '',
-    email: '',
-    performanceFee: null
+    id: data?.id,
+    fullName: data?.fullName || '',
+    moniker: data?.moniker || '',
+    email: data?.email || '',
+    performanceFee: data?.performanceFee ?? null
   };
   return buildFormGroup(fb, performer);
 }
 
-export function buildGoalForm(fb: FormBuilder): FormGroup {
-  const goal: Goal = { eventId: undefined, goalDescription: '' };
+export function buildGoalForm(fb: FormBuilder, event: Event): FormGroup {
+  const goal: Goal = { eventId: event.id || null, goalDescription: '' };
   return buildFormGroup(fb, goal);
 }
 
-export function buildNoteForm(fb: FormBuilder): FormGroup {
-  const note: Note = { eventId: undefined, noteDescription: '' };
+export function buildNoteForm(fb: FormBuilder, event: Event): FormGroup {
+  const note: Note = { eventId: event.id || null, noteDescription: '' };
   return buildFormGroup(fb, note);
 }
 
-export function buildReflectionForm(fb: FormBuilder): FormGroup {
-  const reflection: Reflection = { eventId: undefined, reflectionDescription: '' };
+export function buildReflectionForm(fb: FormBuilder, event: Event): FormGroup {
+  const reflection: Reflection = { eventId: event.id || null, reflectionDescription: '' };
   return buildFormGroup(fb, reflection);
 }
 
 export function buildDetailForm(fb: FormBuilder): FormGroup {
-  const detail: Detail = {
+  const details: Detail = {
     id: undefined,
     dateOfEvent: null,
-    startTime: null,
-    endTime: null,
+    startTime: '',
+    endTime: '',
     description: '',
-    eventId: null
   };
-  return buildFormGroup(fb, detail);
+  return buildFormGroup(fb, details);
 }
 
 export function buildDetailArray(fb: FormBuilder, details: Detail[]): FormArray {
   return fb.array(details.map(d => buildFormGroup(fb, d)));
 }
 
-export function buildPerformerArray(fb: FormBuilder, performers: Performer[]): FormArray {
-  return fb.array(performers.map(p => buildFormGroup(fb, p)));
+export function buildPerformerArray(fb: FormBuilder, performers: Performer[]): FormGroup[] {
+  return performers.map(p => buildPerformerForm(fb, p));
 }
 
 export function buildLocationArray(fb: FormBuilder, locations: Location[]): FormArray {
   return fb.array(locations.map(l => buildFormGroup(fb, l)));
 }
-
-export function buildComposedForm(fb: FormBuilder): FormGroup {
-  return fb.group({
-    notebook: buildNotebookForm(fb),
-    event: buildEventForm(fb),
-    details: fb.array([]),
-    performers: fb.array([]),
-    locations: fb.array([]),
-    goal: buildGoalForm(fb),
-    note: buildNoteForm(fb),
-    reflection: buildReflectionForm(fb)
-  });
+export function normalizeTime(value: string | Date | null): string {
+  if (!value) return '';
+  if (typeof value === 'string') return value;
+  return value.toISOString().substring(11, 19);
 }
+
 
 export function patchComposedForm(fb: FormBuilder, form: FormGroup, entity: Event): void {
   if (!form || !entity) return;
@@ -120,15 +111,15 @@ export function patchComposedForm(fb: FormBuilder, form: FormGroup, entity: Even
   }
 
   if (entity.goal) {
-    form.get('goal')?.patchValue({ id: entity.goal.id, goalDescription: entity.goal.goalDescription });
+    form.get('goal')?.patchValue({ eventId: entity.id, goalDescription: entity.goal.goalDescription });
   }
 
   if (entity.note) {
-    form.get('note')?.patchValue({ id: entity.note.id, noteDescription: entity.note.noteDescription });
+    form.get('note')?.patchValue({ eventId: entity.id, noteDescription: entity.note.noteDescription });
   }
 
   if (entity.reflection) {
-    form.get('reflection')?.patchValue({ id: entity.reflection.id, reflectionDescription: entity.reflection.reflectionDescription });
+    form.get('reflection')?.patchValue({ eventId: entity.id, reflectionDescription: entity.reflection.reflectionDescription });
   }
 
   const locations = entity.details?.flatMap(d => d.locations || []) || [];

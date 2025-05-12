@@ -1,5 +1,6 @@
 package com.eventvisualizer.app;
 
+import com.eventvisualizer.entity.Event;
 import com.eventvisualizer.entity.Notebook;
 import com.eventvisualizer.entity.User;
 import com.eventvisualizer.service.CrudService;
@@ -104,9 +105,8 @@ public class CrudResource {
                     .entity(Map.of("message", "Invalid input data: JSON payload is missing or empty."))
                     .build();
         }
-        return Response.ok().entity(json).build();
-            //service.updateEvent(json, eventId);
-        //return Response.ok().entity(Map.of("message",  "Event with the I.D." + " was updated.")).build();
+        service.updateEvent(json, eventId);
+        return Response.ok().entity((Event) service.getEventDao().getById(eventId)).build();
 
     }
 

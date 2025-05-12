@@ -13,13 +13,14 @@
 
 
 <ng-container *ngIf="displayMode === 'edit'">
+
   <div [formGroup]="formGroup" class="location-container">
     <div class="location-name-box">
     <mat-form-field>
       <mat-label>Where</mat-label>
       <input matInput (input)="fetchAutocompleteSuggestions($event)" formControlName="locationName">
     </mat-form-field>
-      <mat-list *ngIf="suggestions.length" class="autocomplete-list">
+  <mat-list *ngIf="suggestions.length" class="autocomplete-list" id="autocomplete-list">
         <mat-list-item
           *ngFor="let suggestion of suggestions"
           (click)="selectSuggestion(suggestion)">
@@ -27,10 +28,15 @@
         </mat-list-item>
       </mat-list>
     </div>
-    <div class="address-box">
+    <div class="address-box" *ngFor="let location of locationList">
       <mat-form-field>
         <mat-label>Address</mat-label>
-        <input matInput formControlName="fullAddress">
+        <input
+          matInput
+        type="text"
+        [value]="formGroup.get('address')?.value || ''"
+        (input)="onAddressInput($event)">
+
       </mat-form-field>
     </div>
     <div class="phone-box">

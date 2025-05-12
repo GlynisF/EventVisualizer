@@ -1,8 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
 import {MaterialCompsModule} from '../../../materialcomps/materialcomps.module';
-import {Performer} from '../../../models/entity.model';
 
 @Component({
   selector: 'app-performer-card',
@@ -11,8 +10,16 @@ import {Performer} from '../../../models/entity.model';
   templateUrl: './performer-card.component.html',
   styleUrl: './performer-card.component.scss'
 })
-export class PerformerCardComponent {
+export class PerformerCardComponent implements OnInit {
   @Input() formGroup!: FormGroup;
   @Input() displayMode: 'edit' | 'display' = 'edit';
-  @Input() performerData!: Performer;
+  @Input() performerData!: any;
+
+
+  ngOnInit() {
+
+
+  }
+
+
 }

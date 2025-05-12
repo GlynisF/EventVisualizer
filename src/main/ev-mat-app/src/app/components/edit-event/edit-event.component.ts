@@ -1,15 +1,16 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormArray, FormArrayName, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {MaterialCompsModule} from '../../materialcomps/materialcomps.module';
 
 import {DetailCardComponent} from '../cards/detail-card/detail-card.component';
-import {PerformerCardComponent} from '../cards/performer-card/performer-card.component';
 import {Event} from '../../models/entity.model';
 import {LocationCardComponent} from '../cards/location-card/location-card.component';
+import {PerformerCardComponent} from '../cards/performer-card/performer-card.component';
 import {GoalCardComponent} from '../cards/goal-card/goal-card.component';
 import {NoteCardComponent} from '../cards/note-card/note-card.component';
 import {ReflectionCardComponent} from '../cards/reflection-card/reflection-card.component';
+import moment from 'moment/moment';
 
 @Component({
   selector: 'app-edit-event',
@@ -19,8 +20,8 @@ import {ReflectionCardComponent} from '../cards/reflection-card/reflection-card.
     ReactiveFormsModule,
     MaterialCompsModule,
     DetailCardComponent,
-    PerformerCardComponent,
     LocationCardComponent,
+    PerformerCardComponent,
     GoalCardComponent,
     NoteCardComponent,
     ReflectionCardComponent
@@ -28,38 +29,83 @@ import {ReflectionCardComponent} from '../cards/reflection-card/reflection-card.
   templateUrl: './edit-event.component.html',
   styleUrl: './edit-event.component.scss'
 })
-export class EditEventComponent {
+export class EditEventComponent implements OnChanges {
+
   @Input() formGroup!: FormGroup;
+  @Input() formArrayName!: FormArrayName;
   @Input() eventSelected!: Event;
   @Input() displayMode: 'edit' | 'display' = 'edit';
-  @Input() convertTimeStringToDate!: (time: string) => Date;
+  @Input() convertTimeStringToDate!: (time: string) => string;
+  @Input() displayModeEvent!: (event: MouseEvent) => any;
 
-  get detailsFormArray(): FormGroup[] {
-    return (this.formGroup.get('details') as any)?.controls || [];
+  ngOnChanges(changes:SimpleChanges): void {
+    if (changes['formGroup'] && this.formGroup) {
+      const detail = this.eventSelected.details;
+
+      if (this.eventSelected && this.formGroup) {
+        this.patchEvent();
+
+        if (detail && this.detailFormGroup) {
+          detail.forEach((item: any) => {
+            this.patchDetail(item);
+          })
+        }
+      }
+    }
   }
 
-  get performersFormArray(): FormGroup[] {
-    return (this.formGroup.get('performers') as any)?.controls || [];
-  }
-
-  eventGroup(): FormGroup {
+  get eventFormGroup(): FormGroup {
     return this.formGroup.get('event') as FormGroup;
   }
 
-  get locationForm(): FormGroup {
-    return this.formGroup.get('location') as FormGroup;
+  get detailFormGroup(): FormGroup {
+    return this.formGroup.get('details') as FormGroup;
   }
 
-  get goalGroup(): FormGroup {
+  get locationFormGroup(): FormGroup {
+    return this.formGroup.get('locations') as FormGroup;
+  }
+
+  get goalFormGroup(): FormGroup {
     return this.formGroup.get('goal') as FormGroup;
   }
 
-  get noteGroup(): FormGroup {
+  get noteFormGroup(): FormGroup {
     return this.formGroup.get('note') as FormGroup;
   }
 
-  get reflectionGroup(): FormGroup {
+  get reflectionFormGroup(): FormGroup {
     return this.formGroup.get('reflection') as FormGroup;
+  }
+
+  get performerFormGroups(): FormGroup[] {
+    const array = this.formGroup?.get('performers');
+    return array instanceof FormArray ? array.controls as FormGroup[] : [];
+  }
+
+  performersFormArray(): FormArray {
+    return this.formGroup?.get('performers') as FormArray;
+  }
+
+  formatFormTimeDisplay(time: string): Date {
+    return moment(time, 'HH:mm:ss').toDate();
+  }
+
+  patchEvent() {
+    return this.eventFormGroup.patchValue({
+      id: this.eventSelected.id,
+      eventName: this.eventSelected.eventName
+    })
+  }
+
+  patchDetail(detail: any) {
+    return this.detailFormGroup.patchValue({
+      id: detail.id,
+      description: detail.description,
+      dateOfEvent: detail.dateOfEvent,
+      startTime: this.formatFormTimeDisplay(detail.startTime),
+      endTime: this.formatFormTimeDisplay(detail.endTime)
+    });
   }
 
 }

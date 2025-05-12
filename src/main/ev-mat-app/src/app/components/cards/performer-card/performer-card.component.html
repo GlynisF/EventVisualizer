@@ -1,5 +1,6 @@
-<ng-container *ngIf="displayMode === 'display'">
-  <mat-card appearance="outlined" class="performer-card" style="width:500px; height: 200px;">
+<!-- DISPLAY MODE -->
+<ng-container *ngIf="displayMode === 'display' && performerData">
+  <mat-card appearance="outlined" class="performer-card" style="width: 500px; height: 200px;">
     <mat-card-header>
       <mat-card-title-group>
         <mat-card-title>
@@ -11,16 +12,8 @@
       </mat-card-title-group>
     </mat-card-header>
     <mat-card-content>
-      <div class="performer-svg-box">
-        <svg width="80pt" height="80pt" version="1.1" viewBox="0 0 3600 3600" xmlns="http://www.w3.org/2000/svg">
-          <path d="m1530 1242c316.8 0 576-259.2 576-576s-259.2-576-576-576-576 259.2-576 576 259.2 576 576 576z"/>
-          <path d="m1684.8 2386.8c0-216 162-396 374.4-424.8l388.8-50.398c-72-219.6-223.2-403.2-421.2-514.8-140.4 93.602-309.6 151.2-493.2 151.2-183.6 0-352.8-57.602-493.2-151.2-277.2 154.8-468 453.6-468 795.6l-0.003906 183.6c0 129.6 104.4 234 230.4 234h882z"/>
-          <path d="m2973.6 2167.2c-36-32.398-82.801-46.801-129.6-39.602l-748.8 97.199c-82.801 10.801-144 79.199-144 162v666c-21.602-3.6016-43.199-7.1992-68.398-7.1992-154.8 0-273.6 100.8-273.6 234 0 129.6 122.4 234 273.6 234 151.2 0 273.6-100.8 273.6-234v-684l662.4-86.398v432c-21.602-3.6016-43.199-7.1992-68.398-7.1992-154.8 0-273.6 100.8-273.6 234 0 129.6 122.4 234 273.6 234 154.8 0 273.6-100.8 273.6-234l-0.003906-878.4c3.6016-46.801-18-93.602-50.398-122.4z"/>
-        </svg>
-      </div>
       <div class="performer-box">
         <div class="icon-container"><mat-icon>person</mat-icon> {{ performerData.fullName }}</div>
-        <div class="icon-container"><mat-icon>music_note</mat-icon> {{ performerData.moniker }}</div>
         <div class="icon-container"><mat-icon>email</mat-icon> {{ performerData.email }}</div>
         <div class="icon-container"><mat-icon>attach_money</mat-icon> {{ performerData.performanceFee }}</div>
       </div>
@@ -28,52 +21,53 @@
   </mat-card>
 </ng-container>
 
-
-<ng-container *ngIf="displayMode === 'edit'">
-  <mat-card appearance="outlined" class="performer-card" style="width:auto; height:auto;">
+<!-- EDIT MODE -->
+<ng-container *ngIf="displayMode === 'edit' && formGroup">
+  <mat-card appearance="outlined" class="performer-card">
     <mat-card-header>
       <mat-card-title-group>
         <mat-card-title>
           <div class="icon-container">
             <mat-icon>music_note</mat-icon>
-            {{ performerData.moniker }}
+            {{ formGroup.get('moniker')?.value }}
           </div>
         </mat-card-title>
       </mat-card-title-group>
     </mat-card-header>
     <mat-card-content>
-      <div class="performer-svg-box">
-        <svg width="80pt" height="80pt" version="1.1" viewBox="0 0 3600 3600" xmlns="http://www.w3.org/2000/svg">
-          <path d="m1530 1242c316.8 0 576-259.2 576-576s-259.2-576-576-576-576 259.2-576 576 259.2 576 576 576z"/>
-          <path d="m1684.8 2386.8c0-216 162-396 374.4-424.8l388.8-50.398c-72-219.6-223.2-403.2-421.2-514.8-140.4 93.602-309.6 151.2-493.2 151.2-183.6 0-352.8-57.602-493.2-151.2-277.2 154.8-468 453.6-468 795.6l-0.003906 183.6c0 129.6 104.4 234 230.4 234h882z"/>
-          <path d="m2973.6 2167.2c-36-32.398-82.801-46.801-129.6-39.602l-748.8 97.199c-82.801 10.801-144 79.199-144 162v666c-21.602-3.6016-43.199-7.1992-68.398-7.1992-154.8 0-273.6 100.8-273.6 234 0 129.6 122.4 234 273.6 234 151.2 0 273.6-100.8 273.6-234v-684l662.4-86.398v432c-21.602-3.6016-43.199-7.1992-68.398-7.1992-154.8 0-273.6 100.8-273.6 234 0 129.6 122.4 234 273.6 234 154.8 0 273.6-100.8 273.6-234l-0.003906-878.4c3.6016-46.801-18-93.602-50.398-122.4z"/>
-        </svg>
-      </div>
       <div [formGroup]="formGroup" class="performer-box" style="display: grid;">
-        <div class="icon-container"><mat-icon>person</mat-icon>
+        <!-- form fields (same as before) -->
+        <div class="icon-container">
+          <mat-icon>person</mat-icon>
           <mat-form-field>
-          <mat-label>Full Name</mat-label>
-          <input matInput formControlName="fullName">
-        </mat-form-field>
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="fullName">
+          </mat-form-field>
         </div>
-        <div class="icon-container"><mat-icon>music_note</mat-icon>
+
+        <div class="icon-container">
+          <mat-icon>music_note</mat-icon>
           <mat-form-field>
-          <mat-label>Moniker</mat-label>
-          <input matInput formControlName="moniker">
-        </mat-form-field>
+            <mat-label>Moniker</mat-label>
+            <input matInput formControlName="moniker">
+          </mat-form-field>
         </div>
-        <div class="icon-container"><mat-icon>email</mat-icon>
+
+        <div class="icon-container">
+          <mat-icon>email</mat-icon>
           <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input matInput formControlName="email">
-        </mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email">
+          </mat-form-field>
         </div>
-        <div class="icon-container"><mat-icon>attach_money</mat-icon>
+
+        <div class="icon-container">
+          <mat-icon>attach_money</mat-icon>
           <mat-form-field>
-          <mat-label>Performance Fee</mat-label>
-          <input matInput type="number" formControlName="performanceFee">
-        </mat-form-field>
-      </div>
+            <mat-label>Performance Fee</mat-label>
+            <input matInput type="number" formControlName="performanceFee">
+          </mat-form-field>
+        </div>
       </div>
     </mat-card-content>
   </mat-card>

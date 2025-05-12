@@ -1,9 +1,10 @@
+
 <!-- EVENT NAME HEADER -->
-<div *ngIf="eventSelected" class="event-header" [formGroup]="eventGroup()">
+<div *ngIf="eventSelected" class="event-header" [formGroup]="eventFormGroup">
   <div class="icon-container">
     <mat-icon>local_activity</mat-icon>
     <div class="event-field">
-      <span>Event name: </span>
+      <span>Event name:</span>
       <mat-form-field>
         <input matInput formControlName="eventName">
       </mat-form-field>
@@ -11,45 +12,36 @@
   </div>
 </div>
 
-<!-- MAIN FORM WRAPPER -->
-<div class="edit-event-wrapper" [formGroup]="formGroup">
-
-  <!-- DETAILS -->
-  <div formArrayName="details">
-    <ng-container *ngFor="let detailControl of detailsFormArray; let i = index">
-      <app-detail-card
-        [formGroup]="detailControl"
-        [displayMode]="displayMode"
-        [detailData]="eventSelected.details?.[i]"
-        [convertTimeStringToDate]="convertTimeStringToDate">
-      </app-detail-card>
-    </ng-container>
-  </div>
+<!-- DETAILS -->
+<ng-container *ngIf="eventSelected && eventSelected.details?.length">
+  <ng-container *ngFor="let detail of eventSelected.details">
+    <app-detail-card [formGroup]="detailFormGroup" [displayMode]="displayMode" [detailData]="eventSelected.details"/>
+  </ng-container>
 
   <!-- LOCATION -->
-  <app-location-card
-    [eventSelected]="eventSelected"
-    [formGroup]="locationForm"
-    [displayMode]="displayMode">
-  </app-location-card>
+  <app-location-card [eventSelected]="eventSelected" [formGroup]="locationFormGroup" [displayMode]="displayMode"/>
 
   <mat-divider></mat-divider>
 
-  <!-- PERFORMERS -->
-  <div formArrayName="performers">
-    <ng-container *ngFor="let performerControl of performersFormArray; let i = index">
-      <app-performer-card
-        [formGroup]="performerControl"
-        [displayMode]="displayMode"
-        [performerData]="performerControl.value">
-      </app-performer-card>
-    </ng-container>
-  </div>
-
-  <ng-container *ngIf="eventSelected">
-    <app-goal-card [formGroup]="goalGroup" [eventSelected]="eventSelected" [displayMode]="displayMode"></app-goal-card>
-    <app-note-card [formGroup]="noteGroup" [eventSelected]="eventSelected" [displayMode]="displayMode"></app-note-card>
-    <app-reflection-card [formGroup]="reflectionGroup" [eventSelected]="eventSelected" [displayMode]="displayMode"></app-reflection-card>
+  <ng-container *ngIf="formGroup.get('performers') as performersArray" [formGroup]="formGroup">
+    <div formArrayName="performers">
+      <ng-container *ngFor="let performerGroup of performerFormGroups; let i = index">
+        <div [formGroupName]="i">
+          <app-performer-card
+            [formGroup]="performerGroup"
+            [displayMode]="displayMode">
+          </app-performer-card>
+        </div>
+      </ng-container>
+    </div>
   </ng-container>
 
-</div>
+
+</ng-container>
+<ng-container *ngIf="eventSelected">
+  <app-goal-card [formGroup]="goalFormGroup" [eventSelected]="eventSelected" [displayMode]="displayMode"/>
+  <app-note-card [formGroup]="noteFormGroup" [eventSelected]="eventSelected" [displayMode]="displayMode"/>
+  <app-reflection-card [formGroup]="reflectionFormGroup" [eventSelected]="eventSelected" [displayMode]="displayMode"/>
+</ng-container>
+
+

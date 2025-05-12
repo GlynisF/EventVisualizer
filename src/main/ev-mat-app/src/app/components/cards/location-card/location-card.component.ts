@@ -23,26 +23,31 @@ export class LocationCardComponent implements OnInit {
   @Input() eventSelected?: any = {details: []};
   @Input() displayMode?: string;
   @Input() formGroup!: FormGroup;
-  //@ViewChild('locationInput') locationInput!: ElementRef<HTMLInputElement>;
+  @Input() updateEvent?: () => void;
   suggestions: { description: string; placeId: string }[] = [];
   http = inject(HttpClientService);
   fb = inject(FormBuilder);
 
   public locationList: any[] = [];
+  public addressList: any[]= [];
+
+  onAddressInput(event: Event): void {
+    const value = (event.target as HTMLInputElement).value;
+    this.formGroup.get('address')?.patchValue(value);
+  }
+
 
   ngOnInit() {
     this.locationList = this.locations();
     const location = this.locationList[0];
     if (location && this.formGroup) {
 
-
-
-      const fullAddress: string = `${location.address} ${location.address2 || ''}, ${location.city}, ${location.state}`;
+       const fullAddress: string = `${location.address} ${location.address2 || ''}, ${location.city}, ${location.state}`;
 
       this.formGroup.patchValue({
         id: location.id,
         locationName: location.locationName,
-        address: location.address,
+        address: fullAddress,
         address2: location.address2,
         city: location.city,
         state: location.state,
@@ -50,7 +55,6 @@ export class LocationCardComponent implements OnInit {
         phoneNumber: location.phoneNumber,
         website: location.website,
         accessible: location.accessible,
-        fullAddress: fullAddress
       })
     }
   }
@@ -75,21 +79,27 @@ export class LocationCardComponent implements OnInit {
   }
 
 selectSuggestion(suggestion: { description: string; placeId: string }): void {
-  this.formGroup.patchValue({
+    const list = document.getElementById('autocomplete-list');
+    if(list) {
+      list.innerHTML = '';
+    }
+    this.formGroup.patchValue({
     locationName: suggestion.description,
     address: suggestion.description
   });
   this.suggestions = [];
 
 
+
   this.http.getData(`autocomplete/${suggestion.placeId}`)
     .subscribe({
       next: (res: any) => {
-        this.formGroup.get('fullAddress')?.setValue(`${res.address ?? ''} ${res.address2 ?? ''}, ${res.city ?? ''}, ${res.state ?? ''}`);
+        const fullAddress: string = `${res.address} ${res.address2 || ''}, ${res.city}, ${res.state}`;
+
         console.log(res);
         this.formGroup.patchValue({
-          locationName: res.name != null ? res.name : suggestion.description,
-          address: res.address ?? '',
+          locationName: res.name ?? '',
+          address: fullAddress,
           address2: res.address2 ?? '',
           city: res.city ?? '',
           state: res.state ?? '',

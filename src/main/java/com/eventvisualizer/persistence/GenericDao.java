@@ -1,5 +1,7 @@
 package com.eventvisualizer.persistence;
 
+import com.eventvisualizer.util.ObjectMapperUtil;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
 import jakarta.persistence.criteria.Root;
@@ -122,6 +124,16 @@ public class GenericDao<T> {
         Transaction transaction = session.beginTransaction();
         session.merge(entity);
         session.flush();
+        transaction.commit();
+        session.close();
+    }
+    public void updateWithMerge(T existingEntity, T updates) throws JsonMappingException {
+        Session session = getSession();
+        Transaction transaction = session.beginTransaction();
+
+        ObjectMapperUtil.getMapper().updateValue(existingEntity, updates);
+
+        session.merge(existingEntity);
         transaction.commit();
         session.close();
     }

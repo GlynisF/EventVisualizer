@@ -44,38 +44,6 @@ public class CrudService {
 
     public GenericDao<Event> getEventDao() {return eventDao;}
 
-    public void insertNewEvent(String json, int userId) {
-        GenericDao<User> userDao = new GenericDao<>(User.class);
-        User user = userDao.getById(userId);
-        try {
-            Notebook notebook = ObjectMapperUtil.extractEntity(json, "notebook", Notebook.class);
-            user.addNotebook(notebook);
-            Event event = ObjectMapperUtil.extractEntity(json, "event", Event.class);
-            Goal goal = ObjectMapperUtil.extractEntity(json, "goal", Goal.class);
-            event.setGoal(goal);
-            goal.setEvent(event);
-            notebook.addEvent(event);
-            Detail detail = ObjectMapperUtil.extractEntity(json, "detail", Detail.class);
-            event.addDetail(detail);
-            Location location = ObjectMapperUtil.extractEntity(json, "location", Location.class);
-            detail.addLocation(location);
-            List<Performer> performers = ObjectMapperUtil.extractEntityList(json, "performers", Performer.class);
-            for (Performer performer : performers) {
-                detail.addPerformer(performer);
-            }
-            Note note = ObjectMapperUtil.extractEntity(json, "note",Note.class);
-            event.setNote(note);
-            note.setEvent(event);
-            Reflection reflection = ObjectMapperUtil.extractEntity(json, "reflection", Reflection.class);
-            event.setReflection(reflection);
-            reflection.setEvent(event);
-            GenericDao<Notebook> notebookDao = new GenericDao<>(Notebook.class);
-            notebookDao.insert(notebook);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-
-    }
 
     public Set<Notebook> getUserNotebooks(int userId) {
         GenericDao<User> userDao = new GenericDao<>(User.class);
@@ -107,18 +75,15 @@ public class CrudService {
         userDao.update(user);
     }
 
-    public void updateEvent(String json, int eventId) {
-        try  {
-            Event eventToUpdate = ObjectMapperUtil.extractEntity(json, "event", Event.class);
-            eventDao.update(eventToUpdate);
-
-
+    public void updateEventDetails(String json, int eventId) {
+        try {
+            Event eventWithUpdates = ObjectMapperUtil.extractEntity(json, "event", Event.class);
+            eventDao.updateWithMerge(eventDao.getById(eventId), eventWithUpdates);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-
-
     }
+
 
     public Event setEntityRelationships(String json) throws IOException {
         Map<String, Object> map = extractEntitiesFromJson(json);

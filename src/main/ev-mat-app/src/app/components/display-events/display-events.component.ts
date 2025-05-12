@@ -16,7 +16,8 @@ import {ReflectionCardComponent} from '../cards/reflection-card/reflection-card.
 })
 export class DisplayEventsComponent implements OnChanges {
   @Input() eventSelected!: any;
-  @Input() convertTimeStringToDate!: (time: string) => Date;
+  @Input() convertTimeStringToDate!: (time: string) => string;
+  @Input() displayMode: 'edit' | 'display' = 'display';
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['eventSelected']) {

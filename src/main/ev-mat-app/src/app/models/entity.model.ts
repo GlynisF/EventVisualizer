@@ -2,7 +2,6 @@ export interface Notebook {
   id?: number;
   title?: string;
   events?: Event[];
-  eventId?: number | null;
 }
 
 export interface Event {
@@ -18,8 +17,8 @@ export interface Event {
 export interface Detail {
   id?: number;
   dateOfEvent: Date | null;
-  startTime: Date | null;
-  endTime: Date | null;
+  startTime: Date | string | null;
+  endTime: Date | string | null;
   description: string;
   performers?: Performer[] | [];
   locations?: Location[] | [];
@@ -51,19 +50,18 @@ export interface Location {
 }
 
 export interface Goal {
-  id?: number;
-  goalDescription: string | null;
   eventId?: number | null;
+  goalDescription: string | null;
+
 }
 
 export interface Note {
-  id?: number;
-  noteDescription: string | null;
   eventId?: number | null;
+  noteDescription: string | null;
+
 }
 
 export interface Reflection {
-  id?: number;
-  reflectionDescription: string | null;
   eventId?: number | null;
+  reflectionDescription: string | null;
 }

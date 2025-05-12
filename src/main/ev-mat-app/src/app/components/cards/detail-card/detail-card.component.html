@@ -1,16 +1,15 @@
-<ng-container *ngIf="displayMode === 'display'">
+<ng-container *ngIf="displayMode === 'display' && detailData as detail">
   <div class="details-container">
-    <div class="event-description">Description:<br> {{detailData?.description}}</div>
-    <div class="icon-container"><mat-icon>calendar_today</mat-icon> {{ detailData?.dateOfEvent | date: 'EEE MMM d, y' }}</div>
+    <div class="event-description">Description:<br> {{detail.description}}</div>
+    <div class="icon-container"><mat-icon>calendar_today</mat-icon> {{ detail.dateOfEvent | date: 'EEE MMM d, y' }}</div>
     <div class="icon-container"><mat-icon>schedule</mat-icon>
-      {{ convertTimeStringToDate(detailData?.startTime) | date: 'h:mm a' }} to
-      {{ convertTimeStringToDate(detailData?.endTime) | date: 'h:mm a' }}
+      {{ formatTimeDisplay(detail.startTime) || detail.startTime }} to {{ formatTimeDisplay(detail.endTime)}}
     </div>
   </div>
 </ng-container>
 
 <ng-container *ngIf="displayMode === 'edit'">
-  <div [formGroup]="formGroup" class="detail-box">
+  <div class="detail-box" [formGroup]="formGroup">
     <div class="description-box">
       <mat-form-field class="full-width">
         <mat-label>Description</mat-label>

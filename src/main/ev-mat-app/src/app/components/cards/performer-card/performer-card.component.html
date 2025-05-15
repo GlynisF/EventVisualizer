@@ -1,4 +1,5 @@
 <!-- DISPLAY MODE -->
+<div class="performer-box">
 <ng-container *ngIf="displayMode === 'display' && performerData">
   <mat-card appearance="outlined" class="performer-card" style="width: 500px; height: 200px;">
     <mat-card-header>
@@ -20,10 +21,11 @@
     </mat-card-content>
   </mat-card>
 </ng-container>
-
+</div>
 <!-- EDIT MODE -->
+<div class="performer-box">
 <ng-container *ngIf="displayMode === 'edit' && formGroup">
-  <mat-card appearance="outlined" class="performer-card">
+  <mat-card class="performer-card" style="width: 500px; height: 200px;">
     <mat-card-header>
       <mat-card-title-group>
         <mat-card-title>
@@ -35,36 +37,32 @@
       </mat-card-title-group>
     </mat-card-header>
     <mat-card-content>
-      <div [formGroup]="formGroup" class="performer-box" style="display: grid;">
+      <div [formGroup]="formGroup" class="performer-form" style="display: grid;">
         <!-- form fields (same as before) -->
         <div class="icon-container">
-          <mat-icon>person</mat-icon>
-          <mat-form-field>
-            <mat-label>Full Name</mat-label>
+            <span>Name</span>
+            <mat-form-field>
             <input matInput formControlName="fullName">
           </mat-form-field>
         </div>
 
         <div class="icon-container">
-          <mat-icon>music_note</mat-icon>
+            <span>Moniker:</span>
           <mat-form-field>
-            <mat-label>Moniker</mat-label>
             <input matInput formControlName="moniker">
           </mat-form-field>
         </div>
 
         <div class="icon-container">
-          <mat-icon>email</mat-icon>
-          <mat-form-field>
-            <mat-label>Email</mat-label>
+            <span>Email:</span>
+            <mat-form-field>
             <input matInput formControlName="email">
           </mat-form-field>
         </div>
 
         <div class="icon-container">
-          <mat-icon>attach_money</mat-icon>
-          <mat-form-field>
-            <mat-label>Performance Fee</mat-label>
+            <span>Performance Fee:</span>
+            <mat-form-field>
             <input matInput type="number" formControlName="performanceFee">
           </mat-form-field>
         </div>
@@ -72,3 +70,4 @@
     </mat-card-content>
   </mat-card>
 </ng-container>
+</div>

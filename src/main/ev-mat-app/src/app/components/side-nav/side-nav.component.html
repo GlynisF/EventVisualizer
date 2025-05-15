@@ -1,20 +1,21 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" opened class="sidenav">
-    <cdk-accordion>
+<mat-sidenav-container class="sidenav-container" autosize>
+  <mat-sidenav #sidenav mode="side" opened class="sidenav" [fixedInViewport]="true">
+    <cdk-accordion class="scrollbar">
       <cdk-accordion-item
         *ngFor="let notebook of notebookData; let i = index; trackBy: trackByNotebookId"
         #accordionItem="cdkAccordionItem"
-        class="accordion-item">
+        class="accordion-item"
+        [expanded]="selectedIndex === i"
+        (opened)="scrollToItem('cdkAccordionItem')">
         <div class="notebook-button-container">
-          <button
-
-            mat-button
-            (click)="accordionItem.toggle(); toggleNotebook(notebook.id)"
-            tabindex="0"
-            [attr.id]="'accordion-header-' + i"
-            [attr.aria-expanded]="accordionItem.expanded"
-            [attr.aria-controls]="'accordion-body-' + i"
-            class="notebook-button">
+          <button @fadeInOut
+                  mat-flat-button
+                  (click)="accordionItem.toggle(); toggleNotebook(notebook.id)"
+                  tabindex="0"
+                  [attr.id]="'accordion-header-' + i"
+                  [attr.aria-expanded]="accordionItem.expanded"
+                  [attr.aria-controls]="'accordion-body-' + i"
+                  class="notebook-button">
             <span class="button-text">{{ notebook.title }}</span>
             <mat-icon class="dropdown-icon">
               {{ accordionItem.expanded ? "arrow_drop_up" : "arrow_drop_down" }}
@@ -24,6 +25,7 @@
           </div>
         </div>
         <mat-list
+
           *ngIf="accordionItem.expanded"
           class="example-accordion-item-body"
           role="group"
@@ -32,15 +34,10 @@
           <ng-container *ngIf="!notebook.events?.length">
             <mat-list-item class="no-events">No events</mat-list-item>
             <mat-divider></mat-divider>
-            <mat-list-item>
-              <button mat-button>Add event
-                <mat-icon matListItemIcon>music_note_add</mat-icon>
-              </button>
-            </mat-list-item>
           </ng-container>
           <mat-list-item *ngFor="let event of notebook.events; trackBy: trackByEventId">
-            <button mat-button (click)="selectedEvent($event, event, notebook.id)">
-              <mat-icon matListItemIcon>music_note_add</mat-icon>
+            <button mat-button class="event-btn" (click)="selectedEvent($event, event, notebook.id)">
+              <mat-icon matListItemIcon>blur_on</mat-icon>
               {{ event.eventName }}
             </button>
           </mat-list-item>
@@ -60,11 +57,14 @@
   </mat-sidenav>
   <mat-sidenav-content>
     <ng-container *ngIf="eventSelected">
-<div class="display-btn-box">
-      <button mat-fab extended *ngIf="displayMode === 'display'" (click)="toggleEditDisplay(eventSelected)">
-        <mat-icon>preview</mat-icon>
-      </button>
-</div>
+      <div class="container">
+        <img src="/corner_dot_triangle.png" alt="black top-right facing triangle made from closely placed black dots." class="corner-triangle">
+      </div>
+      <div class="display-btn-box">
+        <button mat-fab extended *ngIf="displayMode === 'display'" (click)="toggleEditDisplay(eventSelected)">
+          <mat-icon>preview</mat-icon>
+        </button>
+      </div>
 
 
       <ng-container *ngIf="!editor; else editEvent">
@@ -74,30 +74,32 @@
 
       <ng-template #editEvent>
         <div class="edit-save-btn-box">
-        <button mat-fab extended type="button" (click)="exitEditMode()">
-          <mat-icon>preview</mat-icon>Back to display
-        </button>
-        <button type="submit" mat-raised-button [disabled]="!hasFormChanged()">
-          Save changes
-        </button>
+          <button mat-fab extended type="button" (click)="exitEditMode()">
+            <mat-icon>preview</mat-icon>Back to display
+          </button>
+          <button type="submit" mat-raised-button [disabled]="!hasFormChanged()">
+            Save changes
+          </button>
         </div>
 
 
         <ng-container *ngIf="eventSelected && editor">
-        <form [formGroup]="eventFormGroup">
-          <app-edit-event
-            [formGroup]="eventFormGroup"
-            [eventSelected]="eventSelected"
-            [displayMode]="'edit'"/>
-        </form>
+          <form [formGroup]="eventFormGroup">
+            <app-edit-event
+              [onAddPerformer]="addPerformer"
+              [removePerformer]="removePerformer"
+              [formGroup]="eventFormGroup"
+              [eventSelected]="eventSelected"
+              [displayMode]="'edit'"/>
+          </form>
         </ng-container>
       </ng-template>
 
-<button type="submit" mat-raised-button>Save changes</button>
+      <button type="submit" mat-raised-button>Save changes</button>
 
 
     </ng-container>
   </mat-sidenav-content>
-
+<div class="footer"></div>
 
 </mat-sidenav-container>

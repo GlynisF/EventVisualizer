@@ -7,7 +7,7 @@ import {CdkAccordion, CdkAccordionItem} from '@angular/cdk/accordion';
 import {MaterialCompsModule} from '../../materialcomps/materialcomps.module';
 import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from '../dialog/dialog.component';
-import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormArray, FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {DetailComponent} from '../forms/detail/detail.component';
 import {
   buildDetailForm,
@@ -45,18 +45,17 @@ export class SideNavComponent implements OnInit {
   private http = inject(HttpClientService);
   private fb = inject(FormBuilder);
   private cdr = inject(ChangeDetectorRef);
-  originalEventValue: any;
-
   public dialog = inject(MatDialog);
+  helper = inject(FormService);
 
+  originalEventValue: any;
   notebookData: Notebook[] = [];
   eventSelected?: Event;
   selectedNotebookId?: number;
   isOpen = false;
   createNotebook = false;
   editor = false;
-  helper = inject(FormService);
-
+  displayMode: 'edit' | 'display' = 'display';
   eventFormGroup!: FormGroup;
   storageForm: any = localStorage.getItem('originalEvent');
 
@@ -139,7 +138,7 @@ export class SideNavComponent implements OnInit {
       if (result === true) {
         this.updateEvent();
       } else {
-        this.exitEditMode(); 
+        this.exitEditMode();
       }
     });
   }
@@ -173,7 +172,17 @@ export class SideNavComponent implements OnInit {
 
   }
 
-  displayMode: 'edit' | 'display' = 'display';
+  addPerformer(): void {
+    const performers = this.eventFormGroup.get('performers') as FormArray;
+    performers.push(buildPerformerForm(this.fb));
+  }
+  removePerformer(index: number): void {
+    const performers = this.eventFormGroup.get('performers') as FormArray;
+    if (performers.length > 0) {
+      performers.removeAt(index);
+    }
+  }
+
 
   toggleEditDisplay(eventObject: Event): void {
     this.displayMode = this.displayMode === 'edit' ? 'display' : 'edit';
@@ -225,6 +234,11 @@ export class SideNavComponent implements OnInit {
     this.isOpen = !this.isOpen;
   }
 
+  scrollToItem(id: string) {
+    const el = document.getElementById(id);
+    el?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
+  }
+
   toggleNotebook(id: number | undefined): void {
     this.selectedNotebookId = this.selectedNotebookId === id ? undefined : id;
   }
@@ -236,4 +250,6 @@ export class SideNavComponent implements OnInit {
   trackByEventId(index: number, event: Event): number {
     return event.id!;
   }
+
+  selectedIndex: number | null = null;
 }

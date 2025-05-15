@@ -35,7 +35,8 @@ export class EditEventComponent implements OnChanges {
   @Input() formArrayName!: FormArrayName;
   @Input() eventSelected!: Event;
   @Input() displayMode: 'edit' | 'display' = 'edit';
-  @Input() convertTimeStringToDate!: (time: string) => string;
+  @Input() onAddPerformer!: () => void;
+  @Input() removePerformer!: (index: number) => void;
   @Input() displayModeEvent!: (event: MouseEvent) => any;
 
   ngOnChanges(changes:SimpleChanges): void {
@@ -90,6 +91,9 @@ export class EditEventComponent implements OnChanges {
   formatFormTimeDisplay(time: string): Date {
     return moment(time, 'HH:mm:ss').toDate();
   }
+
+
+
 
   patchEvent() {
     return this.eventFormGroup.patchValue({

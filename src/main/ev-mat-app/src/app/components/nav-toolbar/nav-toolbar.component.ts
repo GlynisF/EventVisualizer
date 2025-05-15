@@ -17,6 +17,8 @@ export class NavToolbarComponent {
   private routerSubscription: Subscription | undefined;
   activeTab: string = ''; // Variable to track active tab
 
+  icons = ['home', 'event_list', 'pages']
+
   links = [
     { label: 'Home', route: '/home' },
     { label: 'My Events', route: '/my-events'},

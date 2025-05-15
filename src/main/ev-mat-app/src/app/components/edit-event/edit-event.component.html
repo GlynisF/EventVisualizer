@@ -23,18 +23,37 @@
 
   <mat-divider></mat-divider>
 
+  <div class="add-performer-box">
+    <button mat-stroked-button (click)="onAddPerformer()">
+    <mat-icon>person_add</mat-icon>
+      Add Performer
+  </button>
+  </div>
   <ng-container *ngIf="formGroup.get('performers') as performersArray" [formGroup]="formGroup">
     <div formArrayName="performers">
       <ng-container *ngFor="let performerGroup of performerFormGroups; let i = index">
         <div [formGroupName]="i">
           <app-performer-card
+            [performerData]="eventSelected.details?.[0]?.performers?.length"
             [formGroup]="performerGroup"
             [displayMode]="displayMode">
           </app-performer-card>
+
+          <!-- Remove button now INSIDE the loop -->
+          <button
+            *ngIf="performerFormGroups.length > 1"
+            mat-icon-button
+            color="warn"
+            type="button"
+            (click)="removePerformer(i)"
+            aria-label="Remove performer">
+            <mat-icon>delete</mat-icon>
+          </button>
         </div>
       </ng-container>
     </div>
   </ng-container>
+
 
 
 </ng-container>

@@ -4,14 +4,15 @@
   margin-top: 3rem;
 }
 
-div.performer-box {
+div.performer-form {
   width: 100%;
   margin-right: 20px;
   margin-left: 50px;
 }
 
-.edit-performer-box {
+.performer-box {
   display: grid;
+  justify-content: space-between;
 }
 
 .performer-card {

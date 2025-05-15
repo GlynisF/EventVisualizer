@@ -3,7 +3,7 @@
 <div *ngIf="eventSelected" class="event-header">
   <div class="icon-container">
     <mat-icon>local_activity</mat-icon>
-    <div class="display-large">{{ eventSelected.eventName }}</div>
+    <div class="event-header-text">{{ eventSelected.eventName }}</div>
 </div>
 </div>
 <ng-container *ngIf="eventSelected || eventSelected.details?.length">

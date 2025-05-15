@@ -1,12 +1,24 @@
-// src/styles.scss
-@use '@angular/material' as mat;
-@use './app/themes/theme-colors' as theme;
-@use './app/themes/theme-tokens';
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto Mono&family=Anton+SC&family=Archivo+Black&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Barcode+39+Extended+Text&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans+Symbols:wght@100..900&family=Press+Start+2P&family=Righteous&family=Roboto:ital,wght@0,100..900;1,100..900&family=Silkscreen:wght@400;700&family=Sixtyfour&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&family=Staatliches&display=swap');
-@include mat.core();
+/* These tokens are generated using https://themes.angular-material.dev/ */
+/* Preview: https://themes.angular-material.dev/?bold-font-weight=700&brand-font-family=Roboto&medium-font-weight=500&plain-font-family=Roboto%20Mono&regular-font-weight=400&seed-error=%23f23d3d&seed-neutral=%23f2f2f2&seed-neutral-variant=%23222426&seed-primary=%23d2d93b&seed-secondary=%23d73ee6&seed-tertiary=%23b8a8bf */
+/* Seed Colors: primary: #d2d93b, secondary: #d73ee6, tertiary: #b8a8bf, error: #f23d3d, neutral: #f2f2f2, neutral-variant: #222426 */
+/* Seed Typography: plain-font-family: Roboto Mono, brand-font-family: Roboto, bold-font-weight: 700, medium-font-weight: 500, regular-font-weight: 400 */
+
+/* Make sure to import fonts in `<head>` of html */
+/*
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto Mono&display=swap');
+</style>
+
+OR
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto Mono&display=swap">
+*/
+
+@use "@angular/material" as mat;
 
 
-:root, :host:root, :host {
+/* Light Theme */
+:root, :host {
   @include mat.theme-overrides((
     primary: #d3d93b,
     on-primary: #ffffff,
@@ -173,67 +185,4 @@
     display-small-font: var(--mat-sys-brand-font-family),
     title-large-font: var(--mat-sys-brand-font-family),
   ));
-
 }
-
-html {
-  color-scheme: light;
-  @include mat.theme((
-    color: (
-      primary: theme.$primary-palette,
-      tertiary: theme.$tertiary_palette,
-      //use-system-variables: true,
-      theme-type: light,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
-}
-
-html, body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-body {
-  background: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-}
-
-.full-width {
-  width: 100%;
-}
-
-
-
-/**::-webkit-scrollbar {
-  scrollbar-width: thin;
-  scroll-behavior: smooth;
-  scrollbar-gutter: stable;
-
-}
-::-webkit-scrollbar:vertical {
-  height: 50vh;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: #0c0f0f;
-  border-radius: 10px;
-
-//
-
-}
-
-::-webkit-scrollbar-button {
-  //background: var(--mat-sys-primary);
-  color: #0c0f0f;
-}*/
-

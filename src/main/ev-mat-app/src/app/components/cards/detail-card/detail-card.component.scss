@@ -1,26 +1,37 @@
 .event-description {
-  margin-top: 0;
   padding-top: 0;
-  margin-bottom: 2.5rem;
-  text-align: justify;
+  //text-align: justify;
+  font-size: 1.25rem;
+  font-style: italic;
+}
+
+.description-container {
+  align-content: center;
+  margin-bottom: 2rem;
+  margin-top: .25rem;
 }
 
 .details-container {
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: 3rem;
-  align-content: center;
+}
+
+.date-time-container {
+  font-family: Roboto Mono, 'monospace';
 }
 
 .display-large {
-  margin-bottom: 16px;
-
+  margin-bottom: .25rem;
 }
 
 .icon-container {
-  display: flex;
+  align-content: center;
   align-items: center;
+  display: flex;
   gap: 0.5rem;
 }
+
 
 .time-container {
   display: inline-flex;
@@ -36,4 +47,36 @@ mat-hint {
 }
 
 
+.detail-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.date-time-container-edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  width: 100%;
+}
+
+.form-field {
+  width: 25%;
+}
+
+.mat-mdc-form-field {
+  width: 50%;
+}
+
+.label-text {
+  font-family: Roboto, sans-serif;
+  font-weight: 900;
+  display: inline-block;
+  letter-spacing: -0.1rem;
+  line-height: 1rem;
+  font-size: 48px;
+  margin-bottom: 1.5rem;
+}
 

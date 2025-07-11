@@ -2,7 +2,7 @@ import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormArray, FormArrayName, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {MaterialCompsModule} from '../../materialcomps/materialcomps.module';
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 import {DetailCardComponent} from '../cards/detail-card/detail-card.component';
 import {Event} from '../../models/entity.model';
 import {LocationCardComponent} from '../cards/location-card/location-card.component';
@@ -24,7 +24,8 @@ import moment from 'moment/moment';
     PerformerCardComponent,
     GoalCardComponent,
     NoteCardComponent,
-    ReflectionCardComponent
+    ReflectionCardComponent,
+    MatTooltipModule
   ],
   templateUrl: './edit-event.component.html',
   styleUrl: './edit-event.component.scss'

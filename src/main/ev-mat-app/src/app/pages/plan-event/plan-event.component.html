@@ -1,88 +1,75 @@
 <div class="container">
   <div class="button-row">
-    <button mat-button aria-label="Expand all form panels" (click)="accordion().openAll()">Expand forms</button>
-    <button mat-button aria-label="Collapse all form panels" (click)="accordion().closeAll()">Collapse forms</button>
+    <button mat-button (click)="accordion.openAll()">Expand forms</button>
+    <button mat-button (click)="accordion.closeAll()">Collapse forms</button>
   </div>
 
-  <mat-accordion class="form-accordion" multi>
-    <form [formGroup]="planEventForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="planEventForm" (ngSubmit)="onSubmit()">
+    <mat-accordion #accordion="matAccordion" class="form-accordion" multi>
 
-      <div class="panel-wrapper">
-        <app-panel-wrapper panelTitle="Notebook">
-          <app-notebook [formGroup]="notebookFormGroup"></app-notebook>
-        </app-panel-wrapper>
-      </div>
+      <app-panel-wrapper panelTitle="Notebook">
+        <app-notebook [formGroup]="notebookFormGroup"></app-notebook>
+      </app-panel-wrapper>
 
-      <div class="panel-wrapper">
-        <app-panel-wrapper panelTitle="Event Details">
-          <div class="container-fluid">
-            <app-event [formGroup]="eventFormGroup"></app-event>
-            <app-detail [formGroup]="detailFormGroup"></app-detail>
-          </div>
-        </app-panel-wrapper>
-      </div>
+      <app-panel-wrapper panelTitle="Event Details">
+        <div class="container-fluid">
+          <app-event [formGroup]="eventFormGroup"></app-event>
+          <app-detail [formGroup]="detailFormGroup"></app-detail>
+        </div>
+      </app-panel-wrapper>
 
-      <div class="panel-wrapper">
-        <app-panel-wrapper panelTitle="Location">
-          <app-location [formGroup]="locationFormGroup"></app-location>
-        </app-panel-wrapper>
-      </div>
+      <app-panel-wrapper panelTitle="Location">
+        <app-location [formGroup]="locationFormGroup"></app-location>
+      </app-panel-wrapper>
 
-      <div class="panel-wrapper">
-        <app-panel-wrapper panelTitle="Performers">
-          <div formArrayName="performers">
-            <ng-container *ngFor="let performerGroup of performerFormGroups; let i = index; trackBy: trackByIndex">
-              <div [formGroupName]="i" class="performer-entry-container" @slideInOut>
-                <button mat-icon-button color="warn"
+      <app-panel-wrapper panelTitle="Performers">
+        <div class="button-row d-flex justify-content-end align-items-center gap-2 mt-3">
+          <button mat-button
+                  matTooltip="Remove last performer"
+                  *ngIf="performerFormGroups.length > 1"
+                  (click)="removePerformer(performerFormGroups.length - 1)">
+            <mat-icon>remove</mat-icon><mat-icon>person</mat-icon>
+          </button>
+          <button mat-raised-button color="primary" (click)="addPerformer()">
+            Add Performer
+          </button>
+        </div>
+        <div formArrayName="performers">
+          <ng-container *ngFor="let performerGroup of performerFormGroups; let i = index; trackBy: trackByIndex">
+            <div [formGroupName]="i" class="performer-entry-container" @slideInOut>
+              <div class="x-btn">
+                <button mat-icon-button
                         *ngIf="i > 0"
                         class="close-button"
                         (click)="removePerformer(i)"
                         aria-label="Remove performer">
                   <mat-icon>close</mat-icon>
                 </button>
-
-                <app-performer [formGroup]="performerGroup"></app-performer>
               </div>
-            </ng-container>
-          </div>
+              <app-performer [formGroup]="performerGroup"></app-performer>
+            </div>
+          </ng-container>
+        </div>
+      </app-panel-wrapper>
 
-          <div class="button-row d-flex justify-content-end align-items-center gap-2 mt-3">
-            <button mat-button color="warn"
-                    *ngIf="performerFormGroups.length > 1"
-                    (click)="removePerformer(performerFormGroups.length - 1)">
-              Remove Last Performer
-            </button>
-            <button mat-raised-button color="primary" (click)="addPerformer()">
-              Add Performer
-            </button>
-          </div>
-        </app-panel-wrapper>
-      </div>
+      <app-panel-wrapper panelTitle="Goals">
+        <app-goal [formGroup]="goalFormGroup"></app-goal>
+      </app-panel-wrapper>
 
-      <div class="panel-wrapper">
-        <app-panel-wrapper panelTitle="Goals">
-          <app-goal [formGroup]="goalFormGroup"></app-goal>
-        </app-panel-wrapper>
-      </div>
+      <app-panel-wrapper panelTitle="Notes">
+        <app-note [formGroup]="noteFormGroup"></app-note>
+      </app-panel-wrapper>
 
-      <div class="panel-wrapper">
-        <app-panel-wrapper panelTitle="Notes">
-          <app-note [formGroup]="noteFormGroup"></app-note>
-        </app-panel-wrapper>
-      </div>
+      <app-panel-wrapper panelTitle="Reflection">
+        <app-reflection [formGroup]="reflectionFormGroup"></app-reflection>
+      </app-panel-wrapper>
 
-      <div class="panel-wrapper">
-        <app-panel-wrapper panelTitle="Reflection">
-          <app-reflection [formGroup]="reflectionFormGroup"></app-reflection>
-        </app-panel-wrapper>
-      </div>
+    </mat-accordion>
 
-      <div class="row">
-        <button mat-flat-button color="tertiary" type="submit" style="width: 100%; display: block;">
-          Submit
-        </button>
-      </div>
-
-    </form>
-  </mat-accordion>
+    <div class="row mt-4">
+      <button mat-flat-button color="tertiary" type="submit" style="width: 100%;">
+        Submit
+      </button>
+    </div>
+  </form>
 </div>

@@ -10,6 +10,7 @@ export class HttpClientService  {
 
   // This is the proxy path
   private baseUrl = 'http://localhost:3001/api';
+  private user?: Object;
 
   constructor() {}
 
@@ -45,7 +46,6 @@ export class HttpClientService  {
       })
     );
   }
-
 
   getData(endpoint: string): Observable<any> {
     const url = `${this.baseUrl}/${endpoint}`;

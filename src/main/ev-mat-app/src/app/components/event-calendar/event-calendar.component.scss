@@ -1,0 +1,20 @@
+.calendar-container {
+  padding: 100px;
+  margin: 0 auto;
+}
+
+.custom-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+}
+
+.right-btn-group {
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.right-btn-group:first-child {
+  margin-bottom: .5rem;
+}

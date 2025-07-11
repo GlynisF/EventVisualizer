@@ -1,7 +1,7 @@
 
 div.container {
+  margin: 0 auto ;
   max-width: 800px;
-  margin: 0 auto 3rem;
 }
 
 div.container-fluid {
@@ -21,30 +21,32 @@ form {
 }
 
 .button-row {
-  display: flex;
-  justify-content: flex-end;
   align-items: center;
+  display: flex;
+  gap: .5rem;
+  justify-content: flex-end;
   margin-bottom: 0;
   margin-top: 3rem;
-  gap: .5rem;
 }
 
+
+
 .performer-entry-container {
-  position: relative;
-  padding: 1rem;
+  //background-color: var(--mat-sys-scrim);
   border: 1px solid #ccc;
   border-radius: 8px;
   margin-bottom: 1.5rem;
-  background-color: #f9f9f9;
+  padding: 1rem;
+  //position: relative;
 }
 
-.close-button {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+.x-btn {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-left: 16px;
   z-index: 2;
 }
 
-body {
-  background-color: var(--mat-sys-background) !important;
-}
+

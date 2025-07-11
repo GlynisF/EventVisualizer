@@ -1,11 +1,11 @@
 <ng-container *ngIf="displayMode === 'display'">
 <ng-container *ngFor="let location of locationList; trackBy: trackById">
 <div class="location-container">
-  <div>Where: {{ location.locationName }}</div>
-  <div>Address: {{ location.address }}, {{ location.city }}, {{ location.state }}</div>
-  <div>Phone #: {{location.phoneNumber}} </div>
-  <div *ngIf="location.website != null; else noWebsite">Website: {{location.website}}</div>
-  <ng-template #noWebsite><div class="website-field">Website: <span>No site added</span></div></ng-template>
+  <div class="icon-container"><span class="label-text">Where:</span> {{ location.locationName }}</div>
+  <div class="icon-container"><span class="label-text">Address:</span> {{ location.address }}, {{ location.city }}, {{ location.state }}</div>
+  <div class="icon-container"><span class="label-text">Phone #:</span> {{location.phoneNumber}} </div>
+  <div class="icon-container" *ngIf="location.website != null; else noWebsite"><span class="label-text">Website:</span> {{location.website}}</div>
+  <ng-template #noWebsite><div class="icon-container"><span class="label-text">Website:</span> <span class="website-field"> No site added</span></div></ng-template>
   <mat-slide-toggle [checked]="location.accessible" disabled>Accessible</mat-slide-toggle>
 </div>
 </ng-container>
@@ -39,6 +39,7 @@
 
       </mat-form-field>
     </div>
+    <div class="row">
     <div class="phone-box">
     <mat-form-field>
       <mat-label>Phone #</mat-label>
@@ -54,5 +55,6 @@
     <div class="accessible-box">
       <mat-slide-toggle formControlName="accessible"><mat-icon aria-hidden="true">accessible</mat-icon></mat-slide-toggle>
     </div>
+  </div>
   </div>
 </ng-container>

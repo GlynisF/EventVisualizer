@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit, ViewChild} from '@angular/core';
 import {NgFor, NgIf} from '@angular/common';
-import {expandCollapse, fadeIn, fadeInOut, rotateToggle} from '../../util/animations';
+import {expandCollapse, fadeIn, fadeInOut, rotateToggle, scaleFadeInOut} from '../../util/animations';
 import {HttpClientService} from '../../services/http-client.service';
 import type {Event, Notebook} from '../../models/entity.model';
 import {CdkAccordion, CdkAccordionItem} from '@angular/cdk/accordion';
@@ -22,19 +22,29 @@ import {
 import {DisplayEventsComponent} from '../display-events/display-events.component';
 import {EditEventComponent} from '../edit-event/edit-event.component';
 import {FormService} from '../../services/form-service.service';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {AssetService} from '../../services/icon.service';
+import {RouterLink, RouterLinkActive} from '@angular/router';
+import {MatIconRegistry} from '@angular/material/icon';
+import {DomSanitizer} from '@angular/platform-browser';
+import {PlanEventComponent} from '../../pages/plan-event/plan-event.component';
 
 @Component({
-  animations: [rotateToggle, expandCollapse, fadeIn, fadeInOut],
+  animations: [rotateToggle, expandCollapse, fadeIn, fadeInOut, scaleFadeInOut],
   selector: 'app-side-nav',
   imports: [
     MaterialCompsModule,
     CdkAccordion,
-    CdkAccordionItem,
     NgFor,
     NgIf,
     ReactiveFormsModule,
     DisplayEventsComponent,
-    EditEventComponent
+    EditEventComponent,
+    MatTooltipModule,
+    CdkAccordionItem,
+    RouterLink,
+    RouterLinkActive,
+    PlanEventComponent,
   ],
   templateUrl: './side-nav.component.html',
   styleUrl: './side-nav.component.scss',
@@ -47,7 +57,10 @@ export class SideNavComponent implements OnInit {
   private cdr = inject(ChangeDetectorRef);
   public dialog = inject(MatDialog);
   helper = inject(FormService);
+  private assets = inject(AssetService);
 
+  icons: string[] = this.assets.getIconNames();
+  currentView: 'view' | 'add' = 'view';
   originalEventValue: any;
   notebookData: Notebook[] = [];
   eventSelected?: Event;
@@ -59,6 +72,15 @@ export class SideNavComponent implements OnInit {
   eventFormGroup!: FormGroup;
   storageForm: any = localStorage.getItem('originalEvent');
 
+  constructor(
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer
+  ) {
+    this.iconRegistry.addSvgIcon(
+      'corner-dots',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/noun-dot-2366651.svg')
+    );
+  }
   ngOnInit() {
     this.http.getNotebooks().subscribe({
       next: (response) => {
@@ -71,6 +93,10 @@ export class SideNavComponent implements OnInit {
         console.error('Error fetching notebooks:', err);
       }
     });
+  }
+
+  showAddEvent(): void {
+    this.currentView = 'add';
   }
 
   updateEvent() {
@@ -86,6 +112,8 @@ export class SideNavComponent implements OnInit {
         startTime: normalizeTime(formData.details.startTime),
         endTime: normalizeTime(formData.details.endTime)
       };
+
+      console.log(formData.performers);
 
       const payload = {
         event: {
@@ -137,8 +165,6 @@ export class SideNavComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         this.updateEvent();
-      } else {
-        this.exitEditMode();
       }
     });
   }
@@ -168,7 +194,7 @@ export class SideNavComponent implements OnInit {
 
       })
     }
-    this.originalEventValue = structuredClone(this.eventFormGroup.value); // add this
+    this.originalEventValue = structuredClone(this.eventFormGroup.value);
 
   }
 
@@ -185,9 +211,15 @@ export class SideNavComponent implements OnInit {
 
 
   toggleEditDisplay(eventObject: Event): void {
-    this.displayMode = this.displayMode === 'edit' ? 'display' : 'edit';
-    this.toggleEditorMode(eventObject);
+    if (this.displayMode === 'edit') {
+      this.exitEditMode();
+    } else {
+      this.displayMode = 'edit';
+      this.toggleEditorMode(eventObject);
+    }
   }
+
+
 
   exitEditMode(): void {
     if (!this.eventFormGroup || !this.originalEventValue) {
@@ -200,7 +232,17 @@ export class SideNavComponent implements OnInit {
     const hasChanges = JSON.stringify(this.eventFormGroup.value) !== JSON.stringify(this.originalEventValue);
 
     if (hasChanges) {
-      this.updateDialog();
+      this.dialog.open(DialogComponent, {
+        data: { addNotebook: false, formGroup: this.eventFormGroup }
+      }).afterClosed().subscribe((result) => {
+        if (result === true) {
+          this.updateEvent();
+        } else {
+          this.editor = false;
+          this.displayMode = 'display';
+          this.cdr.markForCheck();
+        }
+      });
     } else {
       this.editor = false;
       this.displayMode = 'display';
@@ -210,11 +252,14 @@ export class SideNavComponent implements OnInit {
 
 
 
+
   selectedEvent(event: MouseEvent, notebookEvent: Event, notebookId: any) {
+    this.currentView = 'view';
     const id = notebookId;
     if (!this.editor) {
       this.eventSelected = notebookEvent;
       console.log(this.eventSelected);
+      this.cdr.markForCheck();
     }
     if (this.editor) {
       event.stopPropagation();
@@ -239,7 +284,7 @@ export class SideNavComponent implements OnInit {
     el?.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
   }
 
-  toggleNotebook(id: number | undefined): void {
+  toggleNotebook(id: number  | undefined): void {
     this.selectedNotebookId = this.selectedNotebookId === id ? undefined : id;
   }
 

@@ -1,11 +1,15 @@
 <ng-container *ngIf="displayMode === 'display'">
 <ng-container *ngIf="eventSelected">
-  <mat-card appearance="outlined" class="goal-container">
+  <mat-card appearance="outlined" class="goal-container" style="width: 50%;">
     <mat-card-header>
       <mat-card-title>
-        <div class="icon-container"><mat-icon>flag</mat-icon><h3>Goals</h3></div>
+        <div class="icon-wrapper">
+          <mat-icon class="svg" svgIcon="disco"></mat-icon>
+          <span class="label-text">Goals</span>
+        </div>
       </mat-card-title>
     </mat-card-header>
+    <mat-divider></mat-divider>
     <mat-card-content>
       <div class="goal-text">{{eventSelected.goal?.goalDescription || 'no goals added.'}}</div>
     </mat-card-content>
@@ -15,18 +19,9 @@
 
 
   <ng-container *ngIf="displayMode === 'edit'">
-    <mat-card appearance="outlined" class="goal-container">
-      <mat-card-header>
-        <mat-card-title>
-          <div class="icon-container"><mat-icon>flag</mat-icon><h3>Goals</h3></div>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
     <div [formGroup]="formGroup" class="goal-field">
       <mat-form-field>
-        <textarea matInput formControlName="goalDescription"></textarea>
+        <textarea matInput formControlName="goalDescription" rows="25" cols="75" placeholder={{placeholder}}></textarea>
       </mat-form-field>
     </div>
-      </mat-card-content>
-    </mat-card>
   </ng-container>

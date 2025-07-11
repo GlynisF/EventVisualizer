@@ -1,73 +1,65 @@
 <!-- DISPLAY MODE -->
 <div class="performer-box">
-<ng-container *ngIf="displayMode === 'display' && performerData">
-  <mat-card appearance="outlined" class="performer-card" style="width: 500px; height: 200px;">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>
-          <div class="icon-container">
-            <mat-icon>music_note</mat-icon>
-            {{ performerData.moniker }}
-          </div>
-        </mat-card-title>
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-card-content>
-      <div class="performer-box">
-        <div class="icon-container"><mat-icon>person</mat-icon> {{ performerData.fullName }}</div>
-        <div class="icon-container"><mat-icon>email</mat-icon> {{ performerData.email }}</div>
-        <div class="icon-container"><mat-icon>attach_money</mat-icon> {{ performerData.performanceFee }}</div>
-      </div>
-    </mat-card-content>
-  </mat-card>
-</ng-container>
+  <ng-container *ngIf="displayMode === 'display' && performerData">
+    <div class="performer-display">
+      <h3 class="performer-moniker">
+        <mat-icon>music_note</mat-icon>
+        {{ performerData.moniker }}
+      </h3>
+      <p><strong>Name:</strong> {{ performerData.fullName }}</p>
+      <p><strong>Email:</strong> {{ performerData.email }}</p>
+      <p><strong>Fee:</strong> ${{ performerData.performanceFee }}</p>
+    </div>
+  </ng-container>
 </div>
+
 <!-- EDIT MODE -->
 <div class="performer-box">
-<ng-container *ngIf="displayMode === 'edit' && formGroup">
-  <mat-card class="performer-card" style="width: 500px; height: 200px;">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>
-          <div class="icon-container">
-            <mat-icon>music_note</mat-icon>
-            {{ formGroup.get('moniker')?.value }}
-          </div>
-        </mat-card-title>
-      </mat-card-title-group>
-    </mat-card-header>
-    <mat-card-content>
-      <div [formGroup]="formGroup" class="performer-form" style="display: grid;">
-        <!-- form fields (same as before) -->
-        <div class="icon-container">
-            <span>Name</span>
-            <mat-form-field>
-            <input matInput formControlName="fullName">
-          </mat-form-field>
-        </div>
-
-        <div class="icon-container">
-            <span>Moniker:</span>
-          <mat-form-field>
-            <input matInput formControlName="moniker">
-          </mat-form-field>
-        </div>
-
-        <div class="icon-container">
-            <span>Email:</span>
-            <mat-form-field>
-            <input matInput formControlName="email">
-          </mat-form-field>
-        </div>
-
-        <div class="icon-container">
-            <span>Performance Fee:</span>
-            <mat-form-field>
-            <input matInput type="number" formControlName="performanceFee">
-          </mat-form-field>
-        </div>
+  <ng-container *ngIf="displayMode === 'edit' && formGroup">
+    <div class="performer-wrapper">
+      <div class="btns-group">
+        <button
+          class="delete-fab"
+          *ngIf="performerFormGroups.length > 1"
+          mat-icon-button
+          type="button"
+          (click)="removePerformer(i)"
+          aria-label="Remove performer"
+          matTooltip="Delete performer">
+          <mat-icon>delete</mat-icon>
+        </button>
       </div>
-    </mat-card-content>
-  </mat-card>
-</ng-container>
+    <div [formGroup]="formGroup" class="performer-edit-form">
+      <div class="form-field">
+        <mat-form-field>
+        <mat-label>Moniker</mat-label>
+        <input matInput formControlName="moniker">
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field>
+          <mat-label>Name (first & last)</mat-label>
+          <input matInput formControlName="fullName">
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email">
+        </mat-form-field>
+      </div>
+
+      <div class="form-field">
+        <mat-form-field>
+          <mat-label>Fee</mat-label>
+          <span matPrefix>$&nbsp;</span>
+          <input matInput type="number" step="0.01" min="0" formControlName="performanceFee" class="fee">
+        </mat-form-field>
+      </div>
+    </div>
+    </div>
+
+  </ng-container>
 </div>

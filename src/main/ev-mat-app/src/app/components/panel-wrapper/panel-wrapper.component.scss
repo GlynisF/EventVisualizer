@@ -1,14 +1,39 @@
-@use '@angular/material';
-@use '../../../styles';
+@use '@angular/material' as mat;
+
 
 .mat-expansion-panel {
-  transition: box-shadow 200ms ease, border 200ms ease;
-  box-shadow: var(--md-sys);
   border-radius: 12px;
+  box-shadow: var(--md-sys);
+  transition: box-shadow 200ms ease, border 200ms ease;
 
 }
 
 .mat-expansion-panel:focus-within {
-  box-shadow: var(--mat-elevation-z4);
   border: 1px solid var(--md-sys-color-primary);
+  box-shadow: var(--mat-elevation-z4);
+}
+
+app-panel-wrapper {
+  margin-bottom: 1.5rem;
+}
+
+.mat-expansion-panel-header {
+  background-color: var(--mat-sys-scrim);
+}
+
+div.mat-expansion-panel-body{
+  border: 1px solid #000000;
+}
+
+.title {
+  font-family: Roboto, sans-serif;
+  color: var(--mat-sys-secondary-fixed-dim);
+  font-weight: 900;
+  display: inline-block;
+  baseline-shift: 5%;
+  letter-spacing: -0.1rem;
+  line-height: 1.15rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  font-size: 36px;
 }

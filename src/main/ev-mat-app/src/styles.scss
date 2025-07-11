@@ -1,12 +1,19 @@
 // src/styles.scss
+@use 'sass:map';
 @use '@angular/material' as mat;
 @use './app/themes/theme-colors' as theme;
 @use './app/themes/theme-tokens';
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto Mono&family=Anton+SC&family=Archivo+Black&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Barcode+39+Extended+Text&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans+Symbols:wght@100..900&family=Press+Start+2P&family=Righteous&family=Roboto:ital,wght@0,100..900;1,100..900&family=Silkscreen:wght@400;700&family=Sixtyfour&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&family=Staatliches&display=swap');
 @include mat.core();
+@import "mdb-angular-ui-kit/assets/scss/mdb.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto Mono&family=Anton+SC&family=Archivo+Black&family=Inter+Tight:ital,wght@0,100..900;1,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Barcode+39+Extended+Text&family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans+Symbols:wght@100..900&family=Press+Start+2P&family=Righteous&family=Roboto:ital,wght@0,100..900;1,100..900&family=Silkscreen:wght@400;700&family=Sixtyfour&family=Sora:wght@100..800&family=Space+Grotesk:wght@300..700&family=Staatliches&display=swap");
+//import 'bootstrap/dist/css/bootstrap.css';
+//import 'bootstrap-icons/font/bootstrap-icons.css';
 
 
-:root, :host:root, :host {
+
+
+
+:root, :host {
   @include mat.theme-overrides((
     primary: #d3d93b,
     on-primary: #ffffff,
@@ -136,6 +143,7 @@
   --mat-sys-medium-font-weight: 500;
   --mat-sys-regular-font-weight: 400;
 
+
   @include mat.theme-overrides((
     brand-family: Roboto,
     plain-family: Roboto Mono,
@@ -176,64 +184,102 @@
 
 }
 
+
+$theme: mat.define-theme((
+  color: (
+    primary: theme.$primary-palette,
+    tertiary: theme.$tertiary_palette,
+    use-system-variables: true,
+    theme-type: light,
+  ),
+  typography: (
+    plain-family: Roboto Mono,
+    brand-family: Roboto 'sans-serif',
+    bold-weight: 700,
+    medium-weight: 500,
+    regular-weight: 400,
+  ),
+  density: (
+    scale: -2,
+  )
+));
+
+
 html {
-  color-scheme: light;
-  @include mat.theme((
-    color: (
-      primary: theme.$primary-palette,
-      tertiary: theme.$tertiary_palette,
-      //use-system-variables: true,
-      theme-type: light,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  color-scheme: light dark;
+  @include mat.all-component-themes($theme);
+  @include mat.color-variants-backwards-compatibility($theme);
+  @include mat.theme(($theme));
+  @include mat.system-level-typography($theme, (), display);
 }
 
 html, body {
   height: 100%;
 }
 
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
-body {
-  background: var(--mat-sys-surface);
-  color: var(--mat-sys-on-surface);
-}
-
-.full-width {
-  width: 100%;
-}
-
+@include mat.form-field-overrides((
+  outlined-label-text-color: var(--mat-sys-on-scrim),
+  outlined-focus-label-text-color: var(--mat-sys-scrim),
+  outlined-hover-outline-color: var(--mat-sys-secondary),
+  outlined-caret-color: var(--mat-sys-secondary),
+  outlined-input-text-placeholder-color: var(--mat-sys-surface-tint),
+  outlined-error-focus-label-text-color: var(--mat-sys-error),
+  outlined-error-focus-outline-color: var(--mat-sys-error-container),
+  outlined-error-label-text-color: var(--mat-sys-error),
+  outlined-error-hover-outline-color: var(--mat-sys-error),
+));
 
 
-/**::-webkit-scrollbar {
-  scrollbar-width: thin;
-  scroll-behavior: smooth;
-  scrollbar-gutter: stable;
+  body {
+    font-family: Roboto, Roboto Mono, "Helvetica Neue", sans-serif;
+    margin: 0;
+    background: var(--mat-sys-surface);
+    color: var(--mat-sys-on-surface);
+  }
 
-}
-::-webkit-scrollbar:vertical {
-  height: 50vh;
-}
+  .full-width {
+    width: 100%;
+  }
 
-::-webkit-scrollbar-track {
-  background: transparent;
+  .fc-toolbar-chunk .btn .btn-group button {
+    background-color: black !important;
+    color: #d3d93b !important;
+  }
 
-}
+  .staatliches-regular {
+    font-family: "Staatliches", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
 
-::-webkit-scrollbar-thumb {
-  background-color: #0c0f0f;
-  border-radius: 10px;
 
-//
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 100%;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
 
-}
+  }
+  ::-webkit-scrollbar:vertical {
+    height: 50%;
+  }
 
-::-webkit-scrollbar-button {
-  //background: var(--mat-sys-primary);
-  color: #0c0f0f;
-}*/
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    width: 5px;
+    //background-color: #0c0f0f;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+
+  ::-webkit-scrollbar-button {
+    background: transparent;
+    color: #0c0f0f;
+  }
+
+  @import '@fortawesome/fontawesome-free/css/all.css';
+  @import 'mdb-angular-ui-kit/assets/scss/mdb.scss';
 

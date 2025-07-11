@@ -3,16 +3,15 @@ package com.eventvisualizer.service;
 import com.eventvisualizer.entity.*;
 import com.eventvisualizer.persistence.GenericDao;
 import com.eventvisualizer.util.EntityHelper;
+import com.eventvisualizer.util.EntityMapper;
 import com.eventvisualizer.util.ObjectMapperUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 
 public class CrudService {
@@ -84,6 +83,26 @@ public class CrudService {
         }
     }
 
+    public <T> Map<String, String> deleteEntity(String json) throws JsonProcessingException {
+        Map<String, Object> map = EntityMapper.getEntityMap();
+        JsonNode node = ObjectMapperUtil.getMapper().readTree(json);
+        String name = node.get("entityName").asText();
+        int id = node.get("id").asInt();
+
+
+        if (map.containsKey(name)) {
+            GenericDao<?> dao = (GenericDao<?>) map.get(name);
+            dao.delete(dao.getById(id));
+            if(dao.getById(id) == null) {
+                return Map.of("success", "The '" + name + "' with an ID of " + id + "was successfully deleted.");
+            }
+
+        } else {
+            return Map.of("failed","Entity name '" + name + "' not found in DAO map.");
+        }
+        return null;
+    }
+
 
     public Event setEntityRelationships(String json) throws IOException {
         Map<String, Object> map = extractEntitiesFromJson(json);
@@ -146,6 +165,42 @@ public class CrudService {
         }
         return entities;
     }
+
+    public User checkUserAuth(String json) {
+        try {
+            JsonNode root = ObjectMapperUtil.getMapper().readTree(json);
+            Map<String, Object> fields = new HashMap<>();
+            List<String> allowedFields = List.of("username", "firstName", "lastName", "email");
+
+            for (Iterator<Map.Entry<String, JsonNode>> it = root.fields(); it.hasNext(); ) {
+                Map.Entry<String, JsonNode> entry = it.next();
+                String key = entry.getKey();
+                if (allowedFields.contains(key)) {
+                    fields.put(key, entry.getValue().asText());
+                }
+            }
+
+            List<User> users = userDao.findByPropertyMapEqual(fields);
+            if (!users.isEmpty()) {
+                return users.get(0);
+            }
+
+
+            User user = new User();
+            user.setUsername(fields.get("username").toString());
+            user.setFirstName(fields.get("firstName").toString());
+            user.setLastName(fields.get("lastName").toString());
+            user.setEmail(fields.get("email").toString());
+
+            userDao.insert(user);
+            return user;
+
+        } catch (IOException e) {
+            logger.error("Failed to parse user JSON", e);
+            return null;
+        }
+    }
+
 
 
 

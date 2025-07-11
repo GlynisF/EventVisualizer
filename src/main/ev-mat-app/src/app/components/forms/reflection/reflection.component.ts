@@ -17,6 +17,7 @@ export class ReflectionComponent {
   @Input() formGroup!: FormGroup;
   fb = inject(FormBuilder);
   http = inject(HttpClient)
+  placeholder: string = "Put your post-event thoughts here";
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['formGroup'] && this.formGroup) {

@@ -17,6 +17,7 @@ export class GoalComponent implements OnChanges{
   @Input() formGroup!: FormGroup;
   fb = inject(FormBuilder);
   http = inject(HttpClientService);
+  placeholder:string = "How do you envision your event?"
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['formGroup'] && this.formGroup) {

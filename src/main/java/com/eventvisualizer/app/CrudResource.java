@@ -31,6 +31,15 @@ public class CrudResource {
         this.service = service;
     }
 
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/userAuth")
+    public Response userAuth(String json) {
+        return Response.ok().build();
+    }
+
+
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
@@ -105,9 +114,28 @@ public class CrudResource {
                     .entity(Map.of("message", "Invalid input data: JSON payload is missing or empty."))
                     .build();
         }
-        service.updateEvent(json, eventId);
+        service.updateEventDetails(json, eventId);
         return Response.ok().entity((Event) service.getEventDao().getById(eventId)).build();
 
+    }
+
+    @DELETE
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("/delete")
+    public Response delete(String json) {
+        if (json == null) {
+            return Response.status(Response.Status.BAD_REQUEST).build();
+        }
+        try {
+            Map<String,String> map = service.deleteEntity(json);
+            if (map.containsKey("success")) {
+                return Response.ok(map.get("success")).build();
+            } else {
+                return Response.notModified(map.get("failed")).build();
+            }
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void handleNewNotebookForUser(int userId, String json) throws IOException {

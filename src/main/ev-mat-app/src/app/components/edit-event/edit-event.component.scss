@@ -1,4 +1,42 @@
 @use '@angular/material' as mat;
 
+.label-text {
+  font-family: Roboto, sans-serif;
+  font-weight: 900;
+  display: inline-block;
+  letter-spacing: -0.1rem;
+  line-height: 1rem;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  font-size: 48px;
+}
+
+.performer-card-wrapper {
+  width: 50%;
+}
+
+.add-performer-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 50%;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+}
+
+#performer-title {
+  margin: 0;
+}
+
+.add-performer {
+  background-color: var(--mat-sys-scrim);
+  color: var(--mat-sys-primary);
+}
+
+.add-performer:hover {
+  background-color: var(--mat-sys-primary);
+  color: var(--mat-sys-scrim);
+}
+
 
 

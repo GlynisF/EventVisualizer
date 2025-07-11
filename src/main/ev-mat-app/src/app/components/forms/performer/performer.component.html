@@ -25,14 +25,13 @@
     <div class="fee">
       <mat-form-field class="full-width fee-field" floatLabel="always">
         <mat-label>Performance fee</mat-label>
-        <span matTextPrefix>$&nbsp;</span>
+        <span class="prefix" matTextPrefix>$</span>
         <input matInput
                formControlName="performanceFee"
                inputmode="numeric"
-               placeholder="0"
+               placeholder="0.00"
                min="0"
                class="fee-input">
-        <span matTextSuffix class="fee-suffix" *ngIf="showSuffix">.00</span>
       </mat-form-field>
     </div>
   </div>

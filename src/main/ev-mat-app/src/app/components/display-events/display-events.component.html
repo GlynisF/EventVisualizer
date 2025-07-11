@@ -1,9 +1,9 @@
 
 <ng-container *ngIf="displayMode === 'display'">
+  <div class="display-container">
 <div *ngIf="eventSelected" class="event-header">
   <div class="icon-container">
-    <mat-icon>local_activity</mat-icon>
-    <div class="event-header-text">{{ eventSelected.eventName }}</div>
+    <h1 class="event-header-text">{{ eventSelected.eventName }}</h1>
 </div>
 </div>
 <ng-container *ngIf="eventSelected || eventSelected.details?.length">
@@ -14,19 +14,26 @@
 
     <!-- LOCATION -->
     <app-location-card [displayMode]="displayMode" [eventSelected]="eventSelected"/>
-    <mat-divider></mat-divider>
+    <mat-divider class="divider"></mat-divider>
     <!-- PERFORMERS -->
-    <div>
+    <div class="svg-wrapper">
+      <mat-icon class="svg" svgIcon="microphone"></mat-icon>
+      <span class="label-text">Artists</span>
+    </div>
+    <div class="performer-container">
       <ng-container *ngIf="detail.performers?.length">
         <app-performer-card *ngFor="let performer of detail.performers" [displayMode]="displayMode" [performerData]="performer"/>
       </ng-container>
     </div>
 
-     <div>
+    <mat-divider class="divider"></mat-divider>
+
+     <div class="goal-note-reflection">
       <app-goal-card [displayMode]="displayMode" [eventSelected]="eventSelected"/>
       <app-note-card [eventSelected]="eventSelected" [displayMode]="displayMode"/>
       <app-reflection-card [eventSelected]="eventSelected" [displayMode]="displayMode"/>
     </div>
   </ng-container>
 </ng-container>
+  </div>
 </ng-container>

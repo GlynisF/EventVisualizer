@@ -3,6 +3,8 @@ import {MaterialCompsModule} from '../../../materialcomps/materialcomps.module';
 import {Event} from '../../../models/entity.model';
 import {NgIf} from '@angular/common';
 import {FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {MatIconRegistry} from '@angular/material/icon';
+import {DomSanitizer} from '@angular/platform-browser';
 
 
 @Component({
@@ -15,7 +17,14 @@ export class GoalCardComponent implements OnInit {
   @Input() eventSelected!: Event;
   @Input() displayMode: 'edit' | 'display' = 'edit';
   @Input() formGroup!: FormGroup;
-  
+  placeholder:string = "How do you envision your event?"
+
+  constructor(private iconRegistry: MatIconRegistry, private sanitizer: DomSanitizer) {
+    this.iconRegistry.addSvgIcon(
+      'disco',
+      this.sanitizer.bypassSecurityTrustResourceUrl('/disco_ball.svg')
+    );
+  }
 
   ngOnInit() {
   }

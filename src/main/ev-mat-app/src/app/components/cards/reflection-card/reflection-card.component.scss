@@ -1,13 +1,30 @@
 .reflection-container {
   display: flex;
-  width: 500px;
-  height: 500px;
-}
-
-
-#reflection-icon {
-  font-size: 35px;
-  height: 100%;
+  height: 600px;
   width: 100%;
-  margin: 0 auto;
 }
+
+mat-card-header {
+  border-bottom: 1px solid black;
+}
+
+.svg-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.svg {
+  width: 100px;
+  height: 100px;
+}
+
+.label-text {
+  font-family: Roboto, sans-serif;
+  font-weight: 900;
+  display: inline-block;
+  letter-spacing: -0.1rem;
+  line-height: 1rem;
+  font-size: 48px;
+}
+

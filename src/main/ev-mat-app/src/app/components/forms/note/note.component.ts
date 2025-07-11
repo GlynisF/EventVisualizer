@@ -16,7 +16,8 @@ import {buildFormGroup} from '../../../util/form-util';
 export class NoteComponent implements OnChanges{
 @Input() formGroup!: FormGroup;
 fb = inject(FormBuilder);
-http = inject(HttpClient)
+http = inject(HttpClient);
+placeholder:string = "Keep track of tasks, deadlines & important info";
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['formGroup'] && this.formGroup) {

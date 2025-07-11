@@ -1,15 +1,22 @@
-<div class="navbar">
-  <mat-toolbar class="toolbar">
-    <nav mat-tab-nav-bar class="mat-mdc-tab-nav-bar-stretch-tabs" fitInkBarToContent [tabPanel]="tabPanel">
-      <span class="navbar-brand">EV</span>
-      <span class="example-spacer"></span>
-      @for (link of links; track link) {
-        <a mat-tab-link
-           (click)="activeLink = link"
-           [routerLink]="link.route"
-           [active]="activeTab === link.label"> {{link.label}} </a>
-      }
-    </nav>
-    <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
-  </mat-toolbar>
-</div>
+<header>
+    <mat-toolbar class="navbar" id="nav-toolbar">
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      <span><img src="/black_logo.svg" alt="Event Visualizer Logo" style="width: 64px; height: 64px;"></span>
+      </button>
+      <div>
+        <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+          <a *ngFor="let link of links; trackBy: trackByLabel"
+             mat-tab-link
+             [routerLink]="link.route"
+             routerLinkActive #rla="routerLinkActive"
+             [active]="rla.isActive">
+            {{ link.label }}
+          </a>
+          <a mat-tab-link href="https://honest-gobbler-26.accounts.dev/sign-out">Sign out</a>
+        </nav>
+        <mat-tab-nav-panel #tabPanel></mat-tab-nav-panel>
+      </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+</header>

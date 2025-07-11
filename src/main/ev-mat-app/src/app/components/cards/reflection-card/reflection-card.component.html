@@ -1,33 +1,27 @@
 <ng-container *ngIf="displayMode === 'display'">
   <ng-container *ngIf="eventSelected">
-<mat-card appearance="outlined" class="reflection-container">
+<mat-card appearance="outlined" class="reflection-container" style="width: 50%;">
   <mat-card-header>
     <mat-card-title>
-      <div class="icon-container"><mat-icon>self_improvement</mat-icon><div class="display-small">Reflection</div></div>
+      <div class="svg-wrapper">
+        <mat-icon class="svg" svgIcon="atomic"></mat-icon>
+        <span class="label-text">Reflection</span>
+      </div>
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <div class="label-medium">Post-event thoughts & feelings. What went well and what didn't?<br>
-      What would you do again and what could you do without?</div>
-    <div class="goal-text">{{eventSelected.reflection?.reflectionDescription || 'no reflection added.'}}</div>
+    <div class="reflection-text">{{eventSelected.reflection?.reflectionDescription || 'no reflection added.'}}</div>
   </mat-card-content>
 </mat-card>
   </ng-container>
 </ng-container>
 
 <ng-container *ngIf="displayMode === 'edit'">
-  <mat-card appearance="outlined" class="reflection-container">
-    <mat-card-header>
-      <mat-card-title>
-        <div class="icon-container"><mat-icon>self_improvement</mat-icon><div class="display-small">Reflection</div></div>
-      </mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
+  <div>
   <div [formGroup]="formGroup" class="reflection-field">
     <mat-form-field>
-      <textarea matInput formControlName="reflectionDescription"></textarea>
+      <textarea matInput formControlName="reflectionDescription" rows="25" cols="75" placeholder={{placeholder}}></textarea>
     </mat-form-field>
   </div>
-    </mat-card-content>
-  </mat-card>
+  </div>
 </ng-container>

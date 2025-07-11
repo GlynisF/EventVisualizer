@@ -31,11 +31,17 @@ div.col {
   flex: 1;
 }
 
-.fee-field:focus-within .fee-suffix {
-  display: none;
+.fee-input {
+  text-align: start;
+  align-content: start;
 }
 
-/* For Chrome, Safari, Edge, and Opera */
+.prefix {
+  padding-right: 4px;
+}
+
+
+/* Chrome, Safari, Edge, & Opera */
 input.fee-input::-webkit-outer-spin-button,
 input.fee-input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -43,7 +49,7 @@ input.fee-input::-webkit-inner-spin-button {
 }
 
 
-/* For Firefox */
+/* Firefox */
 input.fee-input {
   -moz-appearance: textfield;
 }

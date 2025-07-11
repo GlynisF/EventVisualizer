@@ -1,3 +1,8 @@
-body {
-  margin: 0 24px;
+app-sidenav {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+
 }
+
+

@@ -1,105 +1,139 @@
-<mat-sidenav-container class="sidenav-container" autosize>
-  <mat-sidenav #sidenav mode="side" opened class="sidenav" [fixedInViewport]="true">
-    <cdk-accordion class="scrollbar">
-      <cdk-accordion-item
-        *ngFor="let notebook of notebookData; let i = index; trackBy: trackByNotebookId"
-        #accordionItem="cdkAccordionItem"
-        class="accordion-item"
-        [expanded]="selectedIndex === i"
-        (opened)="scrollToItem('cdkAccordionItem')">
-        <div class="notebook-button-container">
-          <button @fadeInOut
-                  mat-flat-button
-                  (click)="accordionItem.toggle(); toggleNotebook(notebook.id)"
-                  tabindex="0"
-                  [attr.id]="'accordion-header-' + i"
-                  [attr.aria-expanded]="accordionItem.expanded"
-                  [attr.aria-controls]="'accordion-body-' + i"
-                  class="notebook-button">
-            <span class="button-text">{{ notebook.title }}</span>
-            <mat-icon class="dropdown-icon">
-              {{ accordionItem.expanded ? "arrow_drop_up" : "arrow_drop_down" }}
-            </mat-icon>
-          </button>
-          <div>
+<mat-sidenav-container class="layout-container" autosize>
+
+  <mat-sidenav #sidenav
+               mode="side"
+               opened
+               class="sidenav"
+               fixedInViewport
+               [fixedTopGap]="60"
+               [fixedBottomGap]="60">
+
+    <div class="sidenav-scroll-wrapper" cdkScrollable>
+      <cdk-accordion class="sidenav-scroll-content">
+        <cdk-accordion-item
+          *ngFor="let notebook of notebookData; let i = index; trackBy: trackByNotebookId"
+          #accordionItem="cdkAccordionItem"
+          class="accordion-item"
+          [expanded]="selectedIndex === i"
+          (opened)="scrollToItem('cdkAccordionItem')">
+
+          <div class="notebook-button-container">
+            <button
+              role="button"
+              mat-flat-button
+              id="{{selectedIndex}}"
+              [routerLink]="['/#']"
+              [routerLinkActiveOptions]="{ exact: true }"
+              [routerLinkActive]="['notebook-active']"
+              (click)="accordionItem.toggle(); toggleNotebook(notebook.id);"
+              tabindex="0"
+              [attr.id]="'accordion-header-' + i"
+              [attr.aria-expanded]="accordionItem.expanded"
+              [attr.aria-controls]="'accordion-body-' + i"
+              class="notebook-button {{!accordionItem.expanded ? 'inactive' : 'active'}}">
+              <span class="button-text">{{ notebook.title }}</span>
+              <mat-icon class="dropdown-icon">
+                {{ accordionItem.expanded ? "arrow_drop_up" : "arrow_drop_down" }}
+              </mat-icon>
+            </button>
           </div>
-        </div>
-        <mat-list
 
-          *ngIf="accordionItem.expanded"
-          class="example-accordion-item-body"
-          role="group"
-          [attr.id]="'accordion-body-' + i"
-          [attr.aria-labelledby]="'accordion-header-' + i" @fadeIn>
-          <ng-container *ngIf="!notebook.events?.length">
-            <mat-list-item class="no-events">No events</mat-list-item>
-            <mat-divider></mat-divider>
-          </ng-container>
-          <mat-list-item *ngFor="let event of notebook.events; trackBy: trackByEventId">
-            <button mat-button class="event-btn" (click)="selectedEvent($event, event, notebook.id)">
-              <mat-icon matListItemIcon>blur_on</mat-icon>
-              {{ event.eventName }}
-            </button>
-          </mat-list-item>
-          <mat-list-item>
-            <button mat-button>Add event
-              <mat-icon matListItemIcon>add_circle</mat-icon>
-            </button>
-          </mat-list-item>
-        </mat-list>
-      </cdk-accordion-item>
-      <div class="add-notebook-container">
-        <button mat-button class="add-notebook-btn" (click)="addNotebook()">
-          <span class="add-notebook-text">Add Notebook</span>
-          <mat-icon class="add-icon">add_box</mat-icon></button>
-      </div>
-    </cdk-accordion>
+          <mat-list *ngIf="accordionItem.expanded"
+                    class="accordion-item-body"
+                    role="group"
+                    [attr.id]="'accordion-body-' + i"
+                    [attr.aria-labelledby]="'accordion-header-' + i"
+                    @fadeInOut>
+            <ng-container *ngIf="!notebook.events?.length">
+              <mat-list-item class="no-events">No events</mat-list-item>
+            </ng-container>
+            <mat-list-item *ngFor="let event of notebook.events; trackBy: trackByEventId">
+              <button mat-button class="event-btn" (click)="selectedEvent($event, event, notebook.id)">
+                <mat-icon matListItemIcon>blur_on</mat-icon>
+                {{ event.eventName }}
+              </button>
+            </mat-list-item>
+            <mat-list-item>
+              <button mat-flat-button type="button" (click)="showAddEvent()" class="add-event-btn">
+                Add event
+                <mat-icon matListItemIcon>add_circle</mat-icon>
+              </button>
+            </mat-list-item>
+          </mat-list>
+        </cdk-accordion-item>
+
+        <div class="add-notebook-container">
+          <button mat-button class="add-notebook-btn" (click)="addNotebook()">
+            <span class="add-notebook-text">Add Notebook</span>
+            <mat-icon class="add-icon">add_box</mat-icon>
+          </button>
+        </div>
+      </cdk-accordion>
+    </div>
   </mat-sidenav>
-  <mat-sidenav-content>
+
+  <mat-sidenav-content *ngIf="currentView === 'view'" class="content-area">
     <ng-container *ngIf="eventSelected">
-      <div class="container">
-        <img src="/corner_dot_triangle.png" alt="black top-right facing triangle made from closely placed black dots." class="corner-triangle">
-      </div>
-      <div class="display-btn-box">
-        <button mat-fab extended *ngIf="displayMode === 'display'" (click)="toggleEditDisplay(eventSelected)">
-          <mat-icon>preview</mat-icon>
-        </button>
-      </div>
+
+      <div class="component-sidenav-content">
+
+        <mat-toolbar class="fab-toolbar">
+          <ng-container *ngIf="displayMode === 'display'; else displayBtn">
+            <button class="fab-btn" mat-mini-fab matTooltip="Edit event" (click)="toggleEditDisplay(eventSelected)">
+              <mat-icon>edit_square</mat-icon>
+            </button>
+            <button class="fab-btn" mat-mini-fab matTooltip="Delete event" (click)="toggleEditDisplay(eventSelected)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </ng-container>
+
+          <ng-template #displayBtn>
+            <button class="fab-btn"  mat-fab matTooltip="Back to display mode" (click)="exitEditMode()">
+              <mat-icon>preview</mat-icon>
+            </button>
+            <button class="fab-btn" mat-fab matTooltip="Save changes"
+                    [disabled]="displayMode === 'display'"
+                    (click)="updateDialog()">
+              <mat-icon>save</mat-icon>
+            </button>
+            <button class="fab-btn"  mat-fab matTooltip="Delete event" (click)="toggleEditDisplay(eventSelected)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </ng-template>
+
+          <div class="container">
+            <mat-icon svgIcon="corner-dots" class="corner-triangle"></mat-icon>
+          </div>
+        </mat-toolbar>
 
 
-      <ng-container *ngIf="!editor; else editEvent">
 
-        <app-display-events *ngIf="eventSelected" [displayMode]="'display'" [eventSelected]="eventSelected"></app-display-events>
-      </ng-container>
-
-      <ng-template #editEvent>
-        <div class="edit-save-btn-box">
-          <button mat-fab extended type="button" (click)="exitEditMode()">
-            <mat-icon>preview</mat-icon>Back to display
-          </button>
-          <button type="submit" mat-raised-button [disabled]="!hasFormChanged()">
-            Save changes
-          </button>
-        </div>
-
-
-        <ng-container *ngIf="eventSelected && editor">
-          <form [formGroup]="eventFormGroup">
-            <app-edit-event
-              [onAddPerformer]="addPerformer"
-              [removePerformer]="removePerformer"
-              [formGroup]="eventFormGroup"
-              [eventSelected]="eventSelected"
-              [displayMode]="'edit'"/>
-          </form>
+        <ng-container *ngIf="!editor; else editEvent">
+          <app-display-events *ngIf="eventSelected"
+                              [displayMode]="'display'"
+                              [eventSelected]="eventSelected"></app-display-events>
         </ng-container>
-      </ng-template>
 
-      <button type="submit" mat-raised-button>Save changes</button>
-
+        <ng-template #editEvent>
+          <ng-container *ngIf="eventSelected && editor">
+            <form [formGroup]="eventFormGroup">
+              <app-edit-event
+                [onAddPerformer]="addPerformer.bind(this)"
+                [removePerformer]="removePerformer"
+                [formGroup]="eventFormGroup"
+                [eventSelected]="eventSelected"
+                [displayMode]="'edit'"/>
+            </form>
+          </ng-container>
+        </ng-template>
+      </div>
 
     </ng-container>
   </mat-sidenav-content>
-<div class="footer"></div>
 
+  <mat-sidenav-content *ngIf="currentView === 'add'" style="margin: 0 auto; padding-left: 0;">
+    <app-plan-event></app-plan-event>
+  </mat-sidenav-content>
 </mat-sidenav-container>
+
+

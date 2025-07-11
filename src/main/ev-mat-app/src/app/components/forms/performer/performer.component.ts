@@ -4,7 +4,6 @@ import {Performer} from '../../../models/entity.model';
 import {buildFormGroup} from '../../../util/form-util';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {NgIf} from '@angular/common';
 
 export function buildPerformerForm(fb: FormBuilder): FormGroup {
   const performer: Performer = {
@@ -22,7 +21,7 @@ export function buildPerformerForm(fb: FormBuilder): FormGroup {
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    NgIf
+
   ],
   templateUrl: './performer.component.html',
   styleUrl: './performer.component.scss'

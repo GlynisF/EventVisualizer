@@ -1,0 +1,19 @@
+
+<div class="calendar-container">
+  <div class="custom-toolbar">
+    <div class="left-btn-group">
+    <button mat-button  (click)="changeView('dayGridMonth')">Month</button>
+     <button mat-button (click)="changeView('timeGridWeek')">Week</button>
+      <button mat-button (click)="changeView('dayGridDay')">Day</button>
+      <button mat-button (click)="changeView('listGridWeek')">List</button>
+    </div>
+    <h2>{{calendarTitleView}}</h2>
+    <div class="right-btn-group">
+      <button type="button" mat-raised-button color="accent" (click)="calendarToday()">Today</button>
+      <button type="button" mat-icon-button color="primary" (click)="calendarPrev()"><mat-icon>chevron_left</mat-icon></button>
+      <button type="button" mat-icon-button color="primary" (click)="calendarNext()"><mat-icon>chevron_right</mat-icon></button>
+    </div>
+  </div>
+<full-calendar #calendarRef [options]="calendarOptions">
+</full-calendar>
+</div>

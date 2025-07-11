@@ -1,15 +1,23 @@
 mat-dialog-content {
-  width: 400px;
-  margin-top: 16px;
+  margin-top: 8px;
+  width: 500px;
+
 }
+.save-content {
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+}
+
 mat-form-field{
   margin: 0 auto;
 }
 
 .display-small {
+  padding: 0 0 0 8px;
   text-align: center;
-  padding: 8px;
-  margin-top: 1.5rem;
+  font-family: "Roboto", sans-serif;
+  letter-spacing: -1px;
+  font-weight: bold;
 }
 
 .dialog-container {
@@ -18,9 +26,8 @@ mat-form-field{
 }
 
 mat-dialog-actions {
-  width: 100%;
-  margin-top: 0;
   align-items: center;
+  width: 100%;
 }
 
 button, button text {
@@ -30,4 +37,17 @@ button, button text {
 
 .cancel-btn {
   color: rgba(168, 25, 152, 90%);
+}
+
+.close-btn {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: .5rem;
+  padding-top: .5rem;
+  margin-bottom: 0;
+}
+
+.mat-icon {
+  font-size: 18px;
+  font-weight: bold;
 }

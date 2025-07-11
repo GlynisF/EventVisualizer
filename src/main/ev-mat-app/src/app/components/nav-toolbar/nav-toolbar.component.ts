@@ -1,21 +1,22 @@
-import {Component} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {Subscription} from 'rxjs';
-import {NavigationEnd, Router, RouterLink} from '@angular/router';
+import {NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
+import {MaterialComponents} from '../../materialcomps/materialcomps.module';
 
 
 @Component({
   selector: 'app-nav-toolbar',
-  imports: [CommonModule, MatToolbarModule, MatIconModule, MatTabsModule, RouterLink],
+  imports: [CommonModule, MatToolbarModule, MatIconModule, MatTabsModule, RouterLink, RouterOutlet, MaterialComponents, RouterLinkActive],
   templateUrl: './nav-toolbar.component.html',
   styleUrl: './nav-toolbar.component.scss'
 })
-export class NavToolbarComponent {
+export class NavToolbarComponent implements OnInit, OnDestroy {
   private routerSubscription: Subscription | undefined;
-  activeTab: string = ''; // Variable to track active tab
+  activeTab: string = '';
 
   icons = ['home', 'event_list', 'pages']
 
@@ -25,6 +26,9 @@ export class NavToolbarComponent {
     { label: 'Planner', route: '/plan-event' },
 
   ];
+  trackByLabel(index: number, item: any): string {
+    return item.label;
+  }
 
   activeLink = this.links[0];
 
@@ -34,13 +38,12 @@ export class NavToolbarComponent {
     // Subscribe to router events
     this.routerSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.setActiveTabFromUrl(event.urlAfterRedirects); // Use the final URL after redirects
+        this.setActiveTabFromUrl(event.urlAfterRedirects);
       }
     });
   }
 
   ngOnDestroy() {
-    // Unsubscribe when the component is destroyed to avoid memory leaks
     if (this.routerSubscription) {
       this.routerSubscription.unsubscribe();
     }
@@ -52,7 +55,7 @@ export class NavToolbarComponent {
     } else if (url.includes('about')) {
       this.activeTab = 'About';
     } else {
-      this.activeTab = ''; // Default value if no match
+      this.activeTab = '';
     }
   }
 

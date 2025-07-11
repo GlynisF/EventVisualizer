@@ -1,7 +1,44 @@
 
 .location-container {
-  margin-bottom: 1rem;
+  font-family: Roboto Mono, 'monospace';
   justify-content: space-between;
+  margin-bottom: 1rem;
   padding-bottom: 1rem;
-  //align-items: stretch;
+  align-items: center;
+}
+
+
+.label-text {
+  font-weight: 600;
+}
+
+.address-info {
+  text-align: justify;
+}
+
+.icon-container {
+  align-content: center;
+  align-items: center;
+  margin-bottom: .25rem;
+}
+
+.address-container {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  width: auto;
+  margin-right: .5rem;
+}
+
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mat-mdc-form-field {
+  width: 50%;
 }

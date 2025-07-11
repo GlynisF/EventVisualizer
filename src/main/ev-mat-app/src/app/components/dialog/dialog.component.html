@@ -1,6 +1,9 @@
 <ng-container *ngIf="data.addNotebook; else updateEvent">
 <div class="dialog-container">
-<div class="display-small" mat-dialog-title>Add Notebook</div>
+  <div class="close-btn">
+    <button mat-icon-button [mat-dialog-close]="true"><mat-icon>close</mat-icon></button>
+  </div>
+<h3 class="display-small" mat-dialog-title>New Notebook</h3>
   <form [formGroup]="formGroup" (ngSubmit)="submitNotebook()">
 <mat-dialog-content color="white">
       <mat-form-field class="full-width">
@@ -8,8 +11,8 @@
       </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button type="submit" mat-raised-button>Submit</button>
-  <button type="button" class="cancel-btn" mat-raised-button mat-dialog-close="false">Cancel</button>
+  <button type="button" class="cancel-btn" mat-button [mat-dialog-close]="false">Cancel</button>
+  <button type="submit" [mat-dialog-close]="true" mat-button>Submit</button>
 </mat-dialog-actions>
   </form>
 </div>
@@ -17,12 +20,17 @@
 
 <ng-template #updateEvent>
   <ng-container [formGroup]="formGroup">
-  <h2 mat-dialog-title>Save changes made?</h2>
-  <mat-dialog-content>Changes cannot be undone after updating.</mat-dialog-content>
+    <div class="dialog-container">
+      <div class="close-btn">
+        <button mat-icon-button [mat-dialog-close]="true"><mat-icon>close</mat-icon></button>
+      </div>
+  <h3 class="display-small" mat-dialog-title>Save changes?</h3>
+  <mat-dialog-content class="save-content">This action cannot be undone after saving.</mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button color="warn" [mat-dialog-close]="false">Cancel</button>
-    <button type="submit" mat-button color="primary" [mat-dialog-close]="true">Update event</button>
+    <button mat-button class="cancel-btn" [mat-dialog-close]="false">Cancel</button>
+    <button type="submit" mat-button color="primary" [mat-dialog-close]="true">Save changes</button>
   </mat-dialog-actions>
+    </div>
   </ng-container>
 </ng-template>
 

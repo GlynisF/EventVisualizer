@@ -1,6 +1,31 @@
 .note-container {
+  color-scheme: dark;
   display: flex;
-  //justify-content: space-between;
-  width: 500px;
-  height: 500px;
+  height: 600px;
+  width: 100%;
 }
+
+
+.svg-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.svg {
+  width: 100px;
+  height: 100px;
+}
+
+.label-text {
+  font-family: Roboto, sans-serif;
+  font-weight: 900;
+  display: inline-block;
+  letter-spacing: -0.1rem;
+  line-height: 1rem;
+  font-size: 48px;
+}
+mat-card-header {
+  border-bottom: 1px solid black;
+}
+

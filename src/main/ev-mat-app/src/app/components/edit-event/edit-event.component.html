@@ -1,34 +1,37 @@
-
 <!-- EVENT NAME HEADER -->
+<div class="details-container-edit">
+  <span class=label-text>Edit Details</span>
 <div *ngIf="eventSelected" class="event-header" [formGroup]="eventFormGroup">
   <div class="icon-container">
     <mat-icon>local_activity</mat-icon>
     <div class="event-field">
-      <span>Event name:</span>
       <mat-form-field>
+        <mat-label>Event name</mat-label>
         <input matInput formControlName="eventName">
       </mat-form-field>
     </div>
   </div>
 </div>
-
+</div>
 <!-- DETAILS -->
 <ng-container *ngIf="eventSelected && eventSelected.details?.length">
   <ng-container *ngFor="let detail of eventSelected.details">
     <app-detail-card [formGroup]="detailFormGroup" [displayMode]="displayMode" [detailData]="eventSelected.details"/>
   </ng-container>
-
+<div><span class=label-text>Location</span></div>
   <!-- LOCATION -->
   <app-location-card [eventSelected]="eventSelected" [formGroup]="locationFormGroup" [displayMode]="displayMode"/>
 
   <mat-divider></mat-divider>
 
+  <!--PERFORMER-->
   <div class="add-performer-box">
-    <button mat-stroked-button (click)="onAddPerformer()">
-    <mat-icon>person_add</mat-icon>
-      Add Performer
-  </button>
+    <span class=label-text id="performer-title">Performers</span>
+      <button class="add-performer" mat-mini-fab (click)="onAddPerformer()" matTooltip="Add performer">
+        <mat-icon>person_add</mat-icon>
+      </button>
   </div>
+
   <ng-container *ngIf="formGroup.get('performers') as performersArray" [formGroup]="formGroup">
     <div formArrayName="performers">
       <ng-container *ngFor="let performerGroup of performerFormGroups; let i = index">
@@ -36,19 +39,11 @@
           <app-performer-card
             [performerData]="eventSelected.details?.[0]?.performers?.length"
             [formGroup]="performerGroup"
-            [displayMode]="displayMode">
+            [displayMode]="displayMode"
+            [performerFormGroups]="performerFormGroups"
+            [i]=i
+            [removePerformer]="removePerformer">
           </app-performer-card>
-
-          <!-- Remove button now INSIDE the loop -->
-          <button
-            *ngIf="performerFormGroups.length > 1"
-            mat-icon-button
-            color="warn"
-            type="button"
-            (click)="removePerformer(i)"
-            aria-label="Remove performer">
-            <mat-icon>delete</mat-icon>
-          </button>
         </div>
       </ng-container>
     </div>
@@ -56,11 +51,14 @@
 
 
 
-</ng-container>
+
+  <div><span class=label-text>Goals </span></div>
 <ng-container *ngIf="eventSelected">
   <app-goal-card [formGroup]="goalFormGroup" [eventSelected]="eventSelected" [displayMode]="displayMode"/>
+  <div><span class=label-text>Notes</span></div>
   <app-note-card [formGroup]="noteFormGroup" [eventSelected]="eventSelected" [displayMode]="displayMode"/>
+  <div><span class=label-text>Reflection</span></div>
   <app-reflection-card [formGroup]="reflectionFormGroup" [eventSelected]="eventSelected" [displayMode]="displayMode"/>
 </ng-container>
 
-
+</ng-container>
